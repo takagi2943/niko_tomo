@@ -1,4 +1,4 @@
-# 二胡友
+# **二胡友**
 
 ## サイト概要
 架空の店舗や素材を使用しています。
@@ -44,3 +44,9 @@
 - IDE：Cloud9
 
 ## 使用素材
+フリーイラスト素材として以下を使用
+- かわいいフリー素材集いらすとや（https://www.irasutoya.com/p/terms.html）
+- AI画像素材ぱたくそ（https://www.pakutaso.com/ai/）
+- Canva(URL:https://www.canva.com/)
+- 自身の所持しているプライベートで撮った写真・動画
+- 自身の所持している二胡の楽器
