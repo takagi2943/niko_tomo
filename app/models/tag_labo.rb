@@ -1,0 +1,2 @@
+class TagLabo < ApplicationRecord
+end

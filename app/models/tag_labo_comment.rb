@@ -1,0 +1,2 @@
+class TagLaboComment < ApplicationRecord
+end

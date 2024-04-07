@@ -1,0 +1,2 @@
+class GroupUserComment < ApplicationRecord
+end

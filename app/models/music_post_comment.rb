@@ -1,0 +1,2 @@
+class MusicPostComment < ApplicationRecord
+end

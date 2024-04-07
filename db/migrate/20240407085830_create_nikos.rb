@@ -4,7 +4,7 @@ class CreateNikos < ActiveRecord::Migration[6.1]
 
       t.integer :users_id,               null: false
       t.boolean :is_favorite,            null: false, default: true
-      t.string  :name,
+      t.string  :name
       t.integer :year,                   null: false
       t.text    :feature,                null: false
 
