@@ -1,0 +1,2 @@
+class Niko < ApplicationRecord
+end

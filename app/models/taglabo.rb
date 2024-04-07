@@ -1,0 +1,2 @@
+class Taglabo < ApplicationRecord
+end
