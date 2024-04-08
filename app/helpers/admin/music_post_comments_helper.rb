@@ -1,0 +1,2 @@
+module Admin::MusicPostCommentsHelper
+end

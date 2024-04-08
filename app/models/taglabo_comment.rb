@@ -1,2 +1,0 @@
-class TaglaboComment < ApplicationRecord
-end
