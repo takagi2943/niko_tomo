@@ -6,5 +6,6 @@ class TagLabo < ApplicationRecord
   
   # 一意であることを確認
   validates_uniqueness_of :Iabo_id, scope: :tag_id
+  validates :title, presence: true
   
 end

@@ -10,12 +10,5 @@ class GroupUserComment < ApplicationRecord
   # コメントの設定
   validates :comments, presence: true, length: { maximum: 200 }
   
-  # グループ内で投稿するときに画像を表示できる
-  def group_comment_image
-    if image.attached?
-      image
-    else
-      nil
-    end
-  end
+
 end

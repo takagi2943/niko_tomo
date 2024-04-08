@@ -1,90 +1,62 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'groups/index'
-    get 'groups/show'
+  # ユーザー側
+  # URL /customers/sign_in ...
+  devise_for :user,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
+
+  # 管理者側
+  # URL /admin/sign_in ...
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+  # ユーザー側
+  scope module: :public do
+    root to: "homes#top"
+    get "/about" => "homes#about"
+    # 音楽共有
+    resources :music_posts, only: [:index, :show, :create] do
+      resource :favorites, only: [:index,:create, :destroy]
+      resources :music_post_comments, only:[:create, :destroy, :update]
+    end
+    # ユーザー情報
+    resources :users, only: [:show, :edit, :update, :destroy] do
+      get 'confirm', on: :collection
+      resources :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+    end
+    # 探究室
+    resources :labos, only: [:index, :show, :create, :update, :destroy] do
+      resources :labo_comments, only: [:destroy]
+    end 
+    # グループ
+    resources :groups, only: [:index, :show, :create, :update] do
+      resources :group_user_comments, only: [:create, :destroy]
+    end 
   end
-  namespace :public do
-    get 'labos/index'
-    get 'labos/show'
-  end
-  namespace :public do
-    get 'favorites/index'
-  end
-  namespace :public do
-    get 'relationships/following'
-    get 'relationships/follower'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/comfirm'
-  end
-  namespace :public do
-    get 'music_posts/index'
-    get 'music_posts/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  
+  # 管理者側
   namespace :admin do
-    get 'music_post_comments/index'
-    get 'music_post_comments/show'
+    root to: "homes#top"
+    # 会員情報
+    resources :users, only: [:index, :show, :edit, :destroy] do
+      resources :user_post_comments, only: [:index, :destroy]
+    end
+    # グループ
+    resources :group_users, only: [:index] do
+      delete 'destroy', to: 'group#destroy', as: 'group_destroy'
+      resources :group_user_comments, only: [:index, :show, :destroy]
+    end
+    # 探究室コメント
+    resources :labo_comments, only: [:index, :show, :destroy]
+    # タグ一覧・作成
+    resources :tags, only: [:index, :create, :update] do 
+      delete "destroy_all", on: :collection
+    end 
+    # 音楽共有
+    resources :music_post_comments, only: [:index, :show, :destroy]
   end
-  namespace :admin do
-    get 'tags/index'
-  end
-  namespace :admin do
-    get 'tag_labo_comments/index'
-    get 'tag_labo_comments/show'
-  end
-  namespace :admin do
-    get 'group_user_comments/index'
-    get 'group_user_comments/show'
-  end
-  namespace :admin do
-    get 'group_users/index'
-  end
-  namespace :admin do
-    get 'user_post_comments/index'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :user do
-    get 'groups/index'
-    get 'groups/show'
-  end
-  namespace :user do
-    get 'labos/index'
-    get 'labos/show'
-  end
-  namespace :user do
-    get 'favorites/index'
-  end
-  namespace :user do
-    get 'relationships/following'
-    get 'relationships/follower'
-  end
-  namespace :user do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/comfirm'
-  end
-  namespace :user do
-    get 'music_posts/index'
-    get 'music_posts/show'
-  end
-  namespace :user do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  devise_for :users
-  devise_for :admins
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

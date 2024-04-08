@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # 画像持たせる
-  has_one_attached :image
 
   # 二胡の情報
   has_many :nikos, dependent: :destroy
@@ -17,6 +15,8 @@ class User < ApplicationRecord
   has_many :groups, dependent: :destroy
   # ユーザーグループ（中間テーブル）
   has_many :group_users, dependent: :destroy
+  # 画像持たせる
+  has_one_attached :profile_image
   # グループ内コメント
   has_many :group_user_comments, dependent: :destroy
   # お気に入り（中間テーブル）
@@ -36,18 +36,34 @@ class User < ApplicationRecord
   # 与フォロー関係を通じて参照→自分がフォローしている人
   has_many :followings, through: :relationships, source: :followed
 
-  enum gender: { noinput: 9, other: 0, man: 1, woman: 2 }
-  enum user_status: {
-    noInput: 9,
-    user_other: 0,
-    user_man: 1,
-    user_woman: 2,
-  }
+  # 名前と自己紹介文の設定
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :introduction, length: { maximum: 50 }
 
-  private
+  # 性別の選択設定
+  enum gender: { noinput: 9, other: 0, man: 1, woman: 2 }
+
 
   # 会員ステータス
   def user_status
     is_active ? "有効" : "退会"
+  end
+
+    # 画像の情報
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+
+  # 検索機能の情報　ニックネーム
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
   end
 end

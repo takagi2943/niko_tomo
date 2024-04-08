@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_07_134930) do
+ActiveRecord::Schema.define(version: 2024_04_08_143503) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 2024_04_07_134930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "labo_comments", force: :cascade do |t|
+    t.integer "labo_id", null: false
+    t.integer "user_id", null: false
+    t.text "comments", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "labos", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "body", null: false
@@ -122,14 +130,6 @@ ActiveRecord::Schema.define(version: 2024_04_07_134930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tag_labo_comments", force: :cascade do |t|
-    t.integer "tag_labo_id", null: false
-    t.integer "user_id", null: false
-    t.text "comments", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tag_labos", force: :cascade do |t|
     t.integer "tag_id", null: false
     t.integer "Iabo_id", null: false
@@ -149,7 +149,8 @@ ActiveRecord::Schema.define(version: 2024_04_07_134930) do
     t.string "nickname", null: false
     t.string "birthdate"
     t.integer "gender", default: 9, null: false
-    t.boolean "is_active", null: false
+    t.text "introduction"
+    t.integer "is_active", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
