@@ -1,0 +1,12 @@
+# 日本語の設定を行う
+# enumsの設定を行う
+# モデル名（Userモデルに対して）
+# カラム名（genderカラムに対して）
+ja:
+  enums:
+    user:
+      gender:
+        noInput: "回答しない"
+        other: "その他"
+        man: "男性"
+        woman: "女性"
