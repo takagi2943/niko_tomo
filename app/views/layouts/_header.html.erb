@@ -40,6 +40,28 @@
             <span>ログアウト</span>
           <% end %>
         </li>
+        <div class="header-search-box">
+          <%= form_with url: admin_search_path, method: :get, local: true do |form| %>
+            <div class="d-flex flex-column flex-sm-row-reverse flex-lg-column m-0">
+              <div class="form-group d-flex m-0">
+                <%= form.text_field :search, placeholder: "検索", class: "form-control" %>
+                <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                <% end %>
+              </div>
+              <div class="form-group mt-2 mb-0 ml-auto">
+                <%= form.radio_button :search_model, "user", checked: true %>
+                <%= form.label :search_model_user, "会員検索", class: "m-0 mr-2" %>
+                <%= form.radio_button :search_model, "music_post" %>
+                <%= form.label :search_model_post, "音楽共有投稿検索", class: "m-0 mr-sm-2 m-lg-0" %>
+                <%= form.radio_button :search_model, "group" %>
+                <%= form.label :search_model_labo, "探究室検索", class: "m-0 mr-sm-2 m-lg-0" %>
+                <%= form.radio_button :search_model, "group" %>
+                <%= form.label :search_model_group, "グループ検索", class: "m-0 mr-sm-2 m-lg-0" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       <% elsif user_signed_in? %>
       <!-- ユーザーがログインしている場合 -->
         <li class="nav-item">
@@ -72,6 +94,21 @@
             <span>ログアウト</span>
           <% end %>
         </li>
+        <div class="header-search-box">
+          <%= form_with url: search_users_path, method: :get, local: true do |form| %>
+            <div class="form-group d-flex m-0">
+            <%= form.text_field :user_search_path, placeholder: "名前で検索", class: "form-control" %>
+              <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+            </div>
+            <% if user_signed_in? %>
+            <span class="text-signed-in">
+            ようこそ、<%= user.nickname %>さん！
+            </span>
+            <% end %>
+          <% end %>
+        </div>
       <% else %>
       <!-- どちらもログインしていない場合 -->
         <li class="nav-item">
@@ -104,43 +141,8 @@
 
     <!--検索機能-->
   <% if admin_signed_in? %>
-    <div class="header-search-box">
-      <%= form_with url: admin_search_path, method: :get, local: true do |form| %>
-        <div class="d-flex flex-column flex-sm-row-reverse flex-lg-column m-0">
-          <div class="form-group d-flex m-0">
-            <%= form.text_field :search, placeholder: "検索", class: "form-control" %>
-            <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
-              <i class="fa-solid fa-magnifying-glass"></i>
-            <% end %>
-          </div>
-          <div class="form-group mt-2 mb-0 ml-auto">
-            <%= form.radio_button :search_model, "user", checked: true %>
-            <%= form.label :search_model_user, "会員検索", class: "m-0 mr-2" %>
-            <%= form.radio_button :search_model, "music_post" %>
-            <%= form.label :search_model_post, "音楽共有投稿検索", class: "m-0 mr-sm-2 m-lg-0" %>
-            <%= form.radio_button :search_model, "group" %>
-            <%= form.label :search_model_labo, "探究室検索", class: "m-0 mr-sm-2 m-lg-0" %>
-            <%= form.radio_button :search_model, "group" %>
-            <%= form.label :search_model_group, "グループ検索", class: "m-0 mr-sm-2 m-lg-0" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+
     <% else %>
-    <div class="header-search-box">
-      <%= form_with url: search_users_path, method: :get, local: true do |form| %>
-        <div class="form-group d-flex m-0">
-          <%= form.text_field :user_search_path, placeholder: "名前で検索", class: "form-control" %>
-          <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
-        </div>
-        <% if user_signed_in? %>
-          <span class="text-signed-in">
-            ようこそ、<%= user.nickname %>さん！
-          </span>
-        <% end %>
-      <% end %>
-    </div>
+ 
   <% end %>
 </nav>

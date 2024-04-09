@@ -1,2 +1,7 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<% if @model == 'user' %>
+	<h3>Users search for "<%= @content %>"</h3>
+  <%= render 'users/index', users: @records %>
+<% elsif @model == 'music_post' %>
+	<h3>music_posts search for "<%= @content %>"</h3>
+  <%= render 'music_posts/index', music_posts: @records %>
+<% end %>
