@@ -1,0 +1,15 @@
+<div class='table table-hover table-inverse'>
+    <% music_posts.each do |music_post| %>
+    <div><%= link_to(music_post.user) do %>
+          <%= image_tag music_post.user.get_profile_image, size:'50x50' %>
+          <% end %>
+        </div>
+        <div><%= link_to music_post.title,book, class: "book_#{book.id}" %></div>
+        <div><%= book.body %></div>
+        <div id="favorite_btn_<%= book.id %>">
+          <%= render "favorites/btn", book: book %>
+        </div>
+        <div>コメント数: <%= book.book_comments.count %></div>
+      </div>
+    <% end %>
+</div>

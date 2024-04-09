@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-
+  before_action :prohibit_multiple_login, if: :admin_signed_in?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   # GET /resource/sign_up
   # def new
   #   super
@@ -38,7 +37,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +58,16 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def after_sign_up_path_for(resource)
+    customers_my_page_path
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :birthdate, :gender])
+  end
+
+
+  def prohibit_multiple_login
+    redirect_to admin_root_path
+  end
 end

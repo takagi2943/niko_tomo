@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
+  # ゲストユーザー側
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
+
   # 管理者側
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -16,6 +21,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about"
+          # 探究室
+    resources :labos, only: [:index, :show, :create, :update, :destroy] do
+      resources :labo_comments, only: [:destroy]
+    end
     resources :users do
         # ユーザー検索用
         collection do
@@ -33,17 +42,16 @@ Rails.application.routes.draw do
           get 'followings' => 'relationships#followings', as: 'followings'
           get 'followers' => 'relationships#followers', as: 'followers'
       end
-      # 探究室
-      resources :labos, only: [:index, :show, :create, :update, :destroy] do
-        resources :labo_comments, only: [:destroy]
-      end 
+
       # グループ
       resources :groups, only: [:index, :show, :create, :update] do
+        get "join" => "groups#join"
+        delete "leave", on: :member
         resources :group_user_comments, only: [:create, :destroy]
-      end 
+      end
     end
   end
-  
+
   # 管理者側
   namespace :admin do
     root to: "homes#top"
@@ -61,9 +69,9 @@ Rails.application.routes.draw do
     # 探究室コメント
     resources :labo_comments, only: [:index, :show, :destroy]
     # タグ一覧・作成
-    resources :tags, only: [:index, :create, :update] do 
+    resources :tags, only: [:index, :create, :update] do
       delete "destroy_all", on: :collection
-    end 
+    end
     # 音楽共有
     resources :music_post_comments, only: [:index, :show, :destroy]
   end

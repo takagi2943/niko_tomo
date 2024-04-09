@@ -37,11 +37,20 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
 
   # 名前と自己紹介文の設定
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :nickname, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
   # 性別の選択設定
   enum gender: { noinput: 9, other: 0, man: 1, woman: 2 }
+
+  # ゲストログイン設定
+  GUEST_USER_EMAIL = "guest@example.com"
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
 
 
   # 会員ステータス

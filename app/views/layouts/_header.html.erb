@@ -1,4 +1,4 @@
-<nav class="container navbar navbar-light navbar-expand-md">
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
   <div class="w-100 d-flex flex-wrap justify-content-between">
     <%= link_to root_path, class: "header-logo navbar-brand" do %>
       LOGO
@@ -118,7 +118,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to user_labos_path, class: "nav-link header-nav-link" do %>
+          <%= link_to labos_path, class: "nav-link header-nav-link" do %>
             <i class="fa-solid fa-person-chalkboard"></i>
             <span>探究室</span>
           <% end %>
@@ -143,6 +143,6 @@
   <% if admin_signed_in? %>
 
     <% else %>
- 
+
   <% end %>
 </nav>

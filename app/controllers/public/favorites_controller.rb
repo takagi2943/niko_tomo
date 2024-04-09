@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
   
   # いいね（お気に入り）一覧
   def index
