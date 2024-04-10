@@ -44,48 +44,36 @@
 			  棹の部分も同じで部分的に象牙や象牙代用品が使われています。竿の頭部には龍の形をした
 			  ものも少数ですが存在します。
 			  <br><br>胴の部分に張ってある、皮の素材（琴皮）にはニシキヘビの皮が使われています。
-			  <br>「絶滅のおそれのある野生動植物の種の国際取引に関する条約(ワシントン条約)」でニシキヘビ皮の取引が禁じられました。<br><br>そのため中国ではさまざまな皮革で代用品の開発・研究が進められています。<br>また中国南部やベトナムでニシキヘビの養殖が復活しつつあります。今後は養殖ニシキヘビ皮の二胡が主流になると思います。（養殖ニシキヘビ又はワシントン条約以前の琴皮という証明書がないと販売・輸出入不可）</p><p>代用皮革にニシキヘビの柄をプリントした物も存在します。</p><p>しかし、おみやげ用や展示目的の安価な二胡は、琴皮だけでなく他の素材もあまり良くありません。当然このような品物は演奏に適さないものです。<br>ネットショップなどでお買い求めになるのはお勧めしません。</p>						</div>
+			  <br>「絶滅のおそれのある野生動植物の種の国際取引に関する条約(ワシントン条約)」でニシキヘビ皮の取引が禁じられました。
+			  <br><br>そのため中国ではさまざまな皮革で代用品の開発・研究が進められています。
+			  <br>また中国南部やベトナムでニシキヘビの養殖が復活しつつあります。今後は養殖ニシキヘビ皮の二胡が主流になると思います。
+			  （養殖ニシキヘビ又はワシントン条約以前の琴皮という証明書がないと販売・輸出入不可）
+			 </p>
+			  <p>
+			    代用皮革にニシキヘビの柄をプリントした物も存在します。
+			  </p>
+			  <p>しかし、おみやげ用や展示目的の安価な二胡は、琴皮だけでなく他の素材もあまり良くありません。当然このような品物は演奏に適さないものです。
+			  <br>ネットショップなどでお買い求めになるのはお勧めしません。
+			  </p>
 
-   <style>
-
-    .slider {
-      max-width: 100%;
-      max-height: 100%;
-      display: flex;
-      overflow: hidden;
-      margin: 0 auto;
-    }
-
-    .slider > :first-child {
-      animation: scroll 20s infinite linear;
-    }
-
-    @keyframes scroll {
-      0% { margin-left: 0; }
-      20% { margin-left: -100%; }
-      50% { margin-left: -200%; }
-      70% { margin-left: -300%; }
-      100% { margin-left: -400%; }
-    }
-
-    </style>
-
-    <body>
-      <div class="slider">
-        <div class="slider-item">
-          <%= image_tag '二胡.jpg', style: "width: 800px; height: 600px;" %>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <%= image_tag '二胡.jpg' alt="" %>
+          </div>
+          <div class="slider-item">
+            <%= image_tag '二胡の教科書.jpg' alt="" %>
+          </div>
+          <div class="slider-item">
+            <%= image_tag '二胡の集まり.jpg' alt="" %>
+          </div>
+          <div class="slider-item">
+            <%= image_tag '二胡演奏.jpg' alt="" %>
+          </div>
         </div>
 
-        <div class="slider-item">
-          <%= image_tag '二胡の教科書.jpg', style: "width: 800px; height: 600px;" %>
-        </div>
-
-        <div class="slider-item">
-          <%= image_tag '二胡の集まり.jpg', style: "width: 800px; height: 600px;" %>
-        </div>
-
-        <div class="slider-item">
-          <%= image_tag '二胡演奏.jpg', style: "width: 800px; height: 600px;" %>
-        </div>
+        <!-- ページネーションの要素 -->
+        <div class="swiper-pagination"></div>
+        <!-- ナビゲーションボタン （前、次） -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
-    </body>

@@ -12,6 +12,8 @@ import jQuery from "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "../stylesheets/my_styles";
+import "../stylesheets/styles";
 
 Rails.start()
 Turbolinks.start()

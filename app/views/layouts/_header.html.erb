@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+<nav class="navbar navbar-dark navbar-expand-md">
   <div class="w-100 d-flex flex-wrap justify-content-between">
     <%= link_to root_path, class: "header-logo navbar-brand" do %>
       LOGO
@@ -65,25 +65,25 @@
       <% elsif user_signed_in? %>
       <!-- ユーザーがログインしている場合 -->
         <li class="nav-item">
-          <%= link_to user_path, class: "nav-link header-nav-link" do %>
+          <%= link_to user_path(current_user.id), class: "nav-link header-nav-link" do %>
             <i class="fa-regular fa-address-card"></i>
             <span>マイページ</span>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to groups_path, class: "nav-link header-nav-link" do %>
+          <%= link_to user_groups_path(current_user.id), class: "nav-link header-nav-link" do %>
             <i class="fa-solid fa-people-roof"></i>
             <span>グループ</span>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to cart_items_path, class: "nav-link header-nav-link" do %>
+          <%= link_to labos_path, class: "nav-link header-nav-link" do %>
             <i class="fa-solid fa-cart-shopping"></i>
             <span>探究室</span>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to user_music_posts_path, class: "nav-link header-nav-link" do %>
+          <%= link_to user_music_posts_path(current_user.id), class: "nav-link header-nav-link" do %>
             <i class="fa-solid fa-music"></i>
             <span>音楽共有</span>
           <% end %>
@@ -104,7 +104,7 @@
             </div>
             <% if user_signed_in? %>
             <span class="text-signed-in">
-            ようこそ、<%= user.nickname %>さん！
+            ようこそ、<%= current_user.nickname %>さん！
             </span>
             <% end %>
           <% end %>

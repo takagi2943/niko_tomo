@@ -1,2 +1,47 @@
-<h1>Public::Users#comfirm</h1>
-<p>Find me in app/views/public/users/comfirm.html.erb</p>
+<div class="container mt-4">
+  <div class="mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 d-flex align-items-center flex-column">
+        <h1 class="text-center" style="text-shadow: -1px -1px 5px rgba(160,82,45,0.8),  
+          1px -1px 5px rgba(160,82,45,0.8),  
+          -1px 1px 5px rgba(160,82,45,0.8),  
+          1px 1px 5px rgba(160,82,45,0.8); color: white; animation: blink 3s infinite;">
+           本当に退会しますか？
+        </h1>
+  
+  
+        <style>
+          @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+        </style>
+        
+        <p>
+          下記の機能が使用できなくなりますがよろしいでしょうか？
+        </p>
+        <p class="text-center">
+          ・フォロー/フォロワーができなくなります<br>
+          ・グループ参加/グループ作成/閲覧できなくなります<br>
+          ・音楽共有での閲覧・投稿できなくなります<br>
+          ・音楽共有でのお気に入り登録が削除されます<br>
+          ・探究室の投稿ができなくなります
+        </p>
+        
+        <div class="d-flex justify-content-center">
+          <div>
+            <%= link_to "退会しない", edit_user_user_path(@user), class: "btn btn-primary mr-3" %>
+          </div>
+          
+          <p>変わらず閲覧できるのは下記のとおりです</p>
+          <p>・探究室は閲覧のみできます</p>
+          <p>それでもかまわない！という方は退会するを押してください</p>
+          <div>
+            <%= link_to "退会する", user_user, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？"} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

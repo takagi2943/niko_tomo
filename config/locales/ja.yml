@@ -6,7 +6,7 @@ ja:
   enums:
     user:
       gender:
-        noInput: "回答しない"
+        noinput: "回答しない"
         other: "その他"
         man: "男性"
         woman: "女性"

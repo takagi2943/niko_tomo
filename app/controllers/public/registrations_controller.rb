@@ -59,7 +59,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_sign_up_path_for(resource)
-    customers_my_page_path
+    user_path(resource.id)
   end
 
   def configure_permitted_parameters

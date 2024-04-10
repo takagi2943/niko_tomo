@@ -8,8 +8,7 @@ class Niko < ApplicationRecord
   # 二胡の特徴文の設定
   validates :feature, presence: true, length: { maximum: 200 }
 
-
-  
+  private
   # 二胡の画像を持たせると表示される/持たせないと表示されない
   def niko_image
     if image.attached?

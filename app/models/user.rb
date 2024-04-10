@@ -41,7 +41,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 50 }
 
   # 性別の選択設定
-  enum gender: { noinput: 9, other: 0, man: 1, woman: 2 }
+  enum gender: { noinput: 9, other: 3, man: 1, woman: 2 }
 
   # ゲストログイン設定
   GUEST_USER_EMAIL = "guest@example.com"

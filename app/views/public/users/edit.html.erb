@@ -1,2 +1,92 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>会員情報編集</h2>
+      <%= form_with model:@user, local:true do |f| %>
+        <%= render 'layouts/errors', obj: @user %>
+
+        <div class="form-group">
+          <%= f.label :登録画像 %>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :ニックネーム %>
+          <%= f.text_field :nickname, class: "form-control nickname" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :自己紹介文 %>
+          <%= f.text_area :introduction, class: "form-control introduction" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.submit "変更を保存",class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+    <div class='col'>
+      <div class='row'>
+        <h2>My二胡の情報編集</h2>
+        <!--二胡を新しく登録するボタン-->
+        <div class="col-sm-10 px-sm-0 text-right mb-2">
+          <button id="toggle-form"><i class="fas fa-plus"></i></button>
+        </div>
+
+        <div id="form-container" style="display: none;">
+          <%= form_with model:niko, local:true do |f| %>
+            <% if @user.niko_image.attached? %>
+              <div class="form-group">
+                <%= f.label :画像 %>
+                <%= f.file_field :niko_image, accept: 'image/*' %>
+              </div>
+            <% end %>
+            
+            <div>
+              <!--二胡使用素材を選ぶラジオボタン-->
+              <%= form.radio_button :tree_type, :zitan %>
+              <%= form.label :tree_type_zitan, "紫檀" %>
+              
+              <%= form.radio_button :tree_type, :laohongmu %>
+              <%= form.label :tree_type_laohongmu, "老紅木" %>
+              
+              <%= form.radio_button :tree_type, :heitan %>
+              <%= form.label :tree_type_heitan, "黒檀" %>
+              
+              <%= form.radio_button :tree_type, :other %>
+              <%= form.label :tree_type_other, "その他" %>
+            </div>
+        
+            <div class="form-group">
+              <%= f.label :使用期間 %>
+              <%= f.text_area :year %>　年
+            </div>
+        
+            <div class="form-group">
+              <%= f.label :二胡の名前 %>
+              <%= f.text_field :name%>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :特徴 %>
+              <%= f.text_field :feature%>
+            </div>
+            
+            <div class="form-group">
+              <%= f.submit class: 'btn btn-success' %>
+            </div>
+          <% end %>
+        </div>
+        
+        <div>
+          <%= link_to "退会する", confirm_user_users_path, class:"ml-5 btn btn-danger" %>
+        </div>
+        
+        <div>
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
+        <p>変更を保存を押すと更新されます。</p>
+      </div>
+    </div>
+  </div>
+</div>
