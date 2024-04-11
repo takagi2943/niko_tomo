@@ -1,9 +1,24 @@
 <nav class="navbar navbar-dark navbar-expand-md">
-  <div class="w-100 d-flex flex-wrap justify-content-between">
-    <%= link_to root_path, class: "header-logo navbar-brand" do %>
-      LOGO
-    <% end %>
-        <button class="header-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container">
+    <!--上部左端に配置-->
+    <div class="d-lg-flex d-none align-items-center col-lg-4 mr-auto">
+      <% if user_signed_in? %>
+      <!--二胡のLOGO-->
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x50") %>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x50") %>
+        <% end %>
+      <% else %>
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x50") %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <button class="header-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end justify-content-lg-center" id="navbarSupportedContent">
@@ -49,6 +64,7 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 <% end %>
               </div>
+              <!--検索機能-->
               <div class="form-group mt-2 mb-0 ml-auto">
                 <%= form.radio_button :search_model, "user", checked: true %>
                 <%= form.label :search_model_user, "会員検索", class: "m-0 mr-2" %>
@@ -96,6 +112,7 @@
         </li>
         <div class="header-search-box">
           <%= form_with url: search_users_path, method: :get, local: true do |form| %>
+          <!--検索機能-->
             <div class="form-group d-flex m-0">
             <%= form.text_field :user_search_path, placeholder: "名前で検索", class: "form-control" %>
               <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
@@ -138,11 +155,5 @@
       <% end %>
       </ul>
     </div>
-
-    <!--検索機能-->
-  <% if admin_signed_in? %>
-
-    <% else %>
-
-  <% end %>
+  </div>
 </nav>

@@ -16,7 +16,9 @@
         <!-- 生年月日空欄でも可 -->
         <div class="field">
           <%= f.label "生年月日" %>
-          <%= f.text_field :birthdate, autocomplete: "1980-01-12" %>
+          <%= f.date_select :birthdate, {start_year: 1950, end_year: 2024,
+                      include_blank: true, use_two_digit_numbers: true},
+                      {class: "input-tab birthday-select"}%>
         </div>
 
         <!-- 性別選択 -->

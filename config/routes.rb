@@ -30,11 +30,13 @@ Rails.application.routes.draw do
         collection do
           get 'search'
         end
+
       # 音楽共有
-      resources :music_posts, only: [:index, :show, :create] do
+      resources :music_posts, only: [:index, :show, :create, :destroy] do
         resource :favorites, only: [:index,:create, :destroy]
         resources :music_post_comments, only:[:create, :destroy, :update]
       end
+
       # ユーザー情報
       resources :users, only: [:show, :edit, :update, :destroy] do
         get 'confirm', on: :collection

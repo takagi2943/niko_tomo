@@ -1,1 +1,10 @@
-<%= user.nickname %>
+<!--登録した画像表示-->
+<div><%= image_tag user.get_profile_image, size: '50x50' %></div>
+<!--ニックネーム-->
+<div><%= user.nickname %></div>
+<!--自己紹介文表示-->
+<div><%= user.introduction %></div>
+<!--各一覧を押下すると表示される-->
+<h5>フォロー: <%= link_to user.followings.count, user_user_followings_path(user) %></h5>
+<h5>フォロワー: <%= link_to user.followers.count, user_user_followers_path(user) %></h5>
+<h5>いいね <%= link_to user_music_post_favorites_path(user) %></h5>

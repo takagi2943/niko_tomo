@@ -1,15 +1,7 @@
 <div>
    <% users.each do |user| %>
     
-      <!--登録した画像表示-->
-      <div><%= image_tag user.get_profile_image, size: '50x50' %></div>
-      <!--ニックネーム-->
-      <div><%= user.nickname %></div>
-      <!--自己紹介文表示-->
-      <div><%= user.introduction %></div>
-      <div>
-      <h5>フォロー数: <%= link_to user.followings.count, user_user_followings_path(user) %></h5>
-      <h5>フォロワー数: <%= link_to user.followers.count, user_user_followers_path(user) %></h5>
+
       
       <!--お気に入りの二胡の情報表示-->
       <% if currnt_user != user %>
