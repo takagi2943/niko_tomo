@@ -1,28 +1,28 @@
 <div class='container px-5 px-sm-0'>
-  <%= render 'layouts/errors', obj: @music_post %>
+  <%= render 'layouts/error_messages', model: @music_post %>
   <div class='row'>
     <div class='col-md-3'>
       <h2>会員情報</h2>
-      <%= render 'users/info', user: current_user %>
+      <%= render 'public/users/info', user: current_user %>
       <h2 class="mt-3">新規投稿</h2>
       <%= render 'form', music_post: @music_post %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <% @music_post.each do |post| %>
+      <% @music_posts.each do |post| %>
         <% user = post.user %>
         <div>
           <!--プロフィール画像-->
           <%= image_tag user.profile_image.variant(resize: "50x50"), class: "rounded-circle" if user.profile_image.attached? %>
           <!--ニックネーム-->
-          <%= user.nickname %>
+          <%= link_to post.user.nickname, user_path(post.user) %>
         </div>
         <div>
           <!--投稿タイトル-->
-          <h3><%= music_post.title %></h3>
+          <h3><%= link_to post.title, user_music_post_path(post.user, post), class: "music_post_#{post.id}" %></h3>
           <!--投稿内容-->
-          <p><%= music_post.body %></p>
-          <!--画像を選択しないと表示されない--
-          <% if music_post_image.attached? %>
+          <p><%= post.body %></p>
+          <!--画像を選択しないと表示されない-->
+          <% if post.image.attached? %>
             <%= image_tag post.image %>
           <% end %>
         </div>

@@ -5,11 +5,11 @@
       <% if user_signed_in? %>
       <!--二胡のLOGO-->
         <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x50") %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "100x80") %>
         <% end %>
       <% elsif admin_signed_in? %>
         <%= link_to admin_root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x50") %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "100x80") %>
         <% end %>
       <% else %>
         <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
@@ -18,7 +18,7 @@
       <% end %>
     </div>
 
-    <button class="header-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="header-btn navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end justify-content-lg-center" id="navbarSupportedContent">

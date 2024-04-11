@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2024_04_10_090456) do
   end
 
   create_table "group_user_comments", force: :cascade do |t|
-    t.integer "group_user_id", null: false
+    t.integer "user_id", null: false
     t.integer "group_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2024_04_10_090456) do
   end
 
   create_table "nikos", force: :cascade do |t|
-    t.integer "users_id", null: false
+    t.integer "user_id", null: false
     t.boolean "is_favorite", default: true, null: false
     t.string "name"
     t.integer "year", null: false

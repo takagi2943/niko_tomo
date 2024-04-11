@@ -1,25 +1,25 @@
 class Public::MusicPostsController < ApplicationController
    before_action :authenticate_user!
    before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-   
+
   def index
-    @music_posts = Music_post.all
-    @music_post = Music_post.new
-    
+    @music_posts = MusicPost.all
+    @music_post = MusicPost.new
+
   end
 
   def show
-    @music_post = Music_post.find(params[:id])
-    @music_post_comment = Music_post.new
+    @music_post = MusicPost.find(params[:id])
+    @music_post_comment = MusicPost.new
   end
-  
+
   def create
-    @music_post = Music_post.new(music_post_params)
+    @music_post = MusicPost.new(music_post_params)
     @music_post.user_id = current_user.id
     if @music_post.save
-      redirect_to user_music_post_path(@music_post), notice: "You have created book successfully."
+      redirect_to user_music_post_path(current_user, @music_post), notice: "You have created book successfully."
     else
-      @music_posts = Music_post.all
+      @music_posts = MusicPost.all
       render 'index'
     end
   end
@@ -47,7 +47,7 @@ class Public::MusicPostsController < ApplicationController
   end
 
   def ensure_correct_user
-    @music_post = Music_post.find(params[:id])
+    @music_post = MusicPost.find(params[:id])
     unless @music_post.user == current_user
       redirect_to books_path
     end

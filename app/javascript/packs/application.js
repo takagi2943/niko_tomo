@@ -11,6 +11,7 @@ import "channels"
 import jQuery from "jquery";
 import "popper.js";
 import "bootstrap";
+// import "script.js";
 import "../stylesheets/application";
 import "../stylesheets/my_styles";
 import "../stylesheets/styles";

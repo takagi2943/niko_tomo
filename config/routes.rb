@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'group_messages/create'
+  end
   # ユーザー側
   # URL /customers/sign_in ...
   devise_for :user,skip: [:passwords], controllers: {
