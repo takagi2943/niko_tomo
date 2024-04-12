@@ -38,7 +38,15 @@
           <p>・探究室は閲覧のみできます</p>
           <p>それでもかまわない！という方は退会するを押してください</p>
           <div>
-            <%= link_to "退会する", user_user, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？"} %>
+            <!--ゲストログインである限り退会ボタンを押下しても反応しない-->
+          <div class="row">
+            <% if user.guest_user? %>
+              <%= content_tag :div, "ゲストユーザーは退会できません。", class: "alert alert-warning" %>
+            <% else %>
+              <%= link_to "退会する", user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
+            <% end %>
+          </div>
+
           </div>
         </div>
       </div>

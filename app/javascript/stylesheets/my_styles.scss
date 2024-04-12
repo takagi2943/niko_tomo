@@ -1,11 +1,24 @@
  body{
   background-color: #FFFAF0;
-}
+  text-align: center; /* ページ全体を中央に配置 */
+  font-family: Arial, sans-serif; /* フォントを指定 */
+  }
 
+  p {
+    margin: 20px auto; /* パラグラフを中央に配置 */
+    max-width: 600px; /* 最大幅を指定 */
+    text-align: left; /* テキストを左寄せに配置 */
+    line-height: 1.6; /* 行間を調整 */
+  }
 
 .navbar {
     background-color: #DC143C;
 }
+
+.fa-magnifying-glass {
+    color: red;
+}
+
 
 .wrapper{
     min-height: 100vh;

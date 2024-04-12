@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
    before_action :authenticate_user!
-   before_action :ensure_correct_user, only: [:edit, :update]
+   before_action :ensure_not_guest_user, only: [:update, :destroy]
 
   def show
     @niko = Niko.all
@@ -12,7 +12,13 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @nikos = Niko.find(params[:id])
+    @user = User.find(params[:id])
+    # ID が 2 の Niko レコードを取得するが、存在しなければ新しい Niko インスタンスを作成する
+    @niko = Niko.find_by(id: params[:id]) || Niko.new
+
+    # もしくは、単純に新しい Niko インスタンスを作成する
+    # @niko = Niko.new
+
     @niko_tree_type = Niko.new
   end
 
@@ -37,5 +43,13 @@ class Public::UsersController < ApplicationController
 
   def niko_tree_type_parame
     params.require(:niko_tree_type).permit(:tree_type)
+  end
+
+  # ゲストログイン縛りの設定
+  def ensure_not_guest_user
+    if current_user.guest_user?
+      flash[:error] = "ゲストユーザーはこの操作を実行できません。"
+      redirect_to edit_user_path(current_user)
+    end
   end
 end

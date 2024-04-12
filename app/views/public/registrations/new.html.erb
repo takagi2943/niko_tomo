@@ -21,7 +21,7 @@
 
         <!-- 性別選択 -->
         <div class="field">
-          <%= f.label "gender" %>
+          <%= f.label "性別" %>
           <%= f.select :gender, User.genders_i18n.keys.map { |k| [User.genders_i18n[k], k]} %>
         </div>
 

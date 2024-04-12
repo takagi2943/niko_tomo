@@ -46,8 +46,8 @@ Rails.application.routes.draw do
         resources :relationships, only: [:create, :destroy]
           get 'followings' => 'relationships#followings', as: 'followings'
           get 'followers' => 'relationships#followers', as: 'followers'
+          resources :nikos, only: [:create, :update, :destroy]
       end
-
       # グループ
       resources :groups, only: [:index, :show, :create, :update] do
         get "join" => "groups#join"
