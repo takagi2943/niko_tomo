@@ -13,31 +13,39 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    # ID が 2 の Niko レコードを取得するが、存在しなければ新しい Niko インスタンスを作成する
-    @niko = Niko.find_by(id: params[:id]) || Niko.new
+    @niko = @user.nikos.find_by(id: params[:niko_id]) || @user.nikos.build
 
-    # もしくは、単純に新しい Niko インスタンスを作成する
+    if @user.guest_user?
+      flash.now[:alert] = "ゲストユーザーは変更を保存することはできません。"
+    end
     # @niko = Niko.new
 
-    @niko_tree_type = Niko.new
+    # @niko_tree_type = Niko.new
   end
 
   def comfirm
   end
 
   def create
-    @niko_tree_type = Niko.new(niko_tree_type_parame)
-    @niko_tree_type.save
-    redirect_to user_user_path
+    @niko_tree_type = Niko.new(niko_params)
+    if @niko_tree_type.save
+      # 保存成功時の処理
+      redirect_to user_user_path, notice: "保存しました。"
+    else
+      # 保存失敗時の処理
+      render :edit
+    end
   end
+
 
   def update
     if @user.update(user_params)
-      redirect_to user_user_path(@user), notice: "ユーザー情報変更登録しました。"
+      render json: { status: 'success', redirect_url: user_user_path(@user) }
     else
-      render "edit"
+      render json: { status: 'error', errors: @user.errors.full_messages }
     end
   end
+
 
   private
 

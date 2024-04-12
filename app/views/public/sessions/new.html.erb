@@ -1,7 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto">
-
+<div class='container'>
+  <div class="row mt-3"><!--本文とヘッダーとの間を開ける-->
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
     <h2 class="mt-5">ログイン</h2>
     <h4 class="mt-3">会員の方はこちらからログインしてください</h4>
 
@@ -20,10 +19,15 @@
         <%= f.password_field :password, autocomplete: "current-password", class: "mb-2 mx-5" %>
       </div>
 
+    
+      <h2 class="text-danger">※注意※</h2>
+      <h5 class="text-danger">不適切と判断される投稿が続く場合や悪質な利用と判断した場合、アカウントが削除されます。</h5>
+      
       <div class="actions">
         <%= f.submit "ログイン", class: "btn btn-outline-success mb-2" %>
       </div>
     <% end %>
+
 
     <h3 class="mt-5 mb-2">会員登録がお済みでない方</h3>
 

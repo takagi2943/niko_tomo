@@ -41,9 +41,8 @@
         </div>
 
         <div id="form-container" style="display: none;">
-          <%= form_with model: @niko, url: user_user_nikos_path(@user, @niko), local: true do |f| %>
-
-            <% if @user.niko_image.attached? %>
+          <%= form_with model: @niko, url: user_user_nikos_path(@user), local: true do |f| %>
+            <% if @niko.niko_image.attached? %>
               <div class="form-group">
                 <%= f.label :画像 %>
                 <%= f.file_field :niko_image, accept: 'image/*' %>
@@ -52,17 +51,17 @@
 
             <div>
               <!--二胡使用素材を選ぶラジオボタン-->
-              <%= form.radio_button :tree_type, :zitan %>
-              <%= form.label :tree_type_zitan, "紫檀" %>
+              <%= f.radio_button :tree_type, :zitan %>
+              <%= f.label :tree_type_zitan, "紫檀" %>
 
-              <%= form.radio_button :tree_type, :laohongmu %>
-              <%= form.label :tree_type_laohongmu, "老紅木" %>
+              <%= f.radio_button :tree_type, :laohongmu %>
+              <%= f.label :tree_type_laohongmu, "老紅木" %>
 
-              <%= form.radio_button :tree_type, :heitan %>
-              <%= form.label :tree_type_heitan, "黒檀" %>
+              <%= f.radio_button :tree_type, :heitan %>
+              <%= f.label :tree_type_heitan, "黒檀" %>
 
-              <%= form.radio_button :tree_type, :other %>
-              <%= form.label :tree_type_other, "その他" %>
+              <%= f.radio_button :tree_type, :other %>
+              <%= f.label :tree_type_other, "その他" %>
             </div>
 
             <div class="form-group">
@@ -84,17 +83,24 @@
         </div>
 
         <div>
-          <%= link_to "退会する", confirm_user_users_path, class:"ml-5 btn btn-danger" %>
+          <%= link_to "退会する", confirm_user_users_path(@user), class:"ml-5 btn btn-danger" %>
         </div>
-        <!--ゲストログインである限り変更保存ボタンを押下しても反応しない-->
+        <div class="row">
+          <!--ゲストログインである限り変更保存ボタンを押下しても反応しない-->
+        <% if flash.now[:alert].present? %>
+          <div class="alert alert-warning">
+            <%= flash.now[:alert] %>
+          </div>
+        <% end %>
         <div class="row">
           <% unless @user.guest_user? %>
-            <%= content_tag :div, "ゲストユーザーは変更を保存することはできません。", class: "alert alert-warning" %>
-          <% else %>
-            <%= button_tag "変更を保存", type: "button", class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}_#{niko.id}" %>
-        </div>
+            <%= button_tag "変更を保存", type: "button", class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}_#{@niko.id}" %>
           <% end %>
+        </div>
+
         <p>変更を保存を押すと更新されます。</p>
+
+
     </div>
   </div>
 </div>
