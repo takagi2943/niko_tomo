@@ -2,10 +2,10 @@
   <%= render 'layouts/error_messages', model: @music_post %>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>会員情報</h2>
+      <h4>会員情報</h4>
       <%= render 'public/users/info', user: current_user %>
-      <h2 class="mt-3">新規投稿</h2>
-      <%= render 'form', music_post: @music_post %>
+      <h4 class="mt-3">新規投稿</h4>
+      <%= render 'public/music_posts/form', music_post: @music_post %>
     </div>
     <div class='col-md-8 offset-md-1'>
       <% @music_posts.each do |post| %>
@@ -18,9 +18,12 @@
         </div>
         <div>
           <!--投稿タイトル-->
-          <h3><%= link_to post.title, user_music_post_path(post.user, post), class: "music_post_#{post.id}" %></h3>
+          <h4><%= link_to post.title, user_music_post_path(post.user, post), class: "music_post_#{post.id}" %></h4>
           <!--投稿内容-->
           <p><%= post.body %></p>
+          <div id="favorite_btn_<%= book.id %>">
+            <%= render "public/favorites/btn", music_post: @music_post %>
+          </div>
           <!--画像を選択しないと表示されない-->
           <% if post.image.attached? %>
             <%= image_tag post.image %>

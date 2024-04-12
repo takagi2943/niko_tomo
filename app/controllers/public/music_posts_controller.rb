@@ -29,7 +29,7 @@ class Public::MusicPostsController < ApplicationController
 
   def update
     if @music_post.update(music_post_params)
-      redirect_to user_music_post_path(@music_post), notice: "You have updated book successfully."
+      redirect_to user_music_post_path(@music_post), notice: "You have updated music_post successfully."
     else
       render "edit"
     end
@@ -49,7 +49,7 @@ class Public::MusicPostsController < ApplicationController
   def ensure_correct_user
     @music_post = MusicPost.find(params[:id])
     unless @music_post.user == current_user
-      redirect_to books_path
+      redirect_to user_music_posts_path
     end
   end
 end

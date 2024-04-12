@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-md-3'>
       <%= render 'info', user: @user %>
-            <div class='row'>
+        <div class='row'>
         <!--current_user が user と異なる場合にはフォロー/フォロワー関連のボタンを表示-->
         <% if current_user != @user %>
           <td><%= render "relationships/btn", user: @user %></td>
