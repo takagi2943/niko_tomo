@@ -1,45 +1,14 @@
-<h4>新規グループ作成</h4>
-<%= form_with model: @group, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :グループ名 %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :グループの自己紹介 %>
-    <%= f.text_field :body, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :グループ画像 %>
-    <%= f.file_field :group_image, class: "form-control-file" , accept: "image/*" %>
-  </div>
-<% end %>
-  <div>
-    <h5>参加人数</h5>
-  </div>
-  <div>
-    <h5><%# @group.user(user) %>人</h5>
-  </div>
-  <div>
-    <%# @group.users.each do |member| %>
-      <%#= member.name %><br>
-    <%# end %>
-  </div>
-  <div>
-    <%#= link_to group_path(@group) do %>
-      <%# if @group.group_image.attached? %>
-        <%#= image_tag @group.group_image, size: "50x50" %>
-      <%# else %>
-        <%#= image_tag 'no_image.jpg', size: "50x50" %>
-      <%# end %>
-    <%# end %>
-  </div>
-  <div>
-    <%# if @group.owner_id == current_user.id %>
-      <%#= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-    <%# elsif @group.users.include?(current_user) %>
-      <%#= link_to 'Leave this group', leave_user_group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
-    <%# else %>
-      <%#= link_to 'Join this group', user_group_join_path(user_id: @user.id, group_id: @group.id), class: "btn btn-sm btn-success" %>
-    <%# end %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'info', user: @user %>
+      <h3>グループ新規作成</h3>
+      <%= render 'public/layouts/errors', obj: @group %>
+      <%= render 'form', group: @group %>
+      <div class='col-md-8 offset-md-1'>
+        <h2>グループ一覧</h2>
+        <%= render 'index', groups: @groups %>
+      </div>
+    </div>
   </div>
 </div>

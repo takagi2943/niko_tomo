@@ -10,13 +10,14 @@
       <%= render 'public/music_posts/index', music_posts: @music_posts %>
     </div>
     <% if @music_post.user == current_user %>
-      <td><%= link_to 'Edit', edit_music_post_path(@music_post), class: "btn btn-sm btn-success" %></td>
-      <td><%= link_to 'Destroy', @music_post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@music_post.id}"%></td>
+      <td><%= link_to '編集', edit_music_post_path(@music_post), class: "btn btn-sm btn-success" %></td>
+      <td><%= link_to '削除', @music_post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@music_post.id}"%></td>
     <% end %>
         </tr>
       </table>
 
      <div id="comment_counter">
-      <%= render "public/music_post_comments/counter", music_post_comments: @music_post_comments %>
+      <%= render partial: "public/music_post_comments/counter", locals: { music_post: @music_post } %>
+
     </div>
     </div>

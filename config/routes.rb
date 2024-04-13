@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :destroy]
     end
     # グループ
-    resources :groups, only: [:index, :show, :create, :update] do
+    resources :groups, only: [:index, :show, :create, :update, :edit] do
       get "join" => "groups#join"
       delete "leave", on: :member
       resources :group_user_comments, only: [:create, :destroy]

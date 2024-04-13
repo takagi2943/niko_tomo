@@ -22,18 +22,19 @@
       <% else %>
         <!--二胡の情報が無かったら-->
         <h2 class="mt-3">新規投稿</h2>
-        <%#= render 'music_post/form', music_post: @music_post %>
+        <%= render 'public/music_posts/form', music_post: @music_post || MusicPost.new %>
       <% end %>
-      <%#= render 'books/form', book: @book %>
-    </div>
+    </div><!--col-md end-->
+
 
     <div class='col-md-8 offset-md-1'>
       <!--二胡の投稿があったならば投稿ファームを表示させる-->
-      <%# if @niko.condition_met? %>
-        <h2 class="mt-3">新規投稿</h2>
-        <%#= render 'music_post/form', music_post: @music_post %>
-      <%# end %>
-      <div><%#= render 'music_post/index',music_posts: @music_posts %></div>
+      <% if @favorite_niko.present? %>
+        <h6 class="mt-3">新規投稿</h6>
+        <%= render 'show', music_post: @music_post || MusicPost.new %>
+
+      <% end %>
+      <div><%= render 'public/music_posts/index',music_posts: @music_posts %></div>
     </div>
-  </div>
-</div>
+  </div><!--row end-->
+</div><!--container-->

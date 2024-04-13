@@ -1,17 +1,15 @@
 <%= form_with model: music_post, local: true do |f| %>
   <%= render 'layouts/error_messages', obj: music_post %>
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control title' %>
+    <%= f.text_field :title, class: 'form-control title', placeholder: "タイトル" %>
   </div>
   <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control body' %>
+    <%= f.text_area :body, class: 'form-control body', placeholder: "投稿文" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :i, class: "form-control-file user_image", accept: 'image/*' %>
+    <%= f.label :画像 %>
+    <%= f.file_field :i, class: "form-control-file get_niko_image", accept: 'image/*' %>
   </div>
 
   <div class="form-group">

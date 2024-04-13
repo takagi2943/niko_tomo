@@ -1,0 +1,19 @@
+<!--二胡の情報を入力されていたならば-->
+<div container>
+  <div class="row">
+  <%= form_with model: music_post, local: true do |f| %>
+    <%= render 'layouts/error_messages', obj: music_post %>
+    <div class="col">
+      <%= f.text_field :title, class: 'form-control title', placeholder: "タイトル" %>
+      <%= f.file_field :i, class: "form-control-file get_niko_image", accept: 'image/*' %>
+    </div>
+    <div class="col offset-md-1">
+      <%= f.text_area :body, class: 'form-control body', placeholder: "音楽共有投稿文" %>
+    </div>
+
+    <div class="col offset-md-1">
+      <%= f.submit '投稿', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+  </div><!--row end-->
+</div><!--container mt-3 end -->

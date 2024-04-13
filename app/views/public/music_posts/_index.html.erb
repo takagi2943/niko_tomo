@@ -3,7 +3,7 @@
     <div>
       <!-- ユーザーのプロフィール画像 -->
       <%= link_to user_path(music_post.user) do %>
-        <%= image_tag music_post.user.get_profile_image, size:'50x50' %>
+        <%= image_tag music_post.user.get_profile_image, class: "rounded-circle", size:'100x100' %>
         <!--ニックネーム-->
         <%= music_post.user.nickname %>
       <% end %>
