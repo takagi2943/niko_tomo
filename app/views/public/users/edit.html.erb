@@ -1,27 +1,21 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-6">
       <h2>会員情報編集</h2>
-        <%= form_with model:@user, local:true do |f| %>
-          <%= render 'layouts/error_messages', obj: @user %>
-
-
-
+      <%= form_with model: @user, local: true do |f| %>
+        <%= render "layouts/error_messages", obj: @user %>
         <div class="form-group">
           <%= f.label :登録画像 %>
-          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: "image/*" %>
         </div>
-
         <div class="form-group">
           <%= f.label :ニックネーム %>
           <%= f.text_field :nickname, class: "form-control nickname" %>
         </div>
-
         <div class="form-group">
           <%= f.label :自己紹介文 %>
           <%= f.text_area :introduction, class: "form-control introduction" %>
         </div>
-
         <!--ゲストログインである限りメールアドレス変更フォームは表示されない-->
         <% unless @user.guest_user? %>
           <div class="form-group">
@@ -29,78 +23,38 @@
             <%= f.text_area :email, class: "form-control introduction" %>
           </div>
         <% end %>
-
+        <div class="form-group">
+          <%= f.submit "変更を保存", class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+          <%= link_to "退会する", confirm_users_path(@user), class: "btn btn-danger btn-block" %>
+        </div>
+      <% end %><!-- form end -->
+    </div><!-- col end -->
+    <div class="col-sm-12 col-lg-6">
+      <h2>My二胡の情報編集</h2>
+      <!-- ボタン -->
+      <div class="col-sm-10 px-sm-0 text-right mb-2">
+        <button id="toggle-form"><i class="fas fa-plus"></i></button>
+      </div>
+      <% @user.nikos.each do |niko| %>
+        <%= render partial: "public/users/niko_form", locals: { user: @user, niko: niko } %>
       <% end %>
-    </div>
-    <div class='col'>
-      <div class='row'>
-        <h2>My二胡の情報編集</h2>
-        <!--二胡を新しく登録するボタン-->
-        <div class="col-sm-10 px-sm-0 text-right mb-2">
-          <button id="toggle-form"><i class="fas fa-plus"></i></button>
-        </div>
+      <div id="form-container" style="display: none;">
+        <%= render partial: "public/users/niko_form", locals: { user: @user, niko: @niko } %>
+      </div>
+    </div><!-- col end -->
+  </div><!-- row end -->
+</div><!-- container end -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var formContainer = document.getElementById("form-container");
+    var toggleButton = document.getElementById("toggle-form");
 
-        <div id="form-container" style="display: none;">
-          <%= form_with model: @niko, url: user_user_nikos_path(@user), local: true do |f| %>
-            <% if @niko.niko_image.attached? %>
-              <div class="form-group">
-                <%= f.label :画像 %>
-                <%= f.file_field :niko_image, accept: 'image/*' %>
-              </div>
-            <% end %>
-
-            <div>
-              <!--二胡使用素材を選ぶラジオボタン-->
-              <%= f.radio_button :tree_type, :zitan %>
-              <%= f.label :tree_type_zitan, "紫檀" %>
-
-              <%= f.radio_button :tree_type, :laohongmu %>
-              <%= f.label :tree_type_laohongmu, "老紅木" %>
-
-              <%= f.radio_button :tree_type, :heitan %>
-              <%= f.label :tree_type_heitan, "黒檀" %>
-
-              <%= f.radio_button :tree_type, :other %>
-              <%= f.label :tree_type_other, "その他" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :使用期間 %>
-              <%= f.text_area :year %>　年
-            </div>
-
-            <div class="form-group">
-              <%= f.label :二胡の名前 %>
-              <%= f.text_field :name%>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :特徴 %>
-              <%= f.text_field :feature%>
-            </div>
-
-          <% end %>
-        </div>
-
-        <div>
-          <%= link_to "退会する", confirm_user_users_path(@user), class:"ml-5 btn btn-danger" %>
-        </div>
-        <div class="row">
-          <!--ゲストログインである限り変更保存ボタンを押下しても反応しない-->
-        <% if flash.now[:alert].present? %>
-          <div class="alert alert-warning">
-            <%= flash.now[:alert] %>
-          </div>
-        <% end %>
-        <div class="row">
-          <% unless @user.guest_user? %>
-            <%= button_tag "変更を保存", type: "button", class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}_#{@niko.id}" %>
-          <% end %>
-        </div>
-
-        <p>変更を保存を押すと更新されます。</p>
-
-
-    </div>
-  </div>
-</div>
+    toggleButton.addEventListener("click", function() {
+      if (formContainer.style.display === "none") {
+        formContainer.style.display = "block";
+      } else {
+        formContainer.style.display = "none";
+      }
+    });
+  });
+</script>

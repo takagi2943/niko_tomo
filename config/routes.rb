@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'group_messages/create'
-  end
   # ユーザー側
   # URL /customers/sign_in ...
   devise_for :user,skip: [:passwords], controllers: {
@@ -23,37 +20,36 @@ Rails.application.routes.draw do
   # ユーザー側
   scope module: :public do
     root to: "homes#top"
+    get 'group_messages/create'
     get "/about" => "homes#about"
-          # 探究室
+    # 探究室
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
       resources :labo_comments, only: [:destroy]
     end
-    resources :users do
-        # ユーザー検索用
-        collection do
-          get 'search'
-        end
 
-      # 音楽共有
-      resources :music_posts, only: [:index, :show, :create, :destroy] do
-        resource :favorites, only: [:index,:create, :destroy]
-        resources :music_post_comments, only:[:create, :destroy, :update]
-      end
+    # 音楽共有
+    resources :music_posts, only: [:index, :show, :edit, :create, :destroy] do
+      resource :favorites, only: [:index,:create, :destroy]
+      resources :music_post_comments, only:[:create, :destroy, :update]
+    end
 
-      # ユーザー情報
-      resources :users, only: [:show, :edit, :update, :destroy] do
-        get 'confirm', on: :collection
-        resources :relationships, only: [:create, :destroy]
-          get 'followings' => 'relationships#followings', as: 'followings'
-          get 'followers' => 'relationships#followers', as: 'followers'
-          resources :nikos, only: [:create, :update, :destroy]
+    # ユーザー情報
+    resources :users, only: [:show, :edit, :update, :destroy] do
+      get 'confirm', on: :collection
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      # ユーザー検索用
+      collection do
+        get 'search'
       end
-      # グループ
-      resources :groups, only: [:index, :show, :create, :update] do
-        get "join" => "groups#join"
-        delete "leave", on: :member
-        resources :group_user_comments, only: [:create, :destroy]
-      end
+      resources :nikos, only: [:create, :update, :destroy]
+      resources :relationships, only: [:create, :destroy]
+    end
+    # グループ
+    resources :groups, only: [:index, :show, :create, :update] do
+      get "join" => "groups#join"
+      delete "leave", on: :member
+      resources :group_user_comments, only: [:create, :destroy]
     end
   end
 

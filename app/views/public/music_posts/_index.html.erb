@@ -1,24 +1,26 @@
 <div class='table table-hover table-inverse'>
   <% music_posts.each do |music_post| %>
-    <!-- ユーザーのプロフィール画像 -->
     <div>
-      <%= link_to user_user_path(music_post.user) do %>
+      <!-- ユーザーのプロフィール画像 -->
+      <%= link_to user_path(music_post.user) do %>
         <%= image_tag music_post.user.get_profile_image, size:'50x50' %>
+        <!--ニックネーム-->
+        <%= music_post.user.nickname %>
       <% end %>
     </div>
-    <!-- 音楽ポストのタイトル（リンク） -->
+
+    <!--投稿タイトル-->
     <div>
-      <%= link_to music_post.title, music_post, class: "music_post#{music_post.id}" %>
+      <%= link_to music_post.title, music_post_path(music_post), class: "music_post_#{music_post.id}" %>
     </div>
-    <!-- 音楽ポストの本文 -->
+
+    <!-- 音楽共有投稿の本文 -->
     <div>
       <%= music_post.body %>
     </div>
-    <!-- お気に入りボタン -->
-    <div id="favorite_btn_<%= music_post.id %>">
-      <%= render "favorites/btn", music_post: music_post %>
-    </div>
-    <!-- コメント数 -->
-    <div>コメント数: <%= music_post.music_post_comments.count %></div>
+    <!--画像を選択しないと表示されない-->
+    <% if music_post.image.attached? %>
+      <%= image_tag music_post.image %>
+    <% end %>
   <% end %>
 </div>

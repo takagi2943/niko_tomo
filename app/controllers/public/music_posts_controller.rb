@@ -5,19 +5,21 @@ class Public::MusicPostsController < ApplicationController
   def index
     @music_posts = MusicPost.all
     @music_post = MusicPost.new
-
   end
 
   def show
     @music_post = MusicPost.find(params[:id])
-    @music_post_comment = MusicPost.new
+    @new_music_post = MusicPost.new
+    # @music_post_comment = MusicPostComment.new
+    @music_post_comments = @music_post.music_post_comments
+    @music_posts = MusicPost.all
   end
 
   def create
     @music_post = MusicPost.new(music_post_params)
     @music_post.user_id = current_user.id
     if @music_post.save
-      redirect_to user_music_post_path(current_user, @music_post), notice: "You have created book successfully."
+      redirect_to music_post_path(@music_post), notice: "You have created book successfully."
     else
       @music_posts = MusicPost.all
       render 'index'

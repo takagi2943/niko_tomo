@@ -6,7 +6,7 @@ class Niko < ApplicationRecord
   belongs_to :user
 
   # 二胡の特徴文の設定
-  validates :feature, presence: true, length: { maximum: 200 }
+  validates :feature, length: { maximum: 200 }
 
 
   # 二胡の画像を持たせると表示される/持たせないと表示されない

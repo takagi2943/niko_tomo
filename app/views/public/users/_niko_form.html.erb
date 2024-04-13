@@ -1,0 +1,35 @@
+<%= form_with model: [user, niko], local: true do |f| %>
+  <%= render "layouts/error_messages", obj: niko %>
+  <div class="field">
+    <%= f.label :現在のお気に入り %>
+    <%= f.check_box :is_favorite %>
+  </div>
+  <div class="form-group">
+    <%= f.label :画像 %>
+    <%= f.file_field :niko_image, accept: "image/*" %>
+  </div>
+  <div>
+    <!--二胡使用素材を選ぶラジオボタン-->
+    <%= f.radio_button :tree_type, :zitan %>
+    <%= f.label :tree_type_zitan, "紫檀" %>
+    <%= f.radio_button :tree_type, :laohongmu %>
+    <%= f.label :tree_type_laohongmu, "老紅木" %>
+    <%= f.radio_button :tree_type, :heitan %>
+    <%= f.label :tree_type_heitan, "黒檀" %>
+    <%= f.radio_button :tree_type, :other %>
+    <%= f.label :tree_type_other, "その他" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :使用期間 %>
+    <%= f.text_area :year %>　年
+  </div>
+  <div class="form-group">
+    <%= f.label :二胡の名前 %>
+    <%= f.text_field :name%>
+  </div>
+  <div class="form-group">
+    <%= f.label :特徴 %>
+    <%= f.text_field :feature%>
+  </div>
+  <%= f.submit "変更を保存", class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}_#{@niko.id}" %>
+<% end %>
