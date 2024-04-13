@@ -80,4 +80,19 @@ class User < ApplicationRecord
       User.where('nickname LIKE ?', '%' + content + '%')
     end
   end
+
+  # 指定したユーザーをフォローする
+  def follow(user)
+    relationships.create(followed_id: user.id)
+  end
+
+  # 指定したユーザーのフォローを解除する
+  def unfollow(user)
+    relationships.find_by(followed_id: user.id).destroy
+  end
+
+  # 指定したユーザーをフォローしているかどうかを判定
+  def following?(user)
+    followings.include?(user.id)
+  end
 end

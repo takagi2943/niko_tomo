@@ -1,4 +1,4 @@
-<!--記入欄
+<!--記入欄-->
 <%= form_with(model:[music_post, music_post_comment], local: false ) do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class: "w-100",  id: "comment_textarea" %>
   <%= f.submit "送信" %>

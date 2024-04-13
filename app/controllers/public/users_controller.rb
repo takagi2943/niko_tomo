@@ -17,7 +17,8 @@ class Public::UsersController < ApplicationController
     # @niko_tree_type = Niko.new
   end
 
-  def comfirm
+  def confirm
+     @user = User.find(params[:id]) # または適切な方法でユーザーを取得
   end
 
   def update

@@ -5,13 +5,6 @@
 <h4><%= user.nickname %></h4>
 <!--自己紹介文表示-->
 <div><%= user.introduction %></div>
-<!--ユーザーがグループに参加していたら表示させる-->
-<% if user.groups.any? %>
-  <h4>グループlist</h4>
-  <% user.groupes.each do |group| %>
-    <%= group.inspect %><br>
-  <% end %>
-<% end %>
 
 
 <!--各一覧を押下すると表示される-->

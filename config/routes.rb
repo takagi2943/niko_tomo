@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
     # ユーザー情報
     resources :users, only: [:show, :edit, :update, :destroy] do
-      get 'confirm', on: :collection
+      get 'confirm', on: :member
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       # ユーザー検索用

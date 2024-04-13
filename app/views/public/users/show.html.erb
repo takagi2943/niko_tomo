@@ -5,7 +5,7 @@
         <div class='row'>
         <!--current_user が user と異なる場合にはフォロー/フォロワー関連のボタンを表示-->
         <% if current_user != @user %>
-          <td><%= render "relationships/btn", user: @user %></td>
+          <td><%= render "public/relationships/btn", user: @user %></td>
         <% else %>
         <!--同じ場合にはユーザーの編集リンクを表示-->
           <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
@@ -16,9 +16,9 @@
         <!--二胡の情報を表示させる-->
       <% if @favorite_niko.present? %>
         <h4>My二胡</h4>
-        <h4>・name <%= @favorite_niko.name %></h4>
+        <h4>・名前 <%= @favorite_niko.name %></h4>
         <h4>・<%= @favorite_niko.tree_type %></h4>
-        <h4><%#= niko.feature %></h4>
+        <h4>特徴<%= @favorite_niko.feature %></h4>
       <% else %>
         <!--二胡の情報が無かったら-->
         <h2 class="mt-3">新規投稿</h2>
