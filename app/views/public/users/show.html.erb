@@ -25,15 +25,13 @@
         <%= render 'public/music_posts/form', music_post: @music_post || MusicPost.new %>
       <% end %>
     </div><!--col-md end-->
-
-
     <div class='col-md-8 offset-md-1'>
       <!--二胡の投稿があったならば投稿ファームを表示させる-->
       <% if @favorite_niko.present? %>
         <h6 class="mt-3">新規投稿</h6>
         <%= render 'show', music_post: @music_post || MusicPost.new %>
-
       <% end %>
+      <br><br>
       <div><%= render 'public/music_posts/index',music_posts: @music_posts %></div>
     </div>
   </div><!--row end-->

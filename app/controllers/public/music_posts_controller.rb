@@ -5,6 +5,7 @@ class Public::MusicPostsController < ApplicationController
   def index
     @music_posts = MusicPost.all
     @music_post = MusicPost.new
+    @music_posts = MusicPost.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show

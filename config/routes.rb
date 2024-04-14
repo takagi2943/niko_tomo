@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
 
     # 音楽共有
-    resources :music_posts, only: [:index, :show, :edit, :create, :destroy] do
+    resources :music_posts, only: [:index, :show, :edit, :create, :update, :destroy] do
       resource :favorites, only: [:index,:create, :destroy]
       resources :music_post_comments, only:[:create, :destroy, :update]
     end

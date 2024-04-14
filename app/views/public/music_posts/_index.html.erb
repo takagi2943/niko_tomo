@@ -1,23 +1,25 @@
-<div class=container>
+<div class="container">
   <% music_posts.each do |music_post| %>
     <div class="row">
       <div class="col">
         <!-- ユーザーのプロフィール画像 -->
         <%= link_to user_path(music_post.user) do %>
           <%= image_tag music_post.user.get_profile_image, class: "rounded-circle", size:'100x100' %>
-          <!--ニックネーム-->
-          <%= music_post.user.nickname %>
+
+          <div>
+            <!--ニックネーム-->
+            <%= music_post.user.nickname %>
+          </div>
         <% end %>
       </div>
-      <div class="col">
+      <div class="col ">
         <!--投稿タイトル-->
         <%= link_to music_post.title, music_post_path(music_post), class: "music_post_#{music_post.id}" %>
         <!-- 音楽共有投稿の本文 -->
         <%= music_post.body %>
       </div>
 
-      <!--画像を選択しないと表示されない-->
-      <% if music_post.image.attached? %>
+      <!--画像設定-->
       <div class="row">
         <div class="col text-center">
           <%= image_tag music_post.image, size:'100x100' %>
@@ -32,19 +34,8 @@
             <%= render "public/music_post_comments/counter", music_post: music_post %>
           </div>
         </div>
-      <% else %>
-        <div class="col">
-          <!-- お気に入りボタン -->
-          <div id="favorite_btn_<%= music_post.id %>">
-            <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: music_post } %>
-          </div>
-          <!--コメントされた回数-->
-          <div id="comment_counter">
-            <%= render "public/music_post_comments/counter", music_post: music_post %>
-          </div>
-        </div>
-      <% end %>
       </div>
     <br><br>
   <% end %>
+  </div>
 </div>

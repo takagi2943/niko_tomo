@@ -38,13 +38,9 @@ class MusicPost < ApplicationRecord
     end
   end
 
-  # 画像を選択していたら表示させ選択されてなかったら表示させない
-  def get_music_post_image
-    if image.attached?
-      image
-    else
-      nil
+  # 画像を選択していたら表示
+    def get_music_post_image
+     image.attached? ? image : 'no-image-icon.jpg'
     end
-  end
 
 end

@@ -11,9 +11,11 @@ class Public::GroupsController < ApplicationController
   end
 
   def show
-    @music_posts = MusicPost.new
+    @music_post = MusicPost.new
     @group = Group.find(params[:id])
     @user = @group.owner
+    @user_self = User.find(params[:id])
+    @participant_size = @group.group_users.size
   end
 
   def create
