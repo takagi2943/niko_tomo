@@ -4,19 +4,21 @@ class Public::GroupsController < ApplicationController
 
 
   def index
-    @groups = Group.new # 新しくグループ作成
+    @group = Group.new # 新しくグループ作成
     @groups = Group.all
+    @music_posts = MusicPost.new
     @user = current_user
   end
 
   def show
+    @music_posts = MusicPost.new
     @group = Group.find(params[:id])
     @user = @group.owner
   end
 
   def create
     @group = Group.new(group_params)
-    @group.owner_id = current_user.id
+    @group.user_id = current_user.id
     if @group.save
       redirect_to user_groups_path
     else
@@ -28,7 +30,7 @@ class Public::GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to @group, notice: 'グループ情報が更新されました。'
     else
-      render :show
+      render :edit
     end
   end
   private

@@ -45,7 +45,7 @@ class Public::MusicPostsController < ApplicationController
   private
 
   def music_post_params
-    params.require(:music_post).permit(:title, :body)
+    params.require(:music_post).permit(:title, :body, :image)
   end
 
   def ensure_correct_user

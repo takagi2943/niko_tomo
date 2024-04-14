@@ -32,6 +32,7 @@
     <%= f.text_field :feature%>
   </div>
   <%= f.submit "二胡情報を保存", class: "btn btn-outline-secondary mb-2 mx-5 fas fa-user-cog edit_user_#{user.id}_#{niko.id}" %>
-  <%= link_to "削除", user_niko_path(niko.id), method: :delete, class: "btn btn-danger pull-right", remote: true %>
-
+  <% if  niko.id.present? %>
+    <%= link_to "削除", user_niko_path(user.id, niko.id), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+  <% end %>
 <% end %>

@@ -9,17 +9,5 @@
     <div class='col-md-8 offset-md-1'>
       <%= render 'public/music_posts/index', music_posts: @music_posts %>
     </div>
-
-    <!-- お気に入りボタン -->
-    <% @music_posts.each do |music_post| %>
-      <div id="favorite_btn_<%= music_post.id %>">
-        <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: music_post } %>
-      </div>
-    <% end %>
-
-
-    <div id="comment_counter">
-      <%= render "public/music_post_comments/counter", music_post: @music_post %>
-    </div>
   </div>
 </div>
