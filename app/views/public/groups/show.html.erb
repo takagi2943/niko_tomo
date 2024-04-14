@@ -1,5 +1,5 @@
 
-  <div></div><%= image_tag get_group_image, size:'100x100' %></div>
+  <div><%= image_tag get_group_image, size:'100x100' %></div>
   <div><%= @group.name %></div>
 	  <div><%= @user.body %></div>
 <h4>参加者人数　<%= group_user(@user.id).size %></h4>

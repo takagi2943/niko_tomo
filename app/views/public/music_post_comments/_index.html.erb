@@ -1,22 +1,21 @@
 <!--音楽共有投稿コメントが表示される-->
-<table>
-  <tbody>
-      <% music_post.music_post_comments.each do |post_comment| %>
-      <tr>
-
-        <td>
-          <%= link_to user_path(post_comment.user) do %>
-            <%= image_tag post_comment.user.get_profile_image, class: "rounded-circle", size: "100x100" %><br>
-            <%= post_comment.user.name %>
-          <% end %>
-        </td>
-        <td><%= post_comment.comment %></td>
-        <td>
-          <% if post_comment.user == current_user %>
-            <%= link_to "削除", user_music_post_music_post_comment_path(music_post, post_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
-          <% end %>
-        </td>
-      </tr>
+<% music_post.music_post_comments.each do |post_comment| %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= link_to user_path(post_comment.user) do %>
+        <%= image_tag post_comment.user.get_profile_image, class: "rounded-circle", size: "100x100" %><br>
+        <%= post_comment.user.nickname %>
       <% end %>
-  </tbody>
-</table>
+    </div>
+    <div class="col">
+      <%= post_comment.comment %>
+    </div>
+    <div class="col">
+      <% if post_comment.user == current_user %>
+        <%= link_to "削除", music_post_music_post_comment_path(music_post.id, post_comment.id), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

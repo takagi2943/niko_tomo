@@ -20,8 +20,11 @@ class Public::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.user_id = current_user.id
     if @group.save
-      redirect_to user_groups_path
+      redirect_to groups_path
     else
+      @groups = Group.all
+      @music_posts = MusicPost.new
+      @user = current_user
       render :index
     end
   end
@@ -36,7 +39,7 @@ class Public::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :bod, :image)
+    params.require(:group).permit(:name, :body, :image)
   end
 
   def ensure_correct_user

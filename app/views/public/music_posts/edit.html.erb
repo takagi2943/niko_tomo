@@ -3,8 +3,8 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>音楽共有投稿編集</h1>
     	<%= render 'layouts/error_messages', obj: @music_post %>
-  		<%= render 'form', music_posts: @music_posts %>
+  		<%= render 'form', music_post: @music_post %>
   		<%= link_to '詳細', music_post_path(@music_post), class: "music_posts_#{@music_post.id}" %>
-  		<%= link_to '戻る', user_music_posts_path, class: "back" %>
+  		<%= link_to '戻る', music_posts_path, class: "back" %>
   </div>
 </div>

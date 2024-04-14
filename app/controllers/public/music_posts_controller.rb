@@ -10,9 +10,7 @@ class Public::MusicPostsController < ApplicationController
   def show
     @music_post = MusicPost.find(params[:id])
     @new_music_post = MusicPost.new
-    # @music_post_comment = MusicPostComment.new
-    @music_post_comments = @music_post.music_post_comments
-    @music_posts = MusicPost.all
+    @music_post_comment = MusicPostComment.new
   end
 
   def create
@@ -31,7 +29,7 @@ class Public::MusicPostsController < ApplicationController
 
   def update
     if @music_post.update(music_post_params)
-      redirect_to user_music_post_path(@music_post), notice: "You have updated music_post successfully."
+      redirect_to music_post_path(@music_post), notice: "You have updated music_post successfully."
     else
       render "edit"
     end
@@ -39,7 +37,8 @@ class Public::MusicPostsController < ApplicationController
 
   def destroy
     @music_post.destroy
-    redirect_to user_music_post_path
+    redirect_to music_post_path(@music_post.user, @music_post)
+
   end
 
   private
