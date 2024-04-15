@@ -1,2 +1,59 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h4>サイト利用者数</h4>
+    <div class="col">
+      <div class="row">
+        計 :<%= @total_users %>
+      </div>
+      <div class="row">
+        <div class="col">
+          有効
+        </div>
+        <div class="col">
+          計 :<%= @total_active_users %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          退会
+        </div>
+        <div class="col">
+          計 :<%= @total_inactive_users %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4>新規グループ名</h4>
+  <% @groups.each do |group| %>
+    <div class="row">
+      <div class="col">
+        <%= link_to group.name, admin_group_user_group_user_comment_path(group.id) %>
+      </div>
+      <div class="col">
+        <%= @group.body %>
+      </div>
+    </div>
+  <% end %>
+  <h4>音楽共有の新規投稿</h4>
+  <% @music_posts.each do |music_post| %>
+    <div class="row">
+      <div class="col">
+        <%= link_to music_post.title, admin_user_user_post_comment_path(music_post.id) %>
+      </div>
+      <div class="col">
+        <%= music_post.body %>
+      </div>
+    </div>
+  <% end %>
+  <h4>探究室の新規投稿</h4>
+  <% @labos.each do |labo| %>
+    <div class="row">
+      <div class="col">
+        <%= link_to labo.body, admin_labo_comments_path %>
+      </div>
+      <div class="col">
+        <%= link_to labo.comment, admin_labo_comment_path(labo.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>
