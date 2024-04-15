@@ -37,4 +37,9 @@ class Group < ApplicationRecord
   def is_owned_by?(user)
     self.user == user
   end
+
+  def includesUser?(user)
+    group_users.exists?(user_id: user.id)
+  end
+
 end

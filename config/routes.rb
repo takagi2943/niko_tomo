@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'labo_comments/index'
+    get 'labo_comments/show'
+  end
   # ユーザー側
   # URL /customers/sign_in ...
   devise_for :user,skip: [:passwords], controllers: {
@@ -46,7 +50,7 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :destroy]
     end
     # グループ
-    resources :groups, only: [:index, :show, :create, :update, :edit] do
+    resources :groups, only: [:index, :show, :create, :update, :edit, :create] do
       get "join" => "groups#join"
       delete "leave", on: :member
       resources :group_user_comments, only: [:create, :destroy]
@@ -59,7 +63,7 @@ Rails.application.routes.draw do
     # 検索用
     get "/search" => "homes#search"
     # 会員情報
-    resources :users, only: [:index, :show, :edit, :destroy] do
+    resources :users, only: [:index, :show, :destroy] do
       resources :user_post_comments, only: [:index, :destroy]
     end
     # グループ

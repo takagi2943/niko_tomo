@@ -1,5 +1,6 @@
 class Admin::GroupUserCommentsController < ApplicationController
-   before_action :authenticate_admin!
+   before_action :authenticate_admin!, except: :root
+   
   def index
   end
 
