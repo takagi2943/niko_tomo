@@ -20,7 +20,7 @@ class Public::GroupsController < ApplicationController
   def join
     @group =Group.find(params[:group_id])
     @group.users << current_user
-    redirect_to group_path
+    redirect_to group_path(@group.id)
   end
 
   # グループを離れる
@@ -84,7 +84,7 @@ class Public::GroupsController < ApplicationController
   # 指定されたグループが現在ログインしているユーザーの所有
   def ensure_correct_user
     @group = Group.find(params[:id])
-    unless @group.owner && @group.owner.id == current_user.id
+    unless @group.user.id == current_user.id
       redirect_to group_path
     end
   end

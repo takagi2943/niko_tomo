@@ -10,8 +10,8 @@ class Admin::HomesController < ApplicationController
     @music_post_name = MusicPost.order('id DESC').limit(4)
     @labos = Labo.all
     @labo_name = Labo.order('id DESC').limit(4)
-    @total_active_users = User.where(active: true).size
-    @total_inactive_users = User.where(active: false).size
-    @total_users = User.size
+    @total_active_users = User.where(is_active: false).size
+    @total_inactive_users = User.where(is_active: true).size
+    @total_users = User.all.size
   end
 end
