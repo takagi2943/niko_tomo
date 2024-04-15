@@ -1,0 +1,4 @@
+<!--コメント機能の非同期通信-->
+$('#comment_counter').html("<%= j(render 'public/music_post_comments/counter', music_post: @music_post) %>");
+$('#comment_index').html("<%= j(render 'public/music_post_comments/index', music_post: @music_post) %>");
+$('#comment_textarea').val("");

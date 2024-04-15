@@ -1,2 +1,38 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= render 'info', user: @user %>
+        <div class='row'>
+        <!--current_user が user と異なる場合にはフォロー/フォロワー関連のボタンを表示-->
+        <% if current_user != @user %>
+          <td><%= render "public/relationships/btn", user: @user %></td>
+        <% else %>
+        <!--同じ場合にはユーザーの編集リンクを表示-->
+          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        <% end %>
+      </div>
+        <!--二胡の情報を表示させる-->
+      <% if @favorite_niko.present? %>
+        <h4>My二胡</h4>
+        <h4>・名前 <%= @favorite_niko.name %></h4>
+        <h4>・<%= @favorite_niko.tree_type %></h4>
+        <h4>特徴<%= @favorite_niko.feature %></h4>
+      <% else %>
+        <!--二胡の情報が無かったら-->
+        <h2 class="mt-3">新規投稿</h2>
+        <%= render 'public/music_posts/form', music_post: @music_post || MusicPost.new %>
+      <% end %>
+    </div><!--col-md end-->
+    <div class='col-md-8 offset-md-1'>
+      <!--二胡の投稿があったならば投稿ファームを表示させる-->
+      <% if @favorite_niko.present? %>
+        <h6 class="mt-3">新規投稿</h6>
+        <%= render 'show', music_post: @music_post || MusicPost.new %>
+      <% end %>
+      <br><br>
+      <div><%= render 'public/music_posts/index',music_posts: @music_posts %></div>
+    </div>
+  </div><!--row end-->
+</div><!--container-->

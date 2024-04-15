@@ -1,0 +1,4 @@
+<!--コメントの数を更新する-->
+$('#comment_counter').html("<%= j(render 'public/music_post_comments/counter', music_post: @music_post) %>");
+<!--コメントの一覧を更新する-->
+$('#comment_index').html("<%= j(render 'public/music_post_comments/index', music_post: @music_post) %>");

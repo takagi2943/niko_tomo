@@ -37,11 +37,25 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
 
   # 名前と自己紹介文の設定
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :nickname, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
   # 性別の選択設定
-  enum gender: { noinput: 9, other: 0, man: 1, woman: 2 }
+  enum gender: { noinput: 9, other: 3, man: 1, woman: 2 }
+
+  # ゲストログイン設定
+  GUEST_USER_EMAIL = "guest@example.com"
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.nickname = "guestuser" # ニックネームの属性を設定
+    end
+  end
+
+  # メールアドレスがゲストユーザーのものであるかの判定
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
 
 
   # 会員ステータス
@@ -57,13 +71,28 @@ class User < ApplicationRecord
   # 検索機能の情報　ニックネーム
   def self.search_for(content, method)
     if method == 'perfect'
-      User.where(name: content)
+      User.where(nickname: content)
     elsif method == 'forward'
-      User.where('name LIKE ?', content + '%')
+      User.where('nickname LIKE ?', content + '%')
     elsif method == 'backward'
-      User.where('name LIKE ?', '%' + content)
+      User.where('nickname LIKE ?', '%' + content)
     else
-      User.where('name LIKE ?', '%' + content + '%')
+      User.where('nickname LIKE ?', '%' + content + '%')
     end
+  end
+
+  # 指定したユーザーをフォローする
+  def follow(user)
+    relationships.create(followed_id: user.id)
+  end
+
+  # 指定したユーザーのフォローを解除する
+  def unfollow(user)
+    relationships.find_by(followed_id: user.id).destroy
+  end
+
+  # 指定したユーザーをフォローしているかどうかを判定
+  def following?(user)
+    followings.include?(user.id)
   end
 end

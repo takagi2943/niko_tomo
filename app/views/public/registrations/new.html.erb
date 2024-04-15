@@ -1,0 +1,92 @@
+<div class='container-fluid'>
+  <div class="row mt-3 d-flex justify-content-center"><!-- 画面中央に寄せるクラスを追加 -->
+    <div class="col-12 col-md-8 col-lg-5 mx-auto px-0"><!-- 中央寄せのためにmx-autoクラスを追加 -->
+      <div class="col-12"><!-- タイトル用の列を追加 -->
+        <h2 class="text-black p-2" style="text-decoration: underline; text-decoration-color: #CD0000;">新規登録</h2><!-- ml-3クラスを追加して左に少し寄せる -->
+      </div>
+      <h6>※登録をすると投稿やグループに参加することができるようになります</h6>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+
+        <!-- ニックネーム -->
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <%= f.label "ニックネーム", class: "col-form-label" %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder:"呼び名を記入してください", class: "mb-2 mx-5" %>
+          </div>
+        </div>
+
+        <!-- 生年月日空欄でも可 -->
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <%= f.label "生年月日", class: "col-form-label" %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.date_field :birthdate %>
+          </div>
+        </div>
+
+        <!-- 性別選択 -->
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <%= f.label "性別", class: "col-form-label" %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.select :gender, User.genders_i18n.keys.map { |k| [User.genders_i18n[k], k]}, {}, class: "mb-,2 mx-5" %>
+          </div>
+        </div>
+
+        <!-- メールアドレス -->
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <%= f.label "メールアドレス", class: "col-form-label" %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mb-2 mx-5", placeholder: "xxxxxxxxx@xxxx.xxxx" %>
+          </div>
+        </div>
+
+        <!-- パスワード -->
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <%= f.label :password do %>
+              パスワード<%= "(#{@minimum_password_length}文字以上)" if @minimum_password_length %>
+            <% end %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.password_field :password, autocomplete: "new-password", class: "mb-2 mx-5" %>
+          </div>
+        </div>
+
+        <!-- パスワード(確認用) -->
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-form-label" %>
+          </div>
+          <div class="col-sm-8">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mb-2 mx-5" %>
+          </div>
+        </div>
+
+        <h5 class="text-danger">※注意※</h5>
+        <h5 class="text-danger">不適切と判断される投稿が続く場合や悪質な利用と判断した場合、アカウントが削除されます。</h5>
+
+        <div class="col-sm-8">
+          <%= f.submit "新規登録", class: "btn btn-outline-success mb-2"  %>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <h4 class="mt-5 mb-2">既に登録済みの方</h4>
+            <p>&emsp;&emsp;<%= link_to "こちら", new_user_session_path %>　からログインしてください。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

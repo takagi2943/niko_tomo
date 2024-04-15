@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_08_143503) do
+ActiveRecord::Schema.define(version: 2024_04_10_090456) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2024_04_08_143503) do
   end
 
   create_table "group_user_comments", force: :cascade do |t|
-    t.integer "group_user_id", null: false
+    t.integer "user_id", null: false
     t.integer "group_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -114,13 +114,14 @@ ActiveRecord::Schema.define(version: 2024_04_08_143503) do
   end
 
   create_table "nikos", force: :cascade do |t|
-    t.integer "users_id", null: false
+    t.integer "user_id", null: false
     t.boolean "is_favorite", default: true, null: false
     t.string "name"
     t.integer "year", null: false
     t.text "feature", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tree_type"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -147,10 +148,10 @@ ActiveRecord::Schema.define(version: 2024_04_08_143503) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
-    t.string "birthdate"
+    t.date "birthdate"
     t.integer "gender", default: 9, null: false
     t.text "introduction"
-    t.integer "is_active", null: false
+    t.boolean "is_active", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

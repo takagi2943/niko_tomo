@@ -1,0 +1,68 @@
+<% if user_signed_in? %>
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.select :model, options_for_select({ "User" => "user", "Music_Posts" => "music_posts", "Groups" => "groups"}) %>
+    <%= f.select :method, options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+    <%= f.submit '検索' %>
+  <% end %>
+<% end %>
+
+    <% if @range == 'User' %>
+    <table class="table table-hover table-inveres">
+      <thead class="table-active">
+        <tr>
+          <th>ユーザー</th>
+          <th colspan="6"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user.nickname,user_path(user.id) %>
+          </td>
+          <td colspan="6"></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <table class="table table-hover table-inveres">
+        <thead class="table-active">
+          <tr>
+            <th>投稿内容</th>
+            <th>タグ</th>
+            <th colspan="6"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @attempts.each do |attempt| %>
+          <tr>
+            <td>
+              <%= link_to attempt.content,attempt_path(attempt.id) %>
+            </td>
+            <td>
+              <% attempt.tags.each do |tag| %>
+                <%= link_to tag_path(keyword: tag.tag_type) do %>
+                <%= tag.tag_type %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <% if attempt.user == current_user %>
+              <%= link_to "編集", edit_attempt_path(attempt.id), class: 'btn btn-sm btn-success' %>
+              <% end %>
+            </td>
+            <td>
+              <% if attempt.user == current_user %>
+              <%= link_to "削除", attempt_path(attempt.id), method: :delete,  "data-confirm" => "本当に削除しますか？" ,class: 'btn btn-sm btn-danger' %>
+              <% end %>
+            </td>
+            <td colspan="3"></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+</div>

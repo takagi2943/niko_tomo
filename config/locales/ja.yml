@@ -6,7 +6,15 @@ ja:
   enums:
     user:
       gender:
-        noInput: "回答しない"
+        noinput: "回答しない"
         other: "その他"
         man: "男性"
         woman: "女性"
+        
+        views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

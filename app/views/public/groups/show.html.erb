@@ -1,2 +1,45 @@
-<h1>Public::Groups#show</h1>
-<p>Find me in app/views/public/groups/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>ユーザー情報</h2>
+      <%= render 'public/users/info', user: @user_self %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+    <h2><%= @group.name %> の詳細</h2>
+    <br>
+      <div class="row d-flex align-items-center">
+        <div class="col-3">
+          <h5>グループ名</h5>
+        </div>
+        <div class="col-lg-5 text-left">
+          <h5>紹介文</h5>
+        </div>
+        <div class="col text-left">
+          メンバー
+        </div>
+        <div class="col-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-1">
+          <%= image_tag @group.get_image, size: '50x50' %>
+        </div>
+        <div class="col-lg-2 text-left"><%= @group.name %></div>
+        <div class="col-lg-5 text-left"><%= @group.body %></div>
+        <div class="col text-left">
+          <% @group.users.each do |member| %>
+            <%= member.nickname %><br>
+          <% end %>
+        </div>
+        <div class="col-lg-1">
+          <% if @group.is_owned_by?(current_user) %>
+            <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+          <% elsif @group.include?(current_user) %>
+            <%= link_to "脱退", leave_group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+          <% else %>
+            <%= link_to "参加", group_join_path(@group), class: "btn btn-sm btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
