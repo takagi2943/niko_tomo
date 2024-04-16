@@ -28,9 +28,9 @@
       <% if group.is_owned_by?(current_user) %>
         <%= link_to '編集', edit_group_path(group.id), class: "group_#{group.id} btn btn-sm btn-success" %>
       <% elsif group.includesUser?(current_user) %>
-        さんかずみ
+        <%= link_to  '入室',%>
       <% else %>
-        <%= link_to "参加", group_join_path(group.id, current_user.id), class: "btn btn-sm btn-success" %>
+        <%= link_to "加入", group_join_path(group.id, current_user.id), class: "btn btn-sm btn-success" %>
       <% end %>
     </div>
   </div>
