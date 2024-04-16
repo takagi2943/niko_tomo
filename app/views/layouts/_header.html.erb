@@ -24,6 +24,7 @@
     <!--管理者がログインしている場合-->
   <% if admin_signed_in? %>
     <div class="row">
+      <div class="col d-flex justify-content-end">
       <%= link_to admin_users_path, class: "nav-link header-nav-link" do %>
         <i class="fa-solid fa-users"></i>
         <span>会員一覧</span>
@@ -48,10 +49,11 @@
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>ログアウト</span>
       <% end %>
+      </div>
     </div>
     <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
-    <div class="row">
-      <div class="col">
+    <div class="row m-1">
+      <div class="col offset-7">
         <div class="header-search-box">
           <div class="form-group d-flex m-0">
             <%= f.text_field :search, placeholder: "検索", class: "form-control" %>
@@ -63,8 +65,8 @@
       </div>
     </div>
     <!--検索機能-->
-    <div class="">
-      <div class="">
+    <div class="row">
+      <div class="col text-right m-1">
         <div class="form-group mt-2 mb-0 ml-auto">
           <%= f.radio_button :search_model, "user", checked: true %>
           <%= f.label :search_model_user, "会員検索", class: "m-0 mr-2" %>
@@ -80,7 +82,7 @@
     <% end %>
   <% elsif user_signed_in? %>
     <!-- ユーザーがログインしている場合 -->
-    <div class="row">
+    <div class="d-flex justify-content-end">
       <%= link_to user_path(current_user.id), class: "nav-link header-nav-link" do %>
         <i class="fa-regular fa-address-card"></i>
         <span>マイページ</span>
@@ -107,26 +109,30 @@
       <% end %>
     </div>
     <div class="row">
-    <% if user_signed_in? %>
-      <span class="text-signed-in">
-        ようこそ、<%= current_user.nickname %>さん！
-      </span>
+      <div class="col offset-2 d-flex align-items-end">
+      <% if user_signed_in? %>
+        <span class="text-signed-in">
+          ようこそ、<%= current_user.nickname %>さん！
+        </span>
       <% end %>
+      </div>
+      <div class="col offset-1">
         <div class="header-search-box">
-      <%= form_with url: search_users_path, method: :get, local: true do |form| %>
-      <!--検索機能-->
-        <div class="form-group d-flex m-0">
-        <%= form.text_field :user_search_path, placeholder: "名前で検索", class: "form-control" %>
-          <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
+        <%= form_with url: search_users_path, method: :get, local: true do |form| %>
+        <!--検索機能-->
+          <div class="form-group d-flex m-0">
+          <%= form.text_field :user_search_path, placeholder: "名前で検索", class: "form-control" %>
+            <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+          </div>
         <% end %>
         </div>
-      <% end %>
       </div>
     </div>
   <% else %>
     <!-- どちらもログインしていない場合 -->
-    <div class="row">
+    <div class="d-flex justify-content-end">
     <%= link_to about_path, class: "nav-link header-nav-link" do %>
       <i class="fa-solid fa-book-open"></i>
       <span>二胡について</span>
