@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :prohibit_multiple_login, if: :admin_signed_in?
+  before_action :prohibit_multiple_login, only: [:new]
   before_action :is_active?, only: [:create]
 
   # before_action :configure_sign_in_params, only: [:create]
@@ -45,6 +45,6 @@ class Public::SessionsController < Devise::SessionsController
 
 
   def prohibit_multiple_login
-    redirect_to admin_root_path
+    redirect_to admin_root_path if admin_signed_in?
   end
 end

@@ -1,2 +1,53 @@
-<h1>Public::Labos#index</h1>
-<p>Find me in app/views/public/labos/index.html.erb</p>
+<h5>探究室の扉</h5>
+<% if @user.user_status == "有効" %>
+<h6>管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
+<% end %>
+
+<h5>タグ</h5>
+<% @tags.each do |tag| %>
+  <div class="d-flex justify-content-center">
+    <button class="tag tag-form-<%= tag.id %>" id="<%= tag.id %>"　style="display:block;">
+      <%= tag.title %>
+    </button>
+  </div>
+<% end %>
+
+<% if @user.user_status == "有効" %>
+<h5>投稿フォーム</h5>
+<%= form_with model: labo, local: true do |f| %>
+<%= f.text_field :title, class: 'form-control title', placeholder: "タイトル" %>
+<% end %>
+<% end %>  
+<div id="form-tag-edit-container" class="form-container" style="display: none;">
+  <h5><%= tag.title %></h5>
+  <div>
+    <% @labo_comment.each do |labo_comment| %>
+        <%= image_tag labo_comment.user.get_profile_image %>
+        <%= labo_comment.user.nickname %>
+        <%= link_to labo_comment.body, labo_path(labo_comment.labo.id), class: "labo_comment_#{labo_comment.id}" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var tagTitles = document.querySelectorAll(".tag");
+    tagTitles.forEach(function(tagTitle){
+      tagTitle.addEventListener("click", function() {
+        var tagId = tagTitle.id
+        var tagForm = document.querySelector('.form-' + tagId);
+        var tagFormContainer = document.querySelector('#form-tag-edit-container');
+
+        if (tagForm.style.display === "none") {
+          tagForm.style.display = "block";
+          tagFormContainer.style.display = "block";
+        } else {
+          tagForm.style.display = "none";
+          tagFormContainer.style.display = "none";
+        }
+
+      })
+    })
+  });
+</script>

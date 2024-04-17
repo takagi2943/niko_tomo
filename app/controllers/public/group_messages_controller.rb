@@ -1,6 +1,6 @@
-class GroupMessagesController < ApplicationController
+class Public::GroupMessagesController < ApplicationController
   before_action :set_group
-  
+
   # メッセージを作成するアクション
   def create
     @message = @group.messages.build(message_params)
@@ -13,14 +13,14 @@ class GroupMessagesController < ApplicationController
       render 'groups/show'
     end
   end
-  
+
   private
-  
-  # グループをセットするためのメソッド
+
+  # グループをセットするためのメソッド〇
   def set_group
     @group = Group.find(params[:group_id])
   end
-  
+
   # メッセージのパラメータを許可するためのストロングパラメータ
   def message_params
     params.require(:message).permit(:content)

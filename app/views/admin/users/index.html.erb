@@ -1,24 +1,23 @@
+<h5>会員一覧</h5>
 <h5>会員ID</h5>
 <h5>氏名</h5>
 <h5>メールアドレス</h5>
 <h5>ステータス</h5>
-          <% @users.each do |user| %>
-          <div align="center">
-            <div><%= user.id %></div>
-            <div><%= link_to user.admin_side_nickname, admin_users_padiv(user) %></div>
-            <div><%= customer.email %></div>
-            <div>
-              <% if user.is_active %>
-                <p class="text-success"><sdivong>有効</sdivong></p>
-              <% elsif %>
-                <p class="text-muted"><sdivong>退会</sdivong></p>
-              <% end %>
-            </div>
-          </div>
-          <% end %>
-      <div class="d-flex justify-content-center">
-        <%= paginate @users %>
-      </div>
-    </div>
-  </div>
+
+
+
+<% @users.each do |user| %>
+<h5><%= user.id %></h5>
+<h5><%= link_to user.nickname, admin_user_path(user.id) %></h5>
+<h5><%= user.email %></h5>
+<div>
+<% if user.user_status == "有効" %>
+<span class="text-success font-weight-bold"><%= user.user_status%></span>
+<% else %>
+<span class="text-danger font-weight-bold"><%= user.user_status %></span>
+<% end %>
+<% end %>
+
+<div class="d-flex justify-condivnt-cendivr">
+<%= paginate @user_page %>
 </div>

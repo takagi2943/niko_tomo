@@ -1,2 +1,14 @@
-<h1>Admin::LaboComments#index</h1>
-<p>Find me in app/views/admin/labo_comments/index.html.erb</p>
+<h5>探究室のタグコメント一覧</h5>
+
+<h5>日付</h5>
+<h5>タイトル</h5>
+<h5>投稿文</h5>
+<h5>タグ</h5>
+
+<% @labo_comments.each do |labo_comment| %>
+<h5><%= labo_comment.created_at %></h5>
+<h5><%= @labo.body %></h5>
+<h5><%= link_to labo_comment.comment, admin_labo_path(labo_comment.id) %></h5>
+<h5><%= @tag.title %></h5>
+<% end %>
+<%= paginate @labo_comment %>
