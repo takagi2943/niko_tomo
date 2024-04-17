@@ -1,11 +1,15 @@
 class Admin::UsersController < ApplicationController
-  before_action :authenticate_user!, except: :root
+  before_action :authenticate_admin!
+
+  def index
+    @users = User.all
+    @user = user.find(params[:id])
+  end
 
   def show
-    @users =User.all
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -16,9 +20,9 @@ class Admin::UsersController < ApplicationController
     render "index"
     end
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:nickname, :introduction, :profile_image, :email, :birthdate, :gender, :is_active)
   end

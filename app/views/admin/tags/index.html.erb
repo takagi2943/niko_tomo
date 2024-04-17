@@ -2,14 +2,11 @@
 
 <h5>現在のタグ一覧</h5>
 <% @tags.each do |tag| %>
-  <%= form_with model: @tag, url: admin_tags_path(tag), local: true do |f| %>
-    <%= f.check_box :title %>
-    <div class="tag-form"　style="desplay: none">
+  <div class="d-flex justify-content-center">
+    <button class="tag tag-form-<%= tag.id %>" id="<%= tag.id %>"　style="display:block;">
       <%= tag.title %>
-    </div>
-    <%#= link_to tag.title, edit_admin_tag_path(tag) %>
-  <% end %>
-  <%= link_to "チェックしたタグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check", remote: true %>
+    </button>
+  </div>
 <% end %>
 
 
@@ -24,31 +21,52 @@
 </div>
 <% end %>
 </div>
-<div class="form-container" style="display: none;">
+<div id="form-tag-edit-container" class="form-container" style="display: none;">
   <h5>タグ編集</h5>
   <div>
     <% @tags.each do |tag| %>
-      <%= form_with(model: tag, url: admin_tag_path(tag), method: :patch, local: true) do |f| %>
-        <%= f.text_field :title, placeholder: "タグ名" %>
-        <%= f.submit "変更を保存", class: "btn btn-success" %>
-      <% end %>
+      <div class="form-<%= tag.id %>" style="display: none;">
+        <%= form_with(model: tag, url: admin_tag_path(tag), method: :patch, local: true) do |f| %>
+          <%= f.text_field :title, placeholder: "タグ名" %>
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        <% end %>
+        <%= link_to "タグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check" %>
+      </div>
     <% end %>
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    var formContainers = document.querySelectorAll(".tag-form");
-    formContainers.forEach(function(formContainer){
-      var toggleButton = formContainer.querySelector(".toggle-button"); // クラス名を修正
+    var tagTitles = document.querySelectorAll(".tag");
+    tagTitles.forEach(function(tagTitle){
+      tagTitle.addEventListener("click", function() {
+        var tagId = tagTitle.id
+        var tagForm = document.querySelector('.form-' + tagId);
+        var tagFormContainer = document.querySelector('#form-tag-edit-container');
 
-      toggleButton.addEventListener("click", function() {
-        if (formContainer.style.display === "none") {
-          formContainer.style.display = "block";
+        if (tagForm.style.display === "none") {
+          tagForm.style.display = "block";
+          tagFormContainer.style.display = "block";
         } else {
-          formContainer.style.display = "none";
+          tagForm.style.display = "none";
+          tagFormContainer.style.display = "none";
         }
-      });
-    });
+
+      })
+    })
+    //var tagForm = document.querySelector(".form-<%= tag.id %>")
+    // formContainers.forEach(function(formContainer){
+    //   var toggleButton = formContainer.querySelector(".toggle-button"); // クラス名を修正
+
+    //   toggleButton.addEventListener("click", function() {
+
+    //     if (formContainer.style.display === "none") {
+    //       formContainer.style.display = "block";
+    //     } else {
+    //       formContainer.style.display = "none";
+    //     }
+    //   });
+    // });
   });
 </script>

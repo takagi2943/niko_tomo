@@ -1,5 +1,5 @@
 class Admin::UserCommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
   
   # 会員の投稿した一覧取得
   def comment

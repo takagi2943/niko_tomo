@@ -28,4 +28,9 @@
 <h5>投稿日時</h5>
 <% @music_posts.each do |music_post| %>
   <%= form_with model: music_post, url: admin_user_comments_path(music_post.id, @user.id), local: true do |f| %>
-  
+  <%= f.check_box :title %>
+  <div class="tag-form"　style="desplay: none">
+    <h5><%= music_post.title %></h5>
+  </div>  
+   <h5><%= music_post.title %></h5>
+    <h5><%= link_to user.created_at.strftime('%Y/%m/%d %H:%M'), admin_user_comments_path(labo.id, @user.id) %></h5>
