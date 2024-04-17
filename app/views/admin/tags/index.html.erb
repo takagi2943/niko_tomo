@@ -1,2 +1,22 @@
-<h1>Admin::Tags#index</h1>
-<p>Find me in app/views/admin/tags/index.html.erb</p>
+<h5>タグ一覧</h5>
+
+<h5>現在のタグ一覧</h5>
+<% if @tag.title.present? %>
+<%= form_with model: @tag, url: admin_tags_path,local: true do |f| %>
+<%= f.check_box :title %>
+<%= link_to tag.title, edit_admin_tag_path(tag.id) %>
+<% end %>
+<%= link_to "チェックしたタグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check", remote: true %>
+<% end %>
+
+<h5>新しくタグを作成する</h5>
+<%= render "layouts/error_messages", obj: @tag %>
+<%= form_with model: @tag, url: admin_tags_path, local: true do |f| %>
+<div class="form-group">
+  <%= f.text_field :title, class: 'form-control', placeholder: "タグ名入力" %>
+</div>
+<div class="form-group">
+  <%= f.submit class: 'btn btn-info' %>
+</div>
+<% end %>
+</div>

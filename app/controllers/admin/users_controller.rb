@@ -1,34 +1,25 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!, except: :root
-  before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
+    @users =User.all
     @user = User.find(params[:id])
-    @music_posts = @user.music_posts
-    @music_post = Music_post.new
-  end
-
-  def edit
   end
   
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_user_path(@user), notice: "You have updated user successfully."
+      flash[:notice] = "会員情報の編集に成功しました"
+      redirect_to admin_user_path(@user)
     else
-    render "edit"
+      flash.now[:alert] = "必要な情報を入力してください"
+    render "index"
     end
   end
   
   private
   
   def user_params
-    params.require(:user).permit(:nickname, :introduction, :profile_image)
-  end
-  
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
-    end
+    params.require(:user).permit(:nickname, :introduction, :profile_image, :email, :birthdate, :gender, :is_active)
   end
 end

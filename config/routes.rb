@@ -79,7 +79,7 @@ Rails.application.routes.draw do
     # 探究室コメント
     #resources :labo_comments, only: [:index, :show, :destroy]
     # タグ一覧・作成
-    resources :tags, only: [:index, :create, :update] do
+    resources :tags, only: [:index, :create, :edit, :update, :destroy] do
       delete "destroy_all", on: :collection
     end
     # 音楽共有
