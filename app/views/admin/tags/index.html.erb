@@ -1,13 +1,17 @@
 <h5>タグ一覧</h5>
 
 <h5>現在のタグ一覧</h5>
-<% if @tag.title.present? %>
-<%= form_with model: @tag, url: admin_tags_path,local: true do |f| %>
-<%= f.check_box :title %>
-<%= link_to tag.title, edit_admin_tag_path(tag.id) %>
+<% @tags.each do |tag| %>
+  <%= form_with model: @tag, url: admin_tags_path(tag), local: true do |f| %>
+    <%= f.check_box :title %>
+    <div class="tag-form"　style="desplay: none">
+      <%= tag.title %>
+    </div>
+    <%#= link_to tag.title, edit_admin_tag_path(tag) %>
+  <% end %>
+  <%= link_to "チェックしたタグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check", remote: true %>
 <% end %>
-<%= link_to "チェックしたタグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check", remote: true %>
-<% end %>
+
 
 <h5>新しくタグを作成する</h5>
 <%= render "layouts/error_messages", obj: @tag %>
@@ -20,3 +24,31 @@
 </div>
 <% end %>
 </div>
+<div class="form-container" style="display: none;">
+  <h5>タグ編集</h5>
+  <div>
+    <% @tags.each do |tag| %>
+      <%= form_with(model: tag, url: admin_tag_path(tag), method: :patch, local: true) do |f| %>
+        <%= f.text_field :title, placeholder: "タグ名" %>
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var formContainers = document.querySelectorAll(".tag-form");
+    formContainers.forEach(function(formContainer){
+      var toggleButton = formContainer.querySelector(".toggle-button"); // クラス名を修正
+
+      toggleButton.addEventListener("click", function() {
+        if (formContainer.style.display === "none") {
+          formContainer.style.display = "block";
+        } else {
+          formContainer.style.display = "none";
+        }
+      });
+    });
+  });
+</script>

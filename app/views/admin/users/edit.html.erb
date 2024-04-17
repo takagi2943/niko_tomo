@@ -1,9 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-lg-6">
-      <h2>会員情報編集</h2>
-      <%= form_with model: @user, local: true do |f| %>
-        <%= render "layouts/error_messages", obj: @user %>
+<h5><%= @user.nickname %>さんの会員情報編集</h5>
+<h5><%= @user.profile_image %></h5>
+ <%= form_with(model: @user, url: admin_user_path(@user), local: true) do |f| %>
+ <%= render "public/shared/error_messages", resource: @user %>
+ <h5><%= @user.profile_image %></h5>
+ <div>
+   <%= link_to "投稿の詳細", admin_user_comment_path(@user.id), class="btn btn-warning" %>
+ </div>
+<h5>会員ＩＤ</h5>
+<h5><%= @user.id %></h5>
         <div class="form-group">
           <%= f.label :登録画像 %>
           <%= f.file_field :profile_image, class: "form-control-file user_image", accept: "image/*" %>
@@ -13,23 +17,19 @@
           <%= f.text_field :nickname, class: "form-control nickname", class: "mb-2 mx-5" %>
         </div>
         <div class="form-group">
+          <%= f.label :メールアドレス %>
+          <%= f.text_area :email, class: "form-control introduction", class: "mb-2 mx-5" %>
+        </div>
+        <div class="form-group">
           <%= f.label :自己紹介文 %>
           <%= f.text_area :introduction, class: "form-control introduction", class: "mb-2 mx-5" %>
+          <%= link_to "コメントを削除", @user, method: delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destrou_user_#{@user.id}", style: "width: 100@x;" %>
         </div>
-        <!--ゲストログインである限りメールアドレス変更フォームは表示されない-->
-        <% unless @user.guest_user? %>
-          <div class="form-group">
-            <%= f.label :メールアドレス %>
-            <%= f.text_area :email, class: "form-control introduction", class: "mb-2 mx-5" %>
-          </div>
         <% end %>
         <div class="form-group">
           <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>
-          <%= link_to "退会する", confirm_user_path(@user), class: "btn btn-danger mb-2 mx-5" %>
         </div>
       <% end %><!-- form end -->
-    </div><!-- col end -->
-    <div class="col-sm-12 col-lg-6">
       <h2>My二胡の情報編集</h2>
       <!-- ボタン -->
       <div class="col-sm-10 px-sm-0 text-right mb-2">

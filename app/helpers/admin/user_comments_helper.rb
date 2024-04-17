@@ -1,0 +1,2 @@
+module Admin::UserCommentsHelper
+end

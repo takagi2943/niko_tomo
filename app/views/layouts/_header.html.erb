@@ -69,13 +69,13 @@
       <div class="col text-right m-1">
         <div class="form-group mt-2 mb-0 ml-auto">
           <%= f.radio_button :search_model, "user", checked: true %>
-          <%= f.label :search_model_user, "会員検索", class: "m-0 mr-2" %>
+          <%= f.label :search_model_user, "会員" %>
           <%= f.radio_button :search_model, "music_post" %>
-          <%= f.label :search_model_post, "音楽共有投稿検索", class: "m-0 mr-sm-2 m-lg-0" %>
+          <%= f.label :search_model_post, "音楽共有投稿" %>
           <%= f.radio_button :search_model, "group" %>
-          <%= f.label :search_model_labo, "探究室検索", class: "m-0 mr-sm-2 m-lg-0" %>
+          <%= f.label :search_model_labo, "探究室" %>
           <%= f.radio_button :search_model, "group" %>
-          <%= f.label :search_model_group, "グループ検索", class: "m-0 mr-sm-2 m-lg-0" %>
+          <%= f.label :search_model_group, "グループ" %>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@
       <% end %>
 
       <%= link_to labos_path, class: "nav-link header-nav-link" do %>
-        <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-tags"></i>
         <span>探究室</span>
       <% end %>
 
@@ -121,7 +121,7 @@
         <%= form_with url: search_users_path, method: :get, local: true do |form| %>
         <!--検索機能-->
           <div class="form-group d-flex m-0">
-          <%= form.text_field :user_search_path, placeholder: "名前で検索", class: "form-control" %>
+          <%= form.text_field :user_search_path, placeholder: "検索", class: "form-control" %>
             <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
             <i class="fa-solid fa-magnifying-glass"></i>
           <% end %>
@@ -139,7 +139,7 @@
     <% end %>
 
     <%= link_to labos_path, class: "nav-link header-nav-link" do %>
-      <i class="fa-solid fa-person-chalkboard"></i>
+      <i class="fa-solid fa-tags"></i>
       <span>探究室</span>
     <% end %>
 

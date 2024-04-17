@@ -7,8 +7,8 @@
 
 <h5>タグ編集</h5>
 <div>
-  <%= form_with model: @tag, usl: admin_tag_path, local: true do |f| %>
-  <%= f.text_field :title, placeholder:"タグ名" %>
+  <%= form_with model: @tag, url: admin_tag_path(tag), method: :patch, local: true do |f| %>
+  <%= f.text_field :title, placeholder: "タグ名" %>
   <%= f.submit "変更を保存", class: "btn btn-success" %>
   <% end %>
 </div>

@@ -1,32 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <thead class="table-dark">
-          <tr align="center">
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
+<h5>会員ID</h5>
+<h5>氏名</h5>
+<h5>メールアドレス</h5>
+<h5>ステータス</h5>
           <% @users.each do |user| %>
-          <tr align="center">
-            <td><%= user.id %></td>
-            <td><%= link_to user.admin_side_nickname, admin_users_path(user) %></td>
-            <td><%= customer.email %></td>
-            <td>
+          <div align="center">
+            <div><%= user.id %></div>
+            <div><%= link_to user.admin_side_nickname, admin_users_padiv(user) %></div>
+            <div><%= customer.email %></div>
+            <div>
               <% if user.is_active %>
-                <p class="text-success"><strong>有効</strong></p>
+                <p class="text-success"><sdivong>有効</sdivong></p>
               <% elsif %>
-                <p class="text-muted"><strong>退会</strong></p>
+                <p class="text-muted"><sdivong>退会</sdivong></p>
               <% end %>
-            </td>
-          </tr>
+            </div>
+          </div>
           <% end %>
-        </tbody>
-      </table>
       <div class="d-flex justify-content-center">
         <%= paginate @users %>
       </div>

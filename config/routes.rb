@@ -6,26 +6,26 @@ Rails.application.routes.draw do
   # ユーザー側
   # URL /customers/sign_in ...
   devise_for :user,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
+    registrations: 'public/registrations',
+    sessions: 'public/sessions'
   }
 
   # ゲストユーザー側
   devise_scope :user do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
   # 管理者側
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
+    sessions: 'admin/sessions'
   }
 
   # ユーザー側
   scope module: :public do
-    root to: "homes#top"
+    root to: 'homes#top'
     get 'group_messages/create'
-    get "/about" => "homes#about"
+    get '/about' => 'homes#about'
     # 探究室
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
       resources :labo_comments, only: [:destroy]
@@ -51,20 +51,25 @@ Rails.application.routes.draw do
     end
     # グループ
     resources :groups, only: [:index, :show, :create, :update, :edit, :create] do
-      get "join" => "groups#join"
-      delete "leave", on: :member
+      get 'join' => 'groups#join'
+      delete 'leave', on: :member
       resources :group_user_comments, only: [:create, :destroy]
     end
   end
 
   # 管理者側
   namespace :admin do
-    root to: "homes#top"
+    root to: 'homes#top'
     # 検索用
-    get "/search" => "homes#search"
+    get '/search' => 'homes#search'
     # 会員情報
-    resources :users, only: [:index, :show, :destroy] do
+    resources :users, only: [:index, :show, :edit, :destroy] do
       resources :user_post_comments, only: [:index, :destroy]
+      get '/comments' => 'user#comment'
+      member do
+        patch '/comments' => 'comments#update'
+        delete '/comments' => 'comments#destroy'
+      end
     end
     # グループ
     resources :groups do
@@ -73,14 +78,14 @@ Rails.application.routes.draw do
         resources :group_user_comments, only: [:index, :show, :destroy]
       end
     end
+    # 探究室コメント
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
       resources :labo_comments, only: [:index, :destroy]
     end
-    # 探究室コメント
     #resources :labo_comments, only: [:index, :show, :destroy]
     # タグ一覧・作成
     resources :tags, only: [:index, :create, :edit, :update, :destroy] do
-      delete "destroy_all", on: :collection
+      delete 'destroy_all', on: :collection
     end
     # 音楽共有
     resources :music_posts, only: [:index, :show, :edit, :create, :update, :destroy] do

@@ -1,68 +1,29 @@
-<div class="container">
-  <div class="row">
-    <h2><%= @user.admin_side_nickname %>さんの会員情報編集</h2>
-  </div>
-  <div class="row">
-  <div class="col">
-    <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
-    <%= render "layouts/error_messages", obj: @user %>
-        <div class="form-group">
-          <%= f.label :登録画像 %>
-          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: "image/*" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :ニックネーム %>
-          <%= f.text_field :nickname, class: "form-control nickname", class: "mb-2 mx-5" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :自己紹介文 %>
-          <%= f.text_area :introduction, class: "form-control introduction", class: "mb-2 mx-5" %>
-           <%= link_to "コメントを", user_path(@user), method: :delete, class: "btn btn-danger" %>
-        </div>
-        <!--ゲストログインである限りメールアドレス変更フォームは表示されない-->
-        <% unless @user.guest_user? %>
-          <div class="form-group">
-            <%= f.label :メールアドレス %>
-            <%= f.text_area :email, class: "form-control introduction", class: "mb-2 mx-5" %>
-          </div>
-        <% end %>
-          <h5>会員ステータス</h5>
-          <div class="col">
-            <%= f.radio_button :is_active, true, id: "active_true" %>
-            <%= f.label :is_active, "有効", for: "active_true" %>
-            <%= f.radio_button :is_active, false, id: "active_false" %>
-            <%= f.label :is_active, "退会", for: "active_false" %>
-          </div>
-          <div class="form-group">
-            <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>
-          <div>
-        </div>
-        </div>
-      <% end %><!-- form end -->
-    </div><!-- col end -->
-    <div class="col-sm-12 col-lg-6">
-      <h2>My二胡の情報編集</h2>
-      <% @user.nikos.each do |niko| %>
-        <%= render partial: "public/users/niko_form", locals: { user: @user, niko: niko } %>
-      <% end %>
-      <div id="form-container" style="display: none;">
-        <%= render partial: "public/users/niko_form", locals: { user: @user, niko: @niko } %>
-      </div>
-    </div><!-- col end -->
-  </div><!-- row end -->
-</div><!-- container end -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var formContainer = document.getElementById("form-container");
-    var toggleButton = document.getElementById("toggle-form");
+<h5><%= @user.nickname %>さんの会員情報詳細</h5>
+<%= render "layouts/error_messages", obj: @user %>
 
-    toggleButton.addEventListener("click", function() {
-      if (formContainer.style.display === "none") {
-        formContainer.style.display = "block";
-      } else {
-        formContainer.style.display = "none";
-      }
-    });
-  });
-</script>
+<h5><%= @user.profile_image %></h5>
+<h5>会員ＩＤ</h5>
+<h5><%= @user.id %></h5>
+<h5>ニックネーム %></h5>
+<h5><%= @user.nickname %></h5>
 
+<h5>生年月日</h5>
+<h5><%= @user.birthdate %></h5>
+
+<h5>性別</h5>
+<h5><%= @user.gender %></h5>
+
+<h5>メールアドレス</h5>
+<h5><%= @user.email %></h5>
+
+<h5>自己紹介文 %></h5>
+<h5><%= @user.introduction %></h5>
+
+<h5>会員ステータス</h5>
+<% if @user.is_active %>
+<span class='text-success'>有効</span>
+<% else %>
+<span class='text-secondary'>退会</span>
+<% end %>
+<%= link_to '一覧に戻る', admin_users_path, class="btn btn-warning" %>
+<%= link_to '編集', admin_user_path(@user.id), class="btn btn-info" %>

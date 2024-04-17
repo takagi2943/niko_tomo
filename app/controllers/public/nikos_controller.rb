@@ -1,4 +1,5 @@
 class Public::NikosController < ApplicationController
+  before_action :authenticate_user!
   # 新しい二胡の情報を作成するアクション
   def create
     @user = current_user
