@@ -65,7 +65,7 @@ Rails.application.routes.draw do
     # 会員情報
     resources :users, only: [:index, :show, :edit, :destroy] do
       resources :user_post_comments, only: [:index, :destroy]
-      get '/comments' => 'user#comment'
+      get '/comments' => 'user_comments#comment'
       member do
         patch '/comments' => 'comments#update'
         delete '/comments' => 'comments#destroy'

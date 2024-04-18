@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 2024_04_10_090456) do
     t.date "birthdate"
     t.integer "gender", default: 9, null: false
     t.text "introduction"
-    t.boolean "is_active", default: false, null: false
+    t.boolean "is_active", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

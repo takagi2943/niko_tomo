@@ -1,0 +1,81 @@
+<h5><%= @user.nickname %>さんの投稿詳細一覧</h5>
+<h4>表示切替</h4>
+<div>
+  <h4>探究室</h4>
+  <!-- ボタン -->
+  <div class="col-sm-10 px-sm-0 text-right mb-2">
+    <button id="toggle-form"><i class="fas fa-plus"></i></button>
+  </div>
+</div>
+<div>
+  <h4>音楽共有投稿</h4>
+  <div class="col-sm-10 px-sm-0 text-right mb-2">
+    <button class="explore-room"><i class="fas fa-plus"></i></button>
+  </div>
+</div>
+<!--ここはできたら表示させる-->
+<!--<h4>グループ投稿</h4>-->
+<% if @user.labo_comments.any? %>
+<div class="explore-room-content" style="desplay: none;">
+<h5>探究室投稿</h5>
+<h5>タグ</h5>
+<h5>本文</h5>
+<h5>投稿日時</h5>
+  <% @labos.each do |labo| %>
+    <%= form_with model: labo, url: comments_admin_user_path(labo.id, @user.id), local: true do |f| %>
+      <%#= f.check_box :body %>
+        <h5><%= labo.body %></h5>
+      <h5><%= labo.comments %></h5>
+      <h5><%= link_to user.created_at.strftime('%Y/%m/%d %H:%M'), admin_user_comments_path(labo.id, @user.id) %></h5>
+    <% end %>
+    <%= link_to "削除", admin_user_comments_path(labo.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check", remote: true %>
+  <% end %>
+  </div>
+<% end %>
+
+<% if @music_posts.any? %>
+  <% @music_posts.each do |music_post| %>
+    <h5>音楽共有投稿</h5>
+    <h5>タイトル</h5>
+    <h5>投稿文</h5>
+    <h5>投稿日時</h5>
+    <%= form_with model: music_post, url: admin_user_comments_path(music_post.id, @user.id), local: true do |f| %>
+    <%#= f.check_box :title %>
+      <h5><%= music_post.body %></h5>
+      <h5><%= link_to @user.created_at.strftime('%Y/%m/%d %H:%M'), admin_user_comments_path(music_post.id, @user.id) %></h5>
+    <% end %>
+    <h5><%= link_to "投稿を削除", admin_user_comments_path(music_post.id, @user.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check" %></h5>
+  <% end %>
+<% end %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    // 探究室のボタンをクリックしたときの処理
+    $(".toggle-forml").click(function(){
+      $('.explore-room').next('.explore-room-content')toggle();
+    });
+    // 音楽共有投稿のボタンをクリックしたときの処理
+    $(".toggle-form2").click(function(){
+      $("#nusic-share").toggle();
+    });
+  });;
+    // document.addEventListener("DOMContentLoaded", function() {
+    //   var tagTitles = document.querySelectorAll(".tag");
+    //   tagTitles.forEach(function(tagTitle){
+    //     tagTitle.addEventListener("click", function() {
+    //       var tagId = tagTitle.id
+    //       var tagForm = document.querySelector('.form-' + tagId);
+    //       var tagFormContainer = document.querySelector('#form-tag-edit-container');
+  
+    //       if (tagForm.style.display === "none") {
+    //         tagForm.style.display = "block";
+    //         tagFormContainer.style.display = "block";
+    //       } else {
+    //         tagForm.style.display = "none";
+    //         tagFormContainer.style.display = "none";
+    //       }
+    //     })
+    //   })
+    // });
+  </script>

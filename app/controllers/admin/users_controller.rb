@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
     @music_posts = @user.music_posts
   end
 
@@ -25,8 +25,17 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @music_past.destroy
-    redirect_to admin_user_comments_path(@user)
+    @user = User.find_by(id: params[:id])
+    if @user
+      @user.update(introduction: nil)
+    end
+    redirect_to admin_user_path(@user)
+  end
+  
+  def comment
+    @labos = Labo.all
+    @music_posts = MusicPost.all
+    @user = User.find(params[:user_id])
   end
 
   private

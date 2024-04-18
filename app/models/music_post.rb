@@ -40,7 +40,7 @@ class MusicPost < ApplicationRecord
 
   # 画像を選択していたら表示
     def get_music_post_image
-     image.attached? ? image : 'no-image-icon.jpg'
+      self.image.attached? ? self.image : 'no-image-icon.jpg'
     end
 
 end

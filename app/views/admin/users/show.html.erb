@@ -22,7 +22,7 @@
 <h5><%= @user.introduction %></h5>
 
 <h5>会員ステータス</h5>
-<% if @user.is_active %>
+<% if @user.is_active? %>
 <span class='text-success'>有効</span>
 <% else %>
 <span class='text-secondary'>退会</span>
