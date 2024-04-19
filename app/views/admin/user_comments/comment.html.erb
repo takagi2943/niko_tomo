@@ -3,14 +3,14 @@
 <div>
   <h4>探究室</h4>
   <!-- ボタン -->
-  <div class="col-sm-10 px-sm-0 text-right mb-2">
-    <button id="toggle-form"><i class="fas fa-plus"></i></button>
+  <!--<div class="col-sm-10 px-sm-0 text-right mb-2">-->
+  <!--  <button id="toggle-form"><i class="fas fa-plus"></i></button>-->
   </div>
 </div>
 <div>
   <h4>音楽共有投稿</h4>
-  <div class="col-sm-10 px-sm-0 text-right mb-2">
-    <button class="explore-room"><i class="fas fa-plus"></i></button>
+  <!--<div class="col-sm-10 px-sm-0 text-right mb-2">-->
+  <!--  <button class="explore-room"><i class="fas fa-plus"></i></button>-->
   </div>
 </div>
 <!--ここはできたら表示させる-->
@@ -42,40 +42,40 @@
     <%= form_with model: music_post, url: admin_user_comments_path(music_post.id, @user.id), local: true do |f| %>
     <%#= f.check_box :title %>
       <h5><%= music_post.body %></h5>
-      <h5><%= link_to @user.created_at.strftime('%Y/%m/%d %H:%M'), admin_user_comments_path(music_post.id, @user.id) %></h5>
+      <h5><%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></h5>
     <% end %>
     <h5><%= link_to "投稿を削除", admin_user_comments_path(music_post.id, @user.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check" %></h5>
   <% end %>
 <% end %>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-  $(document).ready(function(){
-    // 探究室のボタンをクリックしたときの処理
-    $(".toggle-forml").click(function(){
-      $('.explore-room').next('.explore-room-content')toggle();
-    });
-    // 音楽共有投稿のボタンをクリックしたときの処理
-    $(".toggle-form2").click(function(){
-      $("#nusic-share").toggle();
-    });
-  });;
-    // document.addEventListener("DOMContentLoaded", function() {
-    //   var tagTitles = document.querySelectorAll(".tag");
-    //   tagTitles.forEach(function(tagTitle){
-    //     tagTitle.addEventListener("click", function() {
-    //       var tagId = tagTitle.id
-    //       var tagForm = document.querySelector('.form-' + tagId);
-    //       var tagFormContainer = document.querySelector('#form-tag-edit-container');
-  
-    //       if (tagForm.style.display === "none") {
-    //         tagForm.style.display = "block";
-    //         tagFormContainer.style.display = "block";
-    //       } else {
-    //         tagForm.style.display = "none";
-    //         tagFormContainer.style.display = "none";
-    //       }
-    //     })
-    //   })
-    // });
-  </script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+  <!--<script>-->
+  <!--$(document).ready(function(){-->
+    <!--// 探究室のボタンをクリックしたときの処理-->
+  <!--  $(".toggle-forml").click(function(){-->
+  <!--    $('.explore-room').next('.explore-room-content')toggle();-->
+  <!--  });-->
+    <!--// 音楽共有投稿のボタンをクリックしたときの処理-->
+  <!--  $(".toggle-form2").click(function(){-->
+  <!--    $("#nusic-share").toggle();-->
+  <!--  });-->
+  <!--});;-->
+  <!--  // document.addEventListener("DOMContentLoaded", function() {-->
+  <!--  //   var tagTitles = document.querySelectorAll(".tag");-->
+  <!--  //   tagTitles.forEach(function(tagTitle){-->
+  <!--  //     tagTitle.addEventListener("click", function() {-->
+  <!--  //       var tagId = tagTitle.id-->
+  <!--  //       var tagForm = document.querySelector('.form-' + tagId);-->
+  <!--  //       var tagFormContainer = document.querySelector('#form-tag-edit-container');-->
+
+  <!--  //       if (tagForm.style.display === "none") {-->
+  <!--  //         tagForm.style.display = "block";-->
+  <!--  //         tagFormContainer.style.display = "block";-->
+  <!--  //       } else {-->
+  <!--  //         tagForm.style.display = "none";-->
+  <!--  //         tagFormContainer.style.display = "none";-->
+  <!--  //       }-->
+  <!--  //     })-->
+  <!--  //   })-->
+  <!--  // });-->
+  <!--</script>-->

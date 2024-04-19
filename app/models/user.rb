@@ -97,4 +97,5 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user.id)
   end
+  
 end
