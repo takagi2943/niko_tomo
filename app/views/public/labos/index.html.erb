@@ -3,22 +3,7 @@
 <h6>管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
 <% end %>
 
-<!--タグのジャンル検索-->
-<h5>タグ</h5>
-<% form_with url: genre_search_path, method: :get do |f| %>
-  <% @tags.each do |tag| %>
-     <%= link_to tag.title, genre_search_path(genre_id: genre.id), method: :get %>
-  <% end %>
-<% end %>
-
-<!--ログインユーザーならば投稿フォームが表示-->
-<% if @user && @user.user_status == "有効" %>
-<h5>投稿フォーム</h5>
-<%= form_with model: labo, local: true do |f| %>
-<%= f.text_field :title, class: 'form-control title', placeholder: "タイトル" %>
-<% end %>
-<% end %>
-
+<%= render 'public/labos/labo', tag: @tag, labo: @labo %>
   <h5><%= tag.title %></h5>
     <% @labo_comment.each do |labo_comment| %>
     <h5><%= tag.title %></h5>
@@ -32,3 +17,4 @@
         <% end %>
         <%= link_to labo_comment.body, labo_path(labo_comment.labo.id), class: "labo_comment_#{labo_comment.id}" %>
     <% end %>
+<%= paginate @labo_comments %>
