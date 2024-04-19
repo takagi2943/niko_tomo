@@ -17,7 +17,7 @@
   <%= f.text_field :title, class: 'form-control', placeholder: "タグ名入力" %>
 </div>
 <div class="form-group">
-  <%= f.submit class: 'btn btn-info' %>
+  <%= f.submit "タグ登録", class: 'btn btn-info' %>
 </div>
 <% end %>
 </div>
@@ -30,7 +30,7 @@
           <%= f.text_field :title, placeholder: "タグ名" %>
           <%= f.submit "変更を保存", class: "btn btn-success" %>
         <% end %>
-        <%= link_to "タグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check" %>
+        <%= link_to "タグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger" %>
       </div>
     <% end %>
   </div>

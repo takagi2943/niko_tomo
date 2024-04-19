@@ -2,13 +2,7 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
   
   	def search
-  		@model = params[:model]
-  		@content = params[:content]
-  		@method = params[:method]
-  		if @model == 'user'
-  			@records = User.search_for(@content, @method)
-  		else
-  			@records = MusicPost.search_for(@content, @method)
-		end
-	end
+  	  @genre_id = @params[:genre_id]
+  	  @tags = Tag.wher(genre_id: @tag_id)
+  	end 
 end

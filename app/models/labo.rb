@@ -5,4 +5,6 @@ class Labo < ApplicationRecord
   has_many :labo_comments, dependent: :destroy
   
   validates :body, presence: true, length: { maximum: 200 }
+  
+  
 end

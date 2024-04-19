@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'group_messages/create'
     get '/about' => 'homes#about'
+    get '/genre/search' => 'searches#genre_search'
     # 探究室
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
       resources :labo_comments, only: [:destroy]
