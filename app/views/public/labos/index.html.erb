@@ -5,16 +5,16 @@
 
 <%= render 'public/labos/labo', tags: @tags, labo: @labo, user: @user %>
   <h5><%= tag.title %></h5>
-    <% @labo_comment.each do |labo_comment| %>
+    <% @labos.each do |labo| %>
     <h5><%= @tag.title %></h5>
-        <%= image_tag labo_comment.user.get_profile_image %>
+        <%= image_tag labo.user.get_profile_image %>
         <!--ログインユーザーならば会員の詳細画面に遷移する-->
         <% if @user.user_status == "有効" %>
-        <%= link_to @user.nickname, user_path(@user.id), class: "user_#{user.id}" %>
+        <%= link_to user.nickname, user_path(@user.id), class: "user_#{user.id}" %>
         <% else%>
         <!--非ログインならば名前がリンクにならない-->
-        <%= labo_comment.user.nickname %>
+        <%= labo.user.nickname %>
         <% end %>
-        <%= link_to labo_comment.body, labo_path(labo_comment.labo.id), class: "labo_comment_#{labo_comment.id}" %>
+        <%= link_to labo.body, labo_path(labo.id, user.id), class: "labo_#{labo.id}" %>
     <% end %>
-<%= paginate @labo_comments %>
+<%= paginate @labo_pages %>

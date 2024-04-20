@@ -5,26 +5,37 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
     @users = User.all
     @user = current_user
     @labo = Labo.new
+    @labos =Labo.all
     @tags = Tag.all
-    @labo_comment = LaboComment.all
-    @labo_comments = LaboComment.page(params[:page]) #ページネーション
+    @labo_body = Labo.all
+    @labo_pages = Labo.page(params[:page]) #ページネーション
   end
 
   def show
-    @labo_comment = LaboComment.find(params[:id])
+    @labo = Labo.find_dy(user.id)
+    @labo_comment = @labo.labo_comment.new(labo_commnt_params)
+    @tag = Tag.find(params[:id])
   end
 
   def create
     @labo_comment = LaboComment.new(labo_comment_params)
+    @comment = crrent_user.labo_comment.build
     @tags = Tag.all
-    if @labo_comment.save
+    # 探究室の投稿が成功したら
+    if @labo.save
       redirect_to labos_path
     else
-      render 'public/labos/index'
+    # 探究室の投稿コメントに成功したら
+      @labo_comment.save
+      render 'public/labos/show'
     end
   end
 
   def destroy
+    # 探究室の投稿を削除
+    @labo = Labo.find(params[:id])
+    @labo.destroy
+    # 探究室の投稿コメントを削除
     @labo_comment = LaboComment.find(params[:id])
     @labo_comment.destroy
   end
@@ -32,6 +43,10 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
   private
 
   def labo_comment_params
-    params.require(:labo_comment).permit(:comment, :tag_id)
+    params.require(:labo_comment).permit(:comment, :tag_id, :labo_id)
+  end
+
+  def labo_params
+    params.erquire(:labo).permit(:body, :user_id)
   end
 end
