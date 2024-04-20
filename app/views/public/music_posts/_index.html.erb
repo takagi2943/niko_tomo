@@ -4,7 +4,7 @@
       <div class="col">
         <!-- ユーザーのプロフィール画像 -->
         <%= link_to user_path(music_post.user) do %>
-          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+          <%= image_tag music_post.user.get_profile_image, class: "rounded-circle", size:'100x100' %>
 
           <div>
             <!--ニックネーム-->
@@ -18,12 +18,12 @@
         <!-- 音楽共有投稿の本文 -->
         <%= music_post.body %>
       </div>
-      <h6><%= @music_post.created_at.strftime('%Y/%m/%d %H:%M') %></h6>
+      <h6><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></h6>
 
       <!--画像設定-->
       <div class="row">
         <div class="col text-center">
-          <%= image_tag @music_post.get_music_post_image, size:'100x100' %>
+          <%= image_tag music_post.get_music_post_image, size:'100x100' %>
         </div>
         <div class="col">
           <!-- お気に入りボタン -->

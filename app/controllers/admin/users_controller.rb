@@ -2,8 +2,13 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
-    @user_page = User.page(params[:page])
+    if params[:search]
+      @users = User.where('nickname LIKE ?', "%#{params[:search]}%")
+      @user_page = User.page(params[:page])
+    else
+      @users = User.all
+      @user_page = User.page(params[:page])
+    end
   end
 
   def show
@@ -17,8 +22,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_user_path(@user), notice: "You have updated user successfully."
+      redirect_to admin_user_path(@user), notice: "You have updated user successfully."
     else
     render "edit"
     end
@@ -41,7 +47,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :introduction, :profile_image)
+    params.require(:user).permit(:nickname, :is_active, :introduction, :profile_image)
   end
 
 end

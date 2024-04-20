@@ -3,6 +3,14 @@
 # モデル名（Userモデルに対して）
 # カラム名（genderカラムに対して）
 ja:
+  active_record:
+    attributes:
+      niko:
+        tree_type:
+          zitan: "紫檀"
+          laohongmu: "老紅木"
+          heitan: "黒檀"
+          other: "その他"
   enums:
     user:
       gender:
@@ -10,8 +18,13 @@ ja:
         other: "その他"
         man: "男性"
         woman: "女性"
-
         views:
+    niko:
+      tree_type:
+        zitan: "紫檀"
+        laohongmu: "老紅木"
+        heitan: "黒檀"
+        other: "その他"
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
       last: <i class="fas fa-angle-double-right"></i>

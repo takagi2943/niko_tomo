@@ -35,12 +35,6 @@ class Public::SessionsController < Devise::SessionsController
   def is_active?
     @user = User.find_by(email: params[:user][:email])
     return unless @user && @user.valid_password?(params[:user][:password]) && @user.is_active
-
-    # ログイン成功時の処理
-    # セッションにユーザーIDを保存
-    session[:user_id] = @user.id
-    # ログイン後のデフォルトページにリダイレクトする
-    redirect_to user_path(resource)
   end
 
 

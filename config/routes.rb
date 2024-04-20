@@ -29,7 +29,14 @@ Rails.application.routes.draw do
     get '/genre/search' => 'searches#genre_search'
     # 探究室
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
+
       resources :labo_comments, only: [:destroy]
+    end
+    
+    resources :tags do 
+      member do 
+        get :labos
+      end
     end
 
     # 音楽共有
@@ -39,7 +46,7 @@ Rails.application.routes.draw do
     end
 
     # ユーザー情報
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:show, :edit, :update, :destroy, :index] do
       get 'confirm', on: :member
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
@@ -64,7 +71,7 @@ Rails.application.routes.draw do
     # 検索用
     get '/search' => 'homes#search'
     # 会員情報
-    resources :users, only: [:index, :show, :edit, :destroy] do
+    resources :users, only: [:index, :show, :edit, :destroy, :update] do
       resources :user_post_comments, only: [:index, :destroy]
       get '/comments' => 'user_comments#comment'
       member do

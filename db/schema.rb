@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2024_04_10_090456) do
 
   create_table "tag_labos", force: :cascade do |t|
     t.integer "tag_id", null: false
-    t.integer "Iabo_id", null: false
+    t.integer "labo_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

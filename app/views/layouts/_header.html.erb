@@ -35,7 +35,7 @@
         <span>グループ</span>
       <% end %>
 
-      <%= link_to admin_labo_comments_index_path, class: "nav-link header-nav-link" do %>
+      <%= link_to admin_labos_path, class: "nav-link header-nav-link" do %>
         <i class="fa-solid fa-person-chalkboard"></i>
         <span>探究室</span>
       <% end %>
@@ -51,12 +51,12 @@
       <% end %>
       </div>
     </div>
-    <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+    <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
     <div class="row m-1">
       <div class="col offset-7">
         <div class="header-search-box">
           <div class="form-group d-flex m-0">
-            <%= f.text_field :search, placeholder: "検索", class: "form-control" %>
+            <%= f.text_field :search, placeholder: "会員検索", class: "form-control" %>
             <%= f.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
               <i class="fa-solid fa-magnifying-glass"></i>
             <% end %>
@@ -65,20 +65,6 @@
       </div>
     </div>
     <!--検索機能-->
-    <div class="row">
-      <div class="col text-right m-1">
-        <div class="form-group mt-2 mb-0 ml-auto">
-          <%= f.radio_button :search_model, "user", checked: true %>
-          <%= f.label :search_model_user, "会員" %>
-          <%= f.radio_button :search_model, "music_post" %>
-          <%= f.label :search_model_post, "音楽共有投稿" %>
-          <%= f.radio_button :search_model, "group" %>
-          <%= f.label :search_model_labo, "探究室" %>
-          <%= f.radio_button :search_model, "group" %>
-          <%= f.label :search_model_group, "グループ" %>
-        </div>
-      </div>
-    </div>
     <% end %>
   <% elsif user_signed_in? %>
     <!-- ユーザーがログインしている場合 -->
@@ -118,10 +104,10 @@
       </div>
       <div class="col offset-1">
         <div class="header-search-box">
-        <%= form_with url: search_users_path, method: :get, local: true do |form| %>
+        <%= form_with url: users_path, method: :get, local: true do |form| %>
         <!--検索機能-->
           <div class="form-group d-flex m-0">
-          <%= form.text_field :user_search_path, placeholder: "検索", class: "form-control" %>
+          <%= form.text_field :search, placeholder: "会員検索", class: "form-control" %>
             <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
             <i class="fa-solid fa-magnifying-glass"></i>
           <% end %>

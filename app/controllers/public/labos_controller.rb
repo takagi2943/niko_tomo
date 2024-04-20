@@ -10,6 +10,7 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
     @labo_body = Labo.all
     @labo_pages = Labo.page(params[:page]) #ページネーション
   end
+  
 
   def show
     @labo = Labo.find_dy(user.id)
@@ -18,16 +19,14 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
   end
 
   def create
-    @labo_comment = LaboComment.new(labo_comment_params)
-    @comment = crrent_user.labo_comment.build
-    @tags = Tag.all
+    @labo = Labo.new(labo_params)
+    @labo.user_id = current_user.id
     # 探究室の投稿が成功したら
     if @labo.save
       redirect_to labos_path
     else
     # 探究室の投稿コメントに成功したら
-      @labo_comment.save
-      render 'public/labos/show'
+      render 'index'
     end
   end
 
@@ -47,6 +46,6 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
   end
 
   def labo_params
-    params.erquire(:labo).permit(:body, :user_id)
+    params.require(:labo).permit(:body)
   end
 end

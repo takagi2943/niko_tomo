@@ -60,6 +60,7 @@ gem 'bootstrap4-kaminari-views'
 gem 'devise'
 gem 'jquery-rails'
 gem 'enum_help'
+gem 'rails-i18n'
 gem 'dotenv-rails'
 group :production do
     gem 'mysql2'

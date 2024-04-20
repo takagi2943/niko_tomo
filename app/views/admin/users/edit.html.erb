@@ -5,7 +5,7 @@
 <div>
    <%= link_to "投稿の詳細", admin_user_comments_path(@user.id), class: "btn btn-warning" %>
  </div>
-  <%= form_with(model: @user, url: admin_user_path(@user), local: true) do |f| %>
+
 <h5>会員ＩＤ</h5>
 
 <h5><%= @user.id %></h5>
@@ -17,7 +17,7 @@
 <h5><%= @user.birthdate %></h5>
 
 <h5>性別</h5>
-<h5><%= @user.gender %></h5>
+<h5><%= @user.gender_i18n %></h5>
 
 <h5>メールアドレス</h5>
 <h5><%= @user.email %></h5>
@@ -32,11 +32,15 @@
   <%= f.radio_button :is_active, false, id: "active_false" %>
   <%= f.label :is_active, "退会", for: "active_false" %>
 
-<% end %>
 <div class="form-group">
   <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>
 </div>
 <% end %>
+
+
+
+
+
 <% if @user.nikos.present? %>
 <h2>My二胡の情報編集</h2>
 <% @user.nikos.each do |niko| %>

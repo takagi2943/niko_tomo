@@ -10,13 +10,13 @@
   </div>
   <div>
     <!--二胡使用素材を選ぶラジオボタン-->
-    <%= f.radio_button :tree_type, :zitan %>
+    <%= f.radio_button :tree_type, 0 %>
     <%= f.label :tree_type_zitan, "紫檀" %>
-    <%= f.radio_button :tree_type, :laohongmu %>
+    <%= f.radio_button :tree_type, 1 %>
     <%= f.label :tree_type_laohongmu, "老紅木" %>
-    <%= f.radio_button :tree_type, :heitan %>
+    <%= f.radio_button :tree_type, 2 %>
     <%= f.label :tree_type_heitan, "黒檀" %>
-    <%= f.radio_button :tree_type, :other %>
+    <%= f.radio_button :tree_type, 3 %>
     <%= f.label :tree_type_other, "その他" %>
   </div>
   <div class="form-group">

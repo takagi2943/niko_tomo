@@ -38,7 +38,8 @@ class Public::MusicPostsController < ApplicationController
 
   def destroy
     @music_post.destroy
-    redirect_to music_post_path(@music_post.user, @music_post)
+    redirect_to music_posts_path
+  
 
   end
 

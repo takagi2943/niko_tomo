@@ -7,6 +7,16 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @music_posts = @user.music_posts
     @favorite_niko = @user.nikos.where(is_favorite: true).first
+    #byebug
+  end
+
+  def index
+    if params[:search]
+      @users = User.where('nickname LIKE ?', "%#{params[:search]}%")
+    else
+      @users = User.all
+    end
+
   end
 
   def edit
@@ -22,6 +32,7 @@ class Public::UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
@@ -42,5 +53,9 @@ class Public::UsersController < ApplicationController
       flash[:error] = "ゲストユーザーはこの操作を実行できません。"
       redirect_to edit_user_path(current_user)
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname, :introduction)
   end
 end

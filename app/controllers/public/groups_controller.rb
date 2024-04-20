@@ -11,7 +11,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @user = @group.owner
+    @user = @group.user
     @user_self = User.find(params[:id])
     @participant_size = @group.group_users.size
   end
@@ -20,7 +20,7 @@ class Public::GroupsController < ApplicationController
   def join
     @group =Group.find(params[:group_id])
     @group.users << current_user
-    redirect_to group_path(@group.id)
+    redirect_to group_path
   end
 
   # グループを離れる
@@ -43,9 +43,11 @@ class Public::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    # group.owner_idはuser_id
     @group.user_id = current_user.id
     # 下記の記述は@group.usersに、current_userを追加しているということ
     @group.users << current_user
+    #byebug
     # グループのができたら
     if @group.save
       redirect_to groups_path
@@ -58,19 +60,9 @@ class Public::GroupsController < ApplicationController
     end
   end
 
-  def create
-    @group = Group.new(group_params)
-    @group.owner_id = current_user.id
-    if @group.save
-      redirect_to groups_path
-    else
-      render 'index'
-    end
-  end
-
   def update
     if @group.update(group_params)
-      redirect_to @groups, notice: 'グループ情報が更新されました。'
+      redirect_to groups_path, notice: 'グループ情報が更新されました。'
     else
       render :edit
     end
@@ -84,8 +76,8 @@ class Public::GroupsController < ApplicationController
   # 指定されたグループが現在ログインしているユーザーの所有
   def ensure_correct_user
     @group = Group.find(params[:id])
-    unless @group.user.id == current_user.id
-      redirect_to group_path
+    unless @group.user && @group.user.id == current_user.id
+      redirect_to root_path
     end
   end
 end

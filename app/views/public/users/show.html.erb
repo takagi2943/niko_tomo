@@ -16,8 +16,9 @@
         <!--二胡の情報を表示させる-->
       <% if @favorite_niko.present? %>
         <h4>My二胡</h4>
+        <h4><%= image_tag @favorite_niko.get_niko_image, size: '100x100' %></h4>
         <h4>・名前 <%= @favorite_niko.name %></h4>
-        <h4>・<%= @favorite_niko.tree_type %></h4>
+        <h4>・<%= @favorite_niko.tree_type_i18n %></h4>
         <h4>特徴<%= @favorite_niko.feature %></h4>
       <% else %>
         <!--二胡の情報が無かったら-->

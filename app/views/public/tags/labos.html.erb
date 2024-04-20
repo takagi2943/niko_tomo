@@ -1,14 +1,10 @@
-<h5>探究室の扉</h5>
-<% if current_user && current_user.user_status == "有効" %>
-<h6>管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
-<% end %>
 
-<%= render 'public/labos/labo', tags: @tags, labo: @labo, user: @user %>
-  <h5><%= tag.title %></h5>
+
+  <h5><%= @tag.title %></h5>
     <% @labos.each do |labo| %>
         <%= image_tag labo.user.get_profile_image %>
         <!--ログインユーザーならば会員の詳細画面に遷移する-->
-        <% if current_user.user_status == "有効" %>
+        <% if labo.user.user_status == "有効" %>
         <%= link_to labo.user.nickname, user_path(labo.user.id), class: "user_#{labo.user.id}" %>
         <% else%>
         <!--非ログインならば名前がリンクにならない-->

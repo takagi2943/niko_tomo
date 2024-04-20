@@ -8,9 +8,15 @@ class Niko < ApplicationRecord
   # 二胡の特徴文の設定
   validates :feature, length: { maximum: 200 }
 
-
+  # tree_type:
+  enum tree_type: {
+    zitan: '0',
+    laohongmu: '1',
+    heitan: '2',
+    other: '3'
+  }
   # 二胡の画像を持たせると表示される/持たせないと表示されない
   def get_niko_image
-    (niko_image.attached?) ? niko_image : 'no-image-icon.jpg'
+    (self.niko_image.attached?) ? self.niko_image : 'no-image-icon.jpg'
   end
 end
