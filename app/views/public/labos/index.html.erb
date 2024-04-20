@@ -3,10 +3,10 @@
 <h6>管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
 <% end %>
 
-<%= render 'public/labos/labo', tag: @tag, labo: @labo %>
+<%= render 'public/labos/labo', tags: @tags, labo: @labo, user: @user %>
   <h5><%= tag.title %></h5>
     <% @labo_comment.each do |labo_comment| %>
-    <h5><%= tag.title %></h5>
+    <h5><%= @tag.title %></h5>
         <%= image_tag labo_comment.user.get_profile_image %>
         <!--ログインユーザーならば会員の詳細画面に遷移する-->
         <% if @user.user_status == "有効" %>

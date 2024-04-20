@@ -18,6 +18,7 @@
         <!-- 音楽共有投稿の本文 -->
         <%= music_post.body %>
       </div>
+      <h6><%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></h6>
 
       <!--画像設定-->
       <div class="row">
