@@ -2,23 +2,15 @@ class Public::LabosController < ApplicationController
 before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
-    @users = User.all
-    @user = current_user
     @labo = Labo.new
-    @labos =Labo.all
-    @labo_comments = LaboComment.all
+    @labos = Labo.all
     @tags = Tag.all
-    @labo_body = Labo.all
-    @labo_pages = Labo.page(params[:page]) #ページネーション
   end
 
 
   def show
-    @user = current_user
-    @labo = Labo.find_by(@user)
-    @labo_comment = LaboComment.find(params[:id])
-    @labo_comment = @labo.labo_comment.new(labo_commnt_params)
-    @tag = Tag.find(params[:id])
+    @labo = Labo.find_by(params[:id])
+    @labo_comment = LaboComment.new
   end
 
   def create
@@ -44,11 +36,7 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   private
 
-  def labo_comment_params
-    params.require(:labo_comment).permit(:comment, :tag_id, :labo_id)
-  end
-
   def labo_params
-    params.require(:labo).permit(:body)
+    params.require(:labo).permit(:body, tag_ids: [])
   end
 end

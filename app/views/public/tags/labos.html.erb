@@ -4,12 +4,12 @@
       <%= image_tag labo.user.get_profile_image, class: "rounded-circle", size:'50x50'%>
       <!--ログインユーザーならば会員の詳細画面に遷移する-->
       <% if labo.user.user_status == "有効" %>
-      <%= link_to labo.user.nickname, user_path(labo.user.id), class: "user_#{labo.user.id}" %>
+      <%= link_to labo.user.nickname, user_path(labo.user.id) %>
       <% else%>
       <!--非ログインならば名前がリンクにならない-->
       <%= labo.user.nickname %>
       <% end %>
-      <%= link_to labo.body, labo_path(labo.id, user.id), class: "labo_#{labo.id}" %>
+      <%= link_to labo.body, labo_path(labo.id) %>
     <% end %>
 
       <!--探究室のタグで選択された投稿にコメント記入欄-->

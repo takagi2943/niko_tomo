@@ -6,11 +6,13 @@
 
 
 <!--ログインユーザーならば投稿フォームが表示-->
-<!--<#% if user && user.user_status == "有効" %>-->
-<!--  <h5>投稿フォーム</h5>-->
-<!--  <%#= form_with model: [:labo, :tag], local: true do |f| %>-->
-<!--    <%#= f.select :title %>-->
-<!--    <%#= f.text_field :body, class: 'form-control title', placeholder: "投稿文" %>-->
-<!--    <%#= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>-->
-<!--  <%# end %>-->
-<!--<%# end %>-->
+<% if current_user && current_user.user_status == "有効" %>
+  <h5>投稿フォーム</h5>
+  <%= form_with model: labo, local: true do |f| %>
+    <%= f.collection_check_boxes(:tag_ids, tags, :id, :title) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <%= f.text_field :body, class: 'form-control title', placeholder: "投稿文" %>
+    <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>
+  <% end %>
+<% end %>
