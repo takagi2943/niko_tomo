@@ -9,6 +9,6 @@
 <h5><%= labo_comment.created_at %></h5>
 <h5><%= @tag.title %></h5>
 <h5><%= @labo.body %></h5>
-<h5><%= link_to labo_comment.comment, admin_labo_path(labo_comment.id) %></h5>
+<h5><%= link_to labo_comment.comment, admin_labo_comment_path(labo_comment) %></h5>
 <% end %>
 <%= paginate @labo_comment %>

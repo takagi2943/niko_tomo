@@ -48,8 +48,10 @@ Rails.application.routes.draw do
     # ユーザー情報
     resources :users, only: [:show, :edit, :update, :destroy, :index] do
       get 'confirm', on: :member
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+      member do
+        get 'followings'
+        get 'followers'
+      end
       # ユーザー検索用
       collection do
         get 'search'

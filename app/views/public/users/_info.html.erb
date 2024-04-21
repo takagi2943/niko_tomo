@@ -10,7 +10,7 @@
 <!--各一覧を押下すると表示される-->
 
 <% if current_user %>
-  <h5>フォロー: <%= link_to current_user.followings.size, user_followings_path(current_user) %></h5>
-  <h5>フォロワー: <%= link_to current_user.followers.size, user_followers_path(current_user) %></h5>
+  <h5>フォロー: <%= link_to current_user.followings.size, followings_user_path(current_user) %></h5>
+  <h5>フォロワー: <%= link_to current_user.followers.size, followers_user_path(current_user) %></h5>
   <!--<h5>いいね <%#= link_to "#{user.music_post_favorites.si}", user_music_post_favorites_path(user) %></h5>-->
 <% end %>

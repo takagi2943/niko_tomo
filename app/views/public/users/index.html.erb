@@ -1,3 +1,1 @@
-<% @users.each do |user|%>
-  <%= link_to user.nickname, user_path(user.id) %>
-<% end %>
+<%= render 'public/users/index', users: @users %>
