@@ -5,6 +5,6 @@ class LaboComment < ApplicationRecord
   belongs_to :labo
 
   # コメントの設定
-  validates :comments, presence: true, length: { maximum: 200 }
+  validates :comment, presence: true, length: { maximum: 200 }
 
 end

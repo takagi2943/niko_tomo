@@ -29,13 +29,13 @@ Rails.application.routes.draw do
     get '/genre/search' => 'searches#genre_search'
     # 探究室
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
-
       resources :labo_comments, only: [:destroy]
     end
-    
-    resources :tags do 
-      member do 
+    # tagと紐づけを行うためのlabo
+    resources :tags do
+      member do
         get :labos
+        delete :labo
       end
     end
 
@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       resources :relationships, only: [:create, :destroy]
     end
     # グループ
-    resources :groups, only: [:index, :show, :create, :update, :edit, :create] do
+    resources :groups, only: [:index, :show, :create, :update, :edit, :create, :destroy] do
       get 'join' => 'groups#join'
       delete 'leave', on: :member
       resources :group_user_comments, only: [:create, :destroy]

@@ -6,14 +6,17 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
     @user = current_user
     @labo = Labo.new
     @labos =Labo.all
+    @labo_comments = LaboComment.all
     @tags = Tag.all
     @labo_body = Labo.all
     @labo_pages = Labo.page(params[:page]) #ページネーション
   end
-  
+
 
   def show
-    @labo = Labo.find_dy(user.id)
+    @user = current_user
+    @labo = Labo.find_by(@user)
+    @labo_comment = LaboComment.find(params[:id])
     @labo_comment = @labo.labo_comment.new(labo_commnt_params)
     @tag = Tag.find(params[:id])
   end

@@ -16,7 +16,7 @@
 
 <%= form_with model: [@labo, @labo_comment], url: labo_labo_comment_path(@labo.id, labo_comment.id) do |f| %>
   <%= f.hidden_field :user_id, labo_path(@labo.id), value: @labo_comment.id %>
-  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: 'form-control', cols: "50", id: "comment_textarea" %>
+  <%= f.text_area :comments, rows: '5', placeholder: "コメントをここに", class: 'form-control', cols: "50", id: "comment_textarea" %>
   <p>※&emsp;犯罪に巻き込まれるような投稿はお控えください。</p>
   <h6 class="text-danger">※不適切な投稿は予告なく削除されます。<br>ご理解ください。</h6>
   <div class="form-group">

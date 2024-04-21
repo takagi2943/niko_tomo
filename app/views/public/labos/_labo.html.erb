@@ -1,16 +1,16 @@
-<!--タグのジャンル検索-->
+<!--管理者側が登録したタグがすべて表示される-->
 <h5>タグ</h5>
-<% form_with url: genre_search_path, method: :get do |f| %>
-  <% tags.each do |tag| %>
-     <%= link_to tag.title, genre_search_path(genre_id: tag.id), method: :get %>
-  <% end %>
+<% tags.each do |tag| %>
+   <%= link_to tag.title, labos_tag_path(tag.id) %>
 <% end %>
 
+
 <!--ログインユーザーならば投稿フォームが表示-->
-<% if user && user.user_status == "有効" %>
-  <h5>投稿フォーム</h5>
-  <%= form_with model: labo, local: true do |f| %>
-    <%= f.text_field :body, class: 'form-control title', placeholder: "投稿文" %>
-    <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>
-  <% end %>
-<% end %>
+<!--<#% if user && user.user_status == "有効" %>-->
+<!--  <h5>投稿フォーム</h5>-->
+<!--  <%#= form_with model: [:labo, :tag], local: true do |f| %>-->
+<!--    <%#= f.select :title %>-->
+<!--    <%#= f.text_field :body, class: 'form-control title', placeholder: "投稿文" %>-->
+<!--    <%#= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>-->
+<!--  <%# end %>-->
+<!--<%# end %>-->

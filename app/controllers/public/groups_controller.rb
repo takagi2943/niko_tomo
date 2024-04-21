@@ -67,6 +67,7 @@ class Public::GroupsController < ApplicationController
       render :edit
     end
   end
+
   private
 
   def group_params

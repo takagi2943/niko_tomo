@@ -4,15 +4,16 @@
 <% end %>
 
 <%= render 'public/labos/labo', tags: @tags, labo: @labo, user: @user %>
-  <h5><%= tag.title %></h5>
+
     <% @labos.each do |labo| %>
-        <%= image_tag labo.user.get_profile_image %>
-        <!--ログインユーザーならば会員の詳細画面に遷移する-->
-        <% if current_user.user_status == "有効" %>
-        <%= link_to labo.user.nickname, user_path(labo.user.id), class: "user_#{labo.user.id}" %>
-        <% else%>
-        <!--非ログインならば名前がリンクにならない-->
+      <h5><%= @tag.title %></h5>
+      <%= image_tag labo.user.get_profile_image %>
+      <!--ログインユーザーならば会員の詳細画面に遷移する-->
+      <% if current_user && current_user.user_status == "有効" %>
+        <%= link_to labo.user.nickname, user_path(labo.use.id), class: "user_#{labo.user.id}" %>
+      <% else%>
+      <!--非ログインならば名前がリンクにならない-->
         <%= labo.user.nickname %>
-        <% end %>
-        <%= link_to labo.body, labo_path(labo.id), class: "labo_#{labo.id}" %>
+      <% end %>
+      <%= link_to labo.body, labo_path(labo.id), class: "labo_#{labo.id}" %>
     <% end %>

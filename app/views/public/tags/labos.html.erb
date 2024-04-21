@@ -1,14 +1,52 @@
-
-
+<!--選択されたタグに紐づいた投稿詳細-->
   <h5><%= @tag.title %></h5>
     <% @labos.each do |labo| %>
-        <%= image_tag labo.user.get_profile_image %>
-        <!--ログインユーザーならば会員の詳細画面に遷移する-->
-        <% if labo.user.user_status == "有効" %>
-        <%= link_to labo.user.nickname, user_path(labo.user.id), class: "user_#{labo.user.id}" %>
-        <% else%>
-        <!--非ログインならば名前がリンクにならない-->
-        <%= labo.user.nickname %>
-        <% end %>
-        <%= link_to labo.body, labo_path(labo.id), class: "labo_#{labo.id}" %>
+      <%= image_tag labo.user.get_profile_image, class: "rounded-circle", size:'50x50'%>
+      <!--ログインユーザーならば会員の詳細画面に遷移する-->
+      <% if labo.user.user_status == "有効" %>
+      <%= link_to labo.user.nickname, user_path(labo.user.id), class: "user_#{labo.user.id}" %>
+      <% else%>
+      <!--非ログインならば名前がリンクにならない-->
+      <%= labo.user.nickname %>
+      <% end %>
+      <%= labo.body %>
+      <%= link_to '投稿を削除', labo_tag_path(tag.id, labo), method: :delete, class: "btn btn-danger pull-right", remote: true %>
     <% end %>
+
+      <!--探究室のタグで選択された投稿にコメント記入欄-->
+      <%= form_with(model: @labo_comment, url: labos_tag_path(@tag), local: false ) do |f| %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-10">
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: 'form-control', cols: "50", id: "comment_textarea" %>
+          </div>
+          <div class="col-lg-2 d-flex align-items-end">
+            <%= f.submit "送信" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+        <!--探究室の質問に対してのコメントが表示される-->
+        <% @labo.labo_comments.each do |labo_comment| %>
+        <div class="container">
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="col">
+              <%= link_to user_path(post_comment.user) do %>
+                <%= image_tag post_comment.user.get_profile_image, class: "rounded-circle", size: "100x100" %><br>
+                <%= labo_comment.user.nickname %>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= labo_comment.comment %>
+            </div>
+            <div class="col">
+              <% if labo_comment.user == current_user %>
+                <%= link_to "削除", labo_comment_tag_path(tag.id, labo_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <br>
+        <% end %>
+

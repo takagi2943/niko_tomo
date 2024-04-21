@@ -4,7 +4,7 @@ class CreateTagLaboComments < ActiveRecord::Migration[6.1]
       
       t.integer  :tag_labo_id,   null: false
       t.integer  :user_id,       null: false
-      t.text     :comments,      null: false
+      t.text     :comment,      null: false
 
       t.timestamps
     end
