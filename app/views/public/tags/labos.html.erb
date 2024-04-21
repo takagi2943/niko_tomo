@@ -9,12 +9,11 @@
       <!--非ログインならば名前がリンクにならない-->
       <%= labo.user.nickname %>
       <% end %>
-      <%= labo.body %>
-      <%= link_to '投稿を削除', labo_tag_path(tag.id, labo), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+      <%= link_to labo.body, labo_path(labo.id, user.id), class: "labo_#{labo.id}" %>
     <% end %>
 
       <!--探究室のタグで選択された投稿にコメント記入欄-->
-      <%= form_with(model: @labo_comment, url: labos_tag_path(@tag), local: false ) do |f| %>
+      <%= form_with(model: @labo_comment, url: labo_tag_path(@tag), local: false ) do |f| %>
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-10">
@@ -28,6 +27,7 @@
       <% end %>
 
         <!--探究室の質問に対してのコメントが表示される-->
+      <% if @labo %>
         <% @labo.labo_comments.each do |labo_comment| %>
         <div class="container">
           <div class="row d-flex align-items-center justify-content-center">
@@ -49,4 +49,4 @@
         </div>
         <br>
         <% end %>
-
+      <% end %>

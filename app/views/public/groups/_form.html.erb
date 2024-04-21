@@ -15,5 +15,6 @@
 
   <div class="form-group">
     <%= f.submit class: 'btn btn-info' %>
+    <%= link_to "グループを解散させる", group_path(group.id), method: :delete, class: "btn btn-danger", deta: { confirm:"本当にグループを解散させますか？"} %>
   </div>
 <% end %>

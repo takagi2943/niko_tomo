@@ -68,6 +68,16 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    if @group
+    @group.destroy
+    flash[:success] = 'グループを削除しました。'
+    else
+      flash[:error] = 'グループが見つかりません。'
+    redirect_to groups_path
+    end
+  end
+
   private
 
   def group_params

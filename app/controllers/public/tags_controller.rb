@@ -8,7 +8,7 @@ class Public::TagsController < ApplicationController
   end
 
   def destroy
-    @tag.labo.destroy
+    @tag.labo.find(params[:labo_id]).destroy
     redirect_to labos_path
   end
 
