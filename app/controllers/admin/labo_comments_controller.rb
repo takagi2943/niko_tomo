@@ -2,12 +2,15 @@ class Admin::LaboCommentsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @labo_comments = LaboComment.all
-    @labo_comment = LaboComment.page(params[:page])
+    @labos = LaboComment.all
+    @tag = Tag.all
+    @labo_pages = Labo.page(params[:page])
+    
   end
 
   def show
-    @labo_comment = LaboComment.find(params[:id])
+    @labo = Labo.find(params[:id])
+    @labo_comments = @labo.labo_commets
   end
   
   def destroy

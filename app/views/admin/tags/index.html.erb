@@ -1,40 +1,57 @@
-<h5>タグ一覧</h5>
-
-<h5>現在のタグ一覧</h5>
-<% @tags.each do |tag| %>
-  <div class="d-flex justify-content-center">
-    <button class="tag tag-form-<%= tag.id %>" id="<%= tag.id %>"　style="display:block;">
-      <%= tag.title %>
-    </button>
-  </div>
-<% end %>
-
-
-<h5>新しくタグを作成する</h5>
-<%= render "layouts/error_messages", obj: @tag %>
-<%= form_with model: @tag, url: admin_tags_path, local: true do |f| %>
-<div class="form-group">
-  <%= f.text_field :title, class: 'form-control', placeholder: "タグ名入力" %>
-</div>
-<div class="form-group">
-  <%= f.submit "タグ登録", class: 'btn btn-info' %>
-</div>
-<% end %>
-</div>
-<div id="form-tag-edit-container" class="form-container" style="display: none;">
-  <h5>タグ編集</h5>
-  <div>
-    <% @tags.each do |tag| %>
-      <div class="form-<%= tag.id %>" style="display: none;">
-        <%= form_with(model: tag, url: admin_tag_path(tag), method: :patch, local: true) do |f| %>
-          <%= f.text_field :title, placeholder: "タグ名" %>
-          <%= f.submit "変更を保存", class: "btn btn-success" %>
+<div class="container">
+  <div class="row text-left ml-1">
+    <div>
+      <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">タグ一覧</h5>
+      <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">現在のタグ一覧</h5>
+      <p style="color: #744199; margin: 0; padding: 0;">※タグを押すと編集できるようになります。</p>
+      <% @tags.each do |tag| %>
+        <div class="mb-3">
+          <button class="tag tag-form-<%= tag.id %>" id="<%= tag.id %>"　style="display:block;">
+            <%= tag.title%>
+          </button>
+        </div>
+      <% end %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col offset-4">
+        <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">新しくタグを作成する</h5>
+        <%= render "layouts/error_messages", obj: @tag %>
+        <%= form_with model: @tag, url: admin_tags_path, local: true do |f| %>
+          <div class="form-group">
+            <%= f.text_field :title, placeholder: "タグ名入力", class: "mb-2 mx-8 form-control w-50" %>
+          </div>
+          <div class="form-group">
+            <div class="row offset-4">
+              <%= f.submit "タグ登録", class: 'btn btn-info mb-2' %>
+            </div>
+          </div>
         <% end %>
-        <%= link_to "タグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger" %>
+        </div>
       </div>
-    <% end %>
+      <div id="form-tag-edit-container" class="form-container" style="display: none;">
+        <div class="row">
+          <div class="col offset-4">
+            <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">タグ編集</h5>
+            <% @tags.each do |tag| %>
+              <div class="form-<%= tag.id %>" style="display: none;">
+                <%= form_with(model: tag, url: admin_tag_path(tag), method: :patch, local: true) do |f| %>
+                  <%= f.text_field :title, placeholder: "タグ名", class: "mb-2 mx-8 form-control  w-50" %>
+                  <div class="row offset-4">
+                    <%= f.submit "変更を保存", class: "btn btn-success mb-2" %>
+                  </div>
+                <% end %>
+                  <div class="row offset-4">
+                    <%= link_to "タグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger text-nowrap" %>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+         </div>
+      </div>
+    </div>
   </div>
-</div>
+</div><!--container end-->
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

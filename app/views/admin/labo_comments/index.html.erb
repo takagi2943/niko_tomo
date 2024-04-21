@@ -5,10 +5,11 @@
 <h5>投稿文</h5>
 
 
-<% @labo_comments.each do |labo_comment| %>
-<h5><%= labo_comment.created_at %></h5>
-<h5><%= @tag.title %></h5>
-<h5><%= @labo.body %></h5>
-<h5><%= link_to labo_comment.comment, admin_labo_comment_path(labo_comment) %></h5>
+<% @labos.each do |labo| %>
+  <h5><%= labo.created_at %></h5>
+  <% labo.tags.each do |tag| %>
+    <h5><%= tag.taitl%></h5>
+  <% end %>
+  <h5><%= link_to labo.body, admin_labo_path(labo.id) %></h5>
 <% end %>
-<%= paginate @labo_comment %>
+<%= paginate @labo_pages %>
