@@ -1,6 +1,6 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -20,7 +20,7 @@ class Public::GroupsController < ApplicationController
   def join
     @group =Group.find(params[:group_id])
     @group.users << current_user
-    redirect_to group_path
+    redirect_to group_path(@group.id)
   end
 
   # グループを離れる
@@ -70,12 +70,12 @@ class Public::GroupsController < ApplicationController
 
   def destroy
     if @group
-    @group.destroy
-    flash[:success] = 'グループを削除しました。'
+      @group.destroy
+      flash[:success] = 'グループを削除しました。'
     else
       flash[:error] = 'グループが見つかりません。'
-    redirect_to groups_path
     end
+    redirect_to groups_path
   end
 
   private

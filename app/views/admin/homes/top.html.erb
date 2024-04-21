@@ -34,17 +34,17 @@
       </div>
     </div>
   <% end %>
-  <h5>音楽共有の新規投稿</h5>
-  <% @music_posts.each do |music_post| %>
-    <div class="row">
-      <div class="col">
-        <h5><%= link_to music_post.title, admin_music_post_path(music_post.id) %></h5>
-      </div>
-      <div class="col">
-        <h5><%= music_post.body %></h5>
-      </div>
-    </div>
-  <% end %>
+  <!--<h5>音楽共有の新規投稿</h5>-->
+  <%# @music_posts.each do |music_post| %>
+  <!--  <div class="row">-->
+  <!--    <div class="col">-->
+        <%#= link_to music_post.title, admin_music_post_path(music_post.id) %>
+  <!--    </div>-->
+  <!--    <div class="col">-->
+        <%#= music_post.body %>
+  <!--    </div>-->
+  <!--  </div>-->
+  <%# end %>
   <h5>探究室の新規投稿</h5>
   <% @labos.each do |labo| %>
     <div class="row">
