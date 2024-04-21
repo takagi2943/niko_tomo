@@ -11,3 +11,5 @@ Admin.create!(
    email: 'nikotomo@gmail',
    password: 'nikotomo',
 )
+
+# 会員情報
