@@ -71,3 +71,12 @@
     cursor: default; /* カーソルをデフォルトにする */
   }
 
+  // admin側のテーブル替わり
+  .custom-background {
+    background-color: #E0A6A8;
+  }
+
+  // admim側のテーブルストライプ替わり
+  .custom-table-striped:nth-child(odd) {
+    background-color: #F9D9DA;
+  }

@@ -3,6 +3,7 @@ class Admin::GroupsController < ApplicationController
 
   def index
    @groups = Group.all
+   # @groups = current_user.groups.includes(:user)
    @group_page = Group.page(params[:page])
   end
 

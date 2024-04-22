@@ -1,15 +1,41 @@
-<h5>グループ一覧</h5>
-<h5>作成日時</h5>
-<h5>グループ名</h5>
-<h5>紹介内容</h5>
-<h5>グループ主</h5>
+<!--グループ一覧-->
+<div class="container">
+  <div class="row justify-content-start mb-2">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">グループ一覧</h5>
+  </div>
+  <div class="row custom-background">
+    <div class="col-2">
+      <h5>作成日時</h5>
+    </div>
+    <div class="col">
+      <h5>グループ名</h5>
+    </div>
+    <div class="col">
+      <h5>紹介内容</h5>
+    </div>
+    <div class="col">
+      <h5>グループ主</h5>
+    </div>
+  </div>
 
-<% @groups.each do |group| %>
-<h5><%= group.created_at.strftime('%Y/%m/%d %H:%M') %></h5>
-<h5><%= link_to group.name, admin_group_path(group.id) %></h5>
-<h5><%= group.body %></h5>
-<% end %>
+  <% @groups.each do |group| %>
+  <div class="row custom-table-striped">
+    <div class="col-2 text-center">
+      <h5><%= group.created_at.strftime('%Y/%m/%d') %></h5>
+    </div>
+    <div class="col">
+      <h5><%= link_to group.name, admin_group_path(group.id) %></h5>
+    </div>
+    <div class="col">
+      <h5><%= group.body %></h5>
+    </div>
+    <div class="col">
+      <h5><%=  %></h5>
+    </div>
+  </div>
+  <% end %>
 
-<div class="d-flex justify-condivnt-cendivr">
-<%= paginate @group_page %>
+  <div class="d-flex justify-condivnt-cendivr">
+  <%= paginate @group_page %>
+  </div>
 </div>

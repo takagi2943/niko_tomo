@@ -1,15 +1,34 @@
-<h5>探究室のタグコメント一覧</h5>
+<!--探究室一覧-->
+<div class="container">
+  <div class="row justify-content-start mb-2">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">探究室一覧</h5>
+  </div>
+  <div class="row custom-background">
+    <div class="col-2">
+      <h5>日付</h5>
+    </div>
+    <div class="col-4">
+      <h5>タグ</h5>
+    </div>
+    <div class="col">
+      <h5>投稿文</h5>
+    </div>
+  </div>
 
-<h5>日付</h5>
-<h5>タグ</h5>
-<h5>投稿文</h5>
-
-
-<% @labos.each do |labo| %>
-  <h5><%= labo.created_at.strftime('%Y/%m/%d %H:%M') %></h5>
-  <% labo.tags.each do |tag| %>
-    <h5><%= tag.title %></h5>
+  <% @labos.each do |labo| %>
+  <div class="row custom-table-striped">
+    <div class="col-2 text-center">
+      <h5><%= labo.created_at.strftime('%Y/%m/%d') %></h5>
+    </div>
+    <div class="col-4">
+    <% labo.tags.each do |tag| %>
+      <h5><%= tag.title %></h5>
+    <% end %>
+    </div>
+    <div class="col">
+      <h5><%= link_to labo.body, admin_labo_path(labo.id) %></h5>
+    </div>
+  </div>
   <% end %>
-  <h5><%= link_to labo.body, admin_labo_path(labo.id) %></h5>
-<% end %>
-<%#= paginate @labo_pages %>
+  <%#= paginate @labo_pages %>
+</div>

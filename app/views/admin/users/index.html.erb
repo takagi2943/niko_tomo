@@ -1,23 +1,47 @@
-<h5>会員一覧</h5>
-<h5>会員ID</h5>
-<h5>氏名</h5>
-<h5>メールアドレス</h5>
-<h5>ステータス</h5>
+<!--会員一覧-->
+<div class="container">
+  <div class="row justify-content-start mb-2">
+      <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">会員一覧</h5>
+  </div>
+  <div class="row custom-background">
+    <div class="col-2">
+      <h5>会員ID</h5>
+    </div>
+    <div class="col">
+      <h5>氏名</h5>
+    </div>
+    <div class="col">
+      <h5>メールアドレス</h5>
+    </div>
+    <div class="col-2" style="white-space: nowrap;">
+      <h5>ステータス</h5>
+    </div>
+  </div>
 
+    <% @users.each do |user| %>
+    <div class="row custom-table-striped">
+      <div class="col-2 text-center">
+        <h5><%= user.id %></h5>
+      </div>
+      <div class="col">
+        <h5><%= link_to user.nickname, admin_user_path(user.id) %></h5>
+      </div>
+      <div class="col">
+        <h5><%= user.email %></h5>
+      </div>
+      <div class="col-2 text-center">
+        <div>
+          <% if user.user_status == "有効" %>
+          <span class="text-success font-weight-bold"><%= user.user_status%></span>
+          <% else %>
+          <span class="text-danger font-weight-bold"><%= user.user_status %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
 
-
-<% @users.each do |user| %>
-<h5><%= user.id %></h5>
-<h5><%= link_to user.nickname, admin_user_path(user.id) %></h5>
-<h5><%= user.email %></h5>
-<div>
-<% if user.user_status == "有効" %>
-<span class="text-success font-weight-bold"><%= user.user_status%></span>
-<% else %>
-<span class="text-danger font-weight-bold"><%= user.user_status %></span>
-<% end %>
-<% end %>
-
-<div class="d-flex justify-condivnt-cendivr">
-<%= paginate @user_page %>
+  <div class="d-flex justify-condivnt-cendivr">
+    <%#= paginate @user_page %>
+  </div>
 </div>
