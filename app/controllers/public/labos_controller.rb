@@ -29,7 +29,6 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
     # 探究室の投稿を削除
     @labo = Labo.find(params[:id])
     @labo.destroy
-
     redirect_to labos_path
   end
 

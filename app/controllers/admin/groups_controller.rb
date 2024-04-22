@@ -14,6 +14,7 @@ class Admin::GroupsController < ApplicationController
 
   def destroy
    @group = Group.find_by(id: params[:id])
-   redirect_to admin_groups_path
+   @group.destroy
+   redirect_to admin_groups_path, notice: "グループを強制的に削除しました。"
   end
 end
