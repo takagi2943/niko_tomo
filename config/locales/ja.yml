@@ -25,12 +25,31 @@ ja:
         laohongmu: "老紅木"
         heitan: "黒檀"
         other: "その他"
+
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
       last: <i class="fas fa-angle-double-right"></i>
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+
+    errors:
+      messages:
+        blank: "を入力してください"
+      activerecord:
+        attributes:
+          group:
+            name: "グループ名"
+            body: "グループ紹介文"
+
+    user:
+      email: "メールアドレス"
+      encrypted_password: "パスワード"
+      nickname: "ニックネーム"
+    errors:
+      messages:
+        blank: "を入力してください"
+        taken: "はすでに存在します"
 
     errors:
       messages:
