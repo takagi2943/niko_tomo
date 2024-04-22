@@ -1,0 +1,11 @@
+<h5>グループ名</h5>
+<h5><%= @group.name %></h5>
+
+<h5>グループ紹介内容</h5>
+<h5><%= @group.body %></h5>
+
+<h5>グループ参加メンバー</h5>
+<% @users.each do |user| %>
+<h5><%= user.nickname %></h5>
+<% end %>
+<%= link_to "グループを強制解除する", admin_group_path(@group.id), method: :delete, class: "btn btn-danger text-nowrap", data: {confirm: "本当に削除しますか？" }, remote: true %>

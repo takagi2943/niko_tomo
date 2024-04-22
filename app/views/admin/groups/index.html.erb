@@ -1,1 +1,15 @@
-ddfghj
+<h5>グループ一覧</h5>
+<h5>作成日時</h5>
+<h5>グループ名</h5>
+<h5>紹介内容</h5>
+<h5>グループ主</h5>
+
+<% @groups.each do |group| %>
+<h5><%= group.created_at.strftime('%Y/%m/%d %H:%M') %></h5>
+<h5><%= link_to group.name, admin_group_path(group.id) %></h5>
+<h5><%= group.body %></h5>
+<% end %>
+
+<div class="d-flex justify-condivnt-cendivr">
+<%= paginate @group_page %>
+</div>

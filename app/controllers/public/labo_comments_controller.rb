@@ -2,6 +2,7 @@ class Public::LaboCommentsController < ApplicationController
 before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
+    @user = current_user.id
     @labo_comment = LaboComment.new(labo_comment_params)
     @labo_comment.user_id = current_user.id
     @labo_comment.labo_id = params[:labo_id]

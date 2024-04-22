@@ -9,7 +9,7 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
 
 
   def show
-    @labo = Labo.find_by(params[:id])
+    @labo = Labo.find(params[:id])
     @labo_comment = LaboComment.new
   end
 
@@ -29,9 +29,8 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
     # 探究室の投稿を削除
     @labo = Labo.find(params[:id])
     @labo.destroy
-    # 探究室の投稿コメントを削除
-    @labo_comment = LaboComment.find(params[:id])
-    @labo_comment.destroy
+
+    redirect_to labos_path
   end
 
   private

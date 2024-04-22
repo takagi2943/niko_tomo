@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'labo_comments/index'
-    get 'labo_comments/show'
-  end
   # ユーザー側
   # URL /customers/sign_in ...
   devise_for :user,skip: [:passwords], controllers: {
@@ -90,7 +86,7 @@ Rails.application.routes.draw do
     end
     # 探究室コメント
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
-      resources :labo_comments, only: [:index, :destroy]
+      resources :labo_comments, only: [:index, :destroy, :show]
     end
     #resources :labo_comments, only: [:index, :show, :destroy]
     # タグ一覧・作成

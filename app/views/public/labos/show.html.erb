@@ -1,3 +1,4 @@
+<!--探究室の詳細-->
 <%= image_tag @labo.user.get_profile_image %>
 <!--ログインユーザーならば会員の詳細画面に遷移する-->
 <% if current_user && current_user.user_status == "有効" %>
@@ -33,6 +34,6 @@
   <% end %>
   <%= labo_comment.comment %>
   <% if labo_comment.user == current_user %>
-    <%= link_to "削除", labo_labo_comment_path(@labo.id, labo_comment.id), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+    <%= link_to "削除", labo_labo_comment_path(@labo.id, labo_comment.id), method: :delete, class: "btn btn-danger pull-right", remote: true, data: { confirm: "本当に削除しますか？" } %>
   <% end %>
 <% end %>
