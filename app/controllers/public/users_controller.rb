@@ -3,7 +3,6 @@ class Public::UsersController < ApplicationController
    before_action :ensure_not_guest_user, only: [:destroy]
 
   def show
-    # @music_post = Music_post.new
     @user = User.find(params[:id])
     @music_posts = @user.music_posts
     @favorite_niko = @user.nikos.where(is_favorite: true).first

@@ -25,7 +25,7 @@
   <% if admin_signed_in? %>
     <div class="row">
       <div class="col d-flex justify-content-end">
-      <%= link_to admin_users_path, class: "nav-link header-nav-link" do %>
+      <%= link_to admin_users_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-users"></i>
         <span>会員一覧</span>
       <% end %>
@@ -35,17 +35,17 @@
       <!--  <span>グループ</span>-->
       <%# end %>
 
-      <%= link_to admin_labo_comments_index_path, class: "nav-link header-nav-link" do %>
+      <%= link_to admin_labo_comments_index_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-person-chalkboard"></i>
         <span>探究室</span>
       <% end %>
 
-      <%= link_to admin_tags_path, class: "nav-link header-nav-link" do %>
+      <%= link_to admin_tags_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-tags"></i>
         <span>タグ</span>
       <% end %>
 
-      <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link header-nav-link" do %>
+      <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>ログアウト</span>
       <% end %>
@@ -55,9 +55,9 @@
     <div class="row m-1">
       <div class="col offset-7">
         <div class="header-search-box">
-          <div class="form-group d-flex m-0">
-            <%= f.text_field :search, placeholder: "会員検索", class: "form-control" %>
-            <%= f.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+          <div class="form-group d-flex m-0 mx-2">
+            <%= f.text_field :search, placeholder: "会員検索", class: "form-control mt-1" %>
+            <%= f.button :type => "submit", class: "ml-2 btn btn-secondary btn btn-outline-dark" do %>
               <i class="fa-solid fa-magnifying-glass"></i>
             <% end %>
           </div>
@@ -69,27 +69,27 @@
   <% elsif user_signed_in? %>
     <!-- ユーザーがログインしている場合 -->
     <div class="d-flex justify-content-end">
-      <%= link_to user_path(current_user.id), class: "nav-link header-nav-link" do %>
+      <%= link_to user_path(current_user.id), class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-regular fa-address-card"></i>
         <span>マイページ</span>
       <% end %>
 
-      <%= link_to groups_path, class: "nav-link header-nav-link" do %>
+      <%= link_to groups_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-people-roof"></i>
         <span>グループ</span>
       <% end %>
 
-      <%= link_to labos_path, class: "nav-link header-nav-link" do %>
+      <%= link_to labos_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-tags"></i>
         <span>探究室</span>
       <% end %>
 
-      <%= link_to music_posts_path, class: "nav-link header-nav-link" do %>
+      <%= link_to music_posts_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-music"></i>
         <span>音楽共有</span>
       <% end %>
 
-      <%= link_to destroy_user_session_path, method: :delete, class: "nav-link header-nav-link" do %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>ログアウト</span>
       <% end %>
@@ -103,7 +103,7 @@
       <% end %>
       </div>
       <div class="col offset-1">
-        <div class="header-search-box">
+        <div class="header-search-box my-2">
         <%= form_with url: users_path, method: :get, local: true do |form| %>
         <!--検索機能-->
           <div class="form-group d-flex m-0">
@@ -119,22 +119,22 @@
   <% else %>
     <!-- どちらもログインしていない場合 -->
     <div class="d-flex justify-content-end">
-    <%= link_to about_path, class: "nav-link header-nav-link" do %>
+    <%= link_to about_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
       <i class="fa-solid fa-book-open"></i>
       <span>二胡について</span>
     <% end %>
 
-    <%= link_to labos_path, class: "nav-link header-nav-link" do %>
+    <%= link_to labos_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
       <i class="fa-solid fa-tags"></i>
       <span>探究室</span>
     <% end %>
 
-    <%= link_to new_user_registration_path, class: "nav-link header-nav-link" do %>
+    <%= link_to new_user_registration_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
       <i class="fa-solid fa-user-plus"></i>
       <span>新規登録</span>
     <% end %>
 
-    <%= link_to new_user_session_path, class: "nav-link header-nav-link" do %>
+    <%= link_to new_user_session_path, class: "nav-link header-nav-link btn btn-outline-dark mx-1" do %>
       <i class="fa-solid fa-right-to-bracket"></i>
       <span>ログイン</span>
     <% end %>

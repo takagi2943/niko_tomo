@@ -1,6 +1,5 @@
-<div class="container text-center" style="margin-top: 50px;">
-  <h1 style="font-size: 3rem; font-weight: bold; color: #333;">二胡友へようこそ！</h1>
-
+<div class="container">
+  <h1 style="font-size: 3rem; font-weight: bold; color: #333; text-decoration: underline; text-decoration-color: #CD0000;">二胡友へようこそ！</h1>
   <p style="text-align: left; text-center">
     二胡に興味があるけど、よくわからないからこの楽器について詳しく知りたい方も<br>
     二胡愛好家と交流し、励まし合いながら悩みや情報を共有することもできます！<br>
@@ -9,17 +8,28 @@
   </p>
 
   <div class="row">
-    <div class="col-5" style="margin-left: 10px;">
-      <h4><%= link_to "探究室", labos_path %></h4>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <h4 class="text-right mr-5"><%= link_to "探究室", labos_path %></h4>
+        </div>
+        <div class="col">
+          <div class="d-flex align-items-center" style="display:block">
+            <i class="fa-solid fa-left-long"></i>
+            <span style="white-space: nowrap;">　二胡に興味がある方は探究室をクリックすると覗けます</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <% @tags.each do |tag| %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="text-center" style="white-space: nowrap;">
+          <%= link_to tag.title, labos_tag_path(tag.id), class: "btn btn-light mb-2"%>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
-    <div class="col-6" style="text-align: left; margin-left: -50px;">
-      <p>二胡に興味がある方は探究室をクリックすると覗けます</p>
-    </div>
-    <% @tags.each do |tag| %>
-      <%= link_to tag.title, labos_tag_path(tag.id) %>
-      <% end %>
-
   </div>
-
-
 </div>
+

@@ -46,3 +46,28 @@
     color: #ffffff; /* 文字色を白に設定 */
     text-align: center;
   }
+
+  // btn用色変更
+ $theme-colors: (
+
+  "primary": #b3a9c8,
+
+  "secondary": #6d7d90,
+
+  "info": #c9caca,
+
+  "warning": #F0CB0C,
+
+  "danger": #dbac9e,
+
+  "success": #bacdde,
+
+  "outline-dark": #E05C19,
+  );
+
+  .non-link-text {
+    color: inherit; /* リンクと同じ色にする */
+    text-decoration: none; /* 下線をなくす */
+    cursor: default; /* カーソルをデフォルトにする */
+  }
+
