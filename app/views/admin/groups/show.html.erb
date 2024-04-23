@@ -1,11 +1,37 @@
-<h5>グループ名</h5>
-<h5><%= @group.name %></h5>
-
-<h5>グループ紹介内容</h5>
-<h5><%= @group.body %></h5>
-
-<h5>グループ参加メンバー</h5>
-<% @users.each do |user| %>
-<h5><%= user.nickname %></h5>
-<% end %>
-<%= link_to "グループを強制解除する", admin_group_path(@group.id), method: :delete, class: "btn btn-danger text-nowrap", data: {confirm: "本当に削除しますか？" }, remote: true %>
+<div class="container">
+  <div class="row">
+    <h5 style="border-bottom: 2px solid #F9D9DA; color: #000000; font-size: 24px; font-weight: bold;"><%= @group.name %>　の詳細内容</h5>
+  </div>
+  <div class="row">
+    <div class="col text-left my-3">
+      <%= image_tag @group.get_image, size: "200x150", class: "custom-border" %>
+    </div>
+    <div class="col-6 my-2 text-left border custom-border rounded" style="background-color: #F9D9DA;">
+      グループ紹介内容
+      <h5><%= @group.body %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-left ml-2">
+      <h5>グループリーダー</h5>
+    </div>
+    <div class="col d-flex align-items-center border rounded-pill" style="background-color: #F9D9DA;">
+      <h5><%= %></h5>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col text-left ml-2">
+      <h5>グループ参加メンバー</h5>
+    </div>
+    <div class="col d-flex align-items-center border custom-border rounded-pill " style="background-color: #F9D9DA;">
+      <% @users.each do |user| %>
+      <h5><%= user.nickname %></h5>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-left mt-5">
+      <%= link_to "グループを強制解除する", admin_group_path(@group.id), method: :delete, class: "btn btn-danger text-nowrap", data: {confirm: "本当に削除しますか？" }, remote: true %>
+    </div>
+  </div>
+</div>

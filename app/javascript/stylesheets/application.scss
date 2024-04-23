@@ -80,3 +80,8 @@
   .custom-table-striped:nth-child(odd) {
     background-color: #F9D9DA;
   }
+  
+  // admin側の画像をふちで囲んでいる
+  .custom-border {
+    border: 2px solid #F9D9DA;
+  }
