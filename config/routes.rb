@@ -94,7 +94,7 @@ Rails.application.routes.draw do
       delete 'destroy_all', on: :collection
     end
     # 音楽共有
-    resources :music_posts, only: [:index, :show, :edit, :create, :update, :destroy] do
+    resources :music_posts, only: [:index, :show, :destroy] do
       resources :music_post_comments, only:[:index, :destroy]
     end
     #resources :music_post_comments, only: [:index, :show, :destroy]

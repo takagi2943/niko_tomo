@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row text-left ml-1">
     <div>
-      <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">タグ一覧</h5>
-      <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">現在のタグ一覧</h5>
-      <p style="color: #744199; margin: 0; padding: 0;">※タグを押すと編集できるようになります。</p>
+      <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">タグ一覧</h5>
+    <div class="custom-background">
+       <h5>現在のタグ一覧</h5>
+      <p class="mb-1" style="color: #744199; margin: 0; padding: 0;">※タグを押すと編集できるようになります。</p>
+    </div>
       <% @tags.each do |tag| %>
-        <div class="mb-3">
+        <div class="custom-table-striped border border-danger">
           <button class="tag tag-form-<%= tag.id %>" id="<%= tag.id %>"　style="display:block;">
             <%= tag.title%>
           </button>

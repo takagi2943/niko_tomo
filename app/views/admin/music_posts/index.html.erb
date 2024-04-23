@@ -1,0 +1,32 @@
+<!--音楽共有-->
+<div class="container">
+  <div class="row justify-content-start mb-2">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">音楽共有一覧</h5>
+  </div>
+  <div class="row custom-background">
+    <div class="col-2 text-center mt-2">
+      <h5>日付</h5>
+    </div>
+    <div class="col-4 text-center mt-2">
+      <h5>タイトル</h5>
+    </div>
+    <div class="col mt-2 text-left mr-2">
+      <h5>投稿文</h5>
+    </div>
+  </div>
+
+  <% @music_posts.each do |music_post| %>
+  <div class="row custom-table-striped border border-danger">
+    <div class="col-2 text-center mt-2">
+      <h5><%= music_post.created_at.strftime('%Y/%m/%d') %></h5>
+    </div>
+    <div class="col-4 text-center mt-2">
+      <%= link_to music_post.title, admin_music_post_path(music_post.id) %>
+    </div>
+    <div class="col mt-2 text-left mr-2">
+      <%= music_post.body %>
+    </div>
+  </div>
+  <% end %>
+  <%#= paginate @music_posts %>
+</div>

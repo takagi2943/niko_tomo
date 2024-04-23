@@ -1,0 +1,66 @@
+<!--音楽共有の投稿詳細-->
+<div class="container">
+  <div class="row justify-content-start mb-3">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">会員ID:<%= @user.id %> <%= @user.nickname %> さんの音楽共有投稿内容</h5>
+  </div>
+
+  <div class="row custom-background">
+    <div class="col-2"></div>
+    <div class="col-4 text-left mt-2">
+      <h5>タイトル</h5>
+    </div>
+    <div class="col text-left mt-2">
+      <h5>投稿内容</h5>
+    </div>
+  </div>
+
+  <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
+    <div class="col-2 my-3">
+      <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+    </div>
+    <div class="col-4 text-left">
+      <%= @music_post.title %>
+    </div>
+    <div class="col text-left">
+      <%= @music_post.body %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col offset-8 mb-3">
+      <%= link_to "投稿削除", admin_music_post_path(@music_post.id), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？" }, remote: true  %>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-start my-4">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">投稿のコメント</h5>
+  </div>
+  <div class="row mt-2 custom-background">
+    <div class="col-2"></div>
+    <div class="col text-center mt-1">
+      <h5>コメント</h5>
+    </div>
+    <div class="col-2 mt-1" style="display: block;">
+      <h5>会員</h5>
+    </div>
+  </div>
+
+  <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
+  <% @music_post_comments.each do |music_post_comment| %>
+    <div class="row">
+      <div class="col-2 text-left ml-2 d-flex align-items-center">
+        <%= link_to "コメント削除", admin_music_post_music_post_comment_path(music_post_comment.music_post, music_post_comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？" }, remote: true %>
+      </div>
+      <div class="col text-left d-flex align-items-center">
+        <%= music_post_comment.comment %>
+      </div>
+      <div class="col-2 text-right d-flex align-items-center mr-2 my-3">
+        <%= image_tag music_post_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
+        <div>
+          <%= link_to music_post_comment.user.nickname, admin_user_path(music_post_comment.user) %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
