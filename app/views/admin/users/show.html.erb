@@ -1,31 +1,77 @@
-<h5><%= @user.nickname %>さんの会員情報詳細</h5>
 <%= render "layouts/error_messages", obj: @user %>
+<div class="container">
+  <div class="row">
+    <h5 style="border-bottom: 2px solid #F9D9DA; color: #000000; font-size: 24px; font-weight: bold;"><%= @user.nickname %>さんの会員情報詳細</h5>
+  </div>
 
-<h5><%= image_tag @user.get_profile_image %></h5>
+  <div class="row text-left my-3">
+      <%= image_tag @user.get_profile_image, size: "200x150", class: "custom-border" %>
+    <div class="col offset-3">
+      <div class="row">
+        <div class="col">
+          <h5>会員ＩＤ</h5>
+        </div>
+        <div class="col">
+          <h5><%= @user.id %></h5>
+        </div>
+      </div>
 
-<h5>会員ＩＤ</h5>
-<h5><%= @user.id %></h5>
+      <div class="row">
+        <div class="col">
+          <h5>ニックネーム</h5>
+        </div>
+        <div class="col">
+          <h5><%= @user.nickname %></h5>
+        </div>
+      </div>
 
-<h5>ニックネーム</h5>
-<h5><%= @user.nickname %></h5>
+      <div class="row">
+        <div class="col">
+          <h5>生年月日</h5>
+        </div>
+        <div class="col">
+          <h5><%= @user.birthdate %></h5>
+        </div>
+      </div>
 
-<h5>生年月日</h5>
-<h5><%= @user.birthdate %></h5>
+      <div class="row">
+        <div class="col">
+          <h5>性別</h5>
+        </div>
+        <div class="col">
+          <h5><%= @user.gender %></h5>
+        </div>
+      </div>
 
-<h5>性別</h5>
-<h5><%= @user.gender %></h5>
+      <div class="row">
+        <div class="col">
+          <h5>自己紹介文</h5>
+        </div>
+        <div class="col">
+          <h5><%= @user.introduction %></h5>
+        </div>
+      </div>
 
-<h5>メールアドレス</h5>
-<h5><%= @user.email %></h5>
-
-<h5>自己紹介文</h5>
-<h5><%= @user.introduction %></h5>
-
-<h5>会員ステータス</h5>
-<% if @user.is_active? %>
-<span class='text-success'>有効</span>
-<% else %>
-<span class='text-secondary'>退会</span>
-<% end %>
-<%= link_to '一覧に戻る', admin_users_path, class: "btn btn-warning" %>
-<%= link_to '編集', edit_admin_user_path(@user.id), class: "btn btn-info" %>
+      <div class="row">
+        <div class="col">
+          <h5>会員ステータス</h5>
+        </div>
+        <div class="col">
+          <% if @user.is_active? %>
+            <span class='text-success'>有効</span>
+          <% else %>
+            <span class='text-secondary'>退会</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to '一覧に戻る', admin_users_path, class: "btn btn-warning" %>
+    </div>
+    <div class="col">
+      <%= link_to '編集', edit_admin_user_path(@user.id), class: "btn btn-info" %>
+    </div>
+  </div>
+</div>
