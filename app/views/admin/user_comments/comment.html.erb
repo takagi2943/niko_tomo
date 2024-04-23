@@ -1,53 +1,89 @@
-<!--各会員の投稿詳細画面-->
-<h5　class="text-black" style="text-decoration: underline; text-decoration-color: #795548;"><%= @user.nickname %>さんの投稿詳細一覧</h5>
-<h4>表示切替</h4>
-<div>
-  <h4>探究室</h4>
-  <!-- ボタン -->
-  <!--<div class="col-sm-10 px-sm-0 text-right mb-2">-->
-  <!--  <button id="toggle-form"><i class="fas fa-plus"></i></button>-->
+<!--会員の投稿詳細画面-->
+<div class="container">
+  <div class="row">
+    <div class="col text-left">
+      <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @user.nickname %>さんの投稿詳細一覧</h5>
+    </div>
   </div>
-</div>
-<div>
-  <h4>音楽共有投稿</h4>
-  <!--<div class="col-sm-10 px-sm-0 text-right mb-2">-->
-  <!--  <button class="explore-room"><i class="fas fa-plus"></i></button>-->
-  </div>
-</div>
-<!--ここはできたら表示させる-->
-<!--<h4>グループ投稿</h4>-->
-<% if @user.labo_comments.any? %>
-<div class="explore-room-content" style="desplay: none;">
-<h5>探究室投稿</h5>
-<h5>タグ</h5>
-<h5>本文</h5>
-<h5>投稿日時</h5>
-  <% @labos.each do |labo| %>
-    <%= form_with model: labo, url: comments_admin_user_path(labo.id, @user.id), local: true do |f| %>
-      <%#= f.check_box :body %>
-        <h5><%= labo.body %></h5>
-      <h5><%= labo.comments %></h5>
-      <h5><%= link_to user.created_at.strftime('%Y/%m/%d %H:%M'), admin_user_comments_path(labo.id, @user.id) %></h5>
-    <% end %>
-    <%= link_to "削除", admin_user_comments_path(labo.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check", remote: true %>
-  <% end %>
-  </div>
-<% end %>
 
-<% if @music_posts.any? %>
-  <% @music_posts.each do |music_post| %>
-    <h5>音楽共有投稿</h5>
-    <h5>タイトル</h5>
-    <h5>投稿文</h5>
-    <h5>投稿日時</h5>
-    <%= form_with model: music_post, url: admin_user_comments_path(music_post.id, @user.id), local: true do |f| %>
-    <%#= f.check_box :title %>
-      <h5><%= music_post.body %></h5>
-      <h5><%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></h5>
-    <% end %>
-    <h5><%= link_to "投稿を削除", admin_user_comments_path(music_post.id, @user.id), method: :delete, class: "btn btn-danger fa-solid fa-square-check" %></h5>
+  <!--音楽共有投稿-->
+  <% if @music_posts.any? %>
+    <div class="row my-2">
+      <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">音楽共有投稿</h5>
+    </div>
+
+    <div class="row custom-background">
+      <div class="col-3">
+        <h5>タイトル</h5>
+      </div>
+      <div class="col text-left mr-2">
+        <h5>投稿文</h5>
+      </div>
+      <div class="col-2 text-left mr-2">
+        <h5>投稿日時</h5>
+      </div>
+      <div class="col-2 text-left mr-2"></div>
+    </div>
+
+    <% @music_posts.each do |music_post| %>
+    <div class="row custom-table-striped border border-danger">
+      <div class="col-3 text-center mt-2">
+        <%= link_to music_post.title, admin_music_post_path(music_post.id) %>
+      </div>
+      <div class="col text-left mt-2">
+        <h5><%= music_post.body %></h5>
+      </div>
+      <div class="col-2 mt-2 text-left mr-2">
+        <h5><%= music_post.created_at.strftime('%Y/%m/%d') %></h5>
+      </div>
+      <div class="col-2 mt-2 text-left mr-2">
+        <h5><%= link_to "投稿を削除", admin_music_post_path(music_post.id), method: :delete, class: "btn btn-danger" %></h5>
+      </div>
+    </div>
+      <% end %>
   <% end %>
-<% end %>
+
+  <!--探究室投稿-->
+  <% if @labos.any? %>
+    <div class="row mt-3">
+      <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">探究室投稿</h5>
+    </div>
+
+    <div class="row custom-background">
+      <div class="col-3">
+        <h5>タグ</h5>
+      </div>
+      <div class="col text-left mr-2">
+        <h5>本文</h5>
+      </div>
+      <div class="col-2 text-left mr-2">
+        <h5>投稿日時</h5>
+      </div>
+      <div class="col-2 text-left mr-2"></div>
+    </div>
+
+    <% @labos.each do |labo| %>
+    <div class="row custom-table-striped border border-danger">
+      <div class="col-3 text-center mt-2">
+      <%#= f.check_box :body %>
+      <% labo.tags.each do |tag| %>
+        <%= tag.title %>
+      <% end %>
+      </div>
+      <div class="col text-left mt-2">
+        <h5><%= labo.body %></h5>
+      </div>
+      <div class="col-2 mt-2 text-left mr-2">
+        <h5><%= link_to labo.created_at.strftime('%Y/%m/%d'), admin_labo_path(labo.id) %></h5>
+      </div>
+      <div class="col-2 mt-2 text-left mr-2">
+        <%= link_to "投稿を削除", admin_labo_path(labo.id), method: :delete, class: "btn btn-danger", remote: true %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
 
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <!--<script>-->

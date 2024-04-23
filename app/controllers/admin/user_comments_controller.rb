@@ -3,9 +3,11 @@ class Admin::UserCommentsController < ApplicationController
 
   # 会員の投稿した一覧取得
   def comment
-    @labos = Labo.all
-    @music_posts = MusicPost.all
+    # @labo = Labo.find(params[:id])
+    # @music_post = MusicPost.find(params[:id])
     @user = User.find(params[:user_id])
+    @labos = @user.labos.includes(:tags) # 中間テーブルを経由して関連するタグを含める
+    @music_posts = @user.music_posts
   end
 
   # データの保存

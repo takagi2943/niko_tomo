@@ -8,7 +8,9 @@
     </div>
     <div class="col-6 my-2 text-left border custom-border rounded" style="background-color: #F9D9DA;">
       グループ紹介内容
-      <h5><%= @group.body %></h5>
+      <div>
+        <%= @group.body %>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -16,7 +18,7 @@
       <h5>グループリーダー</h5>
     </div>
     <div class="col d-flex align-items-center border rounded-pill" style="background-color: #F9D9DA;">
-      <h5><%= %></h5>
+      <h5><%= @group.user.nickname %></h5>
     </div>
   </div>
   <div class="row my-3">
