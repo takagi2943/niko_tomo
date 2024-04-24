@@ -4,39 +4,39 @@
       <div class="col">
         <div class="col">
           <div class="row">
-            <div class="col text-left">
+            <div class="col text-left align-bottom">
               <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">サイト利用者数</h5>
             </div>
-            <div class="col text-left">
-              <h5>計 :<%= @total_users %>人</h5>
+            <div class="col text-left align-bottom">
+              <h5  style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_users %>人</h5>
             </div>
           </div>
 
           <div class="row">
-            <div class="col text-left">
+            <div class="col text-left align-bottom">
               <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">登録している人</h5>
             </div>
-            <div class="col text-left">
-              <h5>計 :<%= @total_active_users %>人</h5>
+            <div class="col text-left align-bottom">
+              <h5 style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_active_users %>人</h5>
             </div>
           </div>
           <div class="row">
-            <div class="col text-left">
+            <div class="col text-left align-bottom">
               <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">退会した人</h5>
             </div>
-            <div class="col text-left">
-              <h5>計 :<%= @total_inactive_users %>人</h5>
+            <div class="col text-left align-bottom">
+              <h5 style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_inactive_users %>人</h5>
             </div>
           </div>
 
           <div class="row mt-3 custom-background">
-            <div class="col text-left">
+            <div class="col mt-2 text-left align-bottom">
               <h5>新規グループ名</h5>
             </div>
           </div>
           <% @groups.each do |group| %>
           <div class="row custom-table-striped border border-danger">
-            <div class="col text-left">
+            <div class="col text-left my-2">
               <h5><%= link_to group.name, admin_group_path(group.id) %></h5>
             </div>
             <div class="col text-left">
@@ -45,28 +45,28 @@
           </div>
           <% end %>
           <div class="row mt-4 custom-background">
-            <div class="col text-left">
+            <div class="col mt-2 align-bottom text-left">
               <h5>音楽共有の新規投稿</h5>
             </div>
           </div>
           <% @music_posts.each do |music_post| %>
           <div class="row custom-table-striped border border-danger">
-            <div class="col text-left">
+            <div class="col my-2 text-left align-middle">
               <%= link_to music_post.title, admin_music_post_path(music_post.id) %>
             </div>
-            <div class="col text-left">
+            <div class="col my-2 text-left">
               <%= music_post.body %>
             </div>
           </div>
           <% end %>
           <div class="row mt-4 custom-background">
-            <div class="col text-left">
+            <div class="col mt-2 text-left">
               <h5>探究室の新規投稿</h5>
             </div>
           </div>
           <% @labos.each do |labo| %>
             <div class="row custom-table-striped border border-danger">
-              <div class="col text-left">
+              <div class="col text-left my-2">
                 <h5><%= link_to labo.body, admin_labo_path(labo.id) %></h5>
               </div>
             </div>
