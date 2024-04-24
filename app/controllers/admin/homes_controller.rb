@@ -4,7 +4,7 @@ class Admin::HomesController < ApplicationController
   def top
     @users = User.all
     @user_name = User.order('id DESC').limit(4)
-    @groups = Group.all
+    @groups = Group.order('id DESC').limit(4)
     @group_name = Group.order('id DESC').limit(4)
     @music_posts = MusicPost.all
     @music_post_name = MusicPost.order('id DESC').limit(4)

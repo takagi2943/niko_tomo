@@ -5,9 +5,11 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @music_posts = @user.music_posts
+    # @music_post = current_user.music_post_comments.new(music_post: music_post)
     @favorite_niko = @user.nikos.where(is_favorite: true).first
   end
 
+  # user検索用
   def index
     if params[:search]
       @users = User.where('nickname LIKE ?', "%#{params[:search]}%")
@@ -63,6 +65,6 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :introduction)
+    params.require(:user).permit(:nickname, :introduction, :profile_image)
   end
 end
