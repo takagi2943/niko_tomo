@@ -6,7 +6,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @music_posts = @user.music_posts
     @favorite_niko = @user.nikos.where(is_favorite: true).first
-    #byebug
   end
 
   def index
@@ -38,12 +37,12 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def followings
     @user = User.find(params[:id])
     @users = @user.followings
   end
-  
+
   def followers
     @user = User.find(params[:id])
     @users = @user.followers

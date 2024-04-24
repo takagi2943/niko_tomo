@@ -8,60 +8,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class="row">
-        <!--投稿タイトル表示-->
-        <div class="col text-left">
-          <%= link_to @music_post.title, @music_post %>
-        </div>
-        <div class="col-1">
-          <!--お気に入りボタン表示-->
-          <div id="favorite_btn_<%= @music_post.id %>">
-            <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: @music_post } %>
-          </div>
-        </div>
-        <div class="col-3">
-          <!--コメント数を表示-->
-          <div id="comment_counter">
-            <%= render partial: "public/music_post_comments/counter", locals: { music_post: @music_post } %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col text-left">
-        <!--音楽共有の投稿内容表示-->
-          <%= @music_post.body %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <!--画像-->
-          <%= image_tag @music_post.get_music_post_image, size:'300x300' %>
-        </div>
-        <div class="col-lg-6 d-flex flex-column">
-          <!--プロフィール画像とニックネーム表示-->
-          <%= link_to(@music_post.user) do %>
-            <div>
-              <%= image_tag @music_post.user.get_profile_image, class: "rounded-circle", size:"50x50" %>
-            </div>
-            <%= @music_post.user.nickname %>
-          <% end %>
-          <br><br>
-          <% if @music_post.user == current_user %>
-          <div class="col-lg-2">
-            <%= link_to '編集', edit_music_post_path(@music_post.id), class: "btn btn-sm btn-success", style: "width: 100px;" %>
-            <%= link_to '削除', @music_post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@music_post.id}", style: "width: 100px;"%>
-          </div>
-          <% end %>
-        </div>
-      </div>
-      <br><br>
-      <div class="row">
-        <%= render "public/music_post_comments/form", music_post: @music_post, music_post_comment: @music_post_comment %>
-      </div>
-      <br><br>
-      <div class="row">
-        <div class="col-lg-6 music_post-comments-index" id="comment_index">
-          <%= render "public/music_post_comments/index", music_post: @music_post %>
-        </div>
+        <%= render 'show', music_post: @music_post %>
       </div>
     </div><!--col-md-8 offset-md-1 end-->
   </div><!--row end-->

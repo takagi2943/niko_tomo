@@ -1,16 +1,67 @@
 <!--登録した画像表示-->
-<div><%= image_tag user.get_profile_image, size: '100x100' %></div>
-<!--ニックネーム-->
-<h6>ニックネーム</h6>
-<h4 style="color: #F01FC3; font-weight: bold; text-decoration: underline;"><%= user.nickname %></h4>
-<!--自己紹介文表示-->
-<div><%= user.introduction %></div>
+<div class="col">
 
+  <div class="row">
+    <div class="col text-center">
+      <%= image_tag user.get_profile_image, size: '150x150' %>
+    </div>
+  </div>
 
-<!--各一覧を押下すると表示される-->
+  <div class="row ml-2 my-2">
+    <h6>ニックネーム</h6>
+  </div>
 
-<% if current_user %>
-  <h5>フォロー: <%= link_to current_user.followings.size, followings_user_path(current_user) %></h5>
-  <h5>フォロワー: <%= link_to current_user.followers.size, followers_user_path(current_user) %></h5>
-  <!--<h5>いいね <%#= link_to "#{user.music_post_favorites.si}", user_music_post_favorites_path(user) %></h5>-->
-<% end %>
+  <div class="row">
+    <div class="col text-center">
+      <!--ニックネーム-->
+      <h4 style="color: #F01FC3; font-weight: bold; text-decoration: underline;"><%= link_to user.nickname, user_path(user.id) %></h4>
+    </div>
+  </div>
+
+  <div class="row ml-2 my-3">
+    <div class="col text-left">
+      <!--自己紹介文表示-->
+      <%= user.introduction %>
+    </div>
+  </div>
+
+  <% if current_user %>
+  <div class="row my-2">
+    <div class="col text-left">
+      <h5>フォロー:　</h5>
+    </div>
+    <div class="col text-center">
+      <h5><%= link_to current_user.followings.size, followings_user_path(current_user) %></h5>
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col text-left">
+      <h5>フォロワー:　</h5>
+    </div>
+    <div class="col text-center">
+      <h5><%= link_to current_user.followers.size, followers_user_path(current_user) %></h5>
+    </div>
+  </div>
+  <% end %>
+
+  <!--<div class="row">-->
+  <!--  <div class="col">-->
+      <!--<h5>いいね <%#= link_to "#{user.music_post_favorites.si}", user_music_post_favorites_path(user) %></h5>-->
+  <!--  </div>-->
+  <!--</div>-->
+
+  <div class="row">
+    <div class="col">
+      <!--current_user が user と異なる場合にはフォロー/フォロワー関連のボタンを表示-->
+      <% if current_user != user %>
+        <%= render "public/relationships/btn", user: user %>
+      <% else %>
+      <!--同じ場合にはユーザーの編集リンクを表示-->
+        <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

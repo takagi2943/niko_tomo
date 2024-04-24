@@ -1,42 +1,95 @@
-<div class='container px-5 px-sm-0'>
+<div class='container-fluid'>
   <div class='row'>
-    <div class='col-md-3'>
-      <%= render 'info', user: @user %>
-        <div class='row'>
-        <!--current_user が user と異なる場合にはフォロー/フォロワー関連のボタンを表示-->
-        <% if current_user != @user %>
-          <td><%= render "public/relationships/btn", user: @user %></td>
-        <% else %>
-        <!--同じ場合にはユーザーの編集リンクを表示-->
-          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %>
-        <% end %>
+    <div class="col-3">
+
+      <div class='row'>
+        <%= render 'info', user: @user %>
       </div>
-        <!--二胡の情報を表示させる-->
+
+      <!--二胡の情報を表示させる-->
       <% if @favorite_niko.present? %>
-        <h4>My二胡</h4>
-        <h4><%= image_tag @favorite_niko.get_niko_image, size: '100x100' %></h4>
-        <h6 class="text-left mt-1">名前</h6>
-        <h4 class="text-center"> <%= @favorite_niko.name %></h4>
-        <h6 class="text-left">使用材木</h6>
-        <h4 class="text-center">・<%= @favorite_niko.tree_type_i18n %></h4>
-        <h6 class="text-left mt-1">特徴</h6>
-        <h5 class="text-left"><%= @favorite_niko.feature %></h5>
+      <div class="row">
+        <h4 class="my-3">My二胡</h4>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <%= image_tag @favorite_niko.get_niko_image, size: '100x100' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h6 class="text-left mt-1">名前</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h4 class="text-center"> <%= @favorite_niko.name %></h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h6 class="text-left">使用材木</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h4 class="text-center"><%= @favorite_niko.tree_type_i18n %></h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h6 class="text-left mt-1">特徴</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5 class="text-left"><%= @favorite_niko.feature %></h5>
+        </div>
+      </div>
+
       <% else %>
         <!--二胡の情報が無かったら-->
-        <h2 class="mt-3">新規投稿</h2>
-        <%= render 'public/music_posts/form', music_post: @music_post || MusicPost.new %>
+      <div class="row mt-3 mx-2">
+        <h2 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">新規投稿</h2>
+      </div>
+
+      <!--音楽共有の投稿フォーム-->
+      <div class="row">
+        <div class="col">
+          <%= render 'public/music_posts/form', music_post: @music_post || MusicPost.new %>
+        </div>
+      </div>
       <% end %>
-    </div><!--col-md end-->
-    <div class='col-md-8 offset-md-1'>
+    </div>
+
+    <div class="col offset">
       <!--二胡の投稿があったならば投稿ファームを表示させる-->
       <% if @favorite_niko.present? %>
-        <h6 class="mt-3">新規投稿</h6>
-        <%= render 'show', music_post: @music_post || MusicPost.new %>
+      <div class="row">
+        <div class="col">
+          <h6 class="mt-3">新規投稿</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <%= render 'show', music_post: @music_post || MusicPost.new %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <%= render 'public/music_posts/show', music_post: @music_post, music_post_comment: @music_post_comment %>
+        </div>
+      </div>
       <% end %>
-      <br><br>
-      <div><%= render 'public/music_posts/index',music_posts: @music_posts %></div>
     </div>
-  </div><!--row end-->
-</div><!--container-->
+  </div>
+</div>
