@@ -47,7 +47,7 @@
 
   <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
   <% @labo_comments.each do |labo_comment| %>
-    <div class="col-12  custom-table-striped border border-danger">
+    <div class="col-12 custom-table-striped border border-danger">
       <div class="row my-3">
         <div class="col-2">
           <%= link_to "コメント削除", admin_labo_labo_comment_path(labo_comment.labo, labo_comment), method: :delete, class: "btn btn-danger", style: "white-space: nowrap;" %>

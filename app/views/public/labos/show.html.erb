@@ -1,39 +1,96 @@
 <!--探究室の詳細-->
-<%= image_tag @labo.user.get_profile_image %>
-<!--ログインユーザーならば会員の詳細画面に遷移する-->
-<% if current_user && current_user.user_status == "有効" %>
-  <%= link_to @labo.user.nickname, user_path( @labo.user) %>
-<% else%>
-<!--非ログインならば名前がリンクにならない-->
-  <%= @labo.user.nickname %>
-<% end %>
-<%= link_to @labo.body, labo_path(@labo) %>
+<div class="container">
+  <div class="row mb-3">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @labo.user.nickname %> さんの探究室投稿</h5>
+  </div>
 
-<% if @labo.user == current_user %>
-  <%= link_to "削除", labo_path(@labo), method: :delete, "date-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger', remote: true%>
-<% end %>
+  <div class="row">
+    <div class="col text-left">
+      <%= image_tag @labo.user.get_profile_image, class: "rounded-circle", size: "90x90" %>
+    </div>
+    <div class="col mt-2 text-left d-flex align-items-conter">
+      <%= link_to @labo.body, labo_path(@labo) %>
+    </div>
+    <div class="col text-right">
+      <% if @labo.user == current_user %>
+        <%= link_to "削除", labo_path(@labo), method: :delete, "date-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger', remote: true%>
+      <% end %>
+    </div>
+  </div>
 
-<%= form_with model: [@labo, @labo_comment] do |f| %>
-  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: 'form-control', cols: "50", id: "comment_textarea" %>
-  <p>※&emsp;犯罪に巻き込まれるような投稿はお控えください。</p>
-  <h6 class="text-danger">※不適切な投稿は予告なく削除されます。<br>ご理解ください。</h6>
-  <%= f.submit "送信", class: "btn btn-success" %>
-<% end %>
+  <div class="row">
+    <div class="col ml-3 text-left">
+      <!--ログインユーザーならば会員の詳細画面に遷移する-->
+      <% if current_user && current_user.user_status == "有効" %>
+        <%= link_to @labo.user.nickname, user_path( @labo.user) %>
+      <% else%>
+      <!--非ログインならば名前がリンクにならない-->
+        <%= @labo.user.nickname %>
+      <% end %>
+    </div>
+  </div>
 
-<!--探究室の投稿コメントが表示される-->
-<% @labo.labo_comments.each do |labo_comment| %>
-  <% if current_user && current_user.user_status == "有効" %>
-    <%= link_to user_path(labo_comment.user) do %>
-      <%= image_tag labo_comment.user.get_profile_image, class: "rounded-circle", size: "100x100"%>
-      <%= labo_comment.user.nickname %>
-    <% end %>
-  <% else%>
-  <!--非ログインならば名前がリンクにならない-->
-    <%= image_tag labo_comment.user.get_profile_image, class: "rounded-circle", size: "100x100"%>
-    <%= labo.user.nickname %>
+  <%= form_with model: [@labo, @labo_comment] do |f| %>
+  <div class="row my-4">
+    <div class="col-8 align-self-end">
+      <div class="form-group text-center">
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: 'form-control', cols: "50", id: "comment_textarea" %>
+      </div>
+    </div>
+    <div class="col-2 mb-3 align-self-end">
+      <%= f.submit "送信", class: "btn btn-success" %>
+    </div>
+  </div>
   <% end %>
-  <%= labo_comment.comment %>
-  <% if labo_comment.user == current_user %>
-    <%= link_to "削除", labo_labo_comment_path(@labo.id, labo_comment.id), method: :delete, class: "btn btn-danger pull-right", remote: true, data: { confirm: "本当に削除しますか？" } %>
+
+  <div class="row">
+    <div class="col text-left mb-1">
+      <h6 class="text-danger">※犯罪に巻き込まれるような投稿はお控えください。</h6>
+      <h6 class="text-danger">※不適切な投稿は予告なく削除されます。理解ください。</h6>
+    </div>
+  </div>
+
+  <div class="row mt-3 custom-background">
+    <div class="col-2"></div>
+    <div class="col text-left mt-3">
+      <h5>回答コメント</h5>
+    </div>
+    <div class="col-1 mt-3">
+      <h5>回答者</h5>
+    </div>
+  </div>
+
+  <!--探究室の投稿コメントが表示される-->
+  <% @labo.labo_comments.each do |labo_comment| %>
+  <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
+    <div class="col">
+      <div class="row">
+        <div class="col-2 text-left align-self-center mt-2">
+        <% if labo_comment.user == current_user %>
+          <%= link_to "削除", labo_labo_comment_path(@labo.id, labo_comment.id), method: :delete, class: "btn btn-danger pull-right", remote: true, data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
+        </div>
+        <div class="col text-left align-self-center mt-2">
+          <%= labo_comment.comment %>
+        </div>
+        <div class="col-2 my-2 text-right align-self-center mt-2">
+          <%= image_tag labo_comment.user.get_profile_image, class: "rounded-circle", size: "50x50"%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-right">
+        <% if current_user && current_user.user_status == "有効" %>
+          <%= link_to user_path(labo_comment.user) do %>
+            <%= labo_comment.user.nickname %>
+          <% end %>
+        <% else%>
+        <!--非ログインならば名前がリンクにならない-->
+          <%= labo.user.nickname %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
   <% end %>
-<% end %>
+</div>

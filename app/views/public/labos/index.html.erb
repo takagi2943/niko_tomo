@@ -1,21 +1,62 @@
-<h5>探究室の扉</h5>
-<% if current_user && current_user.user_status == "有効" %>
-<h6>管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
-<% end %>
+<!--探究室-->
+<div class="container-fluid">
+  <div class="row mx-3">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">探究室の扉</h5>
+  </div>
 
-<%= render 'public/labos/labo', tags: @tags, labo: @labo %>
-
-    <% @labos.each do |labo| %>
-      <% labo.tags.each do |tag| %>
-        <%= tag.title %>
-      <% end %>
-      <%= image_tag labo.user.get_profile_image %>
-      <!--ログインユーザーならば会員の詳細画面に遷移する-->
-      <% if current_user && current_user.user_status == "有効" %>
-        <%= link_to labo.user.nickname, user_path(labo.user.id), class: "user_#{labo.user.id}" %>
-      <% else%>
-      <!--非ログインならば名前がリンクにならない-->
-        <%= labo.user.nickname %>
-      <% end %>
-      <%= link_to labo.body, labo_path(labo.id), class: "labo_#{labo.id}" %>
+  <!--非ログインには表示させない-->
+  <div class="row my-2 mx-3">
+    <% if current_user && current_user.user_status == "有効" %>
+    <h6 style="white-space: nowrap; color: #E5391E;">※管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
     <% end %>
+  </div>
+
+  <!--探究室のタグ選択・ログイン会員のみ投稿フォーム　-->
+  <div class="row mx-3">
+    <div class="col-4 text-left">
+      <%= render 'public/labos/labo', tags: @tags, labo: @labo %>
+    </div>
+
+    <!--探究室投稿一覧-->
+    <div class="col mx-3 offset">
+      <% @labos.each do |labo| %>
+        <div class="row d-flex align-items-center custom-background">
+          <% labo.tags.each do |tag| %>
+          <div class="col-2 mr-2 text-left", style= "white-space: nowrap;">
+             ・<%= tag.title %>
+          </div>
+          <% end %>
+        </div>
+
+        <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
+          <div class="col">
+            <div class="row">
+              <div class="col text-left my-2">
+               <%= link_to labo.body, labo_path(labo.id) %>
+              </div>
+              <div class="col-lg-2 col-sm-1 mt-2 text-right">
+                <%= image_tag labo.user.get_profile_image, class: "rounded-circle", style: "max-width: 50px; height: auto;"%>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col text-right">
+              <!--ログインユーザーならば会員の詳細画面に遷移する-->
+              <% if current_user && current_user.user_status == "有効" %>
+                <%= link_to labo.user.nickname, user_path(labo.user.id) %>
+              <% else%>
+              <!--非ログインならば名前がリンクにならない-->
+                <%= labo.user.nickname %>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+

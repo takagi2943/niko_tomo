@@ -1,18 +1,40 @@
 <!--管理者側が登録したタグがすべて表示される-->
-<h5>タグ</h5>
+<div calss="row my-3">
+  <h5 style="font-size: 24px; font-weight: bold;">タグ</h5>
+</div>
+
 <% tags.each do |tag| %>
-   <%= link_to tag.title, labos_tag_path(tag.id) %>
+<div class="row my-2">
+ <%= link_to tag.title, labos_tag_path(tag.id) %>
+</div>
 <% end %>
 
 
 <!--ログインユーザーならば投稿フォームが表示-->
 <% if current_user && current_user.user_status == "有効" %>
-  <h5>投稿フォーム</h5>
+  <div class="row my-3">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">投稿フォーム</h5>
+  </div>
+
   <%= form_with model: labo, local: true do |f| %>
+  <div class="row">
+    <div class="col">
     <%= f.collection_check_boxes(:tag_ids, tags, :id, :title) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <div class="row">
+        <%= b.label { b.check_box + b.text } %>
+      </div>
     <% end %>
-    <%= f.text_field :body, class: 'form-control title', placeholder: "投稿文" %>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <%= f.text_area :body, class: 'form-control title w-50', placeholder: "投稿文" %>
+  </div>
+
+  <div class="row my-3">
+    <div class="col text-center">
     <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>
+    </div>
+  </div>
   <% end %>
 <% end %>
