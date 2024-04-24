@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
-    <h5 style="border-bottom: 2px solid #F9D9DA; color: #000000; font-size: 24px; font-weight: bold;"><%= @user.nickname %>さんの会員情報編集</h5>
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @user.nickname %>さんの会員情報編集</h5>
   </div>
 
   <div class="row text-left my-3 ml-3">
     <%= image_tag @user.get_profile_image, size: "200x150", class: "custom-border" %>
-
     <div class="col offset-3">
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
-      <div class="row my-2">
+      <div class="row my-3">
+        <div class="col-3">
+          <%= link_to "詳細へ戻る", admin_user_path(@user.id), class: "btn btn-warning", style: "background-color: #E88A3A;" %>
+        </div>
         <div class="col text-right">
          <%= link_to "投稿の詳細", admin_user_comments_path(@user.id), class: "btn btn-warning", style: "background-color: #F5765F;" %>
        </div>
@@ -90,7 +92,7 @@
       </div>
 
       <div class="row my-2">
-        <div class="col text-left">
+        <div class="col text-right">
           <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-2 mx-5" %>
         </div>
       </div>

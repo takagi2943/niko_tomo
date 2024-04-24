@@ -17,7 +17,7 @@
     <div class="col">
       <div class="row">
         <div class="col offset-4">
-        <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">新しくタグを作成する</h5>
+        <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548; font-size: 24px; font-weight: bold;">新しくタグを作成する</h5>
         <%= render "layouts/error_messages", obj: @tag %>
         <%= form_with model: @tag, url: admin_tags_path, local: true do |f| %>
           <div class="form-group">
@@ -34,7 +34,7 @@
       <div id="form-tag-edit-container" class="form-container" style="display: none;">
         <div class="row">
           <div class="col offset-4">
-            <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548;">タグ編集</h5>
+            <h5 class="text-black" style="text-decoration: underline; text-decoration-color: #795548; font-size: 24px; font-weight: bold;">タグ編集</h5>
             <% @tags.each do |tag| %>
               <div class="form-<%= tag.id %>" style="display: none;">
                 <%= form_with(model: tag, url: admin_tag_path(tag), method: :patch, local: true) do |f| %>
