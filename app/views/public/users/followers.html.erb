@@ -7,10 +7,6 @@
   <% if @users.exists? %>
     <%= render 'public/users/index', users: @users %>
   <% else %>
-  <% if current_user != @user %>
-    
-  <% end %>
     <p>ユーザーはいません</p>
   <% end %>
-
 </div>

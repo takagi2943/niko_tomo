@@ -18,7 +18,7 @@
   <% @music_posts.each do |music_post| %>
   <div class="row custom-table-striped border border-danger">
     <div class="col-2 text-center mt-2">
-      <h5><%= music_post.created_at.strftime('%Y/%m/%d') %></h5>
+      <h5><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></h5>
     </div>
     <div class="col-4 text-center mt-2">
       <%= link_to music_post.title, admin_music_post_path(music_post.id) %>

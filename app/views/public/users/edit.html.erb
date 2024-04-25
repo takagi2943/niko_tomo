@@ -1,36 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col text-left">
-      <h2>会員情報編集</h2>
-    </div>
-    <div class="col text-left">
-      <h2>My二胡の情報編集　<button id="toggle-form"><i class="fas fa-plus"></i></button></h2>
-      <!-- ボタン -->
-    </div>
-  </div>
-
-  <div class="row">
-    <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
-      <%= render "layouts/error_messages", obj: @user %>
     <div class="col">
+      <div class="row">
+        <h2>会員情報編集</h2>
+      </div>
+      <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
+      <%= render "layouts/error_messages", obj: @user %>
       <div class="row">
         <%= f.file_field :profile_image, class: "form-control-file user_image", accept: "image/*" %>
       </div>
 
       <div class="row mt-3">
-        <div class="col text-left">
+        <div class="col text-right d-flex align-items-center">
           <%= f.label :ニックネーム %>
         </div>
-        <div class="col">
+        <div class="col text-left">
           <%= f.text_field :nickname, class: "form-control nickname mb-2 mx-5" %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col text-left">
+        <div class="col text-right d-flex align-items-center">
           <%= f.label :自己紹介文 %>
         </div>
-        <div class="col">
+        <div class="col text-left">
           <%= f.text_area :introduction, class: "form-control introduction mb-2 mx-5" %>
         </div>
       </div>
@@ -38,10 +31,10 @@
       <!--ゲストログインである限りメールアドレス変更フォームは表示されない-->
       <% unless @user.guest_user? %>
       <div class="row">
-        <div class="col text-left">
+        <div class="col text-right d-flex align-items-center">
           <%= f.label :メールアドレス %>
         </div>
-        <div class="col">
+        <div class="col text-left">
           <%= f.text_area :email, class: "form-control introduction mb-2 mx-5" %>
         </div>
       </div>
@@ -61,11 +54,22 @@
           <%= link_to "退会する", confirm_user_path(@user), class: "btn btn-danger mb-2 mx-5" %>
         </div>
       </div>
-
-    </div><!-- col end -->
     <% end %><!-- form end -->
+    </div><!-- col end -->
 
     <div class="col-sm-12 col-lg-6">
+      <div class="row">
+        <div class="col">
+          <h2>My二胡の情報編集</h2>
+        </div>
+        <div class="col-1 text-left">
+          <!-- ボタン -->
+          <div class="col-sm-10 px-sm-0 text-right mb-2">
+            <button id="toggle-form"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+
       <% @user.nikos.each do |niko| %>
         <%= render partial: "public/users/niko_form", locals: { user: @user, niko: niko } %>
       <% end %>

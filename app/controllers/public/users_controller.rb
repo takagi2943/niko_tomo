@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @music_posts = @user.music_posts
-    @music_post = MusicPost.new
+    @new_music_post = MusicPost.new
     @favorite_niko = @user.nikos.where(is_favorite: true).first
   end
 
@@ -22,9 +22,6 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @niko = Niko.new
-    # @niko = Niko.new
-
-    # @niko_tree_type = Niko.new
   end
 
   def confirm

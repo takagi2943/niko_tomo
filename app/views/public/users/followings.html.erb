@@ -7,9 +7,6 @@
   <% if @users.exists? %>
     <%= render 'public/users/index', users: @users %>
   <% else %>
-  <% if current_user != @user %>
-    <%= render 'public/users/btn', users: @users%>
-  <% end %>
     <p>ユーザーはいません</p>
   <% end %>
 </div>
