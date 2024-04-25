@@ -21,7 +21,8 @@
         <p>
           下記の機能が使用できなくなりますがよろしいでしょうか？
         </p>
-        <p class="text-center">
+
+        <p class="text-left">
           ・フォロー/フォロワーができなくなります<br>
           ・グループ参加/グループ作成/閲覧できなくなります<br>
           ・音楽共有での閲覧・投稿できなくなります<br>
@@ -29,22 +30,31 @@
           ・探究室の投稿ができなくなります
         </p>
 
-        <div class="d-flex justify-content-center">
-          <div>
-            <%= link_to "退会しない", edit_user_path(current_user), class: "btn btn-primary mr-3" %>
+
+          <div class="row">
+            <div class="col">
+              <%= link_to "退会しない", edit_user_path(current_user), class: "btn btn-warning mb-2 mx-5", style: "background-color: #22E6D2;" %>
+            </div>
           </div>
 
-          <p>変わらず閲覧できるのは下記のとおりです</p>
-          <p>・探究室は閲覧のみできます</p>
-          <p>それでもかまわない！という方は退会するを押してください</p>
-          <div>
-            <!--ゲストログインである限り退会ボタンを押下しても反応しない-->
+          <p style="border-bottom: 2px solid #F07C81; color: #000000; font-weight: bold;">退会して閲覧できるのは下記のとおりです</p>
+
+
+
+          <p class="text-left">
+            ・探究室は閲覧のみできます<br>
+            ・それでもかまわない！という方は退会するを押してください
+          </p>
+
           <div class="row">
+            <div class="col">
+            <!--ゲストログインである限り退会ボタンを押下しても反応しない-->
             <% if @user.guest_user? %>
               <%= content_tag :div, "ゲストユーザーは退会できません。", class: "alert alert-warning" %>
             <% else %>
               <%= link_to "退会する", user_path(@user), method: :delete, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
             <% end %>
+            </div>
           </div>
 
           </div>

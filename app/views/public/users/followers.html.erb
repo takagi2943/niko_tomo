@@ -1,9 +1,16 @@
-<h2>フォロワー会員</h2>
-<% if @users.exists? %>
-  <%= render 'public/users/index', users: @users %>
-<% else %>
-<% if current_user != @user %>
-  <%= render 'public/users/btn', users: @users%>
-<% end %>
-  <p>ユーザーはいません</p>
-<% end %>
+<!--フォロワー-->
+<div class="container">
+  <div class="row">
+    <h2 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">フォロワー</h2>
+  </div>
+
+  <% if @users.exists? %>
+    <%= render 'public/users/index', users: @users %>
+  <% else %>
+  <% if current_user != @user %>
+    
+  <% end %>
+    <p>ユーザーはいません</p>
+  <% end %>
+
+</div>
