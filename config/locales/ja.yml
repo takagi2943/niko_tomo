@@ -11,6 +11,11 @@ ja:
           laohongmu: "老紅木"
           heitan: "黒檀"
           other: "その他"
+  user:
+    email: "メールアドレス"
+    encrypted_password: "パスワード"
+    nickname: "ニックネーム"
+
   enums:
     user:
       gender:
@@ -32,28 +37,6 @@ ja:
     next: <i class="fas fa-angle-right"></i>
     truncate: "..."
 
-  errors:
-    messages:
-      blank: "を入力してください"
-    activerecord:
-      attributes:
-        group:
-          name: "グループ名"
-          body: "グループ紹介文"
-
-  user:
-    email: "メールアドレス"
-    encrypted_password: "パスワード"
-    nickname: "ニックネーム"
-
-  errors:
-    messages:
-      record_invalid: 'バリデーションに失敗しました: %{errors}'
-      restrict_dependent_destroy:
-        has_one: "%{record}が存在しているので削除できません"
-        has_many: "%{record}が存在しているので削除できません"
-      blank: "を入力してください"
-      taken: "はすでに存在します"
   date:
     abbr_day_names:
     - 日
@@ -129,39 +112,6 @@ ja:
       day: 日
       month: 月
       year: 年
-  errors:
-    format: "%{attribute}%{message}"
-    messages:
-      Email: メールアドレス
-      accepted: を受諾してください
-      blank: を入力してください
-      confirmation: と%{attribute}の入力が一致しません
-      empty: を入力してください
-      equal_to: は%{count}にしてください
-      even: は偶数にしてください
-      exclusion: は予約されています
-      greater_than: は%{count}より大きい値にしてください
-      greater_than_or_equal_to: は%{count}以上の値にしてください
-      in: は%{count}の範囲に含めてください
-      inclusion: は一覧にありません
-      invalid: は不正な値です
-      less_than: は%{count}より小さい値にしてください
-      less_than_or_equal_to: は%{count}以下の値にしてください
-      model_invalid: 'バリデーションに失敗しました: %{errors}'
-      not_a_number: は数値で入力してください
-      not_an_integer: は整数で入力してください
-      odd: は奇数にしてください
-      other_than: は%{count}以外の値にしてください
-      present: は入力しないでください
-      required: を入力してください
-      taken: はすでに存在します
-      too_long: は%{count}文字以内で入力してください
-      too_short: は%{count}文字以上で入力してください
-      wrong_length: は%{count}文字で入力してください
-    template:
-      body: 次の項目を確認してください
-      header: "%{model}に%{count}個のエラーが発生しました"
-
   helpers:
     select:
       prompt: 選択してください
@@ -230,3 +180,52 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+
+# エラー集
+  errors:
+    messages:
+      blank: "を入力してください"
+      activerecord:
+      attributes:
+      group:
+      name: "グループ名"
+      body: "グループ紹介文"
+      record_invalid: 'バリデーションに失敗しました: %{errors}'
+      restrict_dependent_destroy:
+      has_one: "%{record}が存在しているので削除できません"
+      has_many: "%{record}が存在しているので削除できません"
+      blank: "を入力してください"
+      taken: "はすでに存在します"
+    format: "%{attribute}%{message}"
+    messages:
+      Email: "メールアドレス"
+      accepted: "を受諾してください"
+      blank: "を入力してください"
+      confirmation: "と%{attribute}の入力が一致しません"
+      empty: "を入力してください"
+      equal_to: "は%{count}にしてください"
+      even: "は偶数にしてください"
+      exclusion: "は予約されています"
+      greater_than: "は%{count}より大きい値にしてください"
+      greater_than_or_equal_to: "は%{count}以上の値にしてください"
+      in: " は%{count}の範囲に含めてください"
+      inclusion: "は一覧にありません"
+      invalid: "は不正な値です"
+      less_than: "は%{count}より小さい値にしてください"
+      less_than_or_equal_to: "は%{count}以下の値にしてください"
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      not_a_number: "は数値で入力してください"
+      not_an_integer: "は整数で入力してください"
+      odd: "は奇数にしてください"
+      other_than: "は%{count}以外の値にしてください"
+      present: "は入力しないでください"
+      required: "を入力してください"
+      taken: "はすでに存在します"
+      too_long: "は%{count}文字以内で入力してください"
+      too_short: "は%{count}文字以上で入力してください"
+      wrong_length: "は%{count}文字で入力してください"
+    template:
+      body: "投稿内容"
+      header: "%{model}に%{count}個のエラーが発生しました"
+      not_saved: "保存できませんでした"
