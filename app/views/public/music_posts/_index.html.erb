@@ -28,14 +28,14 @@
     <!--画像設定-->
     <%= image_tag music_post.get_music_post_image, size:'100x100' %>
   </div>
-  <div class="col-3 d-flex align-items-end" style="white-space: nowrap;">
+  <div class="col-3 d-flex flex-column">
     <!--コメントされた回数-->
-    <div id="comment_counter">
+    <div id="comment_counter" class="mt-auto text-left">
       <%= render "public/music_post_comments/counter", music_post: music_post %>
     </div>
     <!--投稿日時-->
-    <div style="white-space: nowrap;">
-      <br><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %>
+    <div>
+      <%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %>
     </div>
   </div>
 </div>

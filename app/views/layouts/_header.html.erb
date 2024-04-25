@@ -1,182 +1,178 @@
-<div class="container-fluid">
-  <div class="row">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-
-  <!--上部左端に配置-->
-  <% if user_signed_in? %>
-  <!--二胡のLOGO-->
-    <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-      <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x80") %>
-    <% end %>
-  <% elsif admin_signed_in? %>
-    <%= link_to admin_root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-      <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x80") %>
-    <% end %>
-  <% else %>
-    <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-      <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x80") %>
-    <% end %>
-  <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="col offset">
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col text-right">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-          <!--管理者がログインしている場合-->
-          <% if admin_signed_in? %>
-            <li class="nav-item active">
-              <%= link_to admin_users_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-users"></i>
-                <span>会員一覧</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to admin_music_posts_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-music"></i>
-                <span>音楽共有</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to admin_groups_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-people-roof"></i>
-                <span>グループ</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to admin_labos_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-person-chalkboard"></i>
-                <span>探究室</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to admin_tags_path ,class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-tags"></i>
-                <span>タグ</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>ログアウト</span>
-              <% end %>
-            </li>
-
-          <% elsif user_signed_in? %>
-            <!-- ユーザーがログインしている場合 -->
-            <li class="nav-item active">
-              <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
-                <i class="fa-regular fa-address-card"></i>
-                <span>マイページ</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to music_posts_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-music"></i>
-                <span>音楽共有</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to labos_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-tags"></i>
-                <span>探究室</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to groups_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-people-roof"></i>
-                <span>グループ</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>ログアウト</span>
-              <% end %>
-            </li>
-
-          <% else %>
-            <!-- どちらもログインしていない場合 -->
-            <li class="nav-item active">
-              <%= link_to about_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-book-open"></i>
-                <span>二胡について</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to labos_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-tags"></i>
-                <span>探究室</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-user-plus"></i>
-                <span>新規登録</span>
-              <% end %>
-            </li>
-
-            <li class="nav-item active">
-              <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
-                <i class="fa-solid fa-right-to-bracket"></i>
-                <span>ログイン</span>
-              <% end %>
-            </li>
-          <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col text-center">
-        <% if user_signed_in? %>
-          <span class="text-signed-in">
-            ようこそ、<%= current_user.nickname %>さん！
-          </span>
+      <!--上部左端に配置-->
+      <% if user_signed_in? %>
+      <!--二胡のLOGO-->
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x80") %>
         <% end %>
-      </div>
-
-      <% if admin_signed_in? %>
-        <%= form_with url: users_path, method: :get, local: true do |form| %>
-        <!--検索機能-->
-          <div class="form-group d-flex m-0">
-          <%= form.text_field :search, placeholder: "会員検索", class: "form-control" %>
-            <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
-          </div>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x80") %>
         <% end %>
-
-      <% else user_signed_in? %>
-
-        <%= form_with url: users_path, method: :get, local: true do |form| %>
-        <div class="col">
-          <%= form.text_field :search, placeholder: "会員検索", class: "form-control" %>
-        </div>
-          <div class="col-1">
-          <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
-          </div>
+      <% else %>
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag('Nikotomo (1).jpg', alt: "Niko Tomo", size: "150x80") %>
         <% end %>
       <% end %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="col offset">
+        <div class="row">
+          <div class="col text-right">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+              <!--管理者がログインしている場合-->
+              <% if admin_signed_in? %>
+                <li class="nav-item active">
+                  <%= link_to admin_users_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-users"></i>
+                    <span>会員一覧</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to admin_music_posts_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-music"></i>
+                    <span>音楽共有</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to admin_groups_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-people-roof"></i>
+                    <span>グループ</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to admin_labos_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                    <span>探究室</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to admin_tags_path ,class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-tags"></i>
+                    <span>タグ</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>ログアウト</span>
+                  <% end %>
+                </li>
+
+              <% elsif user_signed_in? %>
+                <!-- ユーザーがログインしている場合 -->
+                <li class="nav-item active">
+                  <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+                    <i class="fa-regular fa-address-card"></i>
+                    <span>マイページ</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to music_posts_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-music"></i>
+                    <span>音楽共有</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to labos_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-tags"></i>
+                    <span>探究室</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to groups_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-people-roof"></i>
+                    <span>グループ</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>ログアウト</span>
+                  <% end %>
+                </li>
+
+              <% else %>
+                <!-- どちらもログインしていない場合 -->
+                <li class="nav-item active">
+                  <%= link_to about_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>二胡について</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to labos_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-tags"></i>
+                    <span>探究室</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>新規登録</span>
+                  <% end %>
+                </li>
+
+                <li class="nav-item active">
+                  <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span>ログイン</span>
+                  <% end %>
+                </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <% if user_signed_in? %>
+              <span class="text-signed-in">
+                ようこそ、<%= current_user.nickname %>さん！
+              </span>
+            <% end %>
+          </div>
+          <div class="col ml-left">
+            <% if admin_signed_in? %>
+              <%= form_with url: users_path, method: :get, local: true do |form| %>
+              <!--検索機能-->
+                <div class="d-flex m-0">
+                  <%= form.text_field :search, placeholder: "会員検索", class: "form-control" %>
+                  <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else user_signed_in? %>
+              <%= form_with url: users_path, method: :get, local: true do |form| %>
+                <div class="d-flex m-0">
+                  <%= form.text_field :search, placeholder: "会員検索", class: "form-control" %>
+                  <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
 </nav>
-</div>
