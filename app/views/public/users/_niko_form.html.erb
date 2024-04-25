@@ -1,38 +1,68 @@
 <%= form_with model: [user, niko], local: true do |f| %>
   <%= render "layouts/error_messages", obj: niko %>
-  <div class="field">
+  <div class="row">
+    <div class="col text-center">
+      <%= f.label :画像 %>
+    </div>
+    <div class="col">
     <%= f.label :現在のお気に入り %>
     <%= f.check_box :is_favorite %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :画像 %>
-    <%= f.file_field :niko_image, accept: "image/*" %>
+  <div class="row">
+    <div class="col">
+      <%= f.file_field :niko_image, accept: "image/*" %>
+    </div>
   </div>
-  <div>
-    <!--二胡使用素材を選ぶラジオボタン-->
-    <%= f.radio_button :tree_type, 0 %>
-    <%= f.label :tree_type_zitan, "紫檀" %>
-    <%= f.radio_button :tree_type, 1 %>
-    <%= f.label :tree_type_laohongmu, "老紅木" %>
-    <%= f.radio_button :tree_type, 2 %>
-    <%= f.label :tree_type_heitan, "黒檀" %>
-    <%= f.radio_button :tree_type, 3 %>
-    <%= f.label :tree_type_other, "その他" %>
+
+  <div class="row my-2">
+    <div class="col">
+      <!--二胡使用素材を選ぶラジオボタン-->
+      <%= f.radio_button :tree_type, 0 %>
+      <%= f.label :tree_type_zitan, "紫檀" %>
+      <%= f.radio_button :tree_type, 1 %>
+      <%= f.label :tree_type_laohongmu, "老紅木" %>
+      <%= f.radio_button :tree_type, 2 %>
+      <%= f.label :tree_type_heitan, "黒檀" %>
+      <%= f.radio_button :tree_type, 3 %>
+      <%= f.label :tree_type_other, "その他" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :使用期間 %>
-    <%= f.text_area :year %>　年
+  <div class="row mt-2">
+    <div class="col text-right">
+      <%= f.label :使用期間 %>
+    </div>
+    <div class="col text-left">
+      <%= f.text_field :year, class: "w-25" %>年
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :二胡の名前 %>
-    <%= f.text_field :name%>
+
+  <div class="row">
+    <div class="col text-right">
+      <%= f.label :二胡の名前 %>
+    </div>
+    <div class="col text-left">
+      <%= f.text_field :name, placeholder: "無かったら空欄でも可" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :特徴 %>
-    <%= f.text_field :feature%>
+
+  <div class="row mb-2 text-right">
+    <div class="col">
+      <%= f.label :特徴 %>
+    </div>
+    <div class="col text-left">
+      <%= f.text_area :feature, class: "h-100 w-100", placeholder: "この項目は必須です" %>
+    </div>
   </div>
-  <%= f.submit "二胡情報を保存", class: "btn btn-outline-secondary mb-2 mx-5 fas fa-user-cog edit_user_#{user.id}_#{niko.id}" %>
-  <% if  niko.id.present? %>
-    <%= link_to "削除", user_niko_path(user.id, niko.id), method: :delete, class: "btn btn-danger pull-right", remote: true %>
-  <% end %>
+
+  <div class="row my-3">
+    <div class="col">
+    <% if  niko.id.present? %>
+      <%= link_to "削除", user_niko_path(user.id, niko.id), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+    <% end %>
+    </div>
+    <div class="col">
+      <%= f.submit "二胡情報を保存", class: "btn btn-outline-secondary mb-2 mx-5 fas fa-user-cog" %>
+    </div>
+  </div>
 <% end %>

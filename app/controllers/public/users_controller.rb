@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @music_posts = @user.music_posts
-    # @music_post = current_user.music_post_comments.new(music_post: music_post)
+    @music_post = MusicPost.new
     @favorite_niko = @user.nikos.where(is_favorite: true).first
   end
 
@@ -34,7 +34,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to edit_user_path(@user)
     else
       render :edit
     end
