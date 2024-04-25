@@ -52,6 +52,9 @@ Rails.application.routes.draw do
       collection do
         get 'search'
       end
+
+      post 'user_music_posts', to: 'user_music_mosts#create', as: 'user_music_posts'
+
       resources :nikos, only: [:create, :update, :destroy]
       resource :relationships, only: [:create, :destroy]
     end
