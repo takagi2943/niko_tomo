@@ -1,10 +1,7 @@
 <div class='container-fluid'>
   <div class='row mt-4'>
     <div class="col-3">
-
-      <div class='row'>
-        <%= render 'info', user: @user %>
-      </div>
+      <%= render 'info', user: @user %>
 
       <!-- 二胡の情報を表示させる -->
       <% if @favorite_niko.present? %>
@@ -71,7 +68,7 @@
       <% end %>
     </div>
 
-    <div class="col-9 offset">
+    <div class="col offset">
       <!-- 二胡の投稿があったならば投稿フォームを表示させる -->
       <% if @favorite_niko.present? %>
       <%= form_with model: @new_music_post, local: true do |f| %>
@@ -100,45 +97,42 @@
       <% end %>
 
       <!--投稿した音楽共有-->
-      <% @music_posts.each do |music_post| %>
-      <div class="my-3 custom-table-striped border border-danger">
-        <div class="row  mt-3 mb-1 ml-3">
-          <div class="col-6 text-left">
-            <%= link_to music_post.title, music_post_path(music_post.id) %>
-          </div>
-          <% if music_post.present? %>
-          <!--お気に入りボタン表示-->
-          <div class="col-2 text-right">
-            <div id="favorite_btn_<%= music_post.id %>">
-              <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: music_post } %>
+      <div style="max-width: 700px; margin: auto;">
+        <% @music_posts.each do |music_post| %>
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header d-flex justify-content-start">
+              <%= link_to music_post.title, music_post_path(music_post.id), class: 'text-dark' %>
+            </div>
+            <div class="card-body d-flex justify-content-start">
+              <p class="card-text ml-2"><%= music_post.body %></p>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="btn-group mt-2 text-center">
+                  <%= image_tag music_post.get_music_post_image, class: 'img-fluid' %>
+                </div>
+                <div class="ml-auto mt-auto">
+                  <small class="d-flex justify-content-right mt-auto "><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+                </div>
+              </div>
+              <!--いいねボタン・コメント数表示-->
+              <% if music_post.present? %>
+              <div class="d-flex justify-content-end">
+                <div id="favorite_btn_<%= music_post.id %>" class="d-flex justify-content-end">
+                  <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: music_post } %>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <span>　|　</span>
+                </div>
+                <div id="comment_counter" class="d-flex justify-content-end mt-auto">
+                  <%= render partial: "public/music_post_comments/counter", locals: { music_post: music_post } %>
+                </div>
+              </div>
+              <% end %>
             </div>
           </div>
-          <% end %>
-          <div class="col-3">
-            <!--コメント数を表示-->
-            <div id="comment_counter">
-              <%= render partial: "public/music_post_comments/counter", locals: { music_post: music_post } %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row my-2 ml-3">
-          <div class="col-8 mr-1 text-left">
-            <%= music_post.body %>
-          </div>
-        </div>
-
-        <div class="row my-3">
-          <div class="col-7 text-right">
-            <!--画像-->
-            <%= image_tag music_post.get_music_post_image, size: '250x250' %>
-          </div>
-          <div class="col-3 d-flex text-left align-items-end" style="flex-wrap: nowrap;" >
-            <h6><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></h6>
-          </div>
-        </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
