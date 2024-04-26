@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :prohibit_multiple_login, if: :admin_signed_in?
+  before_action :prohibit_multiple_login, if: :user_signed_in?
   before_action :configure_permitted_parameters, if: :devise_controller?
   # GET /resource/sign_up
   # def new
@@ -68,6 +68,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
 
   def prohibit_multiple_login
-    redirect_to admin_root_path
+    redirect_to root_path
   end
 end

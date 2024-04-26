@@ -1,22 +1,22 @@
 <!--音楽共有投稿コメントが表示される-->
+
 <% music_post.music_post_comments.each do |post_comment| %>
-<div class="container">
-  <div class="row d-flex align-items-center justify-content-center">
-    <div class="col">
-      <%= link_to user_path(post_comment.user) do %>
-        <%= image_tag post_comment.user.get_profile_image, class: "rounded-circle", size: "100x100" %><br>
-        <%= post_comment.user.nickname %>
-      <% end %>
+  <div class="row">
+    <div class="col-3 text-center">
+      <div class="flex-colmum">
+        <%= link_to user_path(post_comment.user) do %>
+          <%= image_tag post_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %><br>
+          <%= post_comment.user.nickname %>
+        <% end %>
+      </div>
     </div>
-    <div class="col">
+    <div class="col d-flex align-items-center">
       <%= post_comment.comment %>
     </div>
-    <div class="col">
+    <div class="col-3 text-right d-flex align-items-center">
       <% if post_comment.user == current_user %>
         <%= link_to "削除", music_post_music_post_comment_path(music_post.id, post_comment.id), method: :delete, class: "btn btn-danger pull-right", remote: true %>
       <% end %>
     </div>
   </div>
-</div>
-<br>
 <% end %>

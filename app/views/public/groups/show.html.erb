@@ -1,36 +1,42 @@
 <div class='container px-5 px-sm-0'>
-  <div class='row'>
+  <div class='row my-5'>
     <div class='col-md-3'>
-      <h2>ユーザー情報</h2>
-      <%= render 'public/users/info', user: @user_self %>
+      <div class="row">
+        <h2 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">ユーザー情報</h2>
+      </div>
+      <%= render 'public/users/info', user: current_user %>
     </div>
     <div class='col-md-8 offset-md-1'>
-    <h2><%= @group.name %> の詳細</h2>
-    <br>
-      <div class="row d-flex align-items-center">
-        <div class="col-3">
-          <h5>グループ名</h5>
-        </div>
-        <div class="col-lg-5 text-left">
-          <h5>紹介文</h5>
-        </div>
-        <div class="col text-left">
-          メンバー
-        </div>
-        <div class="col-2"></div>
+      <div class="row">
+        <h2 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @group.name %> の詳細</h2>
       </div>
       <div class="row">
-        <div class="col-lg-1">
-          <%= image_tag @group.get_image, size: '50x50' %>
+        <div class="col text-right">
+          <%= link_to "グループ一覧に戻る", groups_path, class: "btn btn-warning text-white", style: "background-color: #B85C0D;"%>
         </div>
-        <div class="col-lg-2 text-left"><%= @group.name %></div>
-        <div class="col-lg-5 text-left"><%= @group.body %></div>
-        <div class="col text-left">
+      </div>
+
+      <div class="row my-5">
+        <div class="col-lg-6">
+          <%= image_tag @group.get_image, size: '200x150' %>
+        </div>
+        <div class="col-lg-5 text-left flex-colmum">
+          <p>紹介文</p>
+          <h6><%= @group.body %></h6>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-4 text-right">
+          <h6 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">メンバー</h6>
+        </div>
+        <div class="col d-flex align-items-center">
           <% @group.users.each do |member| %>
             <%= member.nickname %><br>
           <% end %>
         </div>
-        <div class="col-lg-1">
+      </div>
+      <div class="row my-5">
+        <div class="col text-right">
           <% if @group.is_owned_by?(current_user) %>
             <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
           <% elsif @group.includesUser?(current_user) %>

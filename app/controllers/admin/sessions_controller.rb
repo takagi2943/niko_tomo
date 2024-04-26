@@ -38,6 +38,6 @@ class Admin::SessionsController < Devise::SessionsController
 
   def prohibit_multiple_login
      flash[:alert]= "複数でのログインはできません。ログアウトしてからもう一度やり直してください。"
-    redirect_to root_path
+    redirect_to admin_root_path
   end
 end
