@@ -98,11 +98,12 @@
 
   // ニックネームのリンクの色指定
   .custom-link-style {
-    color: #F01FC3;
+    color: #000000; //色指定
     font-weight: bold;
-    text-decoration: underline;
+    // text-decoration: underline; // アンダーライン
   }
   // コメントアイコン
   .comment-icon {
     color: #762C23;
   }
+

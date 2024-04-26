@@ -25,24 +25,32 @@
           <h6><%= @group.body %></h6>
         </div>
       </div>
-      <div class="row my-3">
-        <div class="col-4 text-right">
-          <h6 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">メンバー</h6>
+      <div class="row">
+        <div class="col text-right">
+          <h6 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">グループリーダー</h6>
         </div>
-        <div class="col d-flex align-items-center">
+        <div class="col-lg-6 text-left">
+          <%= link_to @group.user.nickname, user_path(@user.id),class: "custom-link-style" %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col text-right">
+          <h6 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">メンバー</h6>
+        </div>
+        <div class="col-lg-6 text-left">
           <% @group.users.each do |member| %>
-            <%= member.nickname %><br>
+            <%= link_to member.nickname, user_path(member.id), class: "custom-link-style" %>
           <% end %>
         </div>
       </div>
       <div class="row my-5">
         <div class="col text-right">
           <% if @group.is_owned_by?(current_user) %>
-            <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+            <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success w-25" %>
           <% elsif @group.includesUser?(current_user) %>
-            <%= link_to "脱退", leave_group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+            <%= link_to "脱退", leave_group_path(@group), method: :delete, class: "btn btn-sm btn-danger w-25" %>
           <% else %>
-            <%= link_to "参加", group_join_path(@group), class: "btn btn-sm btn-success" %>
+            <%= link_to "加入", group_join_path(@group), class: "btn btn-sm btn-success w-25" %>
           <% end %>
         </div>
       </div>

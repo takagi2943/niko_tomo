@@ -1,4 +1,4 @@
-<div class='container px-5 px-sm-0'>
+<div class="container px-5 px-sm-0">
  <div class="row mt-3 custom-background">
     <div class="col-4">
       グループ名
@@ -14,22 +14,28 @@
   <% groups.each do |group| %>
   <div class="row  custom-table-striped border border-danger">
     <div class="col-lg-1 my-2 text-left">
-      <%= image_tag group.get_image, size: '50x50' %>
+      <!--グループ画像-->
+      <%= image_tag group.get_image, size: "50x50" %>
     </div>
     <div class="col-lg-3 text-left d-flex align-items-center">
+      <!--グループの名-->
       <%= link_to group.name, group %>
     </div>
     <div class="col-lg-4 text-left d-flex align-items-center">
+      <!--グループの自己紹介文-->
       <%= group.body %>
     </div>
     <div class="col text-right mt-3">
+      <!--グループの参加人数-->
       <%= group.group_users.size %>
     </div>
     <div class="col-lg-2 text-right mt-3">
+      <!--グループの作成主であったら-->
       <% if group.is_owned_by?(current_user) %>
-        <%= link_to '編集', edit_group_path(group.id), class: "btn btn-sm text-white", style: "background-color: #B5A060;" %>
+        <%= link_to "編集", edit_group_path(group.id), class: "btn btn-sm text-white", style: "background-color: #B5A060;" %>
       <% elsif group.includesUser?(current_user) %>
-        <%= link_to  '入室', group_path(group.id), class: "btn btn-sm text-white", style: "background-color: #F46760;" %>
+      <!--それ以外は参加しているグループに入室か新しく加入ボタン-->
+        <%= link_to  "入室", group_path(group.id), class: "btn btn-sm text-white", style: "background-color: #F46760;" %>
       <% else %>
         <%= link_to "加入", group_join_path(group.id, current_user.id), class: "btn btn-sm text-white", style: "background-color: #B34812;" %>
       <% end %>
