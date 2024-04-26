@@ -1,43 +1,48 @@
-<% music_posts.each do |music_post| %>
-<div class="row">
-  <div class="col-2">
-    <!-- ユーザーのプロフィール画像 -->
-  <%= link_to user_path(music_post.user) do %>
-    <%= image_tag music_post.user.get_profile_image, class: "rounded-circle", size: '100x100' %>
-    <!--ニックネーム-->
-    <div  class="ml-3" style="white-space: nowrap;"><%= music_post.user.nickname %></div>
-  <% end %>
-  </div>
-  <div class="col">
-    <!--投稿タイトル-->
-    <%= link_to music_post.title, music_post_path(music_post), class: "music_post_#{music_post.id}" %>
-    <div style="w-75">
-      <!-- 音楽共有投稿の本文 -->
-      <%= music_post.body %>
-    </div>
-  </div>
-  <div class="col-1">
-    <!-- お気に入りボタン -->
-    <div id="favorite_btn_<%= music_post.id %>">
-      <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: music_post } %>
-    </div>
-  </div>
-</div>
-<div class="row mb-5">
-  <div class="col-9">
-    <!--画像設定-->
-    <%= image_tag music_post.get_music_post_image, size:'100x100' %>
-  </div>
-  <div class="col-3 d-flex flex-column">
-    <!--コメントされた回数-->
-    <div id="comment_counter" class="mt-auto text-left">
-      <%= render "public/music_post_comments/counter", music_post: music_post %>
-    </div>
-    <!--投稿日時-->
-    <div>
-      <%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %>
-    </div>
-  </div>
-</div>
-<% end %>
+<div class="container">
+  <div class="row my-5 mx-3 h-90">
+    <% music_posts.each do |music_post| %>
+      <div class="col-lg-4 col-md-6">
+        <div class="card h-100" style="width: 18rem;">
+          <!-- 画像設定 -->
+          <%= image_tag(music_post.get_music_post_image, class: 'card-img-top', size: '300x200', alt: 'カードの画像') %>
 
+          <div class="card-body">
+            <%= link_to user_path(music_post.user) do %>
+              <!-- ニックネーム -->
+              <p class="text-right"><i class="fa-solid fa-circle-user" style="color: black;"></i><span style="color: black;"> <%= music_post.user.nickname %></span></p>
+            <% end %>
+            <h5 class="card-title text-left" style="color: black;">
+              <!-- 投稿タイトル -->
+              <%= link_to music_post.title, music_post_path(music_post), style: "color: black;" %>
+            </h5>
+            <p class="card-text text-left">
+              <!-- 音楽共有投稿の本文 -->
+              <%= music_post.body %>
+            </p>
+            <hr>
+            <div class="row d-flex align-items-end">
+              <span class="col-3 text-right">
+                <!-- お気に入りボタン -->
+                <div id="favorite_btn_<%= music_post.id %>">
+                  <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: music_post } %>
+                </div>
+              </span>
+              <span class="col-1 text-right">|</span>
+              <span class="col-4 text-right">
+                <!-- コメントされた回数 -->
+                <div id="comment_counter" class="mt-auto text-left">
+                  <%= render "public/music_post_comments/counter", music_post: music_post %>
+                </div>
+              </span>
+            </div>
+            <hr>
+            <div class="float-right d-flex align-items-end">
+              <!-- 投稿日時 -->
+              <%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

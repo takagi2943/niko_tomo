@@ -11,10 +11,6 @@ ja:
           laohongmu: "老紅木"
           heitan: "黒檀"
           other: "その他"
-  user:
-    email: "メールアドレス"
-    encrypted_password: "パスワード"
-    nickname: "ニックネーム"
 
   enums:
     user:
@@ -181,6 +177,57 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
+  devise:
+    confirmations:
+      confirmed: "メールアドレスが正常に確認されました。"
+      send_instructions: "数分以内に、メールアドレスの確認方法に関する手順が記載されたメールが届きます。"
+      send_paranoid_instructions: "データベースにメールアドレスが存在する場合は、数分以内にメールアドレスの確認方法に関する手順が記載されたメールが届きます。"
+    failure:
+      already_authenticated: "すでにログインしています。"
+      inactive: "アカウントはまだ有効になっていません。"
+      invalid: "無効な%{authentication_keys}またはパスワードです。"
+      locked: "アカウントはロックされています。"
+      last_attempt: "アカウントがロックされる前に、もう1回試行できます。"
+      not_found_in_database: "無効な%{authentication_keys}またはパスワードです。"
+      timeout: "セッションが期限切れです。続行するにはもう一度サインインしてください。"
+      unauthenticated: "続行するにはサインインまたは新規登録が必要です。"
+      unconfirmed: "続行するにはメールアドレスを確認する必要があります。"
+    mailer:
+      confirmation_instructions:
+        subject: "確認手順"
+      reset_password_instructions:
+        subject: "パスワードリセット手順"
+      unlock_instructions:
+        subject: "アカウントロック解除手順"
+      email_changed:
+        subject: "メールアドレス変更通知"
+      password_change:
+        subject: "パスワード変更通知"
+    omniauth_callbacks:
+      failure: "%{kind}からの認証に失敗しました（理由：「%{reason}」）。"
+      success: "%{kind}アカウントからの認証に成功しました。"
+    passwords:
+      no_token: "パスワードリセットのメールからのアクセスが必要です。パスワードリセットのメールからアクセスした場合は、提供された完全なURLを使用したことを確認してください。"
+      send_instructions: "数分以内に、パスワードリセット手順が記載されたメールが届きます。"
+      send_paranoid_instructions: "データベースにメールアドレスが存在する場合は、数分以内にパスワードリセットリンクがメールアドレスに送信されます。"
+      updated: "パスワードが正常に変更されました。現在、サインインしています。"
+      updated_not_active: "パスワードが正常に変更されました。"
+    registrations:
+      destroyed: "アカウントは正常にキャンセルされました。またのご利用をお待ちしています。"
+      signed_up: "ようこそ！ 正常にサインアップされました。"
+      signed_up_but_inactive: "正常にサインアップされました。ただし、アカウントがまだ有効になっていないため、サインインできませんでした。"
+      signed_up_but_locked: "正常にサインアップされました。ただし、アカウントがロックされているため、サインインできませんでした。"
+      signed_up_but_unconfirmed: "確認リンクが含まれたメッセージがメールアドレスに送信されました。アカウントを有効にするには、リンクをクリックしてください。"
+      update_needs_confirmation: "アカウントが正常に更新されましたが、新しいメールアドレスを確認する必要があります。メールを確認して、確認リンクをクリックして新しいメールアドレスを確認してください。"
+      updated: "アカウントが正常に更新されました。"
+      updated_but_not_signed_in: "アカウントが正常に更新されましたが、パスワードが変更されたため、もう一度サインインする必要があります。"
+    sessions:
+      signed_in: "正常にサインインしました。"
+      signed_out: "正常にサインアウトしました。"
+      already_signed_out: "すでに正常にサインアウトされています。"
+    unlocks:
+      send_instructions: "数分以内に、アカウントのロック解除手順が記載されたメールが届きます。"
+      send_paranoid_instructions: "アカウントが存在する場合は、数分以内にアカウントのロック解除手順がメールアドレスに送信されます"
 
 # エラー集
   errors:
@@ -188,7 +235,11 @@ ja:
       blank: "を入力してください"
       activerecord:
       attributes:
-      group:
+    user:
+      email: "メールアドレス"
+      encrypted_password: "パスワード"
+      nickname: "ニックネーム"
+    group:
       name: "グループ名"
       body: "グループ紹介文"
       record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -56,7 +56,7 @@ class Public::UsersController < ApplicationController
   # ゲストログイン縛りの設定
   def ensure_not_guest_user
     if current_user.guest_user?
-      flash[:error] = "ゲストユーザーはこの操作を実行できません。"
+      flash[:alert] = "ゲストユーザーはこの操作を実行できません。"
       redirect_to edit_user_path(current_user)
     end
   end

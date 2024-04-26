@@ -1,13 +1,40 @@
 <!--選択されたタグに紐づいた投稿詳細-->
-  <h5><%= @tag.title %></h5>
+<div class="container-md">
+  <div class="row my-5">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @tag.title %></h5>
+  </div>
+
+
+  <% if @labos.exists? %>
+  <div class="row mt-3 custom-background">
+    <div class="col text-center mt-2">
+      <h5><b><%= @tag.title %></b> に対しての投稿一覧</h5>
+    </div>
+  </div>
     <% @labos.each do |labo| %>
-      <%= image_tag labo.user.get_profile_image, class: "rounded-circle", size:'50x50'%>
-      <!--ログインユーザーならば会員の詳細画面に遷移する-->
-      <% if current_user && current_user.user_status == "有効" %>
-      <%= link_to labo.user.nickname, user_path(labo.user.id) %>
-      <% else%>
-      <!--非ログインならば名前がリンクにならない-->
-      <%= labo.user.nickname %>
-      <% end %>
-      <%= link_to labo.body, labo_path(labo.id) %>
+     <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
+      <div class="col-5 my-2 flex-colmum">
+        <%= image_tag labo.user.get_profile_image, class: "rounded-circle", size:'50x50'%>
+        <!--ログインユーザーならば会員の詳細画面に遷移する-->
+        <div class="flex-colmum">
+          <% if current_user && current_user.user_status == "有効" %>
+          <%= link_to labo.user.nickname, user_path(labo.user.id) %>
+          <% else%>
+          <!--非ログインならば名前がリンクにならない-->
+          <%= labo.user.nickname %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-5">
+        <%= link_to labo.body, labo_path(labo.id) %>
+      </div>
+    </div>
     <% end %>
+  <% else %>
+  <div class="row">
+    <div class="col text-center">
+      <h5>まだ <b><%= @tag.title %></b> は投稿されていません</h5>
+    </div>
+  </div>
+  <% end %>
+</div>

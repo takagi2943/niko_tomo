@@ -18,5 +18,6 @@ class Admin::LaboCommentsController < ApplicationController
     @labo = @labo_comment.labo
     @labo_comment.destroy if @labo_comment
     redirect_to admin_labo_path(@labo)
+    flash[:alert] = "探究室のコメントを削除しました。"
   end
 end

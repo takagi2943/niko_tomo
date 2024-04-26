@@ -17,7 +17,7 @@ class Admin::TagsController < ApplicationController
       flash[:notice] ="タグを新しく追加しました"
       redirect_to admin_tags_path
     else
-      flash.now[:error] = "入力内容を確認してください"
+      flash.now[:alert] = "入力内容を確認してください"
       @tags = Tag.all
       render :index
     end
@@ -26,10 +26,11 @@ class Admin::TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-      flash[:update] = "タグを更新しました"
+      flash[:notice] = "タグを更新しました"
       redirect_to admin_tags_path
     else
-      flash.now[:notice] = "編集内容を確認してください"
+      @tags = Tag all
+      flash.now[:alert] = "編集内容を確認してください"
       render :index
     end
   end
@@ -38,6 +39,7 @@ class Admin::TagsController < ApplicationController
     tag = Tag.find(params[:id])
     tag.destroy
     @tags = Tag.all
+    flash[:alert] = "タグを削除しました。"
     redirect_to admin_tags_path
   end
 

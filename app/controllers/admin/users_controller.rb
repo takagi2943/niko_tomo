@@ -24,7 +24,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: "You have updated user successfully."
+      redirect_to admin_user_path(@user), notice: "会員情報が更新されました。"
     else
     render "edit"
     end
@@ -34,10 +34,11 @@ class Admin::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user
       @user.update(introduction: nil)
+      flash[:notice] = "正常に削除できました。"
     end
     redirect_to admin_user_path(@user)
   end
-  
+
   def comment
     @labos = Labo.all
     @music_posts = MusicPost.all

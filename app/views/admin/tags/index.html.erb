@@ -44,7 +44,7 @@
                   </div>
                 <% end %>
                   <div class="row offset-4">
-                    <%= link_to "タグを削除", admin_tag_path(tag.id), method: :delete, class: "btn btn-danger text-nowrap" %>
+                    <%= link_to "タグを削除", admin_tag_path(tag.id), method: :delete, data: { confirm: "本当に削除しますか？"} , class: "btn btn-danger text-nowrap" %>
                   </div>
               </div>
             <% end %>

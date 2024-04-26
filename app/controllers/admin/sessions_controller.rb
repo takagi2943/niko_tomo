@@ -27,16 +27,17 @@ class Admin::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def after_sign_in_path_for(resource)
-    flash[:notice]="successfully"
+    flash[:notice]= "管理人さんおかえりなさい"
     admin_root_path
   end
 
   def after_sign_out_path_for(resource)
-    flash[:notice]="see you"
+    flash[:notice]= "ログアウトしました。"
     new_admin_session_path
   end
 
   def prohibit_multiple_login
+     flash[:alert]= "複数でのログインはできません。ログアウトしてからもう一度やり直してください。"
     redirect_to root_path
   end
 end

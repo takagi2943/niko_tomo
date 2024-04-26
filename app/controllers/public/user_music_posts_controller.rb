@@ -7,7 +7,7 @@ class Public::UserMusicPostsController < ApplicationController
     @music_post = MusicPost.new(music_post_params)
     @music_post.user_id = current_user.id
     if @music_post.save
-      redirect_to user_path(@user, @music_post), notice: "You have created book successfully."
+      redirect_to user_path(@user, @music_post), notice: "音楽共有に新しく投稿されました。"
     else
       @music_posts = MusicPost.all
       render 'index'

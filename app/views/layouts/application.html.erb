@@ -18,10 +18,20 @@
   </head>
 
   <body>
-    <header class="shadow-sm mb-4">
+    <header class="shadow-sm">
       <%= render 'layouts/header' %>
     </header>
-    <main class="my-4">
+    <main>
+      <% if flash[:notice]%>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
     <footer class="py-4">

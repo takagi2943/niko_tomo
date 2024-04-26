@@ -5,30 +5,33 @@
   </div>
 
   <div class="row">
-    <div class="col text-left">
+    <div class="col text-left flex-colmum">
       <%= image_tag @labo.user.get_profile_image, class: "rounded-circle", size: "90x90" %>
+        <div class="flex-colmum ml-3">
+        <!--ログインユーザーならば会員の詳細画面に遷移する-->
+        <% if current_user && current_user.user_status == "有効" %>
+          <%= link_to @labo.user.nickname, user_path( @labo.user) %>
+        <% else%>
+        <!--非ログインならば名前がリンクにならない-->
+          <%= @labo.user.nickname %>
+        <% end %>
+      </div>
     </div>
     <div class="col mt-2 text-left d-flex align-items-conter">
+    <% if current_user && current_user.user_status == "有効" %>
       <%= link_to @labo.body, labo_path(@labo) %>
+    <% else%>
+      <!--非ログインならば投稿内容がリンクにならない-->
+      <%= @labo.body %>
+    <% end %>
     </div>
     <div class="col text-right">
       <% if @labo.user == current_user %>
-        <%= link_to "削除", labo_path(@labo), method: :delete, "date-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger', remote: true%>
+        <%= link_to "削除", labo_path(@labo), method: :delete, "date-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger w-25', remote: true %>
       <% end %>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col ml-3 text-left">
-      <!--ログインユーザーならば会員の詳細画面に遷移する-->
-      <% if current_user && current_user.user_status == "有効" %>
-        <%= link_to @labo.user.nickname, user_path( @labo.user) %>
-      <% else%>
-      <!--非ログインならば名前がリンクにならない-->
-        <%= @labo.user.nickname %>
-      <% end %>
-    </div>
-  </div>
 
   <% if current_user && current_user.user_status == "有効" %>
     <%= form_with model: [@labo, @labo_comment] do |f| %>
@@ -39,7 +42,7 @@
         </div>
       </div>
       <div class="col-2 mb-3 align-self-end">
-        <%= f.submit "送信", class: "btn btn-success" %>
+        <%= f.submit "送信", class: "btn btn-warning text-light", style: "background-color: #762C23;" %>
       </div>
     </div>
     <% end %>
@@ -52,6 +55,14 @@
     </div>
   <% end %>
 
+  <div class="row">
+    <div class="col text-right">
+      <%= link_to "探究室一覧へ戻る", labos_path, class: "btn btn-warning", style: "background-color: #F5765F;" %>
+    </div>
+  </div>
+
+<!--回答者がいなかったらの条件分岐-->
+<% if @labo.labo_comments.exists? %>
   <div class="row mt-3 custom-background">
     <div class="col-2"></div>
     <div class="col text-left mt-3">
@@ -64,7 +75,7 @@
 
   <!--探究室の投稿コメントが表示される-->
   <% @labo.labo_comments.each do |labo_comment| %>
-  <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
+  <div class="row mb-3 d-flex align-items-center justify-content-centerborder border border-danger">
     <div class="col">
       <div class="row">
         <div class="col-2 text-left align-self-center mt-2">
@@ -75,24 +86,28 @@
         <div class="col text-left align-self-center mt-2">
           <%= labo_comment.comment %>
         </div>
-        <div class="col-2 my-2 text-right align-self-center mt-2">
+        <div class="col-2 mb-4 text-right align-self-center mt-4 flex-colmum">
           <%= image_tag labo_comment.user.get_profile_image, class: "rounded-circle", size: "50x50"%>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12 text-right">
-        <% if current_user && current_user.user_status == "有効" %>
-          <%= link_to user_path(labo_comment.user) do %>
-            <%= labo_comment.user.nickname %>
-          <% end %>
-        <% else%>
-        <!--非ログインならば名前がリンクにならない-->
-          <%= @labo.user.nickname %>
-        <% end %>
+          <div class="flex-colmum">
+            <% if current_user && current_user.user_status == "有効" %>
+              <%= link_to user_path(labo_comment.user) do %>
+                <%= labo_comment.user.nickname %>
+              <% end %>
+            <% else%>
+            <!--非ログインならば名前がリンクにならない-->
+              <%= @labo.user.nickname %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <% end %>
+<% else %>
+  <div class="row my-5">
+    <div class="col" style="solid #F07C81; color: #000000;">
+      <h5>まだ <b><%= @labo.user.nickname %></b>さんの質問に誰も回答されていません。</h5>
+    </div>
+  </div>
+<% end %>
 </div>
