@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
    before_action :authenticate_user!
+   before_action :correct_user, only: [:edit, :update]
    before_action :ensure_not_guest_user, only: [:destroy]
 
   def show
@@ -30,9 +31,12 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
+    @niko = @user.nikos.find_by(id: params[:niko_id]) || Niko.new
     if @user.update(user_params)
       redirect_to edit_user_path(@user)
     else
+    @user = User.find(params[:id])
+    @niko = Niko.new
       render :edit
     end
   end
@@ -58,6 +62,14 @@ class Public::UsersController < ApplicationController
     if current_user.guest_user?
       flash[:alert] = "ゲストユーザーはこの操作を実行できません。"
       redirect_to edit_user_path(current_user)
+    end
+  end
+
+  # ユーザー自身のプロフィール以外のページにアクセスしようとした場合にはアクセスを拒否
+  def correct_user
+    @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to(root_path, alert:"不正なアクセスです")
     end
   end
 

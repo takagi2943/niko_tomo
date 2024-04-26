@@ -18,12 +18,7 @@
       </div>
     </div>
     <div class="col mt-2 text-left d-flex align-items-conter">
-    <% if current_user && current_user.user_status == "有効" %>
-      <%= link_to @labo.body, labo_path(@labo) %>
-    <% else%>
-      <!--非ログインならば投稿内容がリンクにならない-->
       <%= @labo.body %>
-    <% end %>
     </div>
     <div class="col text-right">
       <% if @labo.user == current_user %>

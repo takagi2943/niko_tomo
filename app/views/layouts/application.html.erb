@@ -11,14 +11,10 @@
     <script src="https://kit.fontawesome.com/<%= ENV["FONTAWESOME_KEY"] %>.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!--フォントのHeadland Oneを設定-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Headland+One&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <header class="shadow-sm">
+    <header class="shadow-sm" id="header">
       <%= render 'layouts/header' %>
     </header>
     <main>
@@ -34,8 +30,13 @@
       <% end %>
       <%= yield %>
     </main>
-    <footer class="py-4">
+    <footer class="py-4" id="footer">
       <%= render 'layouts/footer' %>
+      <p id="page-top"><a href="#"><i class="fa-solid fa-circle-up"></i></a></p>
     </footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-6/js/8-1-6.js"></script>
+
   </body>
 </html>

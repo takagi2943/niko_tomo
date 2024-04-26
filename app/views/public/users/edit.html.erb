@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container my-4">
   <div class="row">
     <div class="col">
       <div class="row">
-        <h2>会員情報編集</h2>
+        <h4 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">会員情報編集</h4>
       </div>
       <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
       <%= render "layouts/error_messages", obj: @user %>
@@ -60,7 +60,7 @@
     <div class="col-sm-12 col-lg-6">
       <div class="row">
         <div class="col">
-          <h2>My二胡の情報編集</h2>
+          <h4 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">My二胡の情報編集</h4>
         </div>
         <div class="col-1 text-left">
           <!-- ボタン -->

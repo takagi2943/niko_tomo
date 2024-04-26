@@ -56,6 +56,7 @@ class Public::GroupsController < ApplicationController
       @groups = Group.all
       @music_posts = MusicPost.new
       @user = current_user
+      flash[:alert] = 'グループの作成ができませんでした。'
       render :index
     end
   end
@@ -71,9 +72,9 @@ class Public::GroupsController < ApplicationController
   def destroy
     if @group
       @group.destroy
-      flash[:success] = 'グループを削除しました。'
+      flash[:notice] = 'グループを削除しました。'
     else
-      flash[:error] = 'グループが見つかりません。'
+      flash[:alert] = 'グループが見つかりません。'
     end
     redirect_to groups_path
   end

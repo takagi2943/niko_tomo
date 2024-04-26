@@ -97,7 +97,7 @@
       <% end %>
 
       <!--投稿した音楽共有-->
-      <div style="max-width: 700px; margin: auto;">
+      <div style="max-width: 600px; margin: auto;">
         <% @music_posts.each do |music_post| %>
           <div class="card mb-4 shadow-sm">
             <div class="card-header d-flex justify-content-start">
@@ -109,7 +109,7 @@
             <div class="card-footer">
               <div class="d-flex justify-content-center align-items-center">
                 <div class="btn-group mt-2 text-center">
-                  <%= image_tag music_post.get_music_post_image, class: 'img-fluid' %>
+                  <%= image_tag music_post.get_music_post_image, class: 'img-fluid', size: '100x100'%>
                 </div>
                 <div class="ml-auto mt-auto">
                   <small class="d-flex justify-content-right mt-auto "><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></small>

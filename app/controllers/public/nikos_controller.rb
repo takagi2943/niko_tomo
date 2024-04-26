@@ -20,6 +20,7 @@ class Public::NikosController < ApplicationController
     if @niko.update(niko_params)
       redirect_to edit_user_path(@user), notice: '二胡の情報が正常に更新されました。'
     else
+      flash.now[:alert] = "編集内容を確認してください"
       render "public/users/edit" # 二胡の情報を入力するフォームを表示するビューへリダイレクト
     end
   end
