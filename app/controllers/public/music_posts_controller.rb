@@ -18,7 +18,13 @@ class Public::MusicPostsController < ApplicationController
     @music_post = MusicPost.new(music_post_params)
     @music_post.user_id = current_user.id
     if @music_post.save
-      redirect_to music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
+      # if pattern.match(request.referer) != nil
+      #   redirect_to music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
+      # else
+      redirect_to request.referer
+      # end
+
+      #redirect_to request.referer #music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
     else
       @music_posts = MusicPost.all
       render 'index'

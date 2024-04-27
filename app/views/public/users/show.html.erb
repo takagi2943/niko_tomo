@@ -96,26 +96,48 @@
       <% end %>
       <% end %>
 
+
       <!--投稿した音楽共有-->
-      <div style="max-width: 600px; margin: auto;">
-        <% @music_posts.each do |music_post| %>
-          <div class="card mb-4 shadow-sm">
-            <div class="card-header d-flex justify-content-start">
-              <%= link_to music_post.title, music_post_path(music_post.id), class: 'text-dark' %>
-            </div>
-            <div class="card-body d-flex justify-content-start">
-              <p class="card-text ml-2"><%= music_post.body %></p>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-center align-items-center">
-                <div class="btn-group mt-2 text-center">
-                  <%= image_tag music_post.get_music_post_image, class: 'img-fluid', size: '100x100'%>
-                </div>
-                <div class="ml-auto mt-auto">
-                  <small class="d-flex justify-content-right mt-auto "><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></small>
-                </div>
+      <div style="max-width: 800px; margin: auto;">
+        <div class="row my-4">
+          <div class="col media my-4 shadow-sm">
+          <% @music_posts.each do |music_post| %>
+            <!-- 画像の配置 -->
+            <div class="row">
+              <div class="col text-left">
+                <%= image_tag music_post.get_music_post_image, class: 'media-object', size: '100x100' %>
               </div>
-              <!--いいねボタン・コメント数表示-->
+              <div class="col">
+                <!-- 音楽投稿の説明 -->
+                <div class="row">
+                  <div class="col">
+                    <h5><%= link_to music_post.title, music_post_path(music_post.id), class: 'text-dark' %></h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                  <!-- 音楽投稿の説明 -->
+                  <div class="col">
+                    <h5><%= link_to music_post.title, music_post_path(music_post.id), class: 'text-dark' %></h5>
+                  </div>
+            </div>
+        </div>
+
+
+            <div class="ml-auto mt-auto">
+              <%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <%= music_post.body %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+            <!--いいねボタン・コメント数表示-->
               <% if music_post.present? %>
               <div class="d-flex justify-content-end">
                 <div id="favorite_btn_<%= music_post.id %>" class="d-flex justify-content-end">
@@ -131,8 +153,11 @@
               <% end %>
             </div>
           </div>
+
+        </div>
         <% end %>
       </div>
+      <hr />
     </div>
   </div>
 </div>

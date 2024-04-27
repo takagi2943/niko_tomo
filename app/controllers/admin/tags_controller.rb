@@ -29,7 +29,7 @@ class Admin::TagsController < ApplicationController
       flash[:notice] = "タグを更新しました"
       redirect_to admin_tags_path
     else
-      @tags = Tag all
+      @tags = Tag.all
       flash.now[:alert] = "編集内容を確認してください"
       render :index
     end

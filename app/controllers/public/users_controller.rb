@@ -31,12 +31,12 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    @niko = @user.nikos.find_by(id: params[:niko_id]) || Niko.new
+    # @niko = @user.nikos.find_by(id: params[:niko_id]) || Niko.new
     if @user.update(user_params)
+      #byebug
       redirect_to edit_user_path(@user)
     else
     @user = User.find(params[:id])
-    @niko = Niko.new
       render :edit
     end
   end
@@ -74,6 +74,6 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :introduction, :profile_image)
+    params.require(:user).permit(:nickname, :introduction, :profile_image, :email)
   end
 end
