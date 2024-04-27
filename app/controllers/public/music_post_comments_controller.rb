@@ -6,13 +6,14 @@ class Public::MusicPostCommentsController < ApplicationController
     comment = current_user.music_post_comments.new(music_post_comment_params)
     comment.music_post_id = @music_post.id
     comment.save
+    
   end
 
   def destroy
     comment = MusicPostComment.find(params[:id])
     @music_post = comment.music_post
     comment.destroy
-    flash[:alert] = "投稿コメントを削除しました。"
+    flash[:notice] = "投稿コメントを削除しました。"
   end
 
   private

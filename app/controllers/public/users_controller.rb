@@ -31,10 +31,8 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    # @niko = @user.nikos.find_by(id: params[:niko_id]) || Niko.new
     if @user.update(user_params)
-      #byebug
-      redirect_to edit_user_path(@user)
+      redirect_to edit_user_path(@user), notice: '更新されました。'
     else
     @user = User.find(params[:id])
       render :edit
@@ -69,7 +67,7 @@ class Public::UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     unless current_user == @user
-      redirect_to(root_path, alert:"不正なアクセスです")
+      redirect_to(root_path, alert: "不正なアクセスです")
     end
   end
 

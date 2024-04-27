@@ -4,7 +4,7 @@
     <%= image_tag user.get_profile_image, size: '150x150' %>
   </div>
 </div>
-
+<hr/>
 <div class="row ml-2 my-2">
   ニックネーム
 </div>
@@ -15,14 +15,14 @@
     <h4><%= link_to user.nickname, user_path(user.id), class: "custom-link-style" %></h4>
   </div>
 </div>
-
+<hr/>
 <div class="row ml-2 my-3">
   <div class="col text-left">
     <!--自己紹介文表示-->
     <%= user.introduction %>
   </div>
 </div>
-
+<hr/>
 <% if current_user %>
 <div class="row my-2">
   <div class="col text-left">
@@ -32,7 +32,7 @@
     <h5><%= link_to current_user.followings.size, followings_user_path(current_user) %></h5>
   </div>
 </div>
-
+<hr/>
 <div class="row my-2">
   <div class="col text-left">
     <h5>フォロワー:　</h5>
@@ -41,6 +41,7 @@
     <h5><%= link_to current_user.followers.size, followers_user_path(current_user) %></h5>
   </div>
 </div>
+<hr/>
 <% end %>
 
 <!--<div class="row">-->

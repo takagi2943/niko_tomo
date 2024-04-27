@@ -6,7 +6,7 @@ class Public::NikosController < ApplicationController
     @niko = @user.nikos.build(niko_params)
 
     if @niko.save
-      redirect_to edit_user_path(@user), notice: '二胡の情報が正常に作成されました。'
+      redirect_to edit_user_path(@user), notice: '二胡の情報が作成されました。'
     else
       render "public/users/edit" # 二胡の情報を入力するフォームを表示するビューへリダイレクト
     end
@@ -18,7 +18,7 @@ class Public::NikosController < ApplicationController
     @niko = @user.nikos.find(params[:id])
 
     if @niko.update(niko_params)
-      redirect_to edit_user_path(@user), notice: '二胡の情報が正常に更新されました。'
+      redirect_to edit_user_path(@user), notice: '二胡の情報が更新されました。'
     else
       flash.now[:alert] = "編集内容を確認してください"
       render "public/users/edit" # 二胡の情報を入力するフォームを表示するビューへリダイレクト
@@ -30,7 +30,7 @@ class Public::NikosController < ApplicationController
     @user = current_user
     @niko = @user.nikos.find(params[:id])
     @niko.destroy
-    redirect_to edit_user_path(@user), notice: '二胡の情報が削除されました。'
+    redirect_to edit_user_path(@user), notice: '削除に成功しました。'
   end
 
   private

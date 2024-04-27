@@ -5,7 +5,7 @@
 
 <% tags.each do |tag| %>
 <div class="row my-2">
- <%= link_to tag.title, labos_tag_path(tag.id) %>
+ <%= link_to tag.title, labos_tag_path(tag.id), style: "display: inline-block; color: #FFFFFF; background-color: #DB8278;" %>
 </div>
 <% end %>
 
@@ -28,12 +28,14 @@
   </div>
 
   <div class="row my-3">
-    <%= f.text_area :body, class: 'form-control title w-50', placeholder: "投稿文" %>
+    <div class="col-8">
+      <%= f.text_area :body, class: 'form-control title', placeholder: "投稿文" %>
+    </div>
   </div>
 
   <div class="row my-3">
     <div class="col text-center">
-    <%= f.submit "変更を保存", class: "btn btn-outline-secondary mb-,2 mx-5" %>
+    <%= f.submit "変更を保存", class: "btn text-white mb-,2 mx-5", style: "background-color: #DC7681;" %>
     </div>
   </div>
   <% end %>

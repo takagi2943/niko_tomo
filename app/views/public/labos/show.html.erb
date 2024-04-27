@@ -10,7 +10,7 @@
         <div class="flex-colmum ml-3">
         <!--ログインユーザーならば会員の詳細画面に遷移する-->
         <% if current_user && current_user.user_status == "有効" %>
-          <%= link_to @labo.user.nickname, user_path( @labo.user) %>
+          <%= link_to @labo.user.nickname, user_path( @labo.user), style: "color: black;" %>
         <% else%>
         <!--非ログインならば名前がリンクにならない-->
           <%= @labo.user.nickname %>
@@ -22,7 +22,7 @@
     </div>
     <div class="col text-right">
       <% if @labo.user == current_user %>
-        <%= link_to "削除", labo_path(@labo), method: :delete, "date-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger w-25', remote: true %>
+        <%= link_to "削除", labo_path(@labo), method: :delete, class: 'btn btn-sm btn-danger w-25', data: { confirm: "本当に削除しますか？" }, remote: true %>
       <% end %>
     </div>
   </div>
@@ -75,7 +75,7 @@
       <div class="row">
         <div class="col-2 text-left align-self-center mt-2">
         <% if labo_comment.user == current_user %>
-          <%= link_to "削除", labo_labo_comment_path(@labo.id, labo_comment.id), method: :delete, class: "btn btn-danger pull-right", remote: true, data: { confirm: "本当に削除しますか？" } %>
+          <%= link_to "削除", labo_labo_comment_path(@labo.id, labo_comment.id), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "本当に削除しますか？" }, remote: true %>
         <% end %>
         </div>
         <div class="col text-left align-self-center mt-2">
@@ -85,7 +85,7 @@
           <%= image_tag labo_comment.user.get_profile_image, class: "rounded-circle", size: "50x50"%>
           <div class="flex-colmum" style="color: #000000;" >
             <% if current_user && current_user.user_status == "有効" %>
-              <%= link_to user_path(labo_comment.user) do %>
+              <%= link_to user_path(labo_comment.user), style: "color: black;" do %>
                 <%= labo_comment.user.nickname %>
               <% end %>
             <% else%>

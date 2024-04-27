@@ -65,7 +65,7 @@
               <%= link_to '編集', edit_music_post_path(@music_post.id), class: "btn btn-sm btn-success", style: "width: 100px;" %>
             </div>
             <div class="col-lg-3 mx-3 my-1">
-              <%= link_to '削除', @music_post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+              <%= link_to '削除', @music_post, method: :delete, class: "btn btn-sm btn-danger" data: { confirm: '本当に消しますか？' }, remote: true %>
             </div>
             <% end %>
           </div>

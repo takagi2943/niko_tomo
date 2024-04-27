@@ -4,7 +4,7 @@
       <h3>グループの詳細編集</h3>
         <%= render '/layouts/error_messages', obj: @group %>
         <%= render 'form', group: @group %>
-        <%= link_to "グループを解散させる", group_path(@group), method: :delete, class: "btn btn-danger", deta: { confirm:"本当にグループを解散させますか？"} %>
+        <%= link_to "グループを解散させる", group_path(@group), method: :delete, class: "btn btn-danger", deta: { confirm:"本当にグループを解散させますか？"},, remote: true %>
     </div>
   </div>
 </div>

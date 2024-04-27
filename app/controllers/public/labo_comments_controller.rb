@@ -8,9 +8,11 @@ before_action :authenticate_user!, only: [:create, :destroy]
     @labo_comment.labo_id = params[:labo_id]
 
     if @labo_comment.save
+      flash[:notice] = 'コメントしました。'
       redirect_to labo_path(params[:labo_id])
     else
       @labo = Labo.find_by(params[:labo_id])
+      flash[:alert] = '内容を確認してください。'
       render "public/labos/show"
     end
   end
@@ -19,6 +21,7 @@ before_action :authenticate_user!, only: [:create, :destroy]
     # 探究室の投稿を削除
     labo_comment = LaboComment.find(params[:id])
     labo_comment.destroy
+    flash[:notice] = 'コメントを削除しました。'
     redirect_to labo_path(params[:labo_id])
   end
 

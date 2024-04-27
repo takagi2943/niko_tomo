@@ -1,16 +1,14 @@
 <!--フォロワー-->
-<div class="container">
-  <div class="row">
-    <h2 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">フォロワー</h2>
+<div class="container my-4">
+  <div class="d-flex justify-content-center my-5">
+    <h4 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 25px; font-weight: bold;"><%= @user.nickname %> さんのフォロワー</h4>
   </div>
 
   <% if @users.exists? %>
     <%= render 'public/users/index', users: @users %>
   <% else %>
-  <div class="row">
-    <div class="col">
-      <h5>ユーザーはいません</h5>
-    </div>
+  <div class="d-flex justify-content-center my-5">
+    <h5 class="custom-link-style">ユーザーはいません</h5>
   </div>
   <% end %>
 </div>

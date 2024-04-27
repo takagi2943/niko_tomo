@@ -18,9 +18,12 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
     @labo.user_id = current_user.id
     # 探究室の投稿が成功したら
     if @labo.save
+      flash[:notice] = '投稿に成功しました。'
       redirect_to labos_path
     else
-    # 探究室の投稿コメントに成功したら
+      @labos = Labo.all # 追加
+      @tags = Tag.all  # 追加
+      flash[:alert] = '内容を確認してください。'
       render 'index'
     end
   end
@@ -29,6 +32,7 @@ before_action :authenticate_user!, only: [:create, :update, :destroy]
     # 探究室の投稿を削除
     @labo = Labo.find(params[:id])
     @labo.destroy
+    flash[:notice] = '投稿を削除しました。'
     redirect_to labos_path
   end
 

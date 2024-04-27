@@ -48,7 +48,7 @@
           <% if @group.is_owned_by?(current_user) %>
             <%= link_to '編集', edit_group_path(@group), class: "btn btn-sm btn-success w-25" %>
           <% elsif @group.includesUser?(current_user) %>
-            <%= link_to "脱退", leave_group_path(@group), method: :delete, class: "btn btn-sm btn-danger w-25" %>
+            <%= link_to "脱退", leave_group_path(@group), method: :delete, class: "btn btn-sm btn-danger w-25", data: {confirm: "本当に脱退しますか？" }, remote: true %>
           <% else %>
             <%= link_to "加入", group_join_path(@group), class: "btn btn-sm btn-success w-25" %>
           <% end %>

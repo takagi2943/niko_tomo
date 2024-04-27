@@ -21,12 +21,14 @@ class Public::MusicPostsController < ApplicationController
       # if pattern.match(request.referer) != nil
       #   redirect_to music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
       # else
+       flash[:notice] = '投稿しました。'
       redirect_to request.referer
       # end
 
       #redirect_to request.referer #music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
     else
       @music_posts = MusicPost.all
+      flash[:alert] = '内容を確認してください。'
       render 'index'
     end
   end
@@ -36,7 +38,7 @@ class Public::MusicPostsController < ApplicationController
 
   def update
     if @music_post.update(music_post_params)
-      redirect_to music_post_path(@music_post), notice: "You have updated music_post successfully."
+      redirect_to music_post_path(@music_post), notice: "投稿内容を編集しました。"
     else
       render "edit"
     end
@@ -44,7 +46,7 @@ class Public::MusicPostsController < ApplicationController
 
   def destroy
     @music_post.destroy
-    redirect_to music_posts_path
+    redirect_to music_posts_path, notice: '投稿を削除しました。'
 
   end
 
