@@ -1,11 +1,11 @@
-<div class="container">
-  <div class="d-flex justify-content-center">
+<div class="container my-4">
+  <div style="max-width: 800px; margin: auto;">
     <div class="row mt-2">
       <div class="col">
-        <div class="col">
+        <div class="col mb-5">
           <div class="row">
-            <div class="col text-left align-bottom">
-              <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">サイト利用者数</h5>
+            <div class="col text-right align-bottom">
+              <h5 style="display: inline-block;  border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">サイト利用者数</h5>
             </div>
             <div class="col text-left align-bottom">
               <h5  style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_users %>人</h5>
@@ -13,16 +13,16 @@
           </div>
 
           <div class="row">
-            <div class="col text-left align-bottom">
-              <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">登録している人</h5>
+            <div class="col text-right align-bottom">
+              <h5 style="display: inline-block;  border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">登録している人</h5>
             </div>
             <div class="col text-left align-bottom">
               <h5 style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_active_users %>人</h5>
             </div>
           </div>
           <div class="row">
-            <div class="col text-left align-bottom">
-              <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">退会した人</h5>
+            <div class="col text-right align-bottom">
+              <h5 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">退会した人</h5>
             </div>
             <div class="col text-left align-bottom">
               <h5 style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_inactive_users %>人</h5>
@@ -30,7 +30,7 @@
           </div>
 
           <div class="row mt-3 custom-background">
-            <div class="col <mt-2></mt-2> text-left align-bottom">
+            <div class="col mt-2 text-left align-bottom">
               <h5>新規グループ名</h5>
             </div>
           </div>
@@ -40,7 +40,7 @@
               <h5><%= link_to group.name, admin_group_path(group.id) %></h5>
             </div>
             <div class="col text-left">
-              <h5><%= group.body %></h5>
+              <%= group.body %>
             </div>
           </div>
           <% end %>
@@ -67,7 +67,7 @@
           <% @labos.each do |labo| %>
             <div class="row custom-table-striped border border-danger">
               <div class="col text-left my-2">
-                <h5><%= link_to labo.body, admin_labo_path(labo.id) %></h5>
+                <%= link_to labo.body, admin_labo_path(labo.id) %>
               </div>
             </div>
           <% end %>

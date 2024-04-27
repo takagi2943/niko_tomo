@@ -1,32 +1,37 @@
 <!--管理者ログイン-->
-<div class='container-fluid'>
-  <div class="row mt-3 d-flex justify-content-center"><!-- 画面中央に寄せるクラスを追加 -->
-    <div class="col-12 col-md-8 col-lg-5 mx-auto px-0"><!-- 中央寄せのためにmx-autoクラスを追加 -->
-      <div class="col-12"><!-- タイトル用の列を追加 -->
-        <h2 class="text-black p-2 mb-4" style="text-decoration: underline; text-decoration-color: #CD0000;">管理者ログイン</h2>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <!-- メールアドレス -->
-        <div class="row mt-2">
-          <div class="col-sm-4 text-left" style="display:block;">
-            <%= f.label :メールアドレス, class: "mb-3" %>
-          </div>
-          <div class="col-sm-8 text-right">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mb-2 w-75 offset-2", placeholder: "xxxxxxxxx@xxxx.xxxx" %>
-          </div>
-        </div>
-        <div class="row text-left">
-          <div class="col-sm-4" style="display:block;">
-            <%= f.label :パスワード, class: "mt-2" %>
-          </div>
-          <div class="col-sm-8">
-            <%= f.password_field :password, autocomplete: "current-password", class: "mb-2 w-75 offset-3" %>
-          </div>
-        </div>
-        <div class="col-sm-12 mt-3 text-center">
-          <%= f.submit "ログイン", class: "btn btn-outline-success mb-2 ml-2" %>
-        </div>
-        <% end %>
-      </div>
+<div class='container my-4' style="max-width: 900px; margin: auto;">
+  <div class="row">
+    <div class="col text-left">
+      <h2 class="text-black p-2 mb-4" style="text-decoration: underline; text-decoration-color: #CD0000;">管理者ログイン</h2>
     </div>
   </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row my-4">
+    <!-- メールアドレス -->
+    <div class="col-sm-4 text-right" style="display:block;">
+      <%= f.label :メールアドレス, class: "mb-3" %>
+    </div>
+    <div class="col-sm-4 text-left">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mb-2 w-75", placeholder: "xxxxxxxxx@xxxx.xxxx" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4  text-right" style="display:block;">
+      <%= f.label :パスワード, class: "mt-2" %>
+    </div>
+    <div class="col-sm-4 text-left">
+      <%= f.password_field :password, autocomplete: "current-password", class: "mb-2" %>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col text-center">
+      <%= f.submit "ログイン", class: "btn text-white mb-2 ml-2", style: "background-color: #67063A;" %>
+    </div>
+  </div>
+  <% end %>
 </div>
+
+

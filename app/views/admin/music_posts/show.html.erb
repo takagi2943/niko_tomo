@@ -1,5 +1,5 @@
 <!--音楽共有の投稿詳細-->
-<div class="container">
+<div class="container my-4" style="max-width: 800px; margin: auto;">
   <div class="row justify-content-start mb-3">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">会員ID:<%= @user.id %> <%= @user.nickname %> さんの音楽共有投稿内容</h5>
   </div>
@@ -25,13 +25,20 @@
       <%= @music_post.body %>
     </div>
   </div>
-  <div class="row">
-    <div class="col offset-8 my-3">
+  <div class="row  my-3">
+    <div class="col text-right">
       <%= link_to "投稿削除", admin_music_post_path(@music_post.id), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？" }, remote: true  %>
     </div>
   </div>
 
+  <div class="row my-3">
+    <div class="col text-right">
+      <%= link_to "音楽共有一覧へ戻る", admin_music_posts_path, class: "btn text-white", style: "background-color: #F5765F;" %>
+    </div>
+  </div>
 
+<!--探究室の投稿コメントが表示される-->
+<% if @music_post.music_post_comments.exists? %>
   <div class="row justify-content-start my-4">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">投稿のコメント</h5>
   </div>
@@ -47,20 +54,29 @@
 
   <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
   <% @music_post_comments.each do |music_post_comment| %>
-    <div class="row">
-      <div class="col-2 text-left ml-2 d-flex align-items-center">
-        <%= link_to "コメント削除", admin_music_post_music_post_comment_path(music_post_comment.music_post, music_post_comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？" }, remote: true %>
-      </div>
-      <div class="col text-left d-flex align-items-center">
-        <%= music_post_comment.comment %>
-      </div>
-      <div class="col-2 text-right d-flex align-items-center mr-2 my-3">
-        <%= image_tag music_post_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
-        <div>
-          <%= link_to music_post_comment.user.nickname, admin_user_path(music_post_comment.user) %>
+    <div class="col-12 custom-table-striped border border-danger">
+      <div class="row my-1">
+        <div class="col-3 text-left ml-2 d-flex align-items-center">
+          <%= link_to "コメント削除", admin_music_post_music_post_comment_path(music_post_comment.music_post, music_post_comment), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" }, remote: true %>
+        </div>
+        <div class="col text-left d-flex align-items-center">
+          <%= music_post_comment.comment %>
+        </div>
+        <div class="col-2 mr-auto flex-colmum mr-2 my-3">
+          <%= image_tag music_post_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
+          <div class="flex-colmum">
+            <%= link_to music_post_comment.user.nickname, admin_user_path(music_post_comment.user), style: "color: #000000;" %>
+          </div>
         </div>
       </div>
     </div>
     <% end %>
   </div>
+<% else %>
+  <div class="row my-5">
+    <div class="col" style="solid #F07C81; color: #000000;">
+      <h5>まだ　<b><%= @music_post.user.nickname %></b>　さんの質問に誰も回答されていません。</h5>
+    </div>
+  </div>
+<% end %>
 </div>

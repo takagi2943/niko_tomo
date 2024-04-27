@@ -1,5 +1,5 @@
 <!--探究室一覧-->
-<div class="container">
+<div class="container my-4">
   <div class="row  justify-content-start mb-2">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">探究室一覧</h5>
   </div>
@@ -17,16 +17,16 @@
 
   <% @labos.each do |labo| %>
   <div class="row custom-table-striped border border-danger">
-    <div class="col-2 text-center mt-2">
+    <div class="col-2 text-center my-3 ">
       <h5><%= labo.created_at.strftime('%Y/%m/%d') %></h5>
     </div>
-    <div class="col-4 text-left">
+    <div class="col-4 text-left my-3">
     <% labo.tags.each do |tag| %>
       <%= tag.title %><br>
     <% end %>
     </div>
-    <div class="col text-left mt-2">
-      <h5><%= link_to labo.body, admin_labo_path(labo.id) %></h5>
+    <div class="col text-left my-3">
+      <h5><%= link_to labo.body, admin_labo_path(labo.id), style: "color: #000000;" %></h5>
     </div>
   </div>
   <% end %>

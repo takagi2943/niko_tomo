@@ -1,19 +1,19 @@
 <!--会員一覧-->
-<div class="container">
+<div class="container my-4" style="max-width: 800px; margin: auto;">
   <div class="row justify-content-start mb-2">
       <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">会員一覧</h5>
   </div>
   <div class="row custom-background">
-    <div class="col-2">
+    <div class="col-2 mt-2">
       <h5>会員ID</h5>
     </div>
-    <div class="col">
+    <div class="col mt-2">
       <h5>氏名</h5>
     </div>
-    <div class="col">
+    <div class="col mt-2">
       <h5>メールアドレス</h5>
     </div>
-    <div class="col-2" style="white-space: nowrap;">
+    <div class="col-2 mt-2" style="white-space: nowrap;">
       <h5>ステータス</h5>
     </div>
   </div>
@@ -21,9 +21,9 @@
     <% @users.each do |user| %>
     <div class="row custom-table-striped border border-danger">
       <div class="col-2 my-2 text-center">
-        <h5><%= user.id style: "color: #000000;" %></h5>
+        <h5><%= user.id %></h5>
       </div>
-      <div class="col my-2">
+      <div class="col my-2 text-center">
         <h5><%= link_to user.nickname, admin_user_path(user.id) %></h5>
       </div>
       <div class="col my-2">

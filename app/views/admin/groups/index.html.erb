@@ -1,5 +1,5 @@
 <!--グループ一覧-->
-<div class="container">
+<div class="container my-4">
   <div class="row mb-2">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">グループ一覧</h5>
   </div>
@@ -7,10 +7,10 @@
     <div class="col-2 mt-1">
       <h5>作成日時</h5>
     </div>
-    <div class="col mt-1">
+    <div class="col mt-1 text-left">
       <h5>グループ名</h5>
     </div>
-    <div class="col mt-1">
+    <div class="col mt-1 text-left">
       <h5>紹介内容</h5>
     </div>
     <div class="col mt-1">
@@ -21,21 +21,21 @@
   <% @groups.each do |group| %>
   <div class="row align-items-center custom-table-striped border border-danger">
     <div class="col-2 text-center">
-      <h5><%= group.created_at.strftime('%Y/%m/%d') %></h5>
+      <%= group.created_at.strftime('%Y/%m/%d') %>
+    </div>
+    <div class="col text-left">
+      <h5><%= link_to group.name, admin_group_path(group.id), style: "color: #000000;" %></h5>
+    </div>
+    <div class="col text-left my-2">
+      <%= group.body %>
     </div>
     <div class="col">
-      <h5><%= link_to group.name, admin_group_path(group.id) %></h5>
-    </div>
-    <div class="col">
-      <h5><%= group.body %></h5>
-    </div>
-    <div class="col">
-      <h5><%= group.user.nickname %></h5>
+      <%= link_to group.user.nickname, admin_user_path(group.user.id), style: "color: #000000;" %>
     </div>
   </div>
   <% end %>
 
   <div class="d-flex justify-condivnt-cendivr">
-  <%= paginate @group_page %>
+  <%#= paginate @group_page %>
   </div>
 </div>

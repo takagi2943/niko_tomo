@@ -1,5 +1,5 @@
 <!--グループ詳細-->
-<div class="container">
+<div class="container my-4">
   <div class="row">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @group.name %>　の詳細内容</h5>
   </div>
@@ -15,26 +15,29 @@
     </div>
   </div>
   <div class="row">
-    <div class="col text-left ml-2">
-      <h5>グループリーダー</h5>
+    <div class="col text-right ml-2">
+      <div style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">グループリーダー</div>
     </div>
     <div class="col d-flex align-items-center border rounded-pill" style="background-color: #F9D9DA;">
-      <h5><%= @group.user.nickname %></h5>
+      <h5><%= link_to @group.user.nickname, admin_user_path(@user.id), style: "color: #000000;" %></h5>
     </div>
   </div>
   <div class="row my-3">
-    <div class="col text-left ml-2">
-      <h5>グループ参加メンバー</h5>
+    <div class="col text-right ml-2">
+      <div style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">グループ参加メンバー</div>
     </div>
     <div class="col d-flex align-items-center border custom-border rounded-pill " style="background-color: #F9D9DA;">
       <% @users.each do |user| %>
-      <h5><%= user.nickname %></h5>
+      <h5><%= link_to user.nickname, admin_user_path(user.id), style: "color: #000000;" %></h5>
       <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col text-left mt-5">
       <%= link_to "グループを強制解除する", admin_group_path(@group.id), method: :delete, class: "btn btn-danger text-nowrap", data: {confirm: "本当に削除しますか？" }, remote: true %>
+    </div>
+    <div class="col text-right mt-5">
+      <%= link_to "グループ一覧に戻る", admin_groups_path, class: "btn text-white", style: "background-color: #F5765F;" %>
     </div>
   </div>
 </div>
