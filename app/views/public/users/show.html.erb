@@ -63,7 +63,7 @@
       <!-- 音楽共有の投稿フォーム -->
       <div class="row">
         <div class="col">
-          <%= render 'public/music_posts/form', music_post: @music_post || MusicPost.new %>
+          <%= render 'public/music_posts/form', { music_post: @music_post || MusicPost.new, change_redirect_path: false } %>
         </div>
       </div>
       <% end %>

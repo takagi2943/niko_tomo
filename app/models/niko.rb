@@ -7,6 +7,7 @@ class Niko < ApplicationRecord
 
   # 二胡の特徴文の設定
   validates :feature, length: { maximum: 200 }
+  validates :year, presence: true
 
   # tree_type:
   enum tree_type: {

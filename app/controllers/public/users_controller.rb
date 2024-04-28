@@ -34,7 +34,8 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to edit_user_path(@user), notice: '更新されました。'
     else
-    @user = User.find(params[:id])
+      #@user = User.find(params[:id])
+      @niko = Niko.new
       render :edit
     end
   end

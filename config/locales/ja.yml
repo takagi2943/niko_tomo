@@ -41,8 +41,6 @@ ja:
         gender: "性別"
     # エラー集
     errors:
-      messages:
-        not_saved: "保存できませんでした"
       models:
         user:
           email: "メールアドレス"
@@ -57,6 +55,9 @@ ja:
             has_many: "%{record}が存在しているので削除できません"
             blank: "を入力してください"
             taken: "はすでに存在します"
+  errors:
+    messages:
+      not_saved: "保存できませんでした"
   enums:
     user:
       gender:

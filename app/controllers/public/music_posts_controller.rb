@@ -15,14 +15,23 @@ class Public::MusicPostsController < ApplicationController
   end
 
   def create
-    @music_post = MusicPost.new(music_post_params)
+    @music_post = MusicPost.new
+    # ストロングパラメータで
+    @music_post.title = params[:music_post][:title]
+    @music_post.body = params[:music_post][:body]
+    @music_post.image = params[:music_post][:image]
     @music_post.user_id = current_user.id
     if @music_post.save
       # if pattern.match(request.referer) != nil
       #   redirect_to music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
       # else
+      if params[:music_post][:change_redirect_path]
+        flash[:notice] = '投稿しました。'
+        redirect_to music_post_path(@music_post)
+      else
        flash[:notice] = '投稿しました。'
-      redirect_to request.referer
+        redirect_to request.referer
+      end
       # end
 
       #redirect_to request.referer #music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
