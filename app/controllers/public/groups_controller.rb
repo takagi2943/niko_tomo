@@ -50,7 +50,7 @@ class Public::GroupsController < ApplicationController
     #byebug
     # グループのができたら
     if @group.save
-      redirect_to groups_path
+      redirect_to groups_path, notice: 'グループが作成されました。'
     else
       # できなかったらグループの情報を引き継いで戻る
       @groups = Group.all
