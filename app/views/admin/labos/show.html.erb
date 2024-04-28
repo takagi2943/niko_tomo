@@ -19,7 +19,11 @@
       <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
     </div>
     <div class="col-4 text-left">
-      <%= @tag.title %>
+      <% @tags.each do |tag| %>
+      <div class="flex-colmum">
+        <%= tag.title %>
+      </div>
+      <% end %>
     </div>
     <div class="col text-left">
       <%= @labo.body %>

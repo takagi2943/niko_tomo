@@ -1,8 +1,8 @@
-<div class="container my-4">
+<div class="container my-5">
   <div class="row text-left ml-1">
     <div class="flex-colmum">
       <h5 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">タグ一覧</h5>
-    <div class="custom-background mt-3">
+    <div class="custom-background mt-4">
        <h5>現在のタグ一覧</h5>
       <p class="mt-1" style="color: #744199; margin: 0; padding: 0;">※タグを押すと編集できるようになります。</p>
     </div>
@@ -25,7 +25,7 @@
           </div>
           <div class="form-group">
             <div class="row offset-4">
-              <%= f.submit "タグ登録", class: 'btn btn-info mb-2' %>
+              <%= f.submit "タグ登録", class: 'btn mb-2', style: "background-color: #F5765F;" %>
             </div>
           </div>
         <% end %>
@@ -39,8 +39,8 @@
               <div class="form-<%= tag.id %>" style="display: none;">
                 <%= form_with(model: tag, url: admin_tag_path(tag), method: :patch, local: true) do |f| %>
                   <%= f.text_field :title, placeholder: "タグ名", class: "mb-2 mx-8 form-control  w-50" %>
-                  <div class="row offset-4">
-                    <%= f.submit "変更を保存", class: "btn btn-success mb-2" %>
+                  <div class="row offset-4 my-2">
+                    <%= f.submit "変更を保存", class: "btn text-white", style: "background-color: #982F56;" %>
                   </div>
                 <% end %>
                   <div class="row offset-4">

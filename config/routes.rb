@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-# 不正なアクセスをブロック一時的な対処法
-  get '.env', to: -> (env) { [404, {}, []] }
-  post '.env', to: -> (env) { [404, {}, []] }
-
   # ユーザー側
   # URL /customers/sign_in ...
   devise_for :user,skip: [:passwords], controllers: {

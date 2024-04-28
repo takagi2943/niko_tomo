@@ -8,25 +8,41 @@
 ja:
   activerecord:
     attributes:
+      admin:
+        email: "メールアドレス"
+        encrypted_password: "パスワード"
       group:
         name: "グループ名"
-        body: "説明文"
-
-
-    # attributes:
-    #   niko:
-    #     tree_type:
-    #       zitan: "紫檀"
-    #       laohongmu: "老紅木"
-    #       heitan: "黒檀"
-    #       other: "その他"
+        body: "グループ紹介文"
+      group_user_comment:
+        comment: "コメント"
+      labo:
+        body: "投稿文"
+      labo_comment:
+        comment: "コメント"
+      music_post_comment:
+        comment: "コメント"
+      music_post:
+        title: "タイトル"
+        body: "投稿文"
+      niko:
+        is_favorite: "お気に入り"
+        name: "二胡の名前"
+        year:
+        feature: "特徴"
+        tree_type:
+      tag:
+        title: "タグ"
+      user:
+        email: "メールアドレス"
+        nickname: "ニックネーム"
+        introduction: "自己紹介文"
+        password: "パスワード"
+        gender: "性別"
     # エラー集
     errors:
-      # messages:
-      #   #blank: "を入力してください"
-      #   activerecord:
-      #   attributes:
-
+      messages:
+        not_saved: "保存できませんでした"
       models:
         user:
           email: "メールアドレス"
@@ -41,40 +57,6 @@ ja:
             has_many: "%{record}が存在しているので削除できません"
             blank: "を入力してください"
             taken: "はすでに存在します"
-
-#         # format: "%{attribute}%{message}"
-#       messages:
-#         Email: "メールアドレス"
-#         accepted: "を受諾してください"
-#         blank: "を入力してください"
-#         confirmation: "と%{attribute}の入力が一致しません"
-#         empty: "を入力してください"
-#         equal_to: "は%{count}にしてください"
-#         even: "は偶数にしてください"
-#         exclusion: "は予約されています"
-#         greater_than: "は%{count}より大きい値にしてください"
-#         greater_than_or_equal_to: "は%{count}以上の値にしてください"
-#         in: " は%{count}の範囲に含めてください"
-#         inclusion: "は一覧にありません"
-#         invalid: "は不正な値です"
-#         less_than: "は%{count}より小さい値にしてください"
-#         less_than_or_equal_to: "は%{count}以下の値にしてください"
-#         model_invalid: 'バリデーションに失敗しました: %{errors}'
-#         not_a_number: "は数値で入力してください"
-#         not_an_integer: "は整数で入力してください"
-#         odd: "は奇数にしてください"
-#         other_than: "は%{count}以外の値にしてください"
-#         present: "は入力しないでください"
-#         required: "を入力してください"
-#         taken: "はすでに存在します"
-#         too_long: "は%{count}文字以内で入力してください"
-#         too_short: "は%{count}文字以上で入力してください"
-#         wrong_length: "は%{count}文字で入力してください"
-#       template:
-#         body: "投稿内容"
-#         header: "%{model}に%{count}個のエラーが発生しました"
-#         not_saved: "保存できませんでした"
-
   enums:
     user:
       gender:
@@ -285,8 +267,8 @@ ja:
       updated: "アカウントが正常に更新されました。"
       updated_but_not_signed_in: "アカウントが正常に更新されましたが、パスワードが変更されたため、もう一度サインインする必要があります。"
     sessions:
-      signed_in: "正常にサインインしました。"
-      signed_out: "正常にサインアウトしました。"
+      signed_in: "二胡友にサインインしました。"
+      signed_out: "二胡友をサインアウトしました。"
       already_signed_out: "すでに正常にサインアウトされています。"
     unlocks:
       send_instructions: "数分以内に、アカウントのロック解除手順が記載されたメールが届きます。"

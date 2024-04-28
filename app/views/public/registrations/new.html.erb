@@ -1,5 +1,5 @@
 <!--会員の新規登録-->
-<div class='container-fluid'>
+<div class='container-fluid my-4'>
   <div class="row mt-3 d-flex justify-content-center"><!-- 画面中央に寄せるクラスを追加 -->
     <div class="col-12 col-md-8 col-lg-5 mx-auto px-0"><!-- 中央寄せのためにmx-autoクラスを追加 -->
       <div class="col-12"><!-- タイトル用の列を追加 -->
@@ -75,16 +75,16 @@
         <h5 class="text-danger text-left">※注意※</h5>
         <h5 class="text-danger text-left" style="display:block">不適切と判断される投稿が続く場合や悪質な利用と判断した場合、アカウントが削除されます。</h5>
 
-        <div class="col-sm-8 text-center">
-          <%= f.submit "新規登録", class: "w-75 btn btn-outline-success mb-2", style: "background-color: #F5765F;" %>
+        <div class="col-sm-8 ml-auto">
+          <%= f.submit "新規登録", class: "w-75 btn text-white mb-2", style: "background-color: #F5765F;" %>
         </div>
       <% end %>
 
-      <div class="row">
+      <div class="row my-3">
         <div class="col-sm-12">
-          <div class="form-group">
-            <h4 class="mt-5 text-left" style="text-decoration: underline; text-decoration-color: #CD0000;">既に登録済みの方</h4>
-            <p class="text-black text-left" style="text-decoration: underline; text-decoration-color: #CD0000;">&emsp;&emsp;<%= link_to "こちら", new_user_session_path %>　からログインしてください。</p>
+          <div class="text-left">
+            <h6 class="mt-5 text-left" style="text-decoration: underline; text-decoration-color: #CD0000;">既に登録済みの方</h6>
+            <p class="text-black text-left" style="text-decoration: underline; text-decoration-color: #CD0000;">&emsp;&emsp;<%= link_to "こちら", new_user_session_path, style: "color: black; background-color: #B57874;" %>　からログインしてください。</p>
           </div>
         </div>
       </div>

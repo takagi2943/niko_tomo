@@ -8,11 +8,10 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :画像 %>
     <%= f.file_field :image, class: "form-control-file get_niko_image", accept: "image/*" %>
   </div>
 
   <div class="form-group">
-    <%= f.submit "投稿", class: "btn-unique text-light w-75", style: "background-color: #6946EB;" %>
+    <%= f.submit "投稿", class: "btn text-light w-75", style: "background-color: #6946EB;" %>
   </div>
 <% end %>

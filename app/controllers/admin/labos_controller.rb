@@ -1,17 +1,17 @@
 class Admin::LabosController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @labos = Labo.all
-  end 
-  
+  end
+
   def show
-    @tag = Tag.find(params[:id])
     @labo = Labo.find(params[:id])
     @labo_comments = @labo.labo_comments
     @user = @labo.user
+    @tags = @labo.tags
   end
-  
+
   def destroy
     @labo = Labo.find(params[:id])
     @labo.destroy
