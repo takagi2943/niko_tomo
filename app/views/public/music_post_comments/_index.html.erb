@@ -1,8 +1,9 @@
 <!--音楽共有投稿コメントが表示される-->
 
 <% music_post.music_post_comments.each do |post_comment| %>
+<hr/>
 <div class="row">
-  <div class="col text-left">
+  <div class="col-2 text-left d-flex align-items-center my-2">
     <div class="flex-colmum">
       <%= link_to user_path(post_comment.user) do %>
         <%= image_tag post_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %><br>
@@ -12,10 +13,10 @@
       <% end %>
     </div>
   </div>
-  <div class="col text-center">
+  <div class="col text-left d-flex align-items-center">
     <%= post_comment.comment %>
   </div>
-  <div class="col flex-row-reverse">
+  <div class="col-2 text-right d-flex align-items-center">
     <% if post_comment.user == current_user %>
       <%= link_to "削除", music_post_music_post_comment_path(music_post.id, post_comment.id), method: :delete, class: "btn btn-danger pull-right", data: { confirm: '本当に消しますか？' }, remote: true %>
     <% end %>
