@@ -87,9 +87,9 @@ class Public::GroupsController < ApplicationController
 
   # 指定されたグループが現在ログインしているユーザーの所有
   def ensure_correct_user
-    @group = Group.find(params[:id])
+    @group = Group.find_by(id: params[:id])
     unless @group.user && @group.user.id == current_user.id
-      redirect_to root_path
+      redirect_to root_path, alert: '不正なアクセスです。'
     end
   end
 end
