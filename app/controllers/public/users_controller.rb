@@ -25,6 +25,16 @@ class Public::UsersController < ApplicationController
     @niko = Niko.new
   end
 
+  def create
+    @user = @user.new(user_params)
+    @user = User.all
+    if @user.save
+      redirect_to user_path(@user.id)
+    else
+      redirect_to :user_registration_path, alert: '入力を確認してください。'
+    end
+  end
+
   def confirm
      @user = User.find(params[:id]) # または適切な方法でユーザーを取得
   end
@@ -34,15 +44,17 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to edit_user_path(@user), notice: '更新されました。'
     else
-      #@user = User.find(params[:id])
+      # 二胡の情報も新しく持ってくるように
+      # if分岐にないにないのでfindは必要ない
       @niko = Niko.new
       render :edit
     end
   end
 
-  def destroy
+  def withdraw
     @user = User.find(params[:id])
-    @user.destroy
+    @user.is_active = false
+    @user.save
     redirect_to root_path, notice: "二胡友を退会しました。"
   end
 

@@ -16,25 +16,20 @@ class Public::MusicPostsController < ApplicationController
 
   def create
     @music_post = MusicPost.new
-    # ストロングパラメータで
+    # ストロングパラメータで許可した値を持ってくる
     @music_post.title = params[:music_post][:title]
     @music_post.body = params[:music_post][:body]
     @music_post.image = params[:music_post][:image]
     @music_post.user_id = current_user.id
     if @music_post.save
-      # if pattern.match(request.referer) != nil
-      #   redirect_to music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
-      # else
-      if params[:music_post][:change_redirect_path]
+      # viewとcontroller側でchange_redirect_pathのリダイレクト先をtrueとfalseで分けている
+      if params[:music_post][:change_redirect_path]  # trueだったら
         flash[:notice] = '投稿しました。'
         redirect_to music_post_path(@music_post)
       else
-       flash[:notice] = '投稿しました。'
+       flash[:notice] = '投稿しました。' # false
         redirect_to request.referer
       end
-      # end
-
-      #redirect_to request.referer #music_post_path(@music_post), notice: "音楽共有に新しく投稿しました。"
     else
       @music_posts = MusicPost.all
       flash[:alert] = '内容を確認してください。'

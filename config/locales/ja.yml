@@ -28,7 +28,7 @@ ja:
       niko:
         is_favorite: "お気に入り"
         name: "二胡の名前"
-        year:
+        year: "使用年数"
         feature: "特徴"
         tree_type:
       tag:

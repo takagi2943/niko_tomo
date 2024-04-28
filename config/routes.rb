@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # ゲストユーザー側
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    # get 'user', to: 'public/registrations#new'
   end
 
   # 管理者側
@@ -43,17 +44,19 @@ Rails.application.routes.draw do
     end
 
     # ユーザー情報
+
     resources :users, only: [:show, :edit, :update, :destroy, :index] do
       get 'confirm', on: :member
       member do
         get 'followings'
         get 'followers'
       end
+      # 論理削除用のルーティング
+      patch  'users/withdraw' => 'users#withdraw'
       # ユーザー検索用
       collection do
         get 'search'
       end
-
       post 'user_music_posts', to: 'user_music_mosts#create', as: 'user_music_posts'
 
       resources :nikos, only: [:create, :update, :destroy]
