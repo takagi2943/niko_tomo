@@ -1,5 +1,6 @@
 class Public::MusicPostsController < ApplicationController
    before_action :authenticate_user!
+   before_action :correct_user, only: [:edit, :update]
    before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -55,6 +56,14 @@ class Public::MusicPostsController < ApplicationController
   end
 
   private
+
+  # ユーザー自身の投稿編集以外のページにアクセスしようとした場合にはアクセスを拒否
+  def correct_user
+    @music_post = MusicPost.find_by(id: params[:id])
+    unless @music_post && current_user == @music_post.user
+      redirect_to(root_path, alert: "不正なアクセスです")
+    end
+  end
 
   def music_post_params
     params.require(:music_post).permit(:title, :body, :image)
