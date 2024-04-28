@@ -52,7 +52,7 @@
             <% if @user.guest_user? %>
               <%= content_tag :div, "ゲストユーザーは退会できません。", class: "alert alert-warning" %>
             <% else %>
-              <%= link_to "退会する", user_customers_withdraw_path(@user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
+              <%= link_to "退会する", user_users_withdraw_path(@user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
             <% end %>
             </div>
           </div>

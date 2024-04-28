@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
     # ユーザー情報
 
-    resources :users, only: [:show, :edit, :update, :destroy, :index] do
+    resources :users, only: [:show, :edit, :update, :index] do
       get 'confirm', on: :member
       member do
         get 'followings'
