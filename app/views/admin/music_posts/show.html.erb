@@ -62,9 +62,9 @@
         <div class="col text-left d-flex align-items-center">
           <%= music_post_comment.comment %>
         </div>
-        <div class="col-2 mr-auto flex-colmum mr-2 my-3">
+        <div class="col-2 mr-auto flex-colmum my-3">
           <%= image_tag music_post_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
-          <div class="flex-colmum">
+          <div class="flex-colmum text-center">
             <%= link_to music_post_comment.user.nickname, admin_user_path(music_post_comment.user), style: "color: #000000;" %>
           </div>
         </div>

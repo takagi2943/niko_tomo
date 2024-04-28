@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col text-left flex-colmum">
       <%= image_tag @labo.user.get_profile_image, class: "rounded-circle", size: "90x90" %>
-        <div class="flex-colmum ml-3">
+        <div class="col-4 flex-colmum ml-2">
         <!--ログインユーザーならば会員の詳細画面に遷移する-->
         <% if current_user && current_user.user_status == "有効" %>
           <%= link_to @labo.user.nickname, user_path( @labo.user), style: "color: black;" %>
@@ -20,9 +20,9 @@
     <div class="col mt-2 text-left d-flex align-items-conter">
       <%= @labo.body %>
     </div>
-    <div class="col text-right">
+    <div class="col-2 text-right d-flex align-items-center">
       <% if @labo.user == current_user %>
-        <%= link_to "削除", labo_path(@labo), method: :delete, class: 'btn btn-sm btn-danger w-25', data: { confirm: "本当に削除しますか？" }, remote: true %>
+        <%= link_to "削除", labo_path(@labo), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: "本当に削除しますか？" }, remote: true %>
       <% end %>
     </div>
   </div>
@@ -63,7 +63,7 @@
     <div class="col text-left mt-3">
       <h5>回答コメント</h5>
     </div>
-    <div class="col-1 mt-3">
+    <div class="col-1 mt-3 mr-5">
       <h5>回答者</h5>
     </div>
   </div>

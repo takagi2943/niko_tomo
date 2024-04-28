@@ -31,12 +31,12 @@
         <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
           <div class="col">
             <div class="row my-2">
-              <div class="col my-2 d-flex align-items-center">
+              <div class="col my-2 text-left d-flex align-items-center">
                <%= link_to labo.body, labo_path(labo.id), style: "color: #000000;" %>
               </div>
-              <div class="col-lg-2 col-sm-1 mt-2 text-left flex-column">
+              <div class="col-lg-2 col-sm-1 mt-2 text-right flex-column">
                 <%= image_tag labo.user.get_profile_image, class: "rounded-circle", style: "max-width: 60px; height: auto;" %>
-                <div class="flex-column">
+                <div class="flex-column mr-3">
                   <!--ログインユーザーならば会員の詳細画面に遷移する-->
                   <% if current_user && current_user.user_status == "有効" %>
                     <%= link_to user_path(labo.user.id), style: "color: #000000;" do %>
