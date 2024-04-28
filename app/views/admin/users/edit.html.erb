@@ -9,10 +9,10 @@
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
       <div class="row my-3">
         <div class="col-3">
-          <%= link_to "詳細へ戻る", admin_user_path(@user.id), class: "btn btn-warning", style: "background-color: #E88A3A;" %>
+          <%= link_to "詳細へ戻る", admin_user_path(@user.id), class: "btn text-white", style: "background-color: #E88A3A;" %>
         </div>
         <div class="col text-right">
-         <%= link_to "投稿の詳細", admin_user_comments_path(@user.id), class: "btn btn-warning", style: "background-color: #F5765F;" %>
+         <%= link_to "投稿の詳細", admin_user_comments_path(@user.id), class: "btn text-white", style: "background-color: #F5765F;" %>
        </div>
       </div>
 
