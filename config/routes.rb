@@ -51,11 +51,12 @@ Rails.application.routes.draw do
         get 'followings'
         get 'followers'
       end
-      # 論理削除用のルーティング
-      patch  'users/withdraw' => 'users#withdraw'
+
       # ユーザー検索用
       collection do
         get 'search'
+         # 論理削除用のルーティング
+        patch  'withdraw'
       end
       post 'user_music_posts', to: 'user_music_mosts#create', as: 'user_music_posts'
 

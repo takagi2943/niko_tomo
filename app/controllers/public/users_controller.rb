@@ -52,9 +52,10 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    @user = User.find(params[:id])
+    @user = current_user
     @user.is_active = false
     @user.save
+    sign_out
     redirect_to root_path, notice: "二胡友を退会しました。"
   end
 
