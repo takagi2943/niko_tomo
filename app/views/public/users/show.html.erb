@@ -123,18 +123,18 @@
               <div class="d-flex flex-row mb-3">
                 <%= link_to music_post.title, music_post_path(music_post.id), style: "color: black;" %>
               </div>
-
-              <div class="d-flex flex-row mb-3">
+              <hr/>
+              <div class="text-left mb-3">
                 <%= music_post.body %>
               </div>
-
-              <div class="row my-3">
+              <hr/>
+              <div class="row my-3 ml-auto">
                 <div class="col-7 text-right">
                   <!--画像-->
                   <%= image_tag music_post.get_music_post_image, size: '250x250' %>
                 </div>
                 <div class="col-3 d-flex text-right align-items-end" style="flex-wrap: nowrap;" >
-                  <small class="text-muted"><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+                  <small class="ml-auto"><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></small>
                 </div>
               </div>
             </div>
