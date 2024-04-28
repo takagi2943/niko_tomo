@@ -16,7 +16,7 @@
   </div>
     <% @labos.each do |labo| %>
      <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
-      <div class="col-5 my-2 flex-colmum">
+      <div class="col-2 my-2 flex-colmum">
         <%= image_tag labo.user.get_profile_image, class: "rounded-circle", size:'50x50'%>
         <!--ログインユーザーならば会員の詳細画面に遷移する-->
         <div class="flex-colmum">
@@ -28,7 +28,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-5">
+      <div class="col text-left">
         <%= link_to labo.body, labo_path(labo.id), style: "color: black;" %>
       </div>
     </div>
