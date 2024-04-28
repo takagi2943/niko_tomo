@@ -36,7 +36,7 @@
           </div>
           <% @groups.each do |group| %>
           <div class="row custom-table-striped border border-danger">
-            <div class="col text-left my-2">
+            <div class="col-4 text-left my-2">
               <h5><%= link_to group.name, admin_group_path(group.id), style: "color: black;" %></h5>
             </div>
             <div class="col text-left">
@@ -45,13 +45,13 @@
           </div>
           <% end %>
           <div class="row mt-4 custom-background">
-            <div class="col mt-2 align-bottom text-left">
+            <div class="col-4 mt-2 align-bottom text-left">
               <h5>音楽共有の新規投稿</h5>
             </div>
           </div>
           <% @music_posts.each do |music_post| %>
           <div class="row custom-table-striped border border-danger">
-            <div class="col my-2 text-left align-middle">
+            <div class="col-4 my-2 text-left align-middle">
               <%= link_to music_post.title, admin_music_post_path(music_post.id), style: "color: black;" %>
             </div>
             <div class="col my-2 text-left">
