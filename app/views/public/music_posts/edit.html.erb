@@ -4,16 +4,36 @@
       <div class="row my-3">
         <h4 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">音楽共有投稿編集</h4>
       </div>
-    	<%= render 'layouts/error_messages', obj: @music_post %>
-  		<%= render 'form', music_post: @music_post %>
+      <%= form_with model: @music_post, local: true do |f| %>
+        <%= render "layouts/error_messages", obj: @music_post %>
+        <div class="form-group">
+          <%= f.text_field :title, class: "form-control title", placeholder: "タイトル" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :body, class: "form-control body", placeholder: "投稿文" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.file_field :image, class: "form-control-file get_niko_image", accept: "image/*" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "編集を更新する", class: "btn text-light w-75", style: "background-color: #6946EB;" %>
+        </div>
+      <% end %>
   		<div class="row">
-  		  <div class="col">
+  		  <div class="col text-right">
   		    <%= link_to 'マイページに戻る', music_post_path(@music_post), class: "btn text-white my-3", style: "background-color: #D35950" %>
   		  </div>
-  		  <div class="col">
+  		  <div class="col text-right">
   		    <%= link_to '音楽共有へ戻る', music_posts_path, class: "btn text-white my-3", style: "background-color: #982F56;" %>
   		  </div>
   		</div>
+  		<div class="row">
+   		  <div class="col text-right">
+    		    <%= link_to '削除', @music_post, method: :delete, class: "btn btn-danger w-25", data: { confirm: '本当に消しますか？' }, remote: true %>
+    		</div>
+    	</div>
   	</div>
   </div>
 </div>
