@@ -81,7 +81,7 @@
         <div class="col text-left align-self-center mt-2">
           <%= labo_comment.comment %>
         </div>
-        <div class="col-2 mb-4 text-right align-self-center mt-4 flex-colmum">
+        <div class="col-2 mb-4 mr-auto align-self-center mt-4 flex-colmum">
           <%= image_tag labo_comment.user.get_profile_image, class: "rounded-circle", size: "50x50"%>
           <div class="flex-colmum" style="color: #000000;" >
             <% if current_user && current_user.user_status == "有効" %>

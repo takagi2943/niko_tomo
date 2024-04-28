@@ -39,7 +39,7 @@
         </div>
         <div class="col-lg-6 text-left">
           <% @group.users.each do |member| %>
-            <%= link_to member.nickname, user_path(member.id), class: "custom-link-style" %>
+            <%= link_to member.nickname, user_path(member.id), class: "custom-link-style" %><br>
           <% end %>
         </div>
       </div>

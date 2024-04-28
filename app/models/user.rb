@@ -24,7 +24,7 @@ class User < ApplicationRecord
   # 探究室
   has_many :labos, dependent: :destroy
   # 探究室コメント
-  has_many :tag_labo_comments, dependent: :destroy
+  has_many :labo_comments, dependent: :destroy
 
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy

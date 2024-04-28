@@ -15,7 +15,7 @@
     <%= image_tag user.get_profile_image, size: "50x50", class: "custom-border" %>
   </div>
   <div class="col-3 text-left d-flex align-items-center">
-    <%= link_to user.nickname, user_path(user.id) %>
+    <%= link_to user.nickname, user_path(user.id), style: "color: black;" %>
   </div>
   <div class="col text-left d-flex align-items-center">
     <h6><%= user.introduction %></h6>

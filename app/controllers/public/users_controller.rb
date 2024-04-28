@@ -39,6 +39,13 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path, notice: "二胡友を退会しました。"
+  end
+
+
   def followings
     @user = User.find(params[:id])
     @users = @user.followings

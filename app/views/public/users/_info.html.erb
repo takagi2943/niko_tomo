@@ -16,6 +16,7 @@
   </div>
 </div>
 <hr/>
+<% if current_user.introduction.present? %>
 <div class="row ml-2 my-3">
   <div class="col text-left">
     <!--自己紹介文表示-->
@@ -23,13 +24,14 @@
   </div>
 </div>
 <hr/>
+<% end %>
 <% if current_user %>
 <div class="row my-2">
   <div class="col text-left">
     <h5>フォロー:　</h5>
   </div>
   <div class="col text-center">
-    <h5><%= link_to current_user.followings.size, followings_user_path(current_user) %></h5>
+    <h5><%= link_to current_user.followings.size, followings_user_path(current_user), style: "color: black;" %></h5>
   </div>
 </div>
 <hr/>
@@ -38,7 +40,7 @@
     <h5>フォロワー:　</h5>
   </div>
   <div class="col text-center">
-    <h5><%= link_to current_user.followers.size, followers_user_path(current_user) %></h5>
+    <h5><%= link_to current_user.followers.size, followers_user_path(current_user), style: "color: black;" %></h5>
   </div>
 </div>
 <hr/>
@@ -57,8 +59,8 @@
       <%= render "public/relationships/btn", user: user %>
     <% else %>
     <!--同じ場合にはユーザーの編集リンクを表示-->
-      <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
-        <i class="fas fa-user-cog"></i>
+      <%= link_to edit_user_path(user), class: "btn w-75", style: "background-color: #F5765F;" do %>
+        <i class="fas fa-user-cog" style="color: #ffffff;"></i>
       <% end %>
     <% end %>
   </div>

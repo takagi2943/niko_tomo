@@ -11,7 +11,7 @@
       <div class="row mt-5 ">
         <!--投稿タイトル表示-->
         <div class="col-6 text-left ml-4">
-          <%= link_to @music_post.title, @music_post %>
+          <h5><%= link_to @music_post.title, @music_post, style: "color: black;" %></h5>
         </div>
         <div class="col-2 text-right">
           <!--お気に入りボタン表示-->
@@ -29,7 +29,9 @@
       <div class="row my-3">
         <div class="col text-left ml-4">
         <!--音楽共有の投稿内容表示-->
-          <%= @music_post.body %>
+          <div style="color: black; display: inline-block; border-bottom: 2px solid #F07C81;">
+           <%= @music_post.body %>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -41,7 +43,7 @@
       <div class="row">
         <div class="col-lg-6 text-right">
           <!--画像-->
-          <%= image_tag @music_post.get_music_post_image, size:'300x300' %>
+          <%= image_tag @music_post.get_music_post_image, size:'300x300', class: "shadow-lg p-1 mb-5 bg-white rounded" %>
         </div>
         <div class="col-lg-6 d-flex flex-column">
 
@@ -51,7 +53,7 @@
               <div class="flex-calmum">
                 <%= link_to(@music_post.user) do %>
                   <%= image_tag @music_post.user.get_profile_image, class: "rounded-circle", size:"50x50" %>
-                <div class="flex-calmum">
+                <div class="flex-calmum" style= "color: black;">
                   <%= @music_post.user.nickname %>
                 </div>
                 <% end %>
@@ -65,7 +67,7 @@
               <%= link_to '編集', edit_music_post_path(@music_post.id), class: "btn btn-sm btn-success", style: "width: 100px;" %>
             </div>
             <div class="col-lg-3 mx-3 my-1">
-              <%= link_to '削除', @music_post, method: :delete, class: "btn btn-sm btn-danger" data: { confirm: '本当に消しますか？' }, remote: true %>
+              <%= link_to '削除', @music_post, method: :delete, class: "btn btn-sm btn-danger", data: { confirm: '本当に消しますか？' }, remote: true %>
             </div>
             <% end %>
           </div>
@@ -78,8 +80,8 @@
         </div>
       </div>
       <br><br>
-      <div class="row mb-4">
-        <div class="col-lg-6 music_post-comments-index" id="comment_index">
+      <div class="mb-4 justify-content-center">
+        <div class="col-lg-8" id="comment_index">
           <%= render "public/music_post_comments/index", music_post: @music_post %>
         </div>
       </div>
