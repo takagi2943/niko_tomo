@@ -1,0 +1,22 @@
+<div class="container mb-5">
+  <div class="row my-3">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">会員検索一覧</h5>
+  </div>
+  <div class="row">
+    <div class="col">
+      <% @users.each do |user|%>
+      <div class="row custom-table-striped border border-danger">
+        <div class="col-2 my-2 text-left">
+          <%= image_tag user.get_profile_image, size: "50x50", class: "custom-border" %>
+        </div>
+        <div class="col-3 text-left d-flex align-items-center">
+          <%= link_to user.nickname, admin_user_path(user.id), style: "color: black;" %>
+        </div>
+        <div class="col text-left d-flex align-items-center">
+          <h6><%= user.introduction %></h6>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

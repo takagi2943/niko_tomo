@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       end
 
       # ユーザー検索用
+      # コレクションの中に入れることでidを渡さずにパスを生成してくれる
       collection do
         get 'search'
          # 論理削除用のルーティング
