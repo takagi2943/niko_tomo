@@ -39,7 +39,11 @@
 
 
 ## 設計書
-
+![PF_二胡友-画面遷移（会員側）](https://github.com/takagi2943/niko_tomo/assets/154996725/90d84c96-f9ed-48e5-8f96-c1e7d32aa388)
+![PF_二胡友-画面遷移図（管理者側）](https://github.com/takagi2943/niko_tomo/assets/154996725/6a5006a4-4a11-4ef2-a14e-84a29c57cff7)
+![PF_二胡友-ER図](https://github.com/takagi2943/niko_tomo/assets/154996725/199963d7-a0e5-45f5-a3b8-5bd3e95457c2)
+![PF_二胡友-ワイヤーフレーム（会員側）](https://github.com/takagi2943/niko_tomo/assets/154996725/e4b24d23-b2e2-4b9d-b818-26fe869db436)
+![PF_二胡友-ワイヤーフレーム（管理者側）](https://github.com/takagi2943/niko_tomo/assets/154996725/d6fedab3-06bb-49de-8b7b-27f4c4fbaee5)
 
 ## 使用技術
 [![](https://img.shields.io/badge/Ruby-CC342D?style=flat&logo=ruby&logoColor=white)](https://www.ruby-lang.org/)[![](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=flat&logo=ruby-on-rails&logoColor=white)](https://rubyonrails.org/)[![](https://img.shields.io/badge/HTML-1572B6?style=flat&logo=html5&logoColor=white&color=orange)](https://example.com)[![](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/Overview.en.html)[![](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)[![](https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)[![](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/)[![](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)](https://git-scm.com/)[![](https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)[![](https://img.shields.io/badge/Amazon_EC2-232F3E?style=flat&logo=amazon-ec2&logoColor=white)](https://aws.amazon.com/ec2/)[![](https://img.shields.io/badge/Amazon_RDS-232F3E?style=flat&logo=amazon-rds&logoColor=white)](https://aws.amazon.com/rds/)[![](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white)](https://nginx.org/)[![](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
@@ -50,6 +54,15 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## Gemfile
+- kaminari','~> 1.2.1
+- bootstrap4-kaminari-views
+- devise
+- jquery-rails
+- enum_help
+- rails-i18n
+- dotenv-rails
 
 ## 使用素材
 フリーイラスト素材として以下を使用
