@@ -18,6 +18,7 @@ ja:
         comment: "コメント"
       labo:
         body: "投稿文"
+        tags: "タグ"
       labo_comment:
         comment: "コメント"
       music_post_comment:
@@ -55,6 +56,8 @@ ja:
             has_many: "%{record}が存在しているので削除できません"
             blank: "を入力してください"
             taken: "はすでに存在します"
+        labo:
+          Tag_ids: "タグ"
   errors:
     messages:
       not_saved: "保存できませんでした"

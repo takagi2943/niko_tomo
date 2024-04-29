@@ -11,6 +11,7 @@
 
 
 <!--ログインユーザーならば投稿フォームが表示-->
+<%= render 'layouts/error_messages', obj: @labo %>
 <% if current_user && current_user.user_status == "有効" %>
   <div class="row my-3">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">投稿フォーム</h5>
