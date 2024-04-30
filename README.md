@@ -39,10 +39,15 @@
 
 
 ## 設計書
+【会員側】
 ![PF_二胡友-画面遷移（会員側）](https://github.com/takagi2943/niko_tomo/assets/154996725/90d84c96-f9ed-48e5-8f96-c1e7d32aa388)
+【管理者側】
 ![PF_二胡友-画面遷移図（管理者側）](https://github.com/takagi2943/niko_tomo/assets/154996725/6a5006a4-4a11-4ef2-a14e-84a29c57cff7)
+【ER図】
 ![PF_二胡友-ER図](https://github.com/takagi2943/niko_tomo/assets/154996725/199963d7-a0e5-45f5-a3b8-5bd3e95457c2)
+【会員側】
 ![PF_二胡友-ワイヤーフレーム（会員側）](https://github.com/takagi2943/niko_tomo/assets/154996725/e4b24d23-b2e2-4b9d-b818-26fe869db436)
+【管理者側】
 ![PF_二胡友-ワイヤーフレーム（管理者側）](https://github.com/takagi2943/niko_tomo/assets/154996725/d6fedab3-06bb-49de-8b7b-27f4c4fbaee5)
 
 ## 使用技術
