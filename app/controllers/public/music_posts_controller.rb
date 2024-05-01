@@ -17,12 +17,18 @@ class Public::MusicPostsController < ApplicationController
 
   def create
     @music_post = MusicPost.new
+    # AIの画像認識
+    tags = Vision.get_image_data(list_params[:image])
     # ストロングパラメータで許可した値を持ってくる
     @music_post.title = params[:music_post][:title]
     @music_post.body = params[:music_post][:body]
     @music_post.image = params[:music_post][:image]
     @music_post.user_id = current_user.id
     if @music_post.save
+      # AIの画像タグ
+      tags.each do |tag|
+        @music_post.tags.create(name: tag)
+      end 
       # viewとcontroller側でchange_redirect_pathのリダイレクト先をtrueとfalseで分けている
       if params[:music_post][:change_redirect_path]  # trueだったら
         flash[:notice] = '投稿しました。'

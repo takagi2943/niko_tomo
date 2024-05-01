@@ -60,7 +60,9 @@
               </div>
             </div>
           </div>
-
+          <% @music_post.tags.each do |tag| %>
+            <span class="label"><%= tag.name %></span>
+          <% end %>
           <div class="row mt-auto">
             <% if @music_post.user == current_user %>
             <div class="col-lg-3 mx-3 my-1">
