@@ -4,14 +4,15 @@
       <h4>会員情報</h4>
       <%= render 'public/users/info', user: current_user %>
       <h4 class="mt-3">新規投稿</h4>
+      <!--登録をした際には遷移せず新規投稿したshowに遷移する-->
       <%= render 'form', { music_post: @new_music_post, change_redirect_path: true} %>
     </div>
 
     <div class='col offset-1'>
       <div class="row mt-5 ">
         <!--投稿タイトル表示-->
-        <div class="col-6 text-left ml-4">
-          <h5><%= link_to @music_post.title, @music_post, style: "color: black;" %></h5>
+        <div class="col-6 text-left ml-4" style= "color: black;">
+          <h5><%= @music_post.title %></h5>
         </div>
         <div class="col-2 text-right">
           <!--お気に入りボタン表示-->
@@ -60,10 +61,12 @@
               </div>
             </div>
           </div>
-          <% @music_post.tags.each do |tag| %>
-            <span class="label"><%= tag.name %></span>
+          <!--AIの画像認識用のタグ表示-->
+          <% @music_post.ai_tags.each do |ai_tag| %>
+            <span class="label"><%= ai_tag.name %></span>
           <% end %>
           <div class="row mt-auto">
+            <!--音楽共有の投稿者-->
             <% if @music_post.user == current_user %>
             <div class="col-lg-3 mx-3 my-1">
               <%= link_to '編集', edit_music_post_path(@music_post.id), class: "btn btn-sm btn-success", style: "width: 100px;" %>
@@ -78,12 +81,14 @@
 
       <div class="row my-5 ml-5">
         <div class="col">
+          <!--投稿に関するコメント入力欄-->
           <%= render "public/music_post_comments/form", music_post: @music_post, music_post_comment: @music_post_comment %>
         </div>
       </div>
       <br><br>
       <div class="mb-4 justify-content-center">
         <div class="col" id="comment_index">
+          <!--投稿にコメントを表示させる-->
           <%= render "public/music_post_comments/index", music_post: @music_post %>
         </div>
       </div>

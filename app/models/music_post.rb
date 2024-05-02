@@ -6,8 +6,11 @@ class MusicPost < ApplicationRecord
   # この投稿に関連するお気に入りの情報を取得する
   has_many :favorites, dependent: :destroy
 
-    # この投稿に関連するコメントの情報を取得する
+  # この投稿に関連するコメントの情報を取得する
   has_many :music_post_comments, dependent: :destroy
+  
+  # この投稿に関連する画像をAI画像認識の情報を取得する
+  has_many :ai_tags, dependent: :destroy
 
   # 投稿画像
   has_one_attached :image
