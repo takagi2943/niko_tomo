@@ -23,11 +23,7 @@ class Public::MusicPostsController < ApplicationController
     @music_post.image = params[:music_post][:image]
     @music_post.user_id = current_user.id
     # AIの画像認識
-    if @music_post.image.attached?
-      @ai_tags = Vision.get_image_data(params[:music_post][:image])
-    else
-      @ai_tags = ["none"]
-    end
+    @ai_tags = Vision.get_image_data(music_post_params[:image])
     if @music_post.save
       # AIの画像タグ
       @ai_tags.each do |ai_tag|
@@ -85,4 +81,6 @@ class Public::MusicPostsController < ApplicationController
       redirect_to user_music_posts_path
     end
   end
+
+
 end
