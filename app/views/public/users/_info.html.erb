@@ -46,12 +46,12 @@
 <hr/>
 <% end %>
 
-<!--<div class="row">-->
-<!--  <div class="col">-->
-    <!--<h5>いいね <%#= link_to "#{user.music_post_favorites.si}", user_music_post_favorites_path(user) %></h5>-->
-<!--  </div>-->
-<!--</div>-->
-
+<div class="row my-3">
+  <div class="col text-center">
+    <h5><%= link_to "お気に入り投稿一覧",favorites_user_path(user.id), style: "color: black;" %></h5>
+  </div>
+</div>
+<hr/>
 <div class="row">
   <div class="col">
     <!--current_user が user と異なる場合にはフォロー/フォロワー関連のボタンを表示-->

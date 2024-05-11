@@ -50,7 +50,8 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-
+  
+  # 退会確認用
   def withdraw
     @user = current_user
     @user.is_active = false
@@ -59,15 +60,21 @@ class Public::UsersController < ApplicationController
     redirect_to root_path, notice: "二胡友を退会しました。"
   end
 
-
+  # フォロー
   def followings
     @user = User.find(params[:id])
     @users = @user.followings
   end
-
+  # フォロワー
   def followers
     @user = User.find(params[:id])
     @users = @user.followers
+  end
+  # いいね
+  def favorites
+    @user = User.find(params[:id])
+    favorites= Favorite.where(user_id: @user.id).pluck(:music_post_id)
+    @favorite_music_posts = MusicPost.find(favorites)
   end
 
   private

@@ -13,30 +13,31 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="flex-grow-1">
     <header class="shadow-sm" id="header">
       <%= render 'layouts/header' %>
     </header>
-    <main>
-      <% if flash[:notice]%>
-        <div class="alert alert-success">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-danger">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-      <%= yield %>
+    <main class="Lines_v2">
+      <div style="margin-bottom: -24px;">
+        <% if flash[:notice]%>
+          <div class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
     </main>
     <footer class="py-4" id="footer">
       <%= render 'layouts/footer' %>
       <p id="page-top"><a href="#"><i class="fa-solid fa-circle-up"></i></a></p>
     </footer>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-6/js/8-1-6.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/8-1-6/js/8-1-6.js"></script>
   </body>
 </html>

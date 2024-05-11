@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
     # 音楽共有
     resources :music_posts, only: [:index, :show, :edit, :create, :update, :destroy] do
-      resource :favorites, only: [:index,:create, :destroy]
+      resource :favorites, only: [:index, :create, :destroy]
       resources :music_post_comments, only:[:create, :destroy, :update]
     end
 
@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :edit, :update, :index] do
       get 'confirm', on: :member
+      # フォロー・フォロワー
       member do
         get 'followings'
         get 'followers'
@@ -58,6 +59,10 @@ Rails.application.routes.draw do
         get 'search'
          # 論理削除用のルーティング
         patch  'withdraw'
+      end
+      # いいね一覧表示
+      member do
+        get 'favorites'
       end
       post 'user_music_posts', to: 'user_music_mosts#create', as: 'user_music_posts'
 

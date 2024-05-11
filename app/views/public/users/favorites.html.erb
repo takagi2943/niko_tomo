@@ -1,0 +1,21 @@
+<!--いいね一覧-->
+<div class="container-fluid my-4">
+  <div class="row mx-3">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">お気に入りにした音楽共有一覧</h5>
+  </div>
+
+  <% if @favorite_music_posts.empty? %>
+    <div class="d-flex justify-content-center my-5">
+      <h5 class="custom-link-style">お気に入りの投稿はまだありません</h5>
+    </div>
+  <% else %>
+    <% @favorite_music_posts.each do |favorite_music_post| %>
+      <%= link_to favorite_music_post.title, music_post_path(favorite_music_post.id), style: "color: black;" %>
+      <%= favorite_music_post.body %>
+      <%= link_to favorite_music_post.user.nickname, user_path(favorite_music_post.user.id), style: "color: black;" %>
+      <div id="favorite_btn_<%= favorite_music_post.id %>">
+        <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: favorite_music_post } %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

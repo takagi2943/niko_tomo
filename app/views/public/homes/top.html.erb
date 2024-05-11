@@ -1,32 +1,41 @@
-<div class="container my-5">
-  <h1 style="font-size: 3rem; font-weight: bold; color: #333; text-decoration: underline; text-decoration-color: #CD0000;">二胡友へようこそ！</h1>
-  <p style="text-align: left; text-center">
-    二胡に興味があるけど、よくわからないからこの楽器について詳しく知りたい方も<br>
-    二胡愛好家と交流し、励まし合いながら悩みや情報を共有することもできます！<br>
-    そして、自身の演奏レベルに合わせた練習曲について迷っている方も登録することでコミュニティが広がります<br>
-    日々、自身の演奏技術を向上し投稿して記録としても活用できます
-  </p>
-
+<div class="top-background pt-5">
   <div class="row">
     <div class="col">
+      <h1 style="font-size: 3rem; font-weight: bold; color: #333; text-decoration: underline; text-decoration-color: #CD0000;">二胡友へようこそ！</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="d-flex justify-content-center text-center my-5 sample-box-4">
+        <p class="text-white" style="text-align: left; text-center">
+          二胡に興味があるけど、よくわからないからこの楽器について詳しく知りたい方も<br>
+          二胡愛好家と交流し、励まし合いながら悩みや情報を共有することもできます！<br>
+          そして、自身の演奏レベルに合わせた練習曲について迷っている方も登録することでコミュニティが広がります<br>
+          日々、自身の演奏技術を向上し投稿して記録としても活用できます
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12">
       <h4 class="text-center mr-5" style="font-size: 24px; font-weight: bold;">
-        <%= link_to "探究室", labos_path, class: "fa-regular btn btn-lg btn-warning w-50", style: "background-color: #E54C5F;" %></h4>
+        <%= link_to "探究室", labos_path, class: "fa-regular btn btn-lg w-50", style: "background-color: #c24f59; color: #ffffff;" %></h4>
     </div>
   </div>
   <div class="row">
     <div class="col text-center">
       <div>
-        <span style="white-space: nowrap; color: #BD00E5;">※二胡に興味がある方は探究室や下にあるタグをクリックすると覗けます</span>
+        <span style="white-space: nowrap; color: #782f35;">※二胡に興味がある方は探究室や下にあるタグをクリックすると覗けます</span>
       </div>
     </div>
   </div>
 
-  <div class="row my-4">
+  <div class="row m-0 my-4">
     <% @tags.each do |tag| %>
-    <div class="col text-center" style="white-space: nowrap;">
-      <%= link_to tag.title, labos_tag_path(tag.id), class: "btn btn-light mb-2", style: "background-color: #E68890;"%>
+    <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="white-space: nowrap;">
+      <%= link_to tag.title, labos_tag_path(tag.id), class: "btn mb-2 text-white", style: "background-color: #c24f59;"%>
     </div>
     <% end %>
   </div>
 </div>
-

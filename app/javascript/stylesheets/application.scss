@@ -174,17 +174,53 @@
   }
 
   // AI画像認識
-  .label {
-    background-color: #337ab7;
-    font-weight: 500;
-    display: inline;
-    padding: .2em .6em .3em;
-    font-size: 75%;
-    font-weight: bold;
-    line-height: 1;
-    color: #fff;
+  // .label {
+  //   background-color: #337ab7;
+  //   font-weight: 500;
+  //   display: inline;
+  //   padding: .2em .6em .3em;
+  //   font-size: 75%;
+  //   font-weight: bold;
+  //   line-height: 1;
+  //   color: #fff;
+  //   text-align: center;
+  //   white-space: nowrap;
+  //   vertical-align: baseline;
+  //   border-radius: .25em;
+  // }
+
+  // フォントの設定全てに適用
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+  html, body {
+  font-family: "Raleway", "M PLUS 1p", sans-serif;
+  }
+
+  // 背景をストライプ模様に設定
+  .Lines_v2 {
+    background-image: linear-gradient(0deg, #FFFAF0, 50%, #FFFFF9 50%);
+    background-size: 20px 20px;
+  }
+
+  // /* top要素のスタイル */
+  .top-background {
+    top: 0;
+    left: 0;
+    // width: 100%;
+    // height: 100vh;
+    ffilter: opacity(30%);
+    // height: 50%; /* 画面の上半分のみに背景を表示する場合 */
+    background-image: url('../images/top用画像.jpg');
+    // background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  // topの吹き出し
+  .sample-box-4 {
+    border: 4px solid #515151;
+    background-color: #CC8A85;
     text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25em;
+    border-radius: 240px 15px 185px 15px / 15px 200px 15px 185px;
+    margin: 2em 0;
+    width: 100%;
+    padding: 2em;
   }
