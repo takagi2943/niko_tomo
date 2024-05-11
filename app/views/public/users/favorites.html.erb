@@ -1,21 +1,52 @@
 <!--いいね一覧-->
-<div class="container-fluid my-4">
-  <div class="row mx-3">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">お気に入りにした音楽共有一覧</h5>
+<div class="container my-4">
+  <div class="d-flex justify-content-center mt-5">
+    <h4 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">お気に入りにした音楽共有一覧</h4>
   </div>
 
+  <!--お気に入りの投稿が無ければ-->
   <% if @favorite_music_posts.empty? %>
     <div class="d-flex justify-content-center my-5">
       <h5 class="custom-link-style">お気に入りの投稿はまだありません</h5>
     </div>
   <% else %>
-    <% @favorite_music_posts.each do |favorite_music_post| %>
-      <%= link_to favorite_music_post.title, music_post_path(favorite_music_post.id), style: "color: black;" %>
-      <%= favorite_music_post.body %>
-      <%= link_to favorite_music_post.user.nickname, user_path(favorite_music_post.user.id), style: "color: black;" %>
-      <div id="favorite_btn_<%= favorite_music_post.id %>">
-        <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: favorite_music_post } %>
+  <div class="mt-5 mb-1 d-flex justify-content-end mr-5">
+    <p style="border-bottom: 2px solid #F07C81; color: #000000; font-weight: bold; margin: 0;">※<i class="fas fa-heart" style="color: red;"></i>をクリックするとお気に入りから外せます</p>
+  </div>
+    <!--お気に入りの投稿があれば-->
+    <div class="row custom-background">
+      <div class="col mt-1 text-left ml-2">
+        <h5>タイトル</h5>
       </div>
+      <div class="col mt-1 text-left ml-2">
+        <h5>投稿内容</h5>
+      </div>
+      <div class="col-2 mt-1 text-rgiht mr-2">
+        <h5>投稿主</h5>
+      </div>
+      <div class="col-1"></div>
+    </div>
+
+    <% @favorite_music_posts.each do |favorite_music_post| %>
+    <div class="row custom-table-striped border border-danger">
+      <div class="col my-3 text-left mr-2">
+        <%= link_to favorite_music_post.title, music_post_path(favorite_music_post.id), style: "color: black; font-weight: bold;" %>
+      </div>
+      <div class="col my-3 text-left">
+        <%= favorite_music_post.body %>
+      </div>
+      <div class="col-2 my-3 text-rgiht ml-4">
+        <%= link_to favorite_music_post.user.nickname, user_path(favorite_music_post.user.id), style: "color: black;" %>
+      </div>
+      <div class="col-1 my-3">
+        <div id="favorite_btn_<%= favorite_music_post.id %>">
+          <%= render partial: 'public/favorites/btn', locals: { current_user: current_user, music_post: favorite_music_post } %>
+        </div>
+      </div>
+    </div>
     <% end %>
+    <div class="mt-2 mb-5 d-flex justify-content-start">
+      <p style="color: #000000; margin: 0;">※投稿されたタイトルをクリックすると投稿詳細に飛べます</p>
+    </div>
   <% end %>
 </div>

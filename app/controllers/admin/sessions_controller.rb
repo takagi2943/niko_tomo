@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  before_action :prohibit_multiple_login, if: :user_signed_in?
   before_action :authenticate_admin!
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -36,8 +35,4 @@ class Admin::SessionsController < Devise::SessionsController
     new_admin_session_path
   end
 
-  def prohibit_multiple_login
-     flash[:alert]= "複数でのログインはできません。ログアウトしてからもう一度やり直してください。"
-    redirect_to admin_root_path
-  end
 end

@@ -26,14 +26,14 @@
   <div class="row">
     <div class="col text-center">
       <div>
-        <span style="white-space: nowrap; color: #782f35;">※二胡に興味がある方は探究室や下にあるタグをクリックすると覗けます</span>
+        <span style="white-space: nowrap; color: #0f0f0f;">※二胡に興味がある方は探究室や下にあるタグをクリックすると覗けます</span>
       </div>
     </div>
   </div>
 
   <div class="row m-0 my-4">
     <% @tags.each do |tag| %>
-    <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="white-space: nowrap;">
+    <div class="col-md-3 col-sm-6 col-xs-12 text-center my-3" style="white-space: nowrap;">
       <%= link_to tag.title, labos_tag_path(tag.id), class: "btn mb-2 text-white", style: "background-color: #c24f59;"%>
     </div>
     <% end %>

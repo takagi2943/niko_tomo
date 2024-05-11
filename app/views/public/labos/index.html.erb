@@ -3,6 +3,9 @@
   <div class="row mx-3">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">探究室の扉</h5>
   </div>
+  <div class="row">
+    ※タグはクリックできます
+  </div>
 
   <!--非ログインには表示させない-->
   <div class="row my-2 mx-3">
@@ -18,7 +21,14 @@
     </div>
 
     <!--探究室投稿一覧-->
-    <div class="col mx-3 offset">
+
+    <div class="col mx-3 offset mb-5">
+      <div class="row">
+        <div class="col text-right">
+          ※投稿内容をクリックできます
+        </div>
+      </div>
+
       <% @labos.each do |labo| %>
         <div class="row d-flex align-items-center custom-background">
           <% labo.tags.each do |tag| %>
