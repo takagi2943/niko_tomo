@@ -37,6 +37,8 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
 
   has_many :labo_comments
+  # お問い合わせ
+  has_many :contacts
 
   # 名前と自己紹介文の設定
   validates :nickname, length: { minimum: 2, maximum: 20 }, uniqueness: true

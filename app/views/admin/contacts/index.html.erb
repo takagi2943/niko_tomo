@@ -1,0 +1,8 @@
+<h2>会員からのお問い合わせ一覧</h2>
+<h5>ニックネーム</h5>
+<h5>内容</h5>
+
+<% @contacts.each do |contact| %>
+<h5><%= contact.user.nickname %></h5>
+<h5><%= contact.content %></h5>
+<% end %>
