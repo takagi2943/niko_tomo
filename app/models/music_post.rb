@@ -49,19 +49,11 @@ class MusicPost < ApplicationRecord
     when 'old'
       return all.order(created_at: :ASC)
     when 'likes'
-      return find(Favorite.group(:music_post_id).order(Arel.sql('count(music_post_id)deac')).pluck(:music_post_id))
+      return find(Favorite.group(:music_post_id).order(Arel.sql('count(music_post_id) desc')).pluck(:music_post_id))
     when 'dislikes'
-      return find(Favorite.group(:music_post_id).order(Arel.sql('count(music_post_id)deac')).pluck(:music_post_id))
+      return find(Favorite.group(:music_post_id).order(Arel.sql('count(music_post_id) asc')).pluck(:music_post_id))
     end
   end
-
-  # ソート機能
-  # orderは特定のキーで並び替えを行う
-  # desc(昇順)、asc(降順)で指定している
-  # いいねの数で表示
-  # scope :latest, -> {order(created_at: :desc)}
-  # scope :old, -> {order(created_at: :asc)}
-  # scope :favorite_count, -> {order(favorite: :desc)}
 
   # 画像を選択していたら表示
     def get_music_post_image

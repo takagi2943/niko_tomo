@@ -205,7 +205,6 @@
   .top-background {
     top: 0;
     left: 0;
-    ffilter: opacity(30%);
     background-image: url('../images/top用画像.jpg');
     background-size: cover;
   }
@@ -229,9 +228,6 @@
 
   // /* about要素のスタイル */
   .about-background {
-    // top: 0;
-    // left: 0;
-    ffilter: opacity(30%);
     background-image: url('../images/二胡についての背景画像.jpg');
     background-attachment: fixed;
     background-size: cover;
@@ -343,4 +339,10 @@
 
   .btntextchange:hover span:nth-child(2){
     opacity:1;/*不透明に*/
+  }
+
+  // 音楽共有のソート機能のボタン
+  .submitbtn {
+    background: #6b3b3f;
+    color: #fff;
   }

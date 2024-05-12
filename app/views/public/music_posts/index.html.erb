@@ -24,14 +24,18 @@
     </div>
 
 
-    <div class="col-md-8 offset-md-1">
-      <% form_with model: @music_post, url: genre_search_path, method: :get, local: true do |f| %>
-      <%= f.select :keyword, [['投稿が新しい順','new'],
-                              ['投稿が古い順','old'],
-                              ['いいねの多い順','likes'],
-                              ['いいねの少ない順','dislikes']]%>
-      <%= f.submit %>
-      <% end%>
+    <div class="col-md-8 offset-md-1 mt-3">
+      <div class="row">
+        <div class="col text-right">
+          <%= form_with url: genre_search_path, method: :get, local: true do |f| %>
+            <%= f.select :keyword, [['投稿が新しい順','new'],
+                                    ['投稿が古い順','old'],
+                                    ['いいねの多い順','likes'],
+                                    ['いいねの少ない順','dislikes']]%>
+            <%= f.submit '検索', class: "submitbtn" %>
+          <% end%>
+        </div>
+      </div>
 
       <div style="max-width: 600px; margin: auto;">
        <%= render "public/music_posts/index", music_posts: @music_posts %>
