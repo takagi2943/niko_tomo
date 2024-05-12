@@ -1,4 +1,4 @@
-<div class="container my-4">
+<div class="container my-4 pb-5">
   <div class="row">
     <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @user.nickname %>さんの会員情報編集</h5>
   </div>
@@ -84,10 +84,14 @@
           <h5>会員ステータス</h5>
         </div>
         <div class="col">
+        <% unless @user.guest_user? %>
           <%= f.radio_button :is_active, true, id: "active_true" %>
           <%= f.label :is_active, "有効", for: "active_true" %>
           <%= f.radio_button :is_active, false, id: "active_false" %>
           <%= f.label :is_active, "退会", for: "active_false" %>
+        <% else%>
+          <h5>ゲストは変更不可</h5>
+        <% end %>
         </div>
       </div>
 

@@ -58,7 +58,7 @@
   <div class="row my-3">
     <div class="col">
     <% if  niko.id.present? %>
-      <%= link_to "削除", user_niko_path(user.id, niko.id), method: :delete, class: "btn btn-danger pull-right", deta: { confirm: "本当に二胡の情報を削除しますか？"}, remote: true %>
+      <%= link_to "削除", user_niko_path(user.id, niko.id), method: :delete, class: "btn btn-danger pull-right", data: { confirm: "本当に二胡の情報を削除しますか？" }, remote: true %>
     <% end %>
     </div>
     <div class="col">
