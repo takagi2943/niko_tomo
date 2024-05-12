@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get 'group_messages/create'
     get '/about' => 'homes#about'
     get '/genre/search' => 'music_posts#index'
+    # お問い合わせ
+    resources :contacts, only: [:new, :index, :create]
     # 探究室
     resources :labos, only: [:index, :show, :create, :update, :destroy] do
       resources :labo_comments, only: [:create,:destroy]
@@ -83,6 +85,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     # 検索用
     get '/search' => 'homes#search'
+    # お問い合わせ
+    resources :contacts, only: [:index, :show]
     # 会員情報
     resources :users, only: [:index, :show, :edit, :destroy, :update] do
       resources :user_post_comments, only: [:index, :destroy]
