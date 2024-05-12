@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     # ユーザー情報
 
     resources :users, only: [:show, :edit, :update, :index] do
+      # 退会確認画面
       get 'confirm', on: :member
       # フォロー・フォロワー
       member do

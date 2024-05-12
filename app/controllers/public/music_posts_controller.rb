@@ -6,6 +6,23 @@ class Public::MusicPostsController < ApplicationController
   def index
     @music_posts = MusicPost.all
     @music_post = MusicPost.new
+    
+    # ソート機能
+    def search
+      selection = params[:keyword]
+      @music_posts = MusicPost.sort(selection)
+    end 
+    # if params[:latest]
+    #   @music_posts = MusicPost.latest
+    # elsif params[:old]
+    #   @music_posts = MusicPost.old
+    # elsif params[:favorite_count]
+    #   @music_posts = MusicPost.favorite_count
+    # else
+    #   @music_posts = MusicPost.all
+    # end
+      
+    # ページネーション
     @music_posts = MusicPost.all.includes(:user).order(created_at: :desc).page(params[:page])
   end
 

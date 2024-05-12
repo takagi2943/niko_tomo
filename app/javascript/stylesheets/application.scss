@@ -229,9 +229,118 @@
 
   // /* about要素のスタイル */
   .about-background {
-    top: 0;
-    left: 0;
+    // top: 0;
+    // left: 0;
     ffilter: opacity(30%);
     background-image: url('../images/二胡についての背景画像.jpg');
+    background-attachment: fixed;
     background-size: cover;
+    background-position: center;
+
+  }
+
+/*== ボタン共通設定 いいね一覧ボタン*/
+.btn02 {
+    /*背景の基点とするためrelativeを指定*/
+    position: relative;
+    /*ボタンの形状*/
+    display: inline-block;
+    width: 100%;
+    max-width: 250px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    outline: none;
+}
+
+  /*ボタン内側の設定*/
+  .btn02 span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #333;
+      /* 重なりを3Dで表示 */
+      transform-style: preserve-3d;
+      /* アニメーションの設定 数字が少なくなるほど早く回転 */
+      transition: 0.5s;
+  }
+
+  /*== くるっと回転（手前に） */
+
+  /* 回転前 */
+  .rotatefront span:nth-child(1) {
+      background: #fff;
+      color: #000;
+      transform: rotateX(0deg);/*はじめは回転なし*/
+      transform-origin: 0 50%  -25px;/* 回転する起点 */
+  }
+
+  /*hoverをした後の形状*/
+  .rotatefront:hover span:nth-child(1) {
+      transform: rotateX(-90deg);/* X軸に-90度回転 */
+  }
+
+  /* 回転後 */
+  .rotatefront span:nth-child(2) {
+      background: #6b3b3f;
+      color: #fff;
+      transform: rotateX(90deg);/*はじめはX軸に90度回転*/
+      transform-origin: 0 50%  -25px;/* 回転する起点 */
+  }
+
+  /*hoverをした後の形状*/
+  .rotatefront:hover span:nth-child(2) {
+      transform: rotateX(0deg);/* X軸に0度回転 */
+  }
+
+  /*表示するテキストが切り替わる userの編集ボタン*/
+  .btntextchange{
+      /*テキストの基点とするためrelativeを指定*/
+    position: relative;
+      /*ボタンの形状*/
+    border: 1px solid #555;
+    border-radius:25px;
+      min-width:210px;
+    padding: 20px;
+      text-align: center;
+    display: inline-block;
+      text-decoration: none;
+      color: #333;
+      outline: none;
+      /*アニメーションの指定*/
+      transition: all .2s;
+  }
+
+  /*hoverした際の変化*/
+  .btntextchange:hover{
+    background: #6b3b3f;
+    color: #fff;
+  }
+
+  .btntextchange span{
+      /*絶対配置でテキストの位置を決める*/
+    position: absolute;
+    left: 50%;
+    top:50%;
+      transform:translate(-50%,-50%);
+      /*アニメーションの指定*/
+      transition: all .5s;
+    /*ブロック要素にしてテキスト折り返しなし*/
+    display: block;
+    white-space: nowrap;
+  }
+
+  /*差し替わるテキストの設定*/
+  .btntextchange span:nth-child(2){
+    opacity:0;/*透過0に*/
+  }
+
+  /*hoverするとテキストが入れ替わる設定*/
+  .btntextchange:hover span:nth-child(1){
+    opacity:0;/*透過0に*/
+  }
+
+  .btntextchange:hover span:nth-child(2){
+    opacity:1;/*不透明に*/
   }
