@@ -40,6 +40,8 @@ ja:
         introduction: "自己紹介文"
         password: "パスワード"
         gender: "性別"
+      contact:
+        content: "お問い合わせ内容"
     # エラー集
     errors:
       models:

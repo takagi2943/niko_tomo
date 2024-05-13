@@ -1,5 +1,21 @@
-<h2>お問い合わせ一覧</h2>
-<h5>要件</h5>
-<% @contacts.each do |contact| %>
-<%= contact.content %>
-<% end %>
+<div class="my-4 pb-5" style="max-width: 650px; margin: auto;">
+  <div class="d-flex justify-content-center mt-5">
+    <h4 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">お問い合わせ一覧</h4>
+  </div>
+
+  <div class="d-flex justify-content-end mt-5">
+    <%= link_to "お問い合わせに戻る", new_contact_path, class: "btn text-white mb-2 mx-5", style: "background-color: #F5765F;" %>
+  </div>
+  <div class="d-flex justify-content-center mt-1 custom-background">
+    <h5 class="mt-2">送信履歴</h5>
+  </div>
+  <% @contacts.each do |contact| %>
+    <% if contact.user_id == current_user.id %>
+      <div class="custom-table-striped border border-danger d-flex justify-content-start">
+        <div class="ml-2 my-2">
+         <%= contact.current_user.content %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

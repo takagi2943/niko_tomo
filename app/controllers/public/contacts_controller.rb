@@ -10,18 +10,18 @@ class Public::ContactsController < ApplicationController
    end
 
    def create
-     @contact = Contact.new(contact_params)
-     if @contact.save
-       redirect_to root_path, notice: 'お問い合わせ内容を送信しました'
+    @contact = current_user.contacts.new(contact_params)
+    if @contact.save
+      redirect_to root_path, notice: 'お問い合わせ内容を送信しました'
     else
-       render :new
+      render :new
     end
    end
 
    private
 
     def contact_params
-      params.require(:contact).permit(:content)
+      params.require(:contact).permit(:content, :user_id)
     end
 
 end

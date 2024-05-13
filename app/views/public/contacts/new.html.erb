@@ -1,39 +1,36 @@
-<%= form_with(model: @contact, local: true) do |f| %>
-  <div class='form-wrap'>
-    <div class='form-header'>
-      <h5 class='form-header-text'>
-        <%= current_user.nickname %>　さんのお問い合わせ内容
-      </h5>
+<div class="container mb-5 py-5">
+  <div class="row">
+    <div class="col">
+      <h6>※要望や改善点をお知らせください。</h6>
     </div>
+  </div>
+  <div class="d-flex justify-content-center my-3">
+    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= current_user.nickname %>　さんのお問い合わせ内容</h5>
   </div>
   <div class="correct-msg-box">
-    <% if @contact.errors.any? %>
-      <div id="error_explanation">
-        <ul><% @contact.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <div class="error_explanation">
+      <%= render "layouts/error_messages", obj: @contact %>
+    </div>
     <div class="correct-msg-main">
       <div class="contact-form">
-          <div class="correct-text-field">
-
+      <%= form_with(model: @contact, local: true) do |f| %>
+        <div class="correct-text-field">
+          <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "input-form", size: "40x10" %>
+        </div>
+        <div class="send-btn-contents">
+          <div class="register-btn text-center">
+            <%= f.button type: "submit", class: "btn text-white ml-2 mt-2 mb-5 w-25", style: 'background-color: #982F56;' do %>
+              送信 <i class="fas fa-paper-plane"></i>
+            <% end %>
           </div>
-          <div class="correct-text-field">
-            <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "input-form" %>
+          <% if @contact.user_id == current_user.id %>
+          <div class="register-btn">
+            <%= link_to "お問い合わせ一覧へ", contacts_path, class: "btn text-white w-25", style: "background-color: #D35950" %>
           </div>
-          <div class="send-btn-contents">
-            <div class="register-btn">
-              <%= f.button type: "submit", class:"register-red-btn", style:'border-style: none;' do %>
-                送信 <i class="fas fa-paper-plane"></i>
-              <% end %>
-            </div>
-            <div class="register-btn">
-              <%= link_to "お問い合わせ一覧へ戻る", contacts_path, class:"register-red-btn", style:"background-color: #aaa" %>
-            </div>
-          </div>
+          <% end %>
+        </div>
+      <% end %>
       </div>
     </div>
   </div>
-<% end %>
+</div>
