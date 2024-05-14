@@ -10,12 +10,10 @@
     <h5 class="mt-2">送信履歴</h5>
   </div>
   <% @contacts.each do |contact| %>
-    <% if contact.user_id == current_user.id %>
-      <div class="custom-table-striped border border-danger d-flex justify-content-start">
-        <div class="ml-2 my-2">
-         <%= contact.current_user.content %>
-        </div>
+    <div class="custom-table-striped border border-danger d-flex justify-content-start">
+      <div class="ml-2 my-2">
+       <%= contact.content %>
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div>

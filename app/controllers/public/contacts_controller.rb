@@ -3,10 +3,11 @@ class Public::ContactsController < ApplicationController
 
    def new
      @contact = Contact.new
+     @contacts_num = current_user.contacts.count
    end
 
    def index
-     @contacts = Contact.all
+     @contacts = current_user.contacts.all
    end
 
    def create
@@ -14,6 +15,7 @@ class Public::ContactsController < ApplicationController
     if @contact.save
       redirect_to root_path, notice: 'お問い合わせ内容を送信しました'
     else
+      @contacts_num = current_user.contacts.count
       render :new
     end
    end
@@ -21,7 +23,7 @@ class Public::ContactsController < ApplicationController
    private
 
     def contact_params
-      params.require(:contact).permit(:content, :user_id)
+      params.require(:contact).permit(:content)
     end
 
 end
