@@ -3,6 +3,7 @@ class Public::ContactsController < ApplicationController
 
    def new
      @contact = Contact.new
+    #  userがお問い合わせしている回数
      @contacts_num = current_user.contacts.count
    end
 

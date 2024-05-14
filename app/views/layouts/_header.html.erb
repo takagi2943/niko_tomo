@@ -113,7 +113,8 @@
                   <span>グループ</span>
                 <% end %>
               </li>
-
+              
+              <!--ゲストログインでは表示されない-->
               <% if !current_user.guest_user? %>
               <li class="nav-item active mx-2">
                 <%= link_to new_contact_path, class: 'nav-link text-light' do %>
