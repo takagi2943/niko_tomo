@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <div class="row my-3">
-        <h4 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">音楽共有投稿編集</h4>
+        <h4 class="music_post-edit-title">音楽共有投稿編集</h4>
       </div>
       <%= form_with model: @music_post, local: true do |f| %>
         <%= render "layouts/error_messages", obj: @music_post %>
@@ -18,15 +18,15 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit "編集を更新する", class: "btn text-light w-75", style: "background-color: #6946EB;" %>
+          <%= f.submit "編集を更新する", class: "btn text-light w-75 music_post-edit-submit" %>
         </div>
       <% end %>
   		<div class="row">
   		  <div class="col text-right">
-  		    <%= link_to 'マイページに戻る', music_post_path(@music_post), class: "btn text-white my-3", style: "background-color: #D35950" %>
+  		    <%= link_to 'マイページに戻る', music_post_path(@music_post), class: "btn text-white my-3 music_post-edit-My" %>
   		  </div>
   		  <div class="col text-right">
-  		    <%= link_to '音楽共有へ戻る', music_posts_path, class: "btn text-white my-3", style: "background-color: #982F56;" %>
+  		    <%= link_to '音楽共有へ戻る', music_posts_path, class: "btn text-white my-3 music_post-edit-index" %>
   		  </div>
   		</div>
   		<div class="row">

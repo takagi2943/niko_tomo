@@ -6,7 +6,7 @@
       <!-- 二胡の情報を表示させる -->
       <% if @favorite_niko.present? %>
       <div class="row my-2 ml-2">
-        <h4 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">My二胡</h4>
+        <h4 class="style-title">My二胡</h4>
       </div>
 
       <div class="row">
@@ -57,7 +57,7 @@
       <% else %>
       <!-- 二胡の情報が無かったら -->
       <div class="row mt-3 mx-2">
-        <h2 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">新規投稿</h2>
+        <h2 class="style-title">新規投稿</h2>
       </div>
 
       <!-- 音楽共有の投稿フォーム -->
@@ -70,13 +70,13 @@
     </div>
 
     <div class="col offset">
-      <div style="max-width: 800px; margin: auto;">
+      <div class="user-show-style">
         <!-- 二胡の投稿があったならば投稿フォームを表示させる -->
         <% if @favorite_niko.present? %>
         <%= form_with model: @new_music_post, local: true do |f| %>
         <%= render 'layouts/error_messages', obj: @new_music_post %>
         <div class="row">
-          <h6 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">新規投稿</h6>
+          <h6 class="style-title">新規投稿</h6>
         </div>
 
         <div class="row">
@@ -121,7 +121,7 @@
                 </div>
               </div>
               <div class="d-flex flex-row mb-3">
-                <%= link_to music_post.title, music_post_path(music_post.id), style: "color: black;" %>
+                <%= link_to music_post.title, music_post_path(music_post.id), class: "style-color" %>
               </div>
               <hr/>
               <div class="text-left mb-3">
@@ -133,7 +133,7 @@
                   <!--画像-->
                   <%= image_tag music_post.get_music_post_image, size: '250x250' %>
                 </div>
-                <div class="col-3 d-flex text-right align-items-end" style="flex-wrap: nowrap;" >
+                <div class="col-3 d-flex text-right align-items-endnow-body">
                   <small class="ml-auto"><%= music_post.created_at.strftime('%Y/%m/%d %H:%M') %></small>
                 </div>
               </div>

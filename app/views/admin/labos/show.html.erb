@@ -1,7 +1,7 @@
 <!--探究室の投稿詳細-->
 <div class="container my-4 pb-5">
   <div class="row justify-content-start mb-3">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">会員ID:<%= @user.id %> <%= @user.nickname %> さんの探究室投稿内容</h5>
+    <h5 class="style-title">会員ID:<%= @user.id %> <%= @user.nickname %> さんの探究室投稿内容</h5>
   </div>
 
   <div class="row custom-background">
@@ -16,7 +16,7 @@
 
   <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
     <div class="col-2 my-3">
-      <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+      <%= image_tag @user.get_profile_image, class: "rounded-circle", size: '100x100' %>
     </div>
     <div class="col-4 text-left">
       <% @tags.each do |tag| %>
@@ -37,14 +37,14 @@
 
   <div class="row my-3">
     <div class="col text-right">
-      <%= link_to "探究室一覧へ戻る", admin_labos_path, class: "btn text-white", style: "background-color: #F5765F;"%>
+      <%= link_to "探究室一覧へ戻る", admin_labos_path, class: "btn text-white admin-background-btn" %>
     </div>
   </div>
 
 <!--探究室の投稿コメントが表示される-->
 <% if @labo.labo_comments.exists? %>
   <div class="row my-4">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">投稿のコメント</h5>
+    <h5 class="style-title">投稿のコメント</h5>
   </div>
   <div class="row mt-2 custom-background">
     <div class="col-3"></div>
@@ -56,12 +56,12 @@
     </div>
   </div>
 
-  <div class="row d-flex align-items-center justify-content-centerborder border border-danger">
+  <div class="row d-flex align-items-center justify-content-center border border-danger">
   <% @labo_comments.each do |labo_comment| %>
     <div class="col-12 custom-table-striped border border-danger">
       <div class="row my-1">
         <div class="col-3 text-left ml-2 d-flex align-items-center">
-          <%= link_to "コメント削除", admin_labo_labo_comment_path(labo_comment.labo, labo_comment), method: :delete, class: "btn btn-danger", style: "white-space: nowrap;" %>
+          <%= link_to "コメント削除", admin_labo_labo_comment_path(labo_comment.labo, labo_comment), method: :delete, class: "btn btn-danger now-nowrap" %>
         </div>
         <div class="col text-left d-flex align-items-center">
           <%= labo_comment.comment %>
@@ -69,7 +69,7 @@
         <div class="col-2 mr-auto flex-colmum mr-2 my-3">
         <%= image_tag labo_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
           <div class="flex-colmum">
-          <%= link_to labo_comment.user.nickname, admin_user_path(labo_comment.user), style: "color: #000000;", data: { confirm: "本当に削除しますか？"}, remote: true %>
+          <%= link_to labo_comment.user.nickname, admin_user_path(labo_comment.user), class: "style-color", data: { confirm: "本当に削除しますか？"}, remote: true %>
           </div>
         </div>
       </div>

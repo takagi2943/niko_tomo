@@ -2,21 +2,9 @@
   <div class="mt-5">
     <div class="row justify-content-center">
       <div class="col-lg-6 d-flex align-items-center flex-column">
-        <h1 class="text-center" style="text-shadow: -1px -1px 5px rgba(160,82,45,0.8),
-          1px -1px 5px rgba(160,82,45,0.8),
-          -1px 1px 5px rgba(160,82,45,0.8),
-          1px 1px 5px rgba(160,82,45,0.8); color: white; animation: blink 3s infinite;">
+        <h1 class="text-center user-confirm-h1">
            本当に退会しますか？
         </h1>
-
-
-        <style>
-          @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
-          }
-        </style>
 
         <p>
           下記の機能が使用できなくなりますがよろしいでしょうか？
@@ -33,11 +21,11 @@
 
           <div class="row">
             <div class="col">
-              <%= link_to "退会しない", edit_user_path(current_user), class: "btn mb-2 mx-5", style: "background-color: #22E6D2;" %>
+              <%= link_to "退会しない", edit_user_path(current_user), class: "btn mb-2 mx-5 user-edit-btn" %>
             </div>
           </div>
 
-          <p style="border-bottom: 2px solid #F07C81; color: #000000; font-weight: bold;">退会して閲覧できるのは下記のとおりです</p>
+          <p class="user-confirm-p">退会して閲覧できるのは下記のとおりです</p>
 
 
 

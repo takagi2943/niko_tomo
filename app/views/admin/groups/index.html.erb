@@ -1,7 +1,6 @@
-<!--グループ一覧-->
 <div class="container my-4 pb-5">
   <div class="row mb-2">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">グループ一覧</h5>
+    <h5 class="style-title">グループ一覧</h5>
   </div>
   <div class="row custom-background">
     <div class="col-2 mt-1">
@@ -24,13 +23,13 @@
       <%= group.created_at.strftime('%Y/%m/%d') %>
     </div>
     <div class="col text-left">
-      <h5><%= link_to group.name, admin_group_path(group.id), style: "color: #000000;" %></h5>
+      <h5><%= link_to group.name, admin_group_path(group.id), class: "style-color" %></h5>
     </div>
     <div class="col text-left my-2">
       <%= group.body %>
     </div>
     <div class="col">
-      <%= link_to group.user.nickname, admin_user_path(group.user.id), style: "color: #000000;" %>
+      <%= link_to group.user.nickname, admin_user_path(group.user.id), class: "style-color" %>
     </div>
   </div>
   <% end %>

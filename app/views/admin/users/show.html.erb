@@ -1,6 +1,6 @@
 <div class="container my-4 pb-5">
   <div class="row">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @user.nickname %>さんの会員情報詳細</h5>
+    <h5 class="style-title"><%= @user.nickname %>さんの会員情報詳細</h5>
   </div>
 
   <div class="row text-left my-3 ml-3">
@@ -76,10 +76,10 @@
   </div>
   <div class="row my-4">
     <div class="col">
-      <%= link_to '一覧に戻る', admin_users_path, class: "btn text-white", style: "background-color: #F5765F;" %>
+      <%= link_to '一覧に戻る', admin_users_path, class: "btn text-white admin-style-user-show01" %>
     </div>
     <div class="col">
-      <%= link_to '編集', edit_admin_user_path(@user.id), class: "btn text-white", style: "background-color: #F55FBE;" %>
+      <%= link_to '編集', edit_admin_user_path(@user.id), class: "btn text-white admin-style-user-show02" %>
     </div>
   </div>
 </div>

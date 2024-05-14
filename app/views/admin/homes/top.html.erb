@@ -1,31 +1,31 @@
 <div class="container my-4 pb-5">
-  <div style="max-width: 800px; margin: auto;">
+  <div class="admin-top">
     <div class="row mt-2">
       <div class="col">
         <div class="col mb-5">
           <div class="row">
             <div class="col text-right align-bottom">
-              <h5 style="display: inline-block;  border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">サイト利用者数</h5>
+              <h5 class="admin-title">サイト利用者数</h5>
             </div>
             <div class="col text-left align-bottom">
-              <h5  style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_users %>人</h5>
+              <h5 class="admin-color">計 :<%= @total_users %>人</h5>
             </div>
           </div>
 
           <div class="row">
             <div class="col text-right align-bottom">
-              <h5 style="display: inline-block;  border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">登録している人</h5>
+              <h5 class="admin-title">登録している人</h5>
             </div>
             <div class="col text-left align-bottom">
-              <h5 style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_active_users %>人</h5>
+              <h5 class="admin-color">計 :<%= @total_active_users %>人</h5>
             </div>
           </div>
           <div class="row">
             <div class="col text-right align-bottom">
-              <h5 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">退会した人</h5>
+              <h5 class="admin-title">退会した人</h5>
             </div>
             <div class="col text-left align-bottom">
-              <h5 style="color: #000000; font-size: 24px; font-weight: bold;">計 :<%= @total_inactive_users %>人</h5>
+              <h5 class="admin-color">計 :<%= @total_inactive_users %>人</h5>
             </div>
           </div>
 
@@ -37,7 +37,7 @@
           <% @groups.each do |group| %>
           <div class="row custom-table-striped border border-danger">
             <div class="col-4 text-left my-2">
-              <h5><%= link_to group.name, admin_group_path(group.id), style: "color: black;" %></h5>
+              <h5><%= link_to group.name, admin_group_path(group.id), class: "style-color" %></h5>
             </div>
             <div class="col mt-2 text-left">
               <%= group.body %>
@@ -52,7 +52,7 @@
           <% @music_posts.each do |music_post| %>
           <div class="row custom-table-striped border border-danger">
             <div class="col-4 my-2 text-left align-middle">
-              <%= link_to music_post.title, admin_music_post_path(music_post.id), style: "color: black;" %>
+              <%= link_to music_post.title, admin_music_post_path(music_post.id), class: "style-color" %>
             </div>
             <div class="col my-2 text-left">
               <%= music_post.body %>
@@ -67,7 +67,7 @@
           <% @labos.each do |labo| %>
             <div class="row custom-table-striped border border-danger">
               <div class="col text-left my-2">
-                <%= link_to labo.body, admin_labo_path(labo.id), style: "color: black;" %>
+                <%= link_to labo.body, admin_labo_path(labo.id), class: "style-color" %>
               </div>
             </div>
           <% end %>

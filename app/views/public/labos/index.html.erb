@@ -1,7 +1,7 @@
 <!--探究室-->
 <div class="container-fluid my-4">
   <div class="row mx-3">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">探究室の扉</h5>
+    <h5 class="labo-style-title">探究室の扉</h5>
   </div>
   <div class="row">
     ※タグはクリックできます
@@ -10,7 +10,7 @@
   <!--非ログインには表示させない-->
   <div class="row my-2 mx-3">
     <% if current_user && current_user.user_status == "有効" %>
-    <h6 style="white-space: nowrap; color: #E5391E;">※管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
+    <h6 class="labo-admin-promise">※管理者とのお約束事項として、悪質であったり、不適切なコメントは削除させていただきます</h6>
     <% end %>
   </div>
 
@@ -32,7 +32,7 @@
       <% @labos.each do |labo| %>
         <div class="row d-flex align-items-center custom-background">
           <% labo.tags.each do |tag| %>
-          <div class="col-2 mr-2 text-left", style= "white-space: nowrap;">
+          <div class="col-2 mr-2 text-left now-nowrap">
              ・<%= tag.title %>
           </div>
           <% end %>
@@ -42,14 +42,14 @@
           <div class="col">
             <div class="row my-2">
               <div class="col my-2 text-left d-flex align-items-center">
-               <%= link_to labo.body, labo_path(labo.id), style: "color: #000000;" %>
+               <%= link_to labo.body, labo_path(labo.id), class: "style-color" %>
               </div>
               <div class="col-lg-2 col-sm-1 mt-2 text-right flex-column">
-                <%= image_tag labo.user.get_profile_image, class: "rounded-circle", style: "max-width: 60px; height: auto;" %>
+                <%= image_tag labo.user.get_profile_image, class: "rounded-circle labo-user-img" %>
                 <div class="flex-column mr-3">
                   <!--ログインユーザーならば会員の詳細画面に遷移する-->
                   <% if current_user && current_user.user_status == "有効" %>
-                    <%= link_to user_path(labo.user.id), style: "color: #000000;" do %>
+                    <%= link_to user_path(labo.user.id), class: "style-color" do %>
                     <%= labo.user.nickname %>
                     <% end %>
                   <% else %>

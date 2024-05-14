@@ -1,15 +1,14 @@
-<!--管理者ログイン-->
-<div class='container my-4 pb-5' style="max-width: 900px; margin: auto;">
+<div class='container my-4 pb-5 admin-style-top'>
   <div class="row">
     <div class="col text-left">
-      <h2 class="text-black p-2 mb-4" style="text-decoration: underline; text-decoration-color: #CD0000;">管理者ログイン</h2>
+      <h2 class="text-black p-2 mb-4 admin-style-title">管理者ログイン</h2>
     </div>
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row my-4">
     <!-- メールアドレス -->
-    <div class="col-sm-4 text-right" style="display:block;">
+    <div class="col-sm-4 text-right admin-style-block">
       <%= f.label :メールアドレス, class: "mb-3" %>
     </div>
     <div class="col-sm-4 text-left">
@@ -18,7 +17,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-4  text-right" style="display:block;">
+    <div class="col-sm-4  text-right admin-style-block">
       <%= f.label :パスワード, class: "mt-2" %>
     </div>
     <div class="col-sm-4 text-left">
@@ -28,7 +27,7 @@
 
   <div class="row my-4">
     <div class="col text-center mr-5">
-      <%= f.submit "ログイン", class: "btn text-white mb-2 ml-2", style: "background-color: #67063A;" %>
+      <%= f.submit "ログイン", class: "btn text-white mb-2 ml-2 admin-style-btn" %>
     </div>
   </div>
   <% end %>

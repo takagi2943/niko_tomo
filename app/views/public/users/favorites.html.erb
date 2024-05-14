@@ -1,7 +1,7 @@
 <!--いいね一覧-->
 <div class="container my-4">
   <div class="d-flex justify-content-center mt-5">
-    <h4 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">お気に入りにした音楽共有一覧</h4>
+    <h4 class="favorite-title">お気に入りにした音楽共有一覧</h4>
   </div>
 
   <!--お気に入りの投稿が無ければ-->
@@ -11,7 +11,7 @@
     </div>
   <% else %>
   <div class="mt-5 mb-1 d-flex justify-content-end mr-5">
-    <p style="border-bottom: 2px solid #F07C81; color: #000000; font-weight: bold; margin: 0;">※<i class="fas fa-heart" style="color: red;"></i>をクリックするとお気に入りから外せます</p>
+    <p class="favorite-title-p">※<i class="fas fa-heart favorite-title-i" ></i>をクリックするとお気に入りから外せます</p>
   </div>
     <!--お気に入りの投稿があれば-->
     <div class="row custom-background">
@@ -30,13 +30,15 @@
     <% @favorite_music_posts.each do |favorite_music_post| %>
     <div class="row custom-table-striped border border-danger">
       <div class="col my-3 text-left mr-2">
-        <%= link_to favorite_music_post.title, music_post_path(favorite_music_post.id), style: "color: black; font-weight: bold;" %>
+        <!--音楽共有タイトル-->
+        <%= link_to favorite_music_post.title, music_post_path(favorite_music_post.id), class: "favorite-title-style" %>
       </div>
       <div class="col my-3 text-left">
+        <!--音楽共有投稿内容-->
         <%= favorite_music_post.body %>
       </div>
       <div class="col-2 my-3 text-rgiht ml-4">
-        <%= link_to favorite_music_post.user.nickname, user_path(favorite_music_post.user.id), style: "color: black;" %>
+        <%= link_to favorite_music_post.user.nickname, user_path(favorite_music_post.user.id), class: "style-color" %>
       </div>
       <div class="col-1 my-3">
         <div id="favorite_btn_<%= favorite_music_post.id %>">
@@ -46,7 +48,7 @@
     </div>
     <% end %>
     <div class="mt-2 mb-5 d-flex justify-content-start">
-      <p style="color: #000000; margin: 0;">※投稿されたタイトルをクリックすると投稿詳細に飛べます</p>
+      <p class="favorite-p">※投稿されたタイトルをクリックすると投稿詳細に飛べます</p>
     </div>
   <% end %>
 </div>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <div class="row my-4">
-        <h4 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">会員情報編集</h4>
+        <h4 class="user-edit-title">会員情報編集</h4>
       </div>
       <%= form_with model: @user, url: user_path(@user), local: true do |f| %>
       <%= render "layouts/error_messages", obj: @user %>
@@ -42,10 +42,10 @@
 
       <div class="row">
         <div class="col my-3 text-left">
-          <%= link_to "戻る", user_path(@user.id), class: "btn btn-warning mb-2 mx-5", style: "background-color: #F5765F;" %>
+          <%= link_to "戻る", user_path(@user.id), class: "btn btn-warning mb-2 mx-5 user-edit-My" %>
         </div>
         <div class="col my-3 text-right">
-          <%= f.submit "変更を保存", class: "btn mb-2 mx-5", style: "background-color: #F55FBE;" %>
+          <%= f.submit "変更を保存", class: "btn mb-2 mx-5 user-edit-submit" %>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
     <div class="col-sm-12 col-lg-6">
       <div class="row">
         <div class="col">
-          <h4 style="display: inline-block; border-bottom: 2px solid #F07C81; color: #000000;">My二胡の情報編集</h4>
+          <h4 class="user-edit-title">My二胡の情報編集</h4>
         </div>
         <div class="col-1 text-left">
           <!-- ボタン -->

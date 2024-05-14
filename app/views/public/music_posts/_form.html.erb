@@ -10,12 +10,12 @@
   <div class="form-group">
     <%= f.file_field :image, class: "form-control-file get_niko_image", accept: "image/*" %>
   </div>
-  
+
   <% if change_redirect_path %>
     <%= f.hidden_field :change_redirect_path, value: change_redirect_path %>
   <% end %>
 
   <div class="form-group">
-    <%= f.submit "投稿", class: "btn text-light w-75", style: "background-color: #6946EB;" %>
+    <%= f.submit "投稿", class: "btn text-light w-75 music_post-form-btn" %>
   </div>
 <% end %>

@@ -47,28 +47,11 @@
     text-align: center;
   }
 
-  // btn用色変更
- $theme-colors: (
 
-  "primary": #b3a9c8,
-
-  "secondary": #6d7d90,
-
-  "info": #E045E5,
-
-  "warning": #F0CB0C,
-
-  "danger": #dbac9e,
-
-  "success":#A4E6AC,
-
-  "outline-dark": #E05C19,
-  );
-
-  .non-link-text {
-    color: inherit; /* リンクと同じ色にする */
-    text-decoration: none; /* 下線をなくす */
-    cursor: default; /* カーソルをデフォルトにする */
+  // 余白の打ち消し
+  .row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
   }
 
   // admin側のテーブル替わり
@@ -100,12 +83,637 @@
   .custom-link-style {
     color: #000000; //色指定
     font-weight: bold;
-    // text-decoration: underline; // アンダーライン
   }
   // コメントアイコン
   .comment-icon {
     color: #762C23;
   }
+
+  // // 画面の見出し
+  .style-title {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // 文字のリンクの色を黒へ
+  .style-color {
+    color: black;
+  }
+
+  // 折り返しをさせない
+  .now-body {
+    flex-wrap: nowrap;
+  }
+
+  // 折り返しをさせない
+  .now-nowrap {
+    white-space: nowrap;
+  }
+
+  // グループの紹介内容
+  .group-background {
+    background-color: #F9D9DA;
+  }
+
+  // グループに加入しているユーザー名
+  .group-nickname {
+    display: inline-block;
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+  }
+
+  // グループの一覧ボタン
+  .group-btn {
+    background-color: #F5765F;
+  }
+
+  // adminのtop
+  .admin-top {
+    max-width: 800px;
+    margin: auto;
+  }
+
+  // adminの利用内容
+  .admin-title {
+    display: inline-block;
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // adminの利用者名
+  .admin-color {
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // adminの探究室一覧へ
+  .admin-background-btn {
+    background-color: #F5765F;
+  }
+
+  // adminの探究室コメント
+  .admin-style-color {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+  }
+
+  // adminの音楽共有一覧へ
+  .admin-style-color01 {
+    background-color: #F5765F;
+  }
+
+  // adminの音楽共有コメント
+  .admin-style-comment {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+  }
+
+  // adminの音楽共有
+  .admin-style-block {
+    display: block;
+  }
+
+  // admonのログイン
+  .admin-style-top {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  // adminのログインタイトル
+  .admin-style-title {
+    text-decoration: underline;
+    text-decoration-color: #CD0000;
+  }
+
+  // adminのログインボタン
+  .admin-style-btn {
+    background-color: #67063A;
+  }
+
+  // adminのtagのcomment
+  .admin-style-comment {
+    color: #744199;
+    margin: 0;
+    padding: 0;
+  }
+
+  // adominのtagの新規作成
+  .admin-style-tag {
+    text-decoration: underline;
+    text-decoration-color: #795548;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // adminのtagボタン
+  .admin-style-tag-btn {
+    background-color: #F5765F;
+  }
+
+  // adminのtagのstyle
+  .admin-style-tag-display {
+    display: none;
+  }
+
+  // adminのtagの保存btn
+  .admin-style-tag-btn01 {
+    background-color: #982F56;
+  }
+
+  // adminのuserのbtn
+  .admin-style-user-btn01 {
+    background-color: #E88A3A;
+  }
+
+  // adminのuserのbtn
+  .admin-style-user-btn02 {
+    background-color: #F5765F;
+  }
+
+  // adminのuserの持つ二胡
+  .admin-style-user-niko {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // adminのuserのbtn
+  .admin-style-user-show01 {
+    background-color: #F5765F;
+  }
+
+  // adminのuserのbtn
+  .admin-style-user-show02 {
+    background-color: #F55FBE;
+  }
+
+
+  // ==========public===============
+  // public側お問い合わせ
+  .public-contact-top {
+    max-width: 650px;
+    margin: auto;
+  }
+
+  // public側お問い合わせbtn
+  .public-contact-btn {
+    background-color: #F5765F;
+  }
+
+  // public側送信btn
+  .public-contact-submit {
+    background-color: #982F56;
+  }
+
+  // public側送信お問い合わせ一覧btn
+  .public-contacts-btn {
+    background-color: #D35950;
+  }
+
+  // public側のいいねbtn
+  .favorite01 {
+    color: red;
+  }
+
+  .favorite02 {
+    color: black;
+  }
+
+  .favorite03 {
+    color: blue;
+  }
+
+  // ===================================
+  // グループの投稿btn
+  .group-new-btn {
+    background-color: #F5765F;
+  }
+
+  // グループの投稿の各btn
+  // 編集
+  .group-btn01 {
+    background-color: #B5A060;
+  }
+  // 入室
+  .group-btn02 {
+    background-color: #F46760;
+  }
+  // 加入
+  .group-btn03 {
+    background-color: #B34812;
+  }
+
+  // group-show一覧
+  .group-btn04 {
+    background-color: #B85C0D;
+  }
+
+// =======================================
+  // about 影
+  .about-shadow {
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, .3);
+  }
+
+  // 二胡について
+  .about-niko {
+    font-size: 3rem;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #CD0000;
+    background-color:#efc4c0;
+  }
+
+  // 二胡の説明
+  .about-niko-p {
+    padding:1em; background:#ffffff;
+  }
+  // ===============================
+  // 二胡友top
+  .top-nikotomo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: underline;
+    text-decoration-color: #CD0000;
+  }
+
+  // 二胡友top-p
+  .top-nikotomo-p {
+    text-align: left;
+  }
+
+  // 二胡友top-labo-btn
+  .top-nikotomo-labo {
+    background-color: #c24f59; color: #ffffff;
+  }
+
+  // 二胡友top-labo-check
+  .top-nikotomo-labo-check {
+    white-space: nowrap;
+    color: #0f0f0f;
+  }
+
+  // 二胡友top-labo-tag
+  .top-nikotomo-labo-tag {
+    background-color: #c24f59;
+  }
+
+// ==================================
+  // タグ登録・投稿
+  .labo-tag-title {
+    display: inline-block;
+    color: #FFFFFF;
+    background-color: #DB8278;
+  }
+
+  // タグ登録・投稿フォーム
+  .labo-tag-style {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // タグ登録・投稿保存btn
+  .labo-tag-submit {
+    background-color: #DC7681;
+  }
+
+  // 探究室一覧・探究室の扉
+  .labo-style-title {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // 管理者とのお約束
+  .labo-admin-promise {
+    white-space: nowrap;
+    color: #E5391E;
+  }
+
+  // 探究室user画像
+  .labo-user-img {
+    max-width: 60px;
+    height: auto;
+  }
+
+  // 探究室show
+  .labo-show-submit {
+    background-color: #762C23;
+  }
+
+  // 探究室show-一覧へ
+  .labo-show-index {
+    background-color: #F5765F;
+  }
+
+  // 探究室show-style
+  .labo-show-style {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+  }
+  // ================================
+  // タグ検索用一覧
+  .tag-labo-title {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // topへ戻る
+  .tag-labo-top {
+    background-color: #F5765F;
+  }
+  // =================================
+  // 音楽共有投稿フォーム
+  .music_post-form-btn {
+    background-color: #6946EB;
+  }
+
+  // 音楽共有見出し
+  .music_post-edit-title {
+    display: inline-block;
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // 更新btn
+  .music_post-edit-submit {
+    background-color: #6946EB;
+  }
+
+  // マイーページ
+  .music_post-edit-My {
+    background-color: #D35950;
+  }
+
+  // 一覧へ戻る
+  .music_post-edit-index {
+    background-color: #982F56;
+  }
+
+  // 音楽共有のindex
+  .music_post-index-style {
+    max-width: 600px;
+    margin: auto;
+  }
+
+  // 投稿内容
+  .music_post-index-body {
+    color: black;
+    display: inline-block;
+    border-bottom: 2px solid #F07C81;
+  }
+
+   .music_post-index-btn-size {
+     width: 100px;
+   }
+
+  // ================================
+  // 新規投稿
+  .registrations-title {
+    text-decoration: underline;
+    text-decoration-color: #CD0000;
+  }
+
+  .registrations-title-block {
+    display: block;
+  }
+
+  // 新規登録ボタン
+  .registrations-btn {
+    background-color: #F5765F;
+  }
+
+  // 登録済みのuserはログインへ
+  .registrations-style {
+    text-decoration: underline;
+    text-decoration-color: #CD0000;
+  }
+  // ================================
+  // userのログイン
+  .sessions-title {
+    text-decoration: underline;
+    text-decoration-color: #CD0000;
+  }
+
+  // ゲストログイン
+  .guest-btn {
+    background-color: #5F1D35
+  }
+  // userログインbtn
+  .sessions-submit {
+    background-color: #F5765F;
+  }
+
+  // 登録がまだだったら
+  .sessions-style {
+    text-decoration: underline;
+    text-decoration-color: #CD0000;
+  }
+
+  .sessions-link {
+    color: black;
+    background-color: #B57874;
+  }
+  // ================================
+  // フォロー・フォロワー
+  .relationships01 {
+    background-color: #982F56;
+  }
+
+  .relationships02 {
+    background-color: #F5765F;
+  }
+
+  // フォロー・フォロワー
+  .relationships-title {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  // =================================
+  // user_info
+  .love-style {
+    color: #6b3b3f;
+  }
+
+  .love-style02 {
+    color: #FFFFFF;
+  }
+  // =================================
+  // user編集・二胡の情報
+  // 二胡登録ボタン
+  .niko-submit {
+    background-color: #F55FBE;
+  }
+  // editの見出し
+  .user-edit-title {
+    display: inline-block;
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+  }
+
+  // マイページへ戻る
+  .user-edit-My {
+    background-color: #F5765F;
+  }
+
+  // userの編集保存
+  .user-edit-submit {
+    background-color: #F55FBE;
+  }
+
+  .user-confirm-h1 {
+    text-shadow: -1px -1px 5px rgba(160,82,45,0.8),
+          1px -1px 5px rgba(160,82,45,0.8),
+          -1px 1px 5px rgba(160,82,45,0.8),
+          1px 1px 5px rgba(160,82,45,0.8); color: white; animation: blink 3s infinite;
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  // 退会しないボタン
+  .user-edit-btn {
+    background-color: #22E6D2;
+  }
+
+  //退会して閲覧できるもの
+  .user-confirm-p {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-weight: bold;
+  }
+
+  // =================================
+  // お気に入り一覧
+  .favorite-title {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .favorite-title-p {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  // いいね
+  .favorite-title-i {
+    color: red;
+  }
+
+  .favorite-title-style {
+    color: black;
+    font-weight: bold;
+  }
+
+  .favorite-p {
+    color: #000000; margin: 0;
+  }
+
+  // user検索用
+  .user-index {
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  // userのshowの幅設定
+  .user-show-style {
+    max-width: 800px; margin: auto;
+  }
+  // =================================
+  // 画面のサイズを指定
+  .style-top {
+    max-width: 650px;
+    margin: auto;
+  }
+
+  // 背景をストライプ模様に設定
+  .Lines_v2 {
+    background-image: linear-gradient(0deg, #FFFAF0, 50%, #FFFFF9 50%);
+    background-size: 20px 20px;
+  }
+
+  // /* top要素のスタイル */
+  .top-background {
+    top: 0;
+    left: 0;
+    background-image: url('../images/top用画像.jpg');
+    background-size: cover;
+  }
+
+  // topの吹き出し
+  .sample-box-4 {
+    border: 4px solid #515151;
+    background-color: #CC8A85;
+    text-align: center;
+    border-radius: 240px 15px 185px 15px / 15px 200px 15px 185px;
+    margin: 2em 0;
+    width: 100%;
+    padding: 2em;
+  }
+
+  // /* about要素のスタイル */
+  .about-background {
+    background-image: url('../images/二胡についての背景画像.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
+  }
+
+
+  // 音楽共有のソート機能のボタン
+  .submitbtn {
+    background: #6b3b3f;
+    color: #fff;
+  }
+
+  // ================================
+
+  // =========AI画像認識==============
+  // .label {
+  //   background-color: #337ab7;
+  //   font-weight: 500;
+  //   display: inline;
+  //   padding: .2em .6em .3em;
+  //   font-size: 75%;
+  //   font-weight: bold;
+  //   line-height: 1;
+  //   color: #fff;
+  //   text-align: center;
+  //   white-space: nowrap;
+  //   vertical-align: baseline;
+  //   border-radius: .25em;
+  // }
+  // =================================
+
+  // フォントの設定全てに適用
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+  html, body {
+  font-family: "Raleway", "M PLUS 1p", sans-serif;
+  }
+
 
   @charset "utf-8";
 
@@ -171,68 +779,6 @@
       opacity: 1;
     transform: translateY(100px);
     }
-  }
-
-  // AI画像認識
-  // .label {
-  //   background-color: #337ab7;
-  //   font-weight: 500;
-  //   display: inline;
-  //   padding: .2em .6em .3em;
-  //   font-size: 75%;
-  //   font-weight: bold;
-  //   line-height: 1;
-  //   color: #fff;
-  //   text-align: center;
-  //   white-space: nowrap;
-  //   vertical-align: baseline;
-  //   border-radius: .25em;
-  // }
-
-  // フォントの設定全てに適用
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
-  html, body {
-  font-family: "Raleway", "M PLUS 1p", sans-serif;
-  }
-
-  // 背景をストライプ模様に設定
-  .Lines_v2 {
-    background-image: linear-gradient(0deg, #FFFAF0, 50%, #FFFFF9 50%);
-    background-size: 20px 20px;
-  }
-
-  // /* top要素のスタイル */
-  .top-background {
-    top: 0;
-    left: 0;
-    background-image: url('../images/top用画像.jpg');
-    background-size: cover;
-  }
-
-  // topの吹き出し
-  .sample-box-4 {
-    border: 4px solid #515151;
-    background-color: #CC8A85;
-    text-align: center;
-    border-radius: 240px 15px 185px 15px / 15px 200px 15px 185px;
-    margin: 2em 0;
-    width: 100%;
-    padding: 2em;
-  }
-
-  // 余白の打ち消し
-  .row {
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-  }
-
-  // /* about要素のスタイル */
-  .about-background {
-    background-image: url('../images/二胡についての背景画像.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-
   }
 
 /*== ボタン共通設定 いいね一覧ボタン*/
@@ -339,10 +885,4 @@
 
   .btntextchange:hover span:nth-child(2){
     opacity:1;/*不透明に*/
-  }
-
-  // 音楽共有のソート機能のボタン
-  .submitbtn {
-    background: #6b3b3f;
-    color: #fff;
   }

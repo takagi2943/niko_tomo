@@ -1,11 +1,11 @@
 <!--選択されたタグに紐づいた投稿詳細-->
 <div class="container-md my-4">
   <div class="row my-5">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @tag.title %></h5>
+    <h5 class="tag-labo-title"><%= @tag.title %></h5>
   </div>
 
 <div class="d-flex justify-content-end">
-  <%= link_to "トップへ戻る", root_path, class: "btn text-white my-3", style: "background-color: #F5765F;" %>
+  <%= link_to "トップへ戻る", root_path, class: "btn text-white my-3 tag-labo-top" %>
 </div>
 
   <% if @labos.exists? %>
@@ -21,7 +21,7 @@
         <!--ログインユーザーならば会員の詳細画面に遷移する-->
         <div class="flex-colmum">
           <% if current_user && current_user.user_status == "有効" %>
-          <%= link_to labo.user.nickname, user_path(labo.user.id), style: "color: black;" %>
+          <%= link_to labo.user.nickname, user_path(labo.user.id), class: "style-color" %>
           <% else%>
           <!--非ログインならば名前がリンクにならない-->
           <%= labo.user.nickname %>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="col text-left">
-        <%= link_to labo.body, labo_path(labo.id), style: "color: black;" %>
+        <%= link_to labo.body, labo_path(labo.id), class: "style-color" %>
       </div>
     </div>
     <% end %>

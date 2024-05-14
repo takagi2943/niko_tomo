@@ -1,6 +1,6 @@
 <div class="container my-4 pb-5">
   <div class="row">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;"><%= @user.nickname %>さんの会員情報編集</h5>
+    <h5 class="style-title"><%= @user.nickname %>さんの会員情報編集</h5>
   </div>
 
   <div class="row text-left my-3 ml-3">
@@ -9,10 +9,10 @@
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
       <div class="row my-3">
         <div class="col-3">
-          <%= link_to "詳細へ戻る", admin_user_path(@user.id), class: "btn text-white", style: "background-color: #E88A3A;" %>
+          <%= link_to "詳細へ戻る", admin_user_path(@user.id), class: "btn text-white admin-style-user-btn01" %>
         </div>
         <div class="col text-right">
-         <%= link_to "投稿の詳細", admin_user_comments_path(@user.id), class: "btn text-white", style: "background-color: #F5765F;" %>
+         <%= link_to "投稿の詳細", admin_user_comments_path(@user.id), class: "btn text-white admin-style-user-btn02" %>
        </div>
       </div>
 
@@ -75,7 +75,7 @@
 
       <div class="row my-2">
        <div class="col text-right">
-         <%= link_to "コメント削除", admin_user_path(@user), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger"%>
+         <%= link_to "コメント削除", admin_user_path(@user), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger" %>
        </div>
       </div>
 
@@ -105,7 +105,7 @@
       <% if @user.nikos.present? %>
       <div class="row">
         <div class="col">
-          <h5 style="font-size: 24px; font-weight: bold;">
+          <h5 class="admin-style-user-niko">
             <span class="bg-highlight">My二胡の情報編集</span>
           </h5>
         </div>
@@ -123,7 +123,7 @@
           </div>
 
           <div class="row my-2 ml-2">
-            <div class="col-3" style="white-space: nowrap;">
+            <div class="col-3 now-nowrap">
               使われた木材
             </div>
             <div class="col">

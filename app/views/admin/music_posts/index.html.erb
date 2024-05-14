@@ -1,7 +1,6 @@
-<!--音楽共有-->
 <div class="container my-4 pb-5">
   <div class="row justify-content-start mb-2">
-    <h5 style="border-bottom: 2px solid #F07C81; color: #000000; font-size: 24px; font-weight: bold;">音楽共有一覧</h5>
+    <h5 class="style-title">音楽共有一覧</h5>
   </div>
   <div class="row custom-background">
     <div class="col-2 text-center mt-2">
@@ -21,7 +20,7 @@
       <%= music_post.created_at.strftime('%Y/%m/%d') %>
     </div>
     <div class="col-4 text-left mt-2">
-      <%= link_to music_post.title, admin_music_post_path(music_post.id), style: "color: #000000;" %>
+      <%= link_to music_post.title, admin_music_post_path(music_post.id), class: "style-color" %>
     </div>
     <div class="col mt-2 text-left mr-2">
       <%= music_post.body %>

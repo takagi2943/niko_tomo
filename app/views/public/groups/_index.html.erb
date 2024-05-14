@@ -32,12 +32,12 @@
     <div class="col-lg-2 text-right mt-3">
       <!--グループの作成主であったら-->
       <% if group.is_owned_by?(current_user) %>
-        <%= link_to "編集", edit_group_path(group.id), class: "btn btn-sm text-white", style: "background-color: #B5A060;" %>
+        <%= link_to "編集", edit_group_path(group.id), class: "btn btn-sm text-white group-btn01" %>
       <% elsif group.includesUser?(current_user) %>
       <!--それ以外は参加しているグループに入室か新しく加入ボタン-->
-        <%= link_to  "入室", group_path(group.id), class: "btn btn-sm text-white", style: "background-color: #F46760;" %>
+        <%= link_to  "入室", group_path(group.id), class: "btn btn-sm text-white group-btn02" %>
       <% else %>
-        <%= link_to "加入", group_join_path(group.id, current_user.id), class: "btn btn-sm text-white", style: "background-color: #B34812;" %>
+        <%= link_to "加入", group_join_path(group.id, current_user.id), class: "btn btn-sm text-white group-btn03" %>
       <% end %>
     </div>
   </div>

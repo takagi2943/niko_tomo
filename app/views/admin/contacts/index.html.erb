@@ -1,8 +1,26 @@
-<h2>会員からのお問い合わせ一覧</h2>
-<h5>ニックネーム</h5>
-<h5>内容</h5>
+<div class="my-4 pb-5 style-top">
+  <div class="d-flex justify-content-center mt-5">
+    <h4 class="style-title">会員からのお問い合わせ一覧</h4>
+  </div>
 
-<% @contacts.each do |contact| %>
-<h5><%= contact.user.nickname %></h5>
-<h5><%= contact.content %></h5>
-<% end %>
+  <div class="d-flex justify-content-center mt-1 custom-background mx-2">
+    <div class="col mt-2">
+      <h5>内容</h5>
+    </div>
+    <div class="col mt-2 text-right">
+      <h5>ニックネーム</h5>
+    </div>
+  </div>
+  <% @contacts.each do |contact| %>
+  <div class="custom-table-striped border border-danger mx-2">
+    <div class="row">
+      <div class="col-lg-8 col-sm-6 text-left  ml-2 my-2">
+        <h5><%= contact.content %></h5>
+      </div>
+      <div class="col-lg-2 text-right my-2 ml-auto mr-3">
+        <h5><%= link_to contact.user.nickname, admin_user_path(contact.user.id), style: "color: black;" %></h5>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
