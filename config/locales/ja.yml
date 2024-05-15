@@ -235,7 +235,7 @@ ja:
       send_paranoid_instructions: "データベースにメールアドレスが存在する場合は、数分以内にメールアドレスの確認方法に関する手順が記載されたメールが届きます。"
     failure:
       already_authenticated: "すでにログインしています。"
-      inactive: "アカウントはまだ有効になっていません。"
+      inactive: "退会済みのユーザーです。新規登録をお願いいたします。"
       invalid: "無効な%{authentication_keys}またはパスワードです。"
       locked: "アカウントはロックされています。"
       last_attempt: "アカウントがロックされる前に、もう1回試行できます。"

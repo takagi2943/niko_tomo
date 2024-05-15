@@ -66,6 +66,11 @@ class User < ApplicationRecord
   def user_status
     is_active ? "有効" : "退会"
   end
+  
+  # 退会しているuserが同じアカウントでログインできないようにする
+  def active_for_authentication?
+    super && is_active?
+  end
 
     # 画像の情報
   def get_profile_image

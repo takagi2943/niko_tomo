@@ -17,7 +17,13 @@ class Public::UsersController < ApplicationController
     else
       @users = User.all
     end
-
+    
+    # 退会した人は表示されないようにする
+    if params[:is_active] == "false"
+    @users = User.where(is_active: false)
+    else
+    @users = User.where(is_active: true)
+    end
   end
 
   def edit
@@ -50,7 +56,7 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   # 退会確認用
   def withdraw
     @user = current_user
