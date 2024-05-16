@@ -101,6 +101,15 @@
   .style-color {
     color: black;
   }
+  
+  a.style-color {
+    color: black;
+    text-decoration: none;
+  }
+  
+  a.style-color:hover {
+    font-weight: 600;
+  }
 
   // 折り返しをさせない
   .now-body {
@@ -325,6 +334,11 @@
   .about-shadow {
     box-shadow: 4px 6px 10px rgba(0, 0, 0, .3);
   }
+  
+  // 余白をなくす
+  .about-h1 {
+    margin: 0;
+  }
 
   // 二胡について
   .about-niko {
@@ -338,6 +352,11 @@
   // 二胡の説明
   .about-niko-p {
     padding:1em; background:#ffffff;
+  }
+  
+  .about-niko-img {
+    width: 300px;
+    height: 200px;
   }
   // ===============================
   // 二胡友top
@@ -653,6 +672,16 @@
     max-width: 800px; margin: auto;
   }
   // =================================
+  // 共通テンプレート
+  .app-style {
+    margin-bottom: -48px;
+  }
+  
+  // バリデーションメッセージ
+  .app-style-bottom {
+    margin-bottom: -16px;
+  }
+  // =================================
   // 画面のサイズを指定
   .style-top {
     max-width: 650px;
@@ -666,11 +695,13 @@
   }
 
   // /* top要素のスタイル */
-  .top-background {
+  .public-homes__top--background {
     top: 0;
     left: 0;
     background-image: url('../images/top用画像.jpg');
     background-size: cover;
+    
+    //height: 100%;
   }
 
   // topの吹き出し
@@ -685,7 +716,7 @@
   }
 
   // /* about要素のスタイル */
-  .about-background {
+  .public-homes__about--background {
     background-image: url('../images/二胡についての背景画像.jpg');
     background-attachment: fixed;
     background-size: cover;

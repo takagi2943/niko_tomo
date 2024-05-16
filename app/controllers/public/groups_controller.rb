@@ -12,7 +12,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user = @group.user
-    #@user_self = User.find(params[:id])
+    
     @participant_size = @group.group_users.size
   end
 

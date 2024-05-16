@@ -17,15 +17,16 @@
     <header class="shadow-sm" id="header">
       <%= render 'layouts/header' %>
     </header>
-    <main class="Lines_v2">
-      <div style="margin-bottom: -48px;">
+    <!--条件で表示できるようにしている-->
+    <main class="<%= "#{ params[:controller].gsub("/", "-") }__#{ params[:action] }--background" %> Lines_v2">
+      <div class="app-style">
         <% if flash[:notice]%>
-          <div class="alert alert-success" style="margin-bottom: -16px;">
+          <div class="alert alert-success app-style-bottom">
             <%= flash[:notice] %>
           </div>
         <% end %>
         <% if flash[:alert] %>
-          <div class="alert alert-danger" style="margin-bottom: -16px;">
+          <div class="alert alert-danger app-style-bottom">
             <%= flash[:alert] %>
           </div>
         <% end %>
