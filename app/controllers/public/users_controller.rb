@@ -28,7 +28,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @niko = Niko.new
+    @niko = Niko.new(is_favorite: false)
   end
 
   def create
