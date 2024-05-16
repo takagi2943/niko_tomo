@@ -98,10 +98,8 @@
   </div>
   <% end %>
 <% else %>
-  <div class="row my-5">
-    <div class="col mb-5 labo-show-style">
-      <h5>まだ <b><%= @labo.user.nickname %></b>さんの質問に誰も回答されていません。</h5>
-    </div>
+  <div class="row justify-content-center my-5">
+    <h5 class="labo-show-style">まだ <b><%= @labo.user.nickname %></b>さんの質問に誰も回答されていません。</h5>
   </div>
 <% end %>
 </div>

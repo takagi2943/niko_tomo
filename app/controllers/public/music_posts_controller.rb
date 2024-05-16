@@ -30,12 +30,12 @@ class Public::MusicPostsController < ApplicationController
     @music_post.image = params[:music_post][:image]
     @music_post.user_id = current_user.id
     # AIの画像認識
-    @ai_tags = Vision.get_image_data(music_post_params[:image])
+    # @ai_tags = Vision.get_image_data(music_post_params[:image])
     if @music_post.save
       # AIの画像タグ
-      @ai_tags.each do |ai_tag|
-        @music_post.ai_tags.create(name: ai_tag)
-      end
+      # @ai_tags.each do |ai_tag|
+      #   @music_post.ai_tags.create(name: ai_tag)
+      # end
       # viewとcontroller側でchange_redirect_pathのリダイレクト先をtrueとfalseで分けている
       if params[:music_post][:change_redirect_path]  # trueだったら
         flash[:notice] = '投稿しました。'

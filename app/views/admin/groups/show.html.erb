@@ -27,7 +27,7 @@
     </div>
     <div class="col d-flex align-items-center border custom-border rounded-pill group-background">
       <% @users.each do |user| %>
-      <h5><%= link_to user.nickname, admin_user_path(user.id), class: "style-color" %></h5>
+      <h5><%= link_to user.nickname, admin_user_path(user.id), class: "style-color mx-2" %></h5>
       <% end %>
     </div>
   </div>

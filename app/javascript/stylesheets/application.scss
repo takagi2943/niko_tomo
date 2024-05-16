@@ -288,6 +288,14 @@
   }
 
   // ===================================
+  // グループの見出し
+  .group-index-style {
+    display: inline-block;
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-weight: bold;
+  }
+
   // グループの投稿btn
   .group-new-btn {
     background-color: #F5765F;
@@ -378,6 +386,9 @@
     font-weight: bold;
   }
 
+  .labo-labo-new {
+    bottom :40px;
+  }
   // タグ登録・投稿保存btn
   .labo-tag-submit {
     background-color: #DC7681;
