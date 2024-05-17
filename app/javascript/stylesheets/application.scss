@@ -101,12 +101,12 @@
   .style-color {
     color: black;
   }
-  
+
   a.style-color {
     color: black;
     text-decoration: none;
   }
-  
+
   a.style-color:hover {
     font-weight: 600;
   }
@@ -127,10 +127,12 @@
   }
 
   // グループに加入しているユーザー名
-  .group-nickname {
+  a.group-nickname {
     display: inline-block;
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
+    font-weight: 600;
   }
 
   // グループの一覧ボタン
@@ -169,6 +171,7 @@
   .admin-style-color {
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
   }
 
   // adminの音楽共有一覧へ
@@ -180,6 +183,7 @@
   .admin-style-comment {
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
   }
 
   // adminの音楽共有
@@ -334,7 +338,7 @@
   .about-shadow {
     box-shadow: 4px 6px 10px rgba(0, 0, 0, .3);
   }
-  
+
   // 余白をなくす
   .about-h1 {
     margin: 0;
@@ -353,7 +357,7 @@
   .about-niko-p {
     padding:1em; background:#ffffff;
   }
-  
+
   .about-niko-img {
     width: 300px;
     height: 200px;
@@ -397,8 +401,13 @@
     background-color: #DB8278;
   }
 
+  a.labo-tag-title {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
   // タグ登録・投稿フォーム
-  .labo-tag-style {
+  a.labo-tag-style {
     border-bottom: 2px solid #F07C81;
     color: #000000;
     font-size: 24px;
@@ -406,7 +415,7 @@
   }
 
   .labo-labo-new {
-    bottom :40px;
+    bottom : 40px;
   }
   // タグ登録・投稿保存btn
   .labo-tag-submit {
@@ -439,12 +448,13 @@
   }
 
   // 探究室show-一覧へ
-  .labo-show-index {
+  a.labo-show-index {
     background-color: #F5765F;
+    color: #ffffff;
   }
 
   // 探究室show-style
-  .labo-show-style {
+  a.labo-show-style {
     border-bottom: 2px solid #F07C81;
     color: #000000;
   }
@@ -453,13 +463,16 @@
   .tag-labo-title {
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+
     font-size: 24px;
     font-weight: bold;
   }
 
   // topへ戻る
   .tag-labo-top {
-    background-color: #F5765F;
+    background-color: #6946EB;
   }
   // =================================
   // 音楽共有投稿フォーム
@@ -676,7 +689,13 @@
   .app-style {
     margin-bottom: -48px;
   }
-  
+
+  // フッターの管理者の表示
+  a.footer-style-color {
+    color: #ffffff;
+    font-weight: 600;
+
+  }
   // バリデーションメッセージ
   .app-style-bottom {
     margin-bottom: -16px;
@@ -700,7 +719,7 @@
     left: 0;
     background-image: url('../images/top用画像.jpg');
     background-size: cover;
-    
+
     //height: 100%;
   }
 
