@@ -73,10 +73,8 @@
     <% end %>
   </div>
 <% else %>
-  <div class="row my-5">
-    <div class="col admin-style-comment">
-      <h5><b><%= @music_post.user.nickname %></b>　さんの投稿にはコメントはありません。</h5>
-    </div>
+  <div class="row justify-content-center my-5">
+    <h5 class="admin-style-color"><b><%= @music_post.user.nickname %></b>　さんの投稿にはコメントはありません。</h5>
   </div>
 <% end %>
 </div>

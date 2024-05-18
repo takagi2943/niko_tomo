@@ -30,7 +30,7 @@
           <h6 class="group-nickname">グループリーダー</h6>
         </div>
         <div class="col-lg-6 text-left">
-          <%= link_to @group.user.nickname, user_path(@user.id), class: "custom-link-style" %>
+          <%= link_to @group.user.nickname, user_path(@user.id), class: "style-color" %>
         </div>
       </div>
       <div class="row my-3">
@@ -39,7 +39,7 @@
         </div>
         <div class="col-lg-6 text-left">
           <% @group.users.each do |member| %>
-            <%= link_to member.nickname, user_path(member.id), class: "custom-link-style" %><br>
+            <%= link_to member.nickname, user_path(member.id), class: "style-color" %><br>
           <% end %>
         </div>
       </div>

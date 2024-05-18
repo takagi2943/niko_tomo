@@ -102,6 +102,15 @@
     color: black;
   }
 
+  a.style-color {
+    color: black;
+    text-decoration: none;
+  }
+
+  a.style-color:hover {
+    font-weight: 600;
+  }
+
   // 折り返しをさせない
   .now-body {
     flex-wrap: nowrap;
@@ -118,10 +127,12 @@
   }
 
   // グループに加入しているユーザー名
-  .group-nickname {
+  a.group-nickname {
     display: inline-block;
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
+    font-weight: 600;
   }
 
   // グループの一覧ボタン
@@ -160,6 +171,7 @@
   .admin-style-color {
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
   }
 
   // adminの音楽共有一覧へ
@@ -171,6 +183,7 @@
   .admin-style-comment {
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
   }
 
   // adminの音楽共有
@@ -288,6 +301,14 @@
   }
 
   // ===================================
+  // グループの見出し
+  .group-index-style {
+    display: inline-block;
+    border-bottom: 2px solid #F07C81;
+    color: #000000;
+    font-weight: bold;
+  }
+
   // グループの投稿btn
   .group-new-btn {
     background-color: #F5765F;
@@ -318,6 +339,11 @@
     box-shadow: 4px 6px 10px rgba(0, 0, 0, .3);
   }
 
+  // 余白をなくす
+  .about-h1 {
+    margin: 0;
+  }
+
   // 二胡について
   .about-niko {
     font-size: 3rem;
@@ -330,6 +356,11 @@
   // 二胡の説明
   .about-niko-p {
     padding:1em; background:#ffffff;
+  }
+
+  .about-niko-img {
+    width: 300px;
+    height: 200px;
   }
   // ===============================
   // 二胡友top
@@ -370,14 +401,22 @@
     background-color: #DB8278;
   }
 
+  a.labo-tag-title {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
   // タグ登録・投稿フォーム
-  .labo-tag-style {
+  a.labo-tag-style {
     border-bottom: 2px solid #F07C81;
     color: #000000;
     font-size: 24px;
     font-weight: bold;
   }
 
+  .labo-labo-new {
+    bottom : 40px;
+  }
   // タグ登録・投稿保存btn
   .labo-tag-submit {
     background-color: #DC7681;
@@ -409,12 +448,13 @@
   }
 
   // 探究室show-一覧へ
-  .labo-show-index {
+  a.labo-show-index {
     background-color: #F5765F;
+    color: #ffffff;
   }
 
   // 探究室show-style
-  .labo-show-style {
+  a.labo-show-style {
     border-bottom: 2px solid #F07C81;
     color: #000000;
   }
@@ -423,13 +463,16 @@
   .tag-labo-title {
     border-bottom: 2px solid #F07C81;
     color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+
     font-size: 24px;
     font-weight: bold;
   }
 
   // topへ戻る
   .tag-labo-top {
-    background-color: #F5765F;
+    background-color: #6946EB;
   }
   // =================================
   // 音楽共有投稿フォーム
@@ -642,6 +685,22 @@
     max-width: 800px; margin: auto;
   }
   // =================================
+  // 共通テンプレート
+  .app-style {
+    margin-bottom: -48px;
+  }
+
+  // フッターの管理者の表示
+  a.footer-style-color {
+    color: #ffffff;
+    font-weight: 600;
+
+  }
+  // バリデーションメッセージ
+  .app-style-bottom {
+    margin-bottom: -16px;
+  }
+  // =================================
   // 画面のサイズを指定
   .style-top {
     max-width: 650px;
@@ -655,11 +714,13 @@
   }
 
   // /* top要素のスタイル */
-  .top-background {
+  .public-homes__top--background {
     top: 0;
     left: 0;
     background-image: url('../images/top用画像.jpg');
     background-size: cover;
+
+    //height: 100%;
   }
 
   // topの吹き出し
@@ -674,7 +735,7 @@
   }
 
   // /* about要素のスタイル */
-  .about-background {
+  .public-homes__about--background {
     background-image: url('../images/二胡についての背景画像.jpg');
     background-attachment: fixed;
     background-size: cover;
