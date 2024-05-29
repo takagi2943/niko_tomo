@@ -25,13 +25,13 @@
 </div>
 <hr/>
 <% end %>
-<% if current_user %>
+<% if user %>
 <div class="row my-2">
   <div class="col text-left">
     <h5>フォロー:　</h5>
   </div>
   <div class="col text-center">
-    <h5><%= link_to current_user.followings.size, followings_user_path(current_user), style: "color: black;" %></h5>
+    <h5><%= link_to user.followings.size, followings_user_path(user), style: "color: black;" %></h5>
   </div>
 </div>
 <hr/>
@@ -40,7 +40,7 @@
     <h5>フォロワー:　</h5>
   </div>
   <div class="col text-center">
-    <h5><%= link_to current_user.followers.size, followers_user_path(current_user), style: "color: black;" %></h5>
+    <h5><%= link_to user.followers.size, followers_user_path(user), style: "color: black;" %></h5>
   </div>
 </div>
 <hr/>
