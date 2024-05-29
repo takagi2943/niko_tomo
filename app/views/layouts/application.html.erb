@@ -19,7 +19,7 @@
     </header>
     <!--条件で表示できるようにしている-->
     <main class="<%= "#{ params[:controller].gsub("/", "-") }__#{ params[:action] }--background" %> Lines_v2">
-      <div class="app-style">
+      <div class="app-style py-5">
         <% if flash[:notice]%>
           <div class="alert alert-success app-style-bottom">
             <%= flash[:notice] %>
